@@ -13,6 +13,7 @@
 		41A0634919A90E7100E400D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634719A90E7100E400D1 /* Main.storyboard */; };
 		41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634A19A90E7100E400D1 /* Images.xcassets */; };
 		41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0635619A90E7100E400D1 /* SunflowerTests.swift */; };
+		41A0636619A957F000E400D1 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 41A0636519A957F000E400D1 /* words.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		41A0635019A90E7100E400D1 /* SunflowerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunflowerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0635519A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0635619A90E7100E400D1 /* SunflowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunflowerTests.swift; sourceTree = "<group>"; };
+		41A0636519A957F000E400D1 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = words.json; path = Resources/WordsJson/words.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,8 @@
 		41A0633E19A90E7000E400D1 /* Sunflower */ = {
 			isa = PBXGroup;
 			children = (
+				41A0636119A9511200E400D1 /* Resources */,
+				41A0636019A9510800E400D1 /* Helpers */,
 				41A0634119A90E7100E400D1 /* AppDelegate.swift */,
 				41A0634319A90E7100E400D1 /* MasterViewController.swift */,
 				41A0634519A90E7100E400D1 /* DetailViewController.swift */,
@@ -110,6 +114,29 @@
 				41A0635519A90E7100E400D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41A0636019A9510800E400D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		41A0636119A9511200E400D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				41A0636219A9511800E400D1 /* MockJsons */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		41A0636219A9511800E400D1 /* MockJsons */ = {
+			isa = PBXGroup;
+			children = (
+				41A0636519A957F000E400D1 /* words.json */,
+			);
+			name = MockJsons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A0636619A957F000E400D1 /* words.json in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 			);
