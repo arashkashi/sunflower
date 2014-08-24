@@ -13,9 +13,7 @@ class LearnerController {
     
     func nextWordToLearn() -> Word {
         var result: Word;
-        
         result = Word(name: "test", meaning: "test")
-        
         return result;
     }
     
