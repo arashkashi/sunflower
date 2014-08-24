@@ -8,12 +8,24 @@
 
 import Foundation
 
+enum LearningStage: Int32 {
+    case Cram = 1
+    case Learn
+    case Relearn
+    case Young
+    case Mature
+}
+
+
 class Word {
+    var name: String?
+    var meaning: String?
+    var currentLearningStage: LearningStage = LearningStage.Cram
+    var learningDueDate: NSDate?
     
-    init() {
-        // Init code goes here
+    init (name: String, meaning: String) {
+        self.name = name
+        self.meaning = meaning
     }
-    
-    var name: String?;
-    var meaning: String?;
+
 }

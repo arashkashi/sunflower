@@ -18,6 +18,8 @@
 		41D415E219A9D84F0038EFE6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */; };
+		41D415EB19A9E1270038EFE6 /* LearingTestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415EA19A9E1270038EFE6 /* LearingTestsController.swift */; };
+		41D415ED19A9F25B0038EFE6 /* WordRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415EC19A9F25B0038EFE6 /* WordRetriever.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		41D415E119A9D84F0038EFE6 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
+		41D415EA19A9E1270038EFE6 /* LearingTestsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearingTestsController.swift; sourceTree = "<group>"; };
+		41D415EC19A9F25B0038EFE6 /* WordRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordRetriever.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				41D415E419A9D8CE0038EFE6 /* LearnerController.swift */,
+				41D415EA19A9E1270038EFE6 /* LearingTestsController.swift */,
+				41D415EC19A9F25B0038EFE6 /* WordRetriever.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41D415EB19A9E1270038EFE6 /* LearingTestsController.swift in Sources */,
 				41A0636819A958BE00E400D1 /* JSONReader.swift in Sources */,
+				41D415ED19A9F25B0038EFE6 /* WordRetriever.swift in Sources */,
 				41A0634619A90E7100E400D1 /* DetailViewController.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
 				41A0634419A90E7100E400D1 /* MasterViewController.swift in Sources */,

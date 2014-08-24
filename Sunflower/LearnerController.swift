@@ -10,4 +10,16 @@ import Foundation
 
 class LearnerController {
     var words: [Word]?;
+    
+    func nextWordToLearn() -> Word {
+        var result: Word;
+        
+        result = Word(name: "test", meaning: "test")
+        
+        return result;
+    }
+    
+    init (words:[Word]) {
+        self.words = words
+    }
 }

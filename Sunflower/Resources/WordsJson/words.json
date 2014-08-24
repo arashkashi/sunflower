@@ -1,12 +1,14 @@
 {
-    "schwangerschaft":{"meaning":"pregnancy"},
-    "verhütung":{"meaning":"averting"},
-    "mittel":{"meaning":"means"},
-    "rind":{"meaning":"cattle"},
-    "etikettierung":{"meaning":"labelling"},
-    "Aufgaben":{"meaning":"duties"},
-    "Übertragun":{"meaning":"assignment"},
-    "Gesetz":{"meaning":"Gesetz"},
-    "schaden":{"meaning":"schaden"},
-    "freude":{"meaning":"joy"}
+    "words": [
+              {"name":"schwangerschaft","meaning":"pregnancy"},
+              {"name":"verhütung","meaning":"averting"},
+              {"name":"mittel","meaning":"means"},
+              {"name":"rind","meaning":"cattle"},
+              {"name":"etikettierung","meaning":"labelling"},
+              {"name":"Aufgaben","meaning":"duties"},
+              {"name":"Übertragun","meaning":"assignment"},
+              {"name":"Gesetz","meaning":"Gesetz"},
+              {"name":"schaden","meaning":"schaden"},
+              {"name":"freude","meaning":"joy"}
+    ]
 }
