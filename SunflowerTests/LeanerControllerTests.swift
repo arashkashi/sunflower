@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import Foundation
 
 class LeanerControllerTests: XCTestCase {
     
@@ -24,18 +25,43 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func testNoWordLearnt() {
-        // When no word has ever been learnt, just pick a random word from the set
-        var nextWordToLearn = self.learnerController.nextWordToLearn()
+        /* When no word has ever been learnt, just pick a random word from the set */
+        var nextWordToLearn: Word = self.learnerController.nextWordToLearn()
         XCTAssert(nextWordToLearn != nil, "Next word should not be nil")
     }
     
     func testTwoWordsLearnsButNotDueForReLearnYet() {
-        // When there is no word to re-learn, take a fresh new word
+        /* word1 : due to relearn in future
+             word2 : due to relearn in future
+             rest of the words : never has been learnt (cram)
+             result: a random word from the [rest of the words] */
         var words :[Word] = self.learnerController.words!
         var learntWord1: Word = words[0]
         var learntWord2: Word = words[1]
         
-        learntWord1.learningDueDate = NSDate
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(120)
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(300)
+        
+        var nextWordToLearn: Word = self.learnerController.nextWordToLearn()
+        XCTAssert(nextWordToLearn.name != learntWord1.name, "Next word should not be words that are due in future")
+        XCTAssert(nextWordToLearn.name != learntWord2.name, "Next word should not be words that are due in future")
+        XCTAssert(nextWordToLearn.currentLearningStage == LearningStage.Cram, "next word is in the cram stage")
+    }
+    
+    func testTwoWordsLearntOneIsDue() {
+        /* word1: due to learn in past
+             word2: due to learn in future
+            rest of the words: never learnt (cram stage)
+             result: word 1 */
+        XCTAssert(false, "Failed!")
+    }
+    
+    func testTwoWordsAreDueForRelearn() {
+        /* word1: due to learn in past
+             word2: due to learn in past (later past)
+             rest of the words: never learnt (cram stage)
+             result: word 2 */
+        XCTAssert(false, "Failed!")
     }
 
     func testExample() {
