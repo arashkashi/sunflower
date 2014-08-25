@@ -10,6 +10,8 @@ import UIKit
 import XCTest
 
 class LeanerControllerTests: XCTestCase {
+    
+    var learnerController: LearnerController = LearnerController(words: TestWords.words())
 
     override func setUp() {
         super.setUp()
@@ -19,6 +21,12 @@ class LeanerControllerTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testNoWordLearnt() {
+        // When no word has ever learnt, just pick a random word from the set
+        var nextWordToLearn = self.learnerController.nextWordToLearn()
+        XCTAssert(nextWordToLearn != nil, "Next word should not be nil")
     }
 
     func testExample() {

@@ -12,7 +12,7 @@ class TestWords {
     
     
     class func words() -> Array<Word> {
-        let rawWords =  [
+        var rawWords =  [
             ["name":"schwangerschaft","meaning":"pregnancy"],
             ["name":"verhütung","meaning":"averting"],
             ["name":"mittel","meaning":"means"],
@@ -27,8 +27,10 @@ class TestWords {
         
         
         var result: Array<Word> = [Word]()
-        for item in rawWords as Array<Dictionary<String, String>> {
-            var newWord: Word = Word(name: item["name"]!, meaning: item["meaning"]!)
+        for item: Dictionary<String, String> in rawWords {
+            var name: String = item["name"]!
+            var meaning: String = item["meaning"]!
+            var newWord: Word = Word(name: "asdf", meaning: "asdf")
             result.append(newWord)
         }
         
