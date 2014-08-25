@@ -24,9 +24,18 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func testNoWordLearnt() {
-        // When no word has ever learnt, just pick a random word from the set
+        // When no word has ever been learnt, just pick a random word from the set
         var nextWordToLearn = self.learnerController.nextWordToLearn()
         XCTAssert(nextWordToLearn != nil, "Next word should not be nil")
+    }
+    
+    func testTwoWordsLearnsButNotDueForReLearnYet() {
+        // When there is no word to re-learn, take a fresh new word
+        var words :[Word] = self.learnerController.words!
+        var learntWord1: Word = words[0]
+        var learntWord2: Word = words[1]
+        
+        learntWord1.learningDueDate = NSDate
     }
 
     func testExample() {
