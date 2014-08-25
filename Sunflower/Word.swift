@@ -8,14 +8,47 @@
 
 import Foundation
 
-enum LearningStage: Int32 {
+enum LearningStage: Int8 {
     case Cram = 1
     case Learn
     case Relearn
     case Young
     case Mature
+    
+    mutating func incrementStage() {
+        switch self {
+        case .Cram:
+            self = Learn
+        case .Learn:
+            self = Relearn
+        case .Relearn:
+            self = Young
+        case .Young:
+            self = Mature
+        case .Mature:
+            self = Mature
+        default:
+            self = Cram
+        }
+    }
+    
+    mutating func decrement() {
+        switch self {
+        case .Cram:
+            self = Cram
+        case .Learn:
+            self = Cram
+        case .Relearn:
+            self = Learn
+        case .Young:
+            self = Relearn
+        case .Mature:
+            self = Young
+        default:
+            self = Cram
+        }
+    }
 }
-
 
 class Word {
     var name: String?

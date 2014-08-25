@@ -53,20 +53,53 @@ class LeanerControllerTests: XCTestCase {
              word2: due to learn in future
             rest of the words: never learnt (cram stage)
              result: word 1 */
-        XCTAssert(false, "Failed!")
+        var words :[Word] = self.learnerController.words!
+        var learntWord1: Word = words[0]
+        var learntWord2: Word = words[1]
+        
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-120)
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(300)
+
+        var nextWordToLearn: Word = self.learnerController.nextWordToLearn()
+        
+        XCTAssert(nextWordToLearn.name == learntWord1.name, "Next word should one with pass learning due date")
     }
     
-    func testTwoWordsAreDueForRelearn() {
+    func testTwoWordsAreDueForRelearnInPast() {
         /* word1: due to learn in past
              word2: due to learn in past (later past)
              rest of the words: never learnt (cram stage)
              result: word 2 */
-        XCTAssert(false, "Failed!")
+        var words :[Word] = self.learnerController.words!
+        var learntWord1: Word = words[0]
+        var learntWord2: Word = words[1]
+        
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-120)
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(-240)
+        
+        var nextWordToLearn: Word = self.learnerController.nextWordToLearn()
+        
+        XCTAssert(nextWordToLearn.name == learntWord2.name, "Next word should one with ealier due date")
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    
+    func testTwoWordsAreDueForRelearnInFuture() {
+        /* word1: due to learn in past
+        word2: due to learn in past (later past)
+        rest of the words: never learnt (cram stage)
+        result: word 2 */
+        var words :[Word] = self.learnerController.words!
+        var learntWord1: Word = words[0]
+        var learntWord2: Word = words[1]
+        
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(120)
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(240)
+        
+        var nextWordToLearn: Word = self.learnerController.nextWordToLearn()
+        
+        XCTAssert(nextWordToLearn.name != learntWord1.name, "Next word should not be one with future learning date")
+        XCTAssert(nextWordToLearn.name != learntWord2.name, "Next word should not be one with future learning date")
+        
+        XCTAssert(nextWordToLearn.currentLearningStage == LearningStage.Cram, "next word is in the cram stage")
     }
 
     func testPerformanceExample() {
