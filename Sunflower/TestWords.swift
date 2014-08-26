@@ -30,7 +30,7 @@ class TestWords {
         for item: Dictionary<String, String> in rawWords {
             var name: String = item["name"]!
             var meaning: String = item["meaning"]!
-            var newWord: Word = Word(name: "asdf", meaning: "asdf")
+            var newWord: Word = Word(name: name, meaning: meaning)
             result.append(newWord)
         }
         

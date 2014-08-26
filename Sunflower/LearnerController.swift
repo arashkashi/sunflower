@@ -9,21 +9,18 @@
 import Foundation
 
 class LearnerController {
-    var words: [Word]?;
+    var words: [Word];
+    var wordsNeverLearnt: [Word] = [Word]()
+    var wordsDueInFuture: [Word] = [Word]()
+    var wordsDueInPast: [Word] = [Word]()
     
-    func nextWordToLearn() -> Word {
-        var result: Word;
-        result = Word(name: "test", meaning: "test")
-        return result;
-    }
-    
-    func sortedWords(words: [Word]) {
-        reversed = sort(words, { (word1: Word, word2: Word) -> Bool in
-            
-            if word1.learningDueDate == nil || word2.learningDueDate ==nil
-        return s1 > s2
-        })
-        
+    func nextWordToLearn() -> Word? {
+        var wordToRelearn: Word? = self.wordsDueInPast.first
+        if (wordToRelearn != nil) {
+            return wordToRelearn!
+        } else {
+            return wordsNeverLearnt.first
+        }
     }
     
     func onWordPassTest(word: Word) {
@@ -53,5 +50,18 @@ class LearnerController {
     
     init (words:[Word]) {
         self.words = words
+        
+        for word in self.words as [Word] {
+            if word.learningDueDate == nil {
+                self.wordsNeverLearnt.append(word)
+            } else if (word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending) {
+                self.wordsDueInPast.append(word)
+            } else {
+                self.wordsDueInFuture.append(word)
+            }
+        }
+        
+        sort(&self.wordsDueInFuture, {(word1: Word, word2: Word) -> Bool in word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending})
+        sort(&self.wordsDueInPast, {(word1: Word, word2: Word) -> Bool in word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending})
     }
 }
