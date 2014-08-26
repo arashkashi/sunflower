@@ -142,6 +142,7 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Learn")
         XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
         XCTAssert(self.learnerController.relearnDueDateForWord(word.currentLearningStage)!.timeIntervalSinceDate(NSDate()) - word.learningDueDate!.timeIntervalSinceDate(NSDate()) < 10, "The future due date is set according to the new learning stage")
+        XCTAssert(find(self.learnerController.wordsDueInFuture, word) != nil, "the word should be in the future relearns array")
     }
     
     func testOnWordPassTest2() {
@@ -158,6 +159,19 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(word.currentLearningStage == LearningStage.Young, "Learning stage moves from Cram -> Young after three times passing tests")
         XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
         XCTAssert(self.learnerController.relearnDueDateForWord(word.currentLearningStage)!.timeIntervalSinceDate(NSDate()) - word.learningDueDate!.timeIntervalSinceDate(NSDate()) < 10, "The future due date is set according to the new learning stage")
+        XCTAssert(find(self.learnerController.wordsDueInFuture, word) != nil, "the word should be in the future relearns array")
+    }
+    
+    func testOnWordFailTest1() {
+        var word: Word = self.learnerController.nextWordToLearn()!
+        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        self.learnerController.onWordFailedTest(word)
+        
+        XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Relearn after three times passing tests")
+        XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
+        XCTAssert(self.learnerController.relearnDueDateForWord(word.currentLearningStage)!.timeIntervalSinceDate(NSDate()) - word.learningDueDate!.timeIntervalSinceDate(NSDate()) < 10, "The future due date is set according to the new learning stage")
+        XCTAssert(find(self.learnerController.wordsDueInFuture, word) != nil, "the word should be in the future relearns array")
     }
 
     func testPerformanceExample() {

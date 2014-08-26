@@ -50,7 +50,11 @@ enum LearningStage: Int8 {
     }
 }
 
-class Word {
+func == (lhs: Word, rhs: Word) -> Bool {
+    return lhs.name == rhs.name
+}
+
+class Word : Equatable {
     var name: String?
     var meaning: String?
     var currentLearningStage: LearningStage = LearningStage.Cram
@@ -60,5 +64,4 @@ class Word {
         self.name = name
         self.meaning = meaning
     }
-
 }
