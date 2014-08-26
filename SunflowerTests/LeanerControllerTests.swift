@@ -137,9 +137,25 @@ class LeanerControllerTests: XCTestCase {
                 3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
             */
         var word: Word = self.learnerController.nextWordToLearn()!
-        self.learnerController.onWordPassTest(word)
+        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
         
         XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Learn")
+        XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
+        XCTAssert(self.learnerController.relearnDueDateForWord(word.currentLearningStage)!.timeIntervalSinceDate(NSDate()) - word.learningDueDate!.timeIntervalSinceDate(NSDate()) < 10, "The future due date is set according to the new learning stage")
+    }
+    
+    func testOnWordPassTest2() {
+        /* when a word pass a test at Learn stage 
+            1. The learning stage is updated
+            2. The learning due date isupdated
+            3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
+          */
+        var word: Word = self.learnerController.nextWordToLearn()!
+        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        
+        XCTAssert(word.currentLearningStage == LearningStage.Young, "Learning stage moves from Cram -> Young after three times passing tests")
         XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
         XCTAssert(self.learnerController.relearnDueDateForWord(word.currentLearningStage)!.timeIntervalSinceDate(NSDate()) - word.learningDueDate!.timeIntervalSinceDate(NSDate()) < 10, "The future due date is set according to the new learning stage")
     }
