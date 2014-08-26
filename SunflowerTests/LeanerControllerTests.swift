@@ -163,6 +163,11 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func testOnWordFailTest1() {
+        /* when a word pass a test (two times) at Learn stage
+            1. The learning stage is updated
+            2. The learning due date isupdated
+            3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
+        */
         var word: Word = self.learnerController.nextWordToLearn()!
         self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
         self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
