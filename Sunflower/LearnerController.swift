@@ -26,11 +26,30 @@ class LearnerController {
     func onWordPassTest(word: Word) {
         word.currentLearningStage.incrementStage()
         word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)
+        self.onFinishingTestingWord(word)
     }
     
     func onWordFailedTest(word: Word) {
         word.currentLearningStage.decrement()
         word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)
+        self.onFinishingTestingWord(word)
+    }
+    
+    func onFinishingTestingWord(word: Word) {
+        self.removeWordFromAllLists(word)
+        self.wordsDueInFuture.append(word) // TODO: find where to add the word
+    }
+    
+    func removeWordFromAllLists(word: Word) {
+        self.wordsNeverLearnt = self.wordsNeverLearnt.filter({ (wordInList: Word) -> Bool in
+            wordInList.name != word.name
+        })
+        self.wordsDueInPast = self.wordsDueInPast.filter({ (wordInList: Word) -> Bool in
+            wordInList.name != word.name
+        })
+        self.wordsDueInFuture = self.wordsDueInFuture.filter({ (wordInList: Word) -> Bool in
+            wordInList.name != word.name
+        })
     }
     
     func relearnDueDateForWord(learningStage: LearningStage) -> NSDate? {

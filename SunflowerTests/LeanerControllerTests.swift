@@ -129,6 +129,20 @@ class LeanerControllerTests: XCTestCase {
         
         XCTAssert(nextWordToLearn!.currentLearningStage == LearningStage.Cram, "next word is in the cram stage")
     }
+    
+    func testOnWordPassTest1() {
+        /* when a word pass a test at cram mode
+                1. The learning stage is updated
+                2. The learning due date is updated
+                3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
+            */
+        var word: Word = self.learnerController.nextWordToLearn()!
+        self.learnerController.onWordPassTest(word)
+        
+        XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Learn")
+        XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
+        XCTAssert(self.learnerController.relearnDueDateForWord(word.currentLearningStage)!.timeIntervalSinceDate(NSDate()) - word.learningDueDate!.timeIntervalSinceDate(NSDate()) < 10, "The future due date is set according to the new learning stage")
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
