@@ -35,10 +35,9 @@ class LearnerController {
         word.learningDueDate = self.relearnDueDateForFailedTest(word)
         word.shouldShowWordPresentation = true
         self.removeWordFromAllLists(word)
-        self.wordsDueInPast.insert(word, atIndex: 0) // TODO: find where to add the word based on the learning due date
+        self.wordsDueInPast.insert(word, atIndex: 0)
     }
     
-    // TODO: write test cases
     func relearnDueDateForFailedTest(word: Word) -> NSDate {
         if self.wordsDueInPast.count > 0 {
             return self.wordsDueInPast.first!.learningDueDate!.dateByAddingTimeInterval(-20)
@@ -46,7 +45,6 @@ class LearnerController {
             return NSDate().dateByAddingTimeInterval(-20)
         }
     }
-
     
     func removeWordFromAllLists(word: Word) {
         self.wordsNeverLearnt = self.wordsNeverLearnt.filter({ (wordInList: Word) -> Bool in
