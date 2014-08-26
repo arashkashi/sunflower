@@ -163,11 +163,12 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func testOnWordFailTest1() {
-        /* when a word pass a test (two times) at Learn stage
-            1. The learning stage is updated
-            2. The learning due date isupdated
-            3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
-        */
+        /* when a word fail a test (two times) at Learn stage
+            1. The learning stage is updated (moves one back -> decrement)
+            2. The learning due date isupdated (put to the earliest past so the next word shown is the recently failed word
+            3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInPast
+            4. The presentation flag should be set to true: so the word described before the next display
+          */
         var word: Word = self.learnerController.nextWordToLearn()!
         self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
         self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
@@ -184,6 +185,7 @@ class LeanerControllerTests: XCTestCase {
             XCTAssert(self.learnerController.wordsDueInPast.count == 1, "the failed word is the only member in the wordsDueInPast")
         }
         XCTAssert(find(self.learnerController.wordsDueInPast, word) != nil, "the word should be in the future relearns array")
+        XCTAssert(word.shouldShowWordPresentation == true, "the presentation flag should be set to yes")
     }
 
     func testPerformanceExample() {
