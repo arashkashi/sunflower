@@ -42,6 +42,13 @@ class LeanerControllerTests: XCTestCase {
         learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(120)
         learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(300)
         
+        self.learnerController.wordsDueInFuture.append(learntWord1)
+        self.learnerController.wordsDueInFuture.append(learntWord2)
+        
+        self.learnerController.wordsNeverLearnt = self.learnerController.wordsNeverLearnt.filter { (word:Word) -> Bool in
+            word.name != learntWord1.name && word.name != learntWord2.name
+        }
+        
         var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
         XCTAssert(nextWordToLearn!.name != learntWord1.name, "Next word should not be words that are due in future")
         XCTAssert(nextWordToLearn!.name != learntWord2.name, "Next word should not be words that are due in future")
@@ -59,6 +66,13 @@ class LeanerControllerTests: XCTestCase {
         
         learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-120)
         learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(300)
+        
+        self.learnerController.wordsDueInPast.append(learntWord1)
+        self.learnerController.wordsDueInFuture.append(learntWord2)
+        
+        self.learnerController.wordsNeverLearnt = self.learnerController.wordsNeverLearnt.filter { (word:Word) -> Bool in
+            word.name != learntWord1.name && word.name != learntWord2.name
+        }
 
         var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
         
@@ -77,6 +91,13 @@ class LeanerControllerTests: XCTestCase {
         learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-120)
         learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(-240)
         
+        self.learnerController.wordsDueInPast.append(learntWord2)
+        self.learnerController.wordsDueInPast.append(learntWord1)
+        
+        self.learnerController.wordsNeverLearnt = self.learnerController.wordsNeverLearnt.filter { (word:Word) -> Bool in
+            word.name != learntWord1.name && word.name != learntWord2.name
+        }
+        
         var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
         
         XCTAssert(nextWordToLearn!.name == learntWord2.name, "Next word should one with ealier due date")
@@ -93,6 +114,13 @@ class LeanerControllerTests: XCTestCase {
         
         learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(120)
         learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(240)
+        
+        self.learnerController.wordsDueInFuture.append(learntWord1)
+        self.learnerController.wordsDueInFuture.append(learntWord2)
+        
+        self.learnerController.wordsNeverLearnt = self.learnerController.wordsNeverLearnt.filter { (word:Word) -> Bool in
+            word.name != learntWord1.name && word.name != learntWord2.name
+        }
         
         var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
         
