@@ -24,21 +24,29 @@ class LearnerController {
     }
     
     func onWordPassAllTestsForCurrentLearningStage(word: Word) {
-        word.currentLearningStage.incrementStage()
+        word.currentLearningStage.increment()
         word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)
-        self.onFinishingTestingWordForALearningStage(word)
+        self.removeWordFromAllLists(word)
+        self.wordsDueInFuture.append(word) // TODO: find where to add the word based on the learning due date
     }
     
     func onWordFailedTest(word: Word) {
         word.currentLearningStage.decrement()
-        word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)
-        self.onFinishingTestingWordForALearningStage(word)
+        word.learningDueDate = self.relearnDueDateForFailedTest(word)
+        word.shouldShowWordPresentation = true
+        self.removeWordFromAllLists(word)
+        self.wordsDueInPast.insert(word, atIndex: 0) // TODO: find where to add the word based on the learning due date
     }
     
-    func onFinishingTestingWordForALearningStage(word: Word) {
-        self.removeWordFromAllLists(word)
-        self.wordsDueInFuture.append(word) // TODO: find where to add the word
+    // TODO: write test cases
+    func relearnDueDateForFailedTest(word: Word) -> NSDate {
+        if self.wordsDueInPast.count > 0 {
+            return self.wordsDueInPast.first!.learningDueDate!.dateByAddingTimeInterval(-20)
+        } else {
+            return NSDate().dateByAddingTimeInterval(-20)
+        }
     }
+
     
     func removeWordFromAllLists(word: Word) {
         self.wordsNeverLearnt = self.wordsNeverLearnt.filter({ (wordInList: Word) -> Bool in
@@ -50,6 +58,15 @@ class LearnerController {
         self.wordsDueInFuture = self.wordsDueInFuture.filter({ (wordInList: Word) -> Bool in
             wordInList.name != word.name
         })
+    }
+    
+    func shouldShowWordPresentation(word: Word) -> Bool
+    {
+        if word.currentLearningStage == LearningStage.Cram || word.shouldShowWordPresentation {
+            return true
+        } else {
+            return false
+        }
     }
     
     func relearnDueDateForWord(learningStage: LearningStage) -> NSDate? {

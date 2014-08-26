@@ -15,7 +15,7 @@ enum LearningStage: Int8 {
     case Young
     case Mature
     
-    mutating func incrementStage() {
+    mutating func increment() {
         switch self {
         case .Cram:
             self = Learn
@@ -59,6 +59,7 @@ class Word : Equatable {
     var meaning: String?
     var currentLearningStage: LearningStage = LearningStage.Cram
     var learningDueDate: NSDate?
+    var shouldShowWordPresentation: Bool = false
     
     init (name: String, meaning: String) {
         self.name = name
