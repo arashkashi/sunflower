@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1819AE76150020EF58 /* MainTestViewController.swift */; };
+		41614D1D19AE77340020EF58 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1C19AE77340020EF58 /* Test.swift */; };
+		41614D1F19AE77920020EF58 /* Test1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D1E19AE77920020EF58 /* Test1View.xib */; };
+		41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2019AE77A40020EF58 /* Test1ViewController.swift */; };
+		41614D2419AE77E60020EF58 /* Test2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D2319AE77E60020EF58 /* Test2View.xib */; };
+		41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2519AE77F60020EF58 /* Test2ViewController.swift */; };
 		41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0634119A90E7100E400D1 /* AppDelegate.swift */; };
-		41A0634419A90E7100E400D1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0634319A90E7100E400D1 /* MasterViewController.swift */; };
-		41A0634619A90E7100E400D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0634519A90E7100E400D1 /* DetailViewController.swift */; };
 		41A0634919A90E7100E400D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634719A90E7100E400D1 /* Main.storyboard */; };
 		41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634A19A90E7100E400D1 /* Images.xcassets */; };
 		41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0635619A90E7100E400D1 /* SunflowerTests.swift */; };
 		41D415E219A9D84F0038EFE6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */; };
-		41D415EB19A9E1270038EFE6 /* LearingTestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415EA19A9E1270038EFE6 /* LearingTestsController.swift */; };
 		41D415F119AA6E490038EFE6 /* TestWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestWords.swift */; };
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* TestWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestWords.swift */; };
@@ -34,11 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41614D1819AE76150020EF58 /* MainTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTestViewController.swift; sourceTree = "<group>"; };
+		41614D1C19AE77340020EF58 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		41614D1E19AE77920020EF58 /* Test1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1View.xib; sourceTree = "<group>"; };
+		41614D2019AE77A40020EF58 /* Test1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test1ViewController.swift; sourceTree = "<group>"; };
+		41614D2319AE77E60020EF58 /* Test2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2View.xib; sourceTree = "<group>"; };
+		41614D2519AE77F60020EF58 /* Test2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
 		41A0633C19A90E7000E400D1 /* Sunflower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunflower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0634019A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0634119A90E7100E400D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41A0634319A90E7100E400D1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		41A0634519A90E7100E400D1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		41A0634819A90E7100E400D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41A0634A19A90E7100E400D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		41A0635019A90E7100E400D1 /* SunflowerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunflowerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +54,6 @@
 		41D415E119A9D84F0038EFE6 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
-		41D415EA19A9E1270038EFE6 /* LearingTestsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearingTestsController.swift; sourceTree = "<group>"; };
 		41D415F019AA6E490038EFE6 /* TestWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +75,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41614D1719AE76040020EF58 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				41614D1819AE76150020EF58 /* MainTestViewController.swift */,
+				41614D2219AE77C00020EF58 /* Tests */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		41614D2219AE77C00020EF58 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				41614D1E19AE77920020EF58 /* Test1View.xib */,
+				41614D2019AE77A40020EF58 /* Test1ViewController.swift */,
+				41614D2319AE77E60020EF58 /* Test2View.xib */,
+				41614D2519AE77F60020EF58 /* Test2ViewController.swift */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 		41A0633319A90E7000E400D1 = {
 			isa = PBXGroup;
 			children = (
@@ -90,13 +116,12 @@
 		41A0633E19A90E7000E400D1 /* Sunflower */ = {
 			isa = PBXGroup;
 			children = (
+				41614D1719AE76040020EF58 /* ViewControllers */,
 				41D415E319A9D8B30038EFE6 /* Controller */,
 				41D415E019A9D83C0038EFE6 /* Models */,
 				41A0636119A9511200E400D1 /* Resources */,
 				41A0636019A9510800E400D1 /* Helpers */,
 				41A0634119A90E7100E400D1 /* AppDelegate.swift */,
-				41A0634319A90E7100E400D1 /* MasterViewController.swift */,
-				41A0634519A90E7100E400D1 /* DetailViewController.swift */,
 				41A0634719A90E7100E400D1 /* Main.storyboard */,
 				41A0634A19A90E7100E400D1 /* Images.xcassets */,
 				41A0633F19A90E7000E400D1 /* Supporting Files */,
@@ -157,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				41D415E119A9D84F0038EFE6 /* Word.swift */,
+				41614D1C19AE77340020EF58 /* Test.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -165,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				41D415E419A9D8CE0038EFE6 /* LearnerController.swift */,
-				41D415EA19A9E1270038EFE6 /* LearingTestsController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,6 +277,8 @@
 			files = (
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
+				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
+				41614D2419AE77E60020EF58 /* Test2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,13 +296,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41D415EB19A9E1270038EFE6 /* LearingTestsController.swift in Sources */,
+				41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */,
 				41D415F119AA6E490038EFE6 /* TestWords.swift in Sources */,
-				41A0634619A90E7100E400D1 /* DetailViewController.swift in Sources */,
+				41614D1D19AE77340020EF58 /* Test.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
-				41A0634419A90E7100E400D1 /* MasterViewController.swift in Sources */,
 				41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */,
+				41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
+				41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

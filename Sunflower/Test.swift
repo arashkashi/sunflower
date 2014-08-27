@@ -1,5 +1,5 @@
 //
-//  LearingTestsController.swift
+//  TestModel.swift
 //  Sunflower
 //
 //  Created by Arash K. on 24/08/14.
@@ -15,7 +15,7 @@ enum TestType: Int {
     case Test4
 }
 
-class LearningTest {
+class Test {
     var type: TestType?
     
     class func testsForLearningStage(learningStage: LearningStage) -> [TestType] {
