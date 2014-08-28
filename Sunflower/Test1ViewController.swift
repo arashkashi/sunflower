@@ -8,6 +8,6 @@
 
 import UIKit
 
-class Test1ViewController : UIViewController {
+class Test1ViewController : TestBaseViewController {
     
 }

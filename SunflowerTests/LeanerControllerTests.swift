@@ -137,7 +137,7 @@ class LeanerControllerTests: XCTestCase {
                 3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
             */
         var word: Word = self.learnerController.nextWordToLearn()!
-        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         
         XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Learn")
         XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
@@ -152,9 +152,9 @@ class LeanerControllerTests: XCTestCase {
             3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
           */
         var word: Word = self.learnerController.nextWordToLearn()!
-        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
-        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
-        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         
         XCTAssert(word.currentLearningStage == LearningStage.Young, "Learning stage moves from Cram -> Young after three times passing tests")
         XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending , "The due date for the newly learnt word is in future")
@@ -170,9 +170,9 @@ class LeanerControllerTests: XCTestCase {
             4. The presentation flag should be set to true: so the word described before the next display
           */
         var word: Word = self.learnerController.nextWordToLearn()!
-        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
-        self.learnerController.onWordPassAllTestsForCurrentLearningStage(word)
-        self.learnerController.onWordFailedTest(word)
+        self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
+        self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
+        self.learnerController.onWordFailedTestSetForCurrentLearningStage(word)
         
         XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Young after three times passing tests")
         XCTAssert(word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending , "The due date for the newly learnt word is in past")

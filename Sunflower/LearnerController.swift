@@ -23,14 +23,14 @@ class LearnerController {
         }
     }
     
-    func onWordPassAllTestsForCurrentLearningStage(word: Word) {
+    func onWordPassAllTestSetForCurrentLearningStage(word: Word) {
         word.currentLearningStage.increment()
         word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)
         self.removeWordFromAllLists(word)
         self.wordsDueInFuture.append(word) // TODO: find where to add the word based on the learning due date
     }
     
-    func onWordFailedTest(word: Word) {
+    func onWordFailedTestSetForCurrentLearningStage(word: Word) {
         word.currentLearningStage.decrement()
         word.learningDueDate = self.relearnDueDateForFailedTest(word)
         word.shouldShowWordPresentation = true
