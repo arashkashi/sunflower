@@ -74,7 +74,7 @@ class Word : Equatable {
     var meaning: String?
     var currentLearningStage: LearningStage = LearningStage.Cram
     var learningDueDate: NSDate?
-    var shouldShowWordPresentation: Bool = false
+    var shouldShowWordPresentation: Bool = true
     
     init (name: String, meaning: String) {
         self.name = name

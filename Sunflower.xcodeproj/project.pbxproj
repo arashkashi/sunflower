@@ -13,6 +13,8 @@
 		41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2019AE77A40020EF58 /* Test1ViewController.swift */; };
 		41614D2419AE77E60020EF58 /* Test2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D2319AE77E60020EF58 /* Test2View.xib */; };
 		41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2519AE77F60020EF58 /* Test2ViewController.swift */; };
+		41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D2719AFCD6A0020EF58 /* PresentationView.xib */; };
+		41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */; };
 		41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0634119A90E7100E400D1 /* AppDelegate.swift */; };
 		41A0634919A90E7100E400D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634719A90E7100E400D1 /* Main.storyboard */; };
 		41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634A19A90E7100E400D1 /* Images.xcassets */; };
@@ -44,6 +46,8 @@
 		41614D2019AE77A40020EF58 /* Test1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test1ViewController.swift; sourceTree = "<group>"; };
 		41614D2319AE77E60020EF58 /* Test2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2View.xib; sourceTree = "<group>"; };
 		41614D2519AE77F60020EF58 /* Test2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
+		41614D2719AFCD6A0020EF58 /* PresentationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentationView.xib; sourceTree = "<group>"; };
+		41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
 		41A0633C19A90E7000E400D1 /* Sunflower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunflower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0634019A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0634119A90E7100E400D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				41614D2019AE77A40020EF58 /* Test1ViewController.swift */,
 				41614D2319AE77E60020EF58 /* Test2View.xib */,
 				41614D2519AE77F60020EF58 /* Test2ViewController.swift */,
+				41614D2719AFCD6A0020EF58 /* PresentationView.xib */,
+				41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
@@ -299,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */,
 				41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */,
 				41D415F119AA6E490038EFE6 /* TestWords.swift in Sources */,
 				41614D1D19AE77340020EF58 /* Test.swift in Sources */,

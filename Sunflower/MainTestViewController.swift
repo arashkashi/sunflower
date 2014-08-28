@@ -13,6 +13,7 @@ class MainTestViewController : UIViewController {
     
     var learnerController : LearnerController = LearnerController(words: TestWords.words())
     var testViewController: TestBaseViewController?
+    var presentationViewController: PresentationViewController?
     
     @IBOutlet var testContentView: UIView!
     @IBOutlet var labelLearningStage: UILabel!
@@ -35,6 +36,11 @@ class MainTestViewController : UIViewController {
         }
     }
     
+    func onWordPresented(word: Word) {
+        word.shouldShowWordPresentation = false
+        self.learnNextWord()
+    }
+    
     func viewControllerForTestType(testType: TestType) -> TestBaseViewController {
         switch testType {
         case TestType.Test1:
@@ -52,9 +58,37 @@ class MainTestViewController : UIViewController {
     
     func learnNextWord() {
         var nextWord = self.learnerController.nextWordToLearn()
-        self.doTestSetForWord(nextWord!, lastPassedTest: nil,  completionHandler: { (testSetResult: TestSetResult) -> () in
-            self.onTestSetFinishedForWord(nextWord!, testSetResult: testSetResult)
-        })
+        
+        if nextWord == nil {
+            self.showNoMoreWordToLearn(nextWord!)
+        } else if nextWord!.shouldShowWordPresentation {
+            self.showPresentationView(nextWord!)
+        } else {
+            self.doTestSetForWord(nextWord!, lastPassedTest: nil,  completionHandler: { (testSetResult: TestSetResult) -> () in
+                self.onTestSetFinishedForWord(nextWord!, testSetResult: testSetResult)
+            })
+        }
+    }
+    
+    func showNoMoreWordToLearn(word: Word) {
+
+    }
+    
+    func showPresentationView(word: Word) {
+        self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
+        self.presentationViewController!.word = word
+        self.presentationViewController!.completionHandler = {() -> () in self.onWordPresented(word)}
+        self.labelLearningStage.text = word.currentLearningStage.toString()
+        
+        UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
+            for item in self.testContentView.subviews {
+                var subview: UIView = item as UIView
+                subview.removeFromSuperview()
+            }
+            self.testContentView.addSubview(self.presentationViewController!.view)
+            }) { (isFinished: Bool) -> Void in
+                // Finished Code
+        }
     }
     
     func doTestSetForWord(word: Word, lastPassedTest: TestType?, completionHandler: ((TestSetResult) -> ())) {
