@@ -10,8 +10,4 @@ import UIKit
 
 class Test1ViewController : UIViewController {
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibNameOrNil)
-    }
-    
 }

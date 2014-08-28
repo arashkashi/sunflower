@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learning Stage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5C-zG-n5O" userLabel="Label - Learning Stage">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learning Stage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTs-e2-nEA" userLabel="Label - Learning Stage">
+                                <rect key="frame" x="31" y="19" width="117" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -25,15 +25,8 @@
                                     <rect key="frame" x="25" y="28" width="117" height="21"/>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oj1-Yz-uwZ" userLabel="View - Test Container">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="33" y="120" width="331" height="369"/>
-                                </variation>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtT-9o-WCz">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNk-7E-bbh">
+                                <rect key="frame" x="66" y="501" width="80" height="30"/>
                                 <state key="normal" title="show test 1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -41,11 +34,11 @@
                                     <rect key="frame" x="60" y="579" width="80" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="showTest1:" destination="ToX-di-gUg" eventType="touchUpInside" id="LOU-RI-9sY"/>
+                                    <action selector="showTest1:" destination="ToX-di-gUg" eventType="touchUpInside" id="ZNe-ei-I9H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-UM-tBe">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQF-1J-jqF">
+                                <rect key="frame" x="230" y="501" width="80" height="30"/>
                                 <state key="normal" title="show test 2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -53,37 +46,26 @@
                                     <rect key="frame" x="224" y="579" width="80" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="showTest2:" destination="ToX-di-gUg" eventType="touchUpInside" id="fx5-aP-Nfq"/>
+                                    <action selector="showTest2:" destination="ToX-di-gUg" eventType="touchUpInside" id="UxW-Fn-pKZ"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
+                                <rect key="frame" x="83" y="55" width="331" height="369"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="33" y="120" width="331" height="369"/>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="K5C-zG-n5O"/>
-                                <exclude reference="oj1-Yz-uwZ"/>
-                                <exclude reference="UtT-9o-WCz"/>
-                                <exclude reference="v7L-UM-tBe"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="K5C-zG-n5O"/>
-                                <include reference="oj1-Yz-uwZ"/>
-                                <include reference="UtT-9o-WCz"/>
-                                <include reference="v7L-UM-tBe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="showTest1" destination="v7L-UM-tBe" id="hCE-Tn-J9A"/>
-                        <outlet property="showTest2" destination="UtT-9o-WCz" id="ysE-Xu-mgp"/>
-                        <outlet property="testContentView" destination="oj1-Yz-uwZ" id="OnY-OW-TIQ"/>
+                        <outlet property="testContentView" destination="vFO-0N-GnU" id="GFh-zP-VQ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YA-24-k59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="46.5"/>
+            <point key="canvasLocation" x="1150" y="54"/>
         </scene>
     </scenes>
 </document>
