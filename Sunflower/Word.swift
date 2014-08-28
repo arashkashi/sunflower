@@ -48,6 +48,21 @@ enum LearningStage: Int8 {
             self = Cram
         }
     }
+    
+    func toString () -> String {
+        switch self {
+        case .Cram:
+            return "Cram"
+        case .Learn:
+            return "Learn"
+        case .Relearn:
+            return "Relearn"
+        case .Young:
+            return "Young"
+        case .Mature:
+            return "Mature"
+        }
+    }
 }
 
 func == (lhs: Word, rhs: Word) -> Bool {

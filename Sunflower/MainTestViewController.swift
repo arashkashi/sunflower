@@ -12,33 +12,37 @@ import Foundation
 class MainTestViewController : UIViewController {
     
     var learnerController : LearnerController = LearnerController(words: TestWords.words())
+    var testViewController: TestBaseViewController?
     
     @IBOutlet var testContentView: UIView!
-
-    @IBAction func showTest1(sender: UIButton) {
-        var test1ViewController: Test1ViewController = Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
+    @IBOutlet var labelLearningStage: UILabel!
+    
+    func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult) -> ()) {
+        self.testViewController = self.viewControllerForTestType(testType)
+        self.testViewController!.word = word
+        self.testViewController!.testType = testType
+        self.testViewController!.completionHandler = result
+        self.labelLearningStage.text = word.currentLearningStage.toString()
         
         UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
-            for subview in self.testContentView.subviews as [UIView] {
+            for item in self.testContentView.subviews {
+                var subview: UIView = item as UIView
                 subview.removeFromSuperview()
             }
-            self.testContentView.addSubview(test1ViewController.view)
+            self.testContentView.addSubview(self.testViewController!.view)
             }) { (isFinished: Bool) -> Void in
-            // Finished Code
+                // Finished Code
         }
     }
     
-    @IBAction func showTest2(sender: UIButton) {
-        var test2ViewController: Test2ViewController = Test2ViewController(nibName: "Test2View", bundle: NSBundle.mainBundle())
-        
-       UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
-        for subview in self.testContentView.subviews as [UIView] {
-            subview.removeFromSuperview()
-        }
-        
-        self.testContentView.addSubview(test2ViewController.view)
-        }) { (isFinised: Bool) -> Void in
-        // Finish Code
+    func viewControllerForTestType(testType: TestType) -> TestBaseViewController {
+        switch testType {
+        case TestType.Test1:
+            return Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
+        case TestType.Test2:
+            return Test2ViewController(nibName: "Test2View", bundle: NSBundle.mainBundle())
+        default:
+            return Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
         }
     }
     
@@ -69,10 +73,6 @@ class MainTestViewController : UIViewController {
         }
     }
     
-    func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult) -> ()) {
-        
-    }
-    
     func onTestSetFinishedForWord(word: Word, testSetResult: TestSetResult) {
         if testSetResult == TestSetResult.pass {
             self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
@@ -83,17 +83,5 @@ class MainTestViewController : UIViewController {
         }
         
         self.learnNextWord()
-    }
-    
-    func onATestTypeFinishedForWord(word: Word, testType: TestType) {
-        
-    }
-    
-    func onTestsPassedForWord(word: Word) {
-        
-    }
-    
-    func onATestFailedForWord(word: Word, failedTestType: TestType) {
-        
     }
 }

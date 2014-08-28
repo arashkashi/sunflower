@@ -8,13 +8,27 @@
 
 import UIKit
 
-protocol TestViewControllerDelegate {
-    func onFinishedTesting(word: Word, testType: TestType, testResult: TestResult)
-}
-
 class TestBaseViewController : UIViewController {
     var word : Word?
     var testType: TestType?
     
-    var delegate: TestViewControllerDelegate?
+    var completionHandler: ((TestType, TestResult) -> ())?
+    
+    @IBOutlet var wordLabel: UILabel!
+    
+    override func viewDidLoad() {
+        self.wordLabel!.text = self.word!.name
+    }
+    
+    @IBAction func onTestFail(sender: AnyObject) {
+        if self.completionHandler != nil {
+            self.completionHandler!(self.testType!, TestResult.Fail)
+        }
+    }
+    
+    @IBAction func onTestPass(sender: AnyObject) {
+        if self.completionHandler != nil {
+            self.completionHandler!(self.testType!, TestResult.Pass)
+        }
+    }
 }

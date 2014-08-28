@@ -25,41 +25,18 @@
                                     <rect key="frame" x="25" y="28" width="117" height="21"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNk-7E-bbh">
-                                <rect key="frame" x="66" y="501" width="80" height="30"/>
-                                <state key="normal" title="show test 1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="60" y="579" width="80" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="showTest1:" destination="ToX-di-gUg" eventType="touchUpInside" id="ZNe-ei-I9H"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQF-1J-jqF">
-                                <rect key="frame" x="230" y="501" width="80" height="30"/>
-                                <state key="normal" title="show test 2">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="224" y="579" width="80" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="showTest2:" destination="ToX-di-gUg" eventType="touchUpInside" id="UxW-Fn-pKZ"/>
-                                </connections>
-                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
                                 <rect key="frame" x="83" y="55" width="331" height="369"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="33" y="120" width="331" height="369"/>
+                                    <rect key="frame" x="42" y="126" width="331" height="369"/>
                                 </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="labelLearningStage" destination="MTs-e2-nEA" id="mIN-eS-03g"/>
                         <outlet property="testContentView" destination="vFO-0N-GnU" id="GFh-zP-VQ5"/>
                     </connections>
                 </viewController>
