@@ -32,6 +32,10 @@ class LearnerController {
         return self.wordsNeverLearnt.first?
     }
     
+    func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
+//
+    }
+    
     func onWordPassAllTestSetForCurrentLearningStage(word: Word) {
         word.currentLearningStage.increment()
         word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)

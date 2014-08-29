@@ -18,7 +18,7 @@ class MainTestViewController : UIViewController {
     @IBOutlet var testContentView: UIView!
     @IBOutlet var labelLearningStage: UILabel!
     
-    func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult) -> ()) {
+    func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult, Word) -> ()) {
         self.testViewController = self.viewControllerForTestType(testType)
         self.testViewController!.word = word
         self.testViewController!.testType = testType
@@ -97,7 +97,10 @@ class MainTestViewController : UIViewController {
         if nextTestType == nil {
             completionHandler(TestSetResult.pass)
         } else {
-            self.doTestTypeForWord(word, testType: nextTestType!, result: { (doneTestType: TestType, doneTestResult: TestResult) -> () in
+            self.doTestTypeForWord(word, testType: nextTestType!, result: { (doneTestType: TestType, doneTestResult: TestResult, word: Word) -> () in
+                
+                self.learnerController.onWordFinishedTestType(word)
+                
                 if doneTestResult == TestResult.Pass {
                     self.doTestSetForWord(word, lastPassedTest: doneTestType, completionHandler: completionHandler)
                 } else if doneTestResult == TestResult.Fail {

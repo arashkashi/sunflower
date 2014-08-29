@@ -12,7 +12,7 @@ class TestBaseViewController : UIViewController {
     var word : Word?
     var testType: TestType?
     
-    var completionHandler: ((TestType, TestResult) -> ())?
+    var completionHandler: ((TestType, TestResult, Word) -> ())?
     
     @IBOutlet var wordLabel: UILabel!
     
@@ -21,14 +21,11 @@ class TestBaseViewController : UIViewController {
     }
     
     @IBAction func onTestFail(sender: AnyObject) {
-        if self.completionHandler != nil {
-            self.completionHandler!(self.testType!, TestResult.Fail)
-        }
+        self.completionHandler?(self.testType!, TestResult.Fail, self.word!)
+
     }
     
     @IBAction func onTestPass(sender: AnyObject) {
-        if self.completionHandler != nil {
-            self.completionHandler!(self.testType!, TestResult.Pass)
-        }
+        self.completionHandler?(self.testType!, TestResult.Pass, self.word!)
     }
 }
