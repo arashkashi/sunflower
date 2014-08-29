@@ -99,7 +99,7 @@ class MainTestViewController : UIViewController {
         } else {
             self.doTestTypeForWord(word, testType: nextTestType!, result: { (doneTestType: TestType, doneTestResult: TestResult, word: Word) -> () in
                 
-                self.learnerController.onWordFinishedTestType(word)
+                self.learnerController.onWordFinishedTestType(word, testType: doneTestType, testResult: doneTestResult)
                 
                 if doneTestResult == TestResult.Pass {
                     self.doTestSetForWord(word, lastPassedTest: doneTestType, completionHandler: completionHandler)

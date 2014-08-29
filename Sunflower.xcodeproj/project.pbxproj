@@ -27,6 +27,7 @@
 		41EA254E19AA877B0045402E /* TestWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestWords.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */; };
+		D9FD437919B0CDB900984399 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1C19AE77340020EF58 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +329,7 @@
 				41EA254F19AB05EC0045402E /* Word.swift in Sources */,
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
+				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
