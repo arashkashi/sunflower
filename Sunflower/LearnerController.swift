@@ -18,9 +18,18 @@ class LearnerController {
         var wordToRelearn: Word? = self.wordsDueInPast.first
         if (wordToRelearn != nil) {
             return wordToRelearn!
-        } else {
-            return wordsNeverLearnt.first
         }
+        
+        // #WARNING: write a test case for when there is no word in the past stack but the future words have become due
+        for word in self.wordsDueInFuture as [Word] {
+            if word.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+                self.removeWordFromAllLists(word)
+                self.wordsDueInPast.append(word)
+                return word
+            }
+        }
+        
+        return self.wordsNeverLearnt.first?
     }
     
     func onWordPassAllTestSetForCurrentLearningStage(word: Word) {
