@@ -11,14 +11,17 @@ import UIKit
 class PresentationViewController : UIViewController {
     
     @IBOutlet var labelWord: UILabel!
+    @IBOutlet var labelMeaning: UILabel!
+    
     var completionHandler: (() -> ())?
     var word : Word?
-    
+
     @IBAction func onOkTapped(sender: AnyObject) {
         self.completionHandler?()
     }
     
     override func viewDidLoad() {
         self.labelWord.text = self.word!.name
+        self.labelMeaning.text = self.word!.meaning
     }
 }
