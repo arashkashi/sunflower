@@ -16,25 +16,57 @@ class LearnerController {
     var wordsDueInPast: [Word] = [Word]()
     
     func nextWordToLearn() -> Word? {
+        self.refreshFutureList()
+        
+        
         var wordToRelearn: Word? = self.wordsDueInPast.first
         if (wordToRelearn != nil) {
             return wordToRelearn!
-        }
-        
-        // #WARNING: write a test case for when there is no word in the past stack but the future words have become due
-        for word in self.wordsDueInFuture as [Word] {
-            if word.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-                self.removeWordFromAllLists(word)
-                self.wordsDueInPast.append(word)
-                return word
-            }
         }
         
         return self.wordsNeverLearnt.first?
     }
     
     func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
-//
+        if testResult == TestResult.Pass {
+            word.testsSuccessfulyDoneForCurrentStage.append(testType)
+        }
+        
+        if testResult == TestResult.Fail {
+            
+        }
+    }
+    
+    func refreshFutureList() {
+        var wordsToPutBackInPassDue: [Word] = []
+        
+        for word in self.wordsDueInFuture as [Word] {
+            if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+                wordsToPutBackInPassDue.append(word)
+            } else {
+                break
+            }
+        }
+        
+        for word in wordsToPutBackInPassDue {
+            self.removeWordFromAllLists(word)
+            self.wordsDueInPast.append(word)
+        }
+    }
+    
+    func schduleForNextTestAfterANumberOfRounds(word: Word, numberOFTurnsAhead: Int) {
+//        self.removeWordFromAllLists(word)
+//        
+//        // First look into into the words in the past
+//        if self.wordsDueInPast.count >= numberOFTurnsAhead {
+//            self.wordsDueInPast.insert(word, atIndex: numberOFTurnsAhead - 2)
+//        } else if self.wordsNeverLearnt.count >= numberOFTurnsAhead {
+//            self.wordsNeverLearnt.insert(word, atIndex: num)
+//        }
+//        
+//        // Second Look into the words in the Future
+//        
+//        // third look into words never learnt
     }
     
     func onWordPassAllTestSetForCurrentLearningStage(word: Word) {
@@ -62,13 +94,13 @@ class LearnerController {
     
     func removeWordFromAllLists(word: Word) {
         self.wordsNeverLearnt = self.wordsNeverLearnt.filter({ (wordInList: Word) -> Bool in
-            wordInList.name != word.name
+            wordInList == word
         })
         self.wordsDueInPast = self.wordsDueInPast.filter({ (wordInList: Word) -> Bool in
-            wordInList.name != word.name
+            wordInList == word
         })
         self.wordsDueInFuture = self.wordsDueInFuture.filter({ (wordInList: Word) -> Bool in
-            wordInList.name != word.name
+            wordInList == word
         })
     }
     

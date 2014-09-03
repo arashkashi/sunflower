@@ -69,12 +69,17 @@ func == (lhs: Word, rhs: Word) -> Bool {
     return lhs.name == rhs.name
 }
 
+protocol ListOfWordProtocol {
+    mutating func removeObject(word: Word)
+}
+
 class Word : Equatable {
     var name: String?
     var meaning: String?
     var currentLearningStage: LearningStage = LearningStage.Cram
     var learningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
+    var testsSuccessfulyDoneForCurrentStage: [TestType] = []
     
     init (name: String, meaning: String) {
         self.name = name

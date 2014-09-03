@@ -104,8 +104,8 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func testTwoWordsAreDueForRelearnInFuture() {
-        /* word1: due to learn in past
-        word2: due to learn in past (later past)
+        /* word1: due to learn in future
+        word2: due to learn in future (later past)
         rest of the words: never learnt (cram stage)
         result: word 2 */
         var words :[Word] = self.learnerController.words
@@ -128,6 +128,27 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(nextWordToLearn!.name != learntWord2.name, "Next word should not be one with future learning date")
         
         XCTAssert(nextWordToLearn!.currentLearningStage == LearningStage.Cram, "next word is in the cram stage")
+    }
+    
+    func testFutureWordGoingPass() {
+        /* when learning there could be situations where the words in the future due become invalid, i.e.
+                starting to go into the past, we should make sure that the next word resturns the right word */
+        var words :[Word] = self.learnerController.words
+        var learntWord1: Word = words[0]
+        var learntWord2: Word = words[1]
+        
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(-240)
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-120)
+        
+        self.learnerController.wordsDueInFuture.append(learntWord1)
+        self.learnerController.wordsDueInFuture.append(learntWord2)
+        
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        XCTAssert(nextWordToLearn! == learntWord2, "even though in the future list, it have to move to the past list")
+        XCTAssert(self.learnerController.wordsDueInPast[0] == learntWord2, "it should be in the past list")
+        XCTAssert(self.learnerController.wordsDueInPast[1] == learntWord1, "second word")
+        XCTAssert(self.learnerController.wordsDueInPast.count == 2, "should have two elements")
+
     }
     
     func testOnWordPassTest1() {
