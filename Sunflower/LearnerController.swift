@@ -76,18 +76,46 @@ class LearnerController {
     }
     
     func onWordPassAllTestSetForCurrentLearningStage(word: Word) {
-        word.currentLearningStage.increment()
-        word.learningDueDate = self.relearnDueDateForWord(word.currentLearningStage)
+        word.onPassAllTestSetForCurrentStage()
         self.removeWordFromAllLists(word)
-        self.wordsDueInFuture.append(word) // TODO: find where to add the word based on the learning due date
+        self.addWordToFutureList(word, currentFutureList: self.wordsDueInFuture)
     }
     
     func onWordFailedTestSetForCurrentLearningStage(word: Word) {
-        word.currentLearningStage.decrement()
-        word.learningDueDate = self.relearnDueDateForFailedTest(word)
-        word.shouldShowWordPresentation = true
+        word.onFailTestSetForCurrentStage()
         self.removeWordFromAllLists(word)
         self.wordsDueInPast.insert(word, atIndex: 0)
+    }
+    
+    func addWordToFutureList(wordToBeAdded: Word, currentFutureList: [Word]) -> [Word] {
+        var newFutureList: [Word] = currentFutureList
+        var indexToBeAdded: Int?
+        
+        for (index, wordItem: Word) in enumerate(newFutureList)  {
+            if index == 0 && wordToBeAdded < wordItem {
+                indexToBeAdded = 0
+                break
+            }
+            
+            if index != newFutureList.count - 1 && wordToBeAdded < wordItem && wordToBeAdded > newFutureList[index + 1] {
+                indexToBeAdded = index
+                break;
+            }
+            
+            if index == newFutureList.count - 1 && wordToBeAdded > wordItem {
+                indexToBeAdded = index + 1
+                break;
+            }
+        }
+        
+        if indexToBeAdded == nil {
+            indexToBeAdded = 0
+        }
+        
+        newFutureList.insert(wordToBeAdded, atIndex: indexToBeAdded!)
+        
+        self.wordsDueInFuture = newFutureList
+        return newFutureList
     }
     
     func relearnDueDateForFailedTest(word: Word) -> NSDate {
@@ -116,21 +144,6 @@ class LearnerController {
             return true
         } else {
             return false
-        }
-    }
-    
-    func relearnDueDateForWord(learningStage: LearningStage) -> NSDate? {
-        switch learningStage {
-        case LearningStage.Cram:
-            return NSDate().dateByAddingTimeInterval(60)            // 1 minute
-        case LearningStage.Learn:
-            return NSDate().dateByAddingTimeInterval(20 * 60)       // 20 minute
-        case LearningStage.Relearn:
-            return NSDate().dateByAddingTimeInterval(60 * 60)       // 60 minute
-        case LearningStage.Young:
-            return NSDate().dateByAddingTimeInterval(9 * 60 * 60)   // 9 hours
-        case LearningStage.Mature:
-            return nil
         }
     }
     

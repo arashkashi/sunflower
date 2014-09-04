@@ -8,69 +8,16 @@
 
 import Foundation
 
-enum LearningStage: Int8 {
-    case Cram = 1
-    case Learn
-    case Relearn
-    case Young
-    case Mature
-    
-    mutating func increment() {
-        switch self {
-        case .Cram:
-            self = Learn
-        case .Learn:
-            self = Relearn
-        case .Relearn:
-            self = Young
-        case .Young:
-            self = Mature
-        case .Mature:
-            self = Mature
-        default:
-            self = Cram
-        }
-    }
-    
-    mutating func decrement() {
-        switch self {
-        case .Cram:
-            self = Cram
-        case .Learn:
-            self = Cram
-        case .Relearn:
-            self = Learn
-        case .Young:
-            self = Relearn
-        case .Mature:
-            self = Young
-        default:
-            self = Cram
-        }
-    }
-    
-    func toString () -> String {
-        switch self {
-        case .Cram:
-            return "Cram"
-        case .Learn:
-            return "Learn"
-        case .Relearn:
-            return "Relearn"
-        case .Young:
-            return "Young"
-        case .Mature:
-            return "Mature"
-        }
-    }
-}
-
 func == (lhs: Word, rhs: Word) -> Bool {
     return lhs.name == rhs.name
 }
 
-protocol ListOfWordProtocol {
-    mutating func removeObject(word: Word)
+func < (lhs: Word, rhs: Word) -> Bool {
+    return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
+}
+
+func > (lhs: Word, rhs: Word) -> Bool {
+    return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedDescending
 }
 
 class Word : Equatable {
@@ -84,5 +31,31 @@ class Word : Equatable {
     init (name: String, meaning: String) {
         self.name = name
         self.meaning = meaning
+    }
+    
+    func onPassAllTestSetForCurrentStage() {
+        self.currentLearningStage.increment()
+        self.learningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
+    }
+    
+    func onFailTestSetForCurrentStage() {
+        self.currentLearningStage.decrement()
+        self.learningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
+        self.shouldShowWordPresentation = true
+    }
+    
+    class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
+        switch learningStage {
+        case LearningStage.Cram:
+            return NSDate().dateByAddingTimeInterval(60)            // 1 minute
+        case LearningStage.Learn:
+            return NSDate().dateByAddingTimeInterval(20 * 60)       // 20 minute
+        case LearningStage.Relearn:
+            return NSDate().dateByAddingTimeInterval(60 * 60)       // 60 minute
+        case LearningStage.Young:
+            return NSDate().dateByAddingTimeInterval(9 * 60 * 60)   // 9 hours
+        case LearningStage.Mature:
+            return nil
+        }
     }
 }

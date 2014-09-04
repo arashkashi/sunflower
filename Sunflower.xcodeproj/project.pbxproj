@@ -27,6 +27,8 @@
 		41EA254E19AA877B0045402E /* TestWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestWords.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */; };
+		D9D43F3219B8647C00E420B0 /* LearningStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D43F3119B8647C00E420B0 /* LearningStage.swift */; };
+		D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D43F3119B8647C00E420B0 /* LearningStage.swift */; };
 		D9FD437919B0CDB900984399 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1C19AE77340020EF58 /* Test.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,7 @@
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
 		41D415F019AA6E490038EFE6 /* TestWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWords.swift; sourceTree = "<group>"; };
 		D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBaseViewController.swift; sourceTree = "<group>"; };
+		D9D43F3119B8647C00E420B0 /* LearningStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningStage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,7 @@
 		41A0636019A9510800E400D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D9D43F3119B8647C00E420B0 /* LearningStage.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -308,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */,
+				D9D43F3219B8647C00E420B0 /* LearningStage.swift in Sources */,
 				41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */,
 				41D415F119AA6E490038EFE6 /* TestWords.swift in Sources */,
 				41614D1D19AE77340020EF58 /* Test.swift in Sources */,
@@ -330,6 +335,7 @@
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
+				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
