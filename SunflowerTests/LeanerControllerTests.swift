@@ -140,8 +140,8 @@ class LeanerControllerTests: XCTestCase {
         learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(-240)
         learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-120)
         
-        self.learnerController.wordsDueInFuture.append(learntWord1)
         self.learnerController.wordsDueInFuture.append(learntWord2)
+        self.learnerController.wordsDueInFuture.append(learntWord1)
         
         var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
         XCTAssert(nextWordToLearn! == learntWord2, "even though in the future list, it have to move to the past list")

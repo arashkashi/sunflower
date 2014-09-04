@@ -38,17 +38,17 @@ class LearnerController {
     }
     
     func refreshFutureList() {
-        var wordsToPutBackInPassDue: [Word] = []
+        var wordsToPutBackInPastDue: [Word] = []
         
         for word in self.wordsDueInFuture as [Word] {
             if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-                wordsToPutBackInPassDue.append(word)
+                wordsToPutBackInPastDue.append(word)
             } else {
                 break
             }
         }
         
-        for word in wordsToPutBackInPassDue {
+        for word in wordsToPutBackInPastDue {
             self.removeWordFromAllLists(word)
             self.wordsDueInPast.append(word)
         }
@@ -94,13 +94,13 @@ class LearnerController {
     
     func removeWordFromAllLists(word: Word) {
         self.wordsNeverLearnt = self.wordsNeverLearnt.filter({ (wordInList: Word) -> Bool in
-            wordInList == word
+            wordInList != word
         })
         self.wordsDueInPast = self.wordsDueInPast.filter({ (wordInList: Word) -> Bool in
-            wordInList == word
+            wordInList != word
         })
         self.wordsDueInFuture = self.wordsDueInFuture.filter({ (wordInList: Word) -> Bool in
-            wordInList == word
+            wordInList != word
         })
     }
     
