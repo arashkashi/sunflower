@@ -16,8 +16,7 @@ class LearnerController {
     var wordsDueInPast: [Word] = [Word]()
     
     func nextWordToLearn() -> Word? {
-        self.refreshFutureList()
-        
+        var result = self.refreshWithFutureList(self.wordsDueInFuture, pastList: self.wordsDueInPast)
         
         var wordToRelearn: Word? = self.wordsDueInPast.first
         if (wordToRelearn != nil) {
@@ -37,10 +36,12 @@ class LearnerController {
         }
     }
     
-    func refreshFutureList() {
+    func refreshWithFutureList(futureList: [Word], pastList:[Word]) -> (resultingFutureList: [Word], resultingPastList: [Word]){
         var wordsToPutBackInPastDue: [Word] = []
+        var newFutureList: [Word] = futureList
+        var newPastList: [Word] = pastList
         
-        for word in self.wordsDueInFuture as [Word] {
+        for word in newFutureList as [Word] {
             if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 wordsToPutBackInPastDue.append(word)
             } else {
@@ -49,9 +50,14 @@ class LearnerController {
         }
         
         for word in wordsToPutBackInPastDue {
-            self.removeWordFromAllLists(word)
-            self.wordsDueInPast.append(word)
+            newFutureList = newFutureList.filter{$0 != word}
+            newPastList.append(word)
         }
+        
+        self.wordsDueInFuture = newFutureList
+        self.wordsDueInPast = newPastList
+        
+        return (newFutureList, newPastList)
     }
     
     func schduleForNextTestAfterANumberOfRounds(word: Word, numberOFTurnsAhead: Int) {
