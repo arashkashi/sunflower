@@ -26,7 +26,7 @@ class LeanerControllerTests: XCTestCase {
     
     func testNoWordLearnt() {
         /* When no word has ever been learnt, just pick a random word from the set */
-        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)
         XCTAssert(nextWordToLearn != nil, "Next word should not be nil")
     }
     
@@ -49,7 +49,7 @@ class LeanerControllerTests: XCTestCase {
             word.name != learntWord1.name && word.name != learntWord2.name
         }
         
-        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)
         XCTAssert(nextWordToLearn!.name != learntWord1.name, "Next word should not be words that are due in future")
         XCTAssert(nextWordToLearn!.name != learntWord2.name, "Next word should not be words that are due in future")
         XCTAssert(nextWordToLearn!.currentLearningStage == LearningStage.Cram, "next word is in the cram stage")
@@ -74,7 +74,7 @@ class LeanerControllerTests: XCTestCase {
             word.name != learntWord1.name && word.name != learntWord2.name
         }
 
-        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)
         
         XCTAssert(nextWordToLearn!.name == learntWord1.name, "Next word should one with pass learning due date")
     }
@@ -98,7 +98,7 @@ class LeanerControllerTests: XCTestCase {
             word.name != learntWord1.name && word.name != learntWord2.name
         }
         
-        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)
         
         XCTAssert(nextWordToLearn!.name == learntWord2.name, "Next word should one with ealier due date")
     }
@@ -122,7 +122,7 @@ class LeanerControllerTests: XCTestCase {
             word.name != learntWord1.name && word.name != learntWord2.name
         }
         
-        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)
         
         XCTAssert(nextWordToLearn!.name != learntWord1.name, "Next word should not be one with future learning date")
         XCTAssert(nextWordToLearn!.name != learntWord2.name, "Next word should not be one with future learning date")
@@ -143,7 +143,7 @@ class LeanerControllerTests: XCTestCase {
         self.learnerController.wordsDueInFuture.append(learntWord2)
         self.learnerController.wordsDueInFuture.append(learntWord1)
         
-        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn()
+        var nextWordToLearn: Word? = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)
         XCTAssert(nextWordToLearn! == learntWord2, "even though in the future list, it have to move to the past list")
         XCTAssert(self.learnerController.wordsDueInPast[0] == learntWord2, "it should be in the past list")
         XCTAssert(self.learnerController.wordsDueInPast[1] == learntWord1, "second word")
@@ -157,7 +157,7 @@ class LeanerControllerTests: XCTestCase {
                 2. The learning due date is updated
                 3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
             */
-        var word: Word = self.learnerController.nextWordToLearn()!
+        var word: Word = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)!
         self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         
         XCTAssert(word.currentLearningStage == LearningStage.Learn, "Learning stage moves from Cram -> Learn")
@@ -172,7 +172,7 @@ class LeanerControllerTests: XCTestCase {
             2. The learning due date isupdated
             3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInFuture
           */
-        var word: Word = self.learnerController.nextWordToLearn()!
+        var word: Word = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)!
         self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
@@ -190,7 +190,7 @@ class LeanerControllerTests: XCTestCase {
             3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInPast
             4. The presentation flag should be set to true: so the word described before the next display
           */
-        var word: Word = self.learnerController.nextWordToLearn()!
+        var word: Word = self.learnerController.nextWordToLearn(self.learnerController.wordsDueInFuture, pastList: self.learnerController.wordsDueInPast, neverLearntList: self.learnerController.wordsNeverLearnt)!
         self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         self.learnerController.onWordFailedTestSetForCurrentLearningStage(word)

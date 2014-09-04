@@ -15,15 +15,15 @@ class LearnerController {
     var wordsDueInFuture: [Word] = [Word]()
     var wordsDueInPast: [Word] = [Word]()
     
-    func nextWordToLearn() -> Word? {
-        var result = self.refreshWithFutureList(self.wordsDueInFuture, pastList: self.wordsDueInPast)
+    func nextWordToLearn(futureList: [Word], pastList: [Word], neverLearntList: [Word]) -> Word? {
+        self.refreshWithFutureList(futureList, pastList: pastList)
         
         var wordToRelearn: Word? = self.wordsDueInPast.first
         if (wordToRelearn != nil) {
             return wordToRelearn!
         }
         
-        return self.wordsNeverLearnt.first?
+        return neverLearntList.first?
     }
     
     func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
