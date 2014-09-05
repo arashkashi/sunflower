@@ -232,14 +232,19 @@ class LeanerControllerTests: XCTestCase {
         var learntWord2: Word = words[1]
         var learntWord3: Word = words[3]
         
-        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(240)
-        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(120)
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(2400)
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(1200)
         
         self.learnerController.wordsDueInFuture.append(learntWord1)
         self.learnerController.wordsDueInFuture.append(learntWord2)
         
-        learntWord3.learningDueDate = NSDate().dateByAddingTimeInterval(180)
+        learntWord3.learningDueDate = NSDate().dateByAddingTimeInterval(1800)
         self.learnerController.addWordToFutureList(learntWord3, currentFutureList: self.learnerController.wordsDueInFuture)
+        
+        NSLog("\(self.learnerController.wordsDueInFuture[0].learningDueDate)")
+        NSLog("\(self.learnerController.wordsDueInFuture[1].learningDueDate)")
+        NSLog("\(self.learnerController.wordsDueInFuture[2].learningDueDate)")
+        
         XCTAssert(self.learnerController.wordsDueInFuture[1] == learntWord3, "the word 3 should be in the middle of the list")
     }
 
@@ -257,7 +262,7 @@ class LeanerControllerTests: XCTestCase {
         
         learntWord3.learningDueDate = NSDate().dateByAddingTimeInterval(20)
         self.learnerController.addWordToFutureList(learntWord3, currentFutureList: self.learnerController.wordsDueInFuture)
-        XCTAssert(self.learnerController.wordsDueInFuture[0] == learntWord3, "the word 3 should be in the middle of the list")
+        XCTAssert(self.learnerController.wordsDueInFuture[0] == learntWord3, "the word 3 should be in the beggining of the list")
     }
     
     func testAddWordtoFutureList4() {

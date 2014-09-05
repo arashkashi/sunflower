@@ -20,13 +20,17 @@ func > (lhs: Word, rhs: Word) -> Bool {
     return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedDescending
 }
 
-class Word : Equatable {
+class Word : Equatable, Printable{
     var name: String?
     var meaning: String?
     var currentLearningStage: LearningStage = LearningStage.Cram
     var learningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [TestType] = []
+    
+    var description: String {
+        return "WordType: \(self.name), \(self.learningDueDate?)"
+    }
     
     init (name: String, meaning: String) {
         self.name = name

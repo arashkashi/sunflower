@@ -97,8 +97,8 @@ class LearnerController {
                 break
             }
             
-            if index != newFutureList.count - 1 && wordToBeAdded < wordItem && wordToBeAdded > newFutureList[index + 1] {
-                indexToBeAdded = index
+            if index != newFutureList.count - 1 && wordToBeAdded > wordItem && wordToBeAdded < newFutureList[index + 1] {
+                indexToBeAdded = index + 1
                 break;
             }
             
