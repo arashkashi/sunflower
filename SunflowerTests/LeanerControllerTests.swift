@@ -184,9 +184,9 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func testOnWordFailTest1() {
-        /* when a word fail a test (two times) at Learn stage
-            1. The learning stage is updated (moves one back -> decrement)
-            2. The learning due date isupdated (put to the earliest past so the next word shown is the recently failed word
+        /* when a word first passes twp tests and fail the 3rd one
+            1. The learning stage is updated (two increment and one decrement)
+            2. The learning due date is updated (when passes go to next learning stage and dues date is set accordingly, when failes go to previous learning stage and the due date is updated accordingly.
             3. It is removed from the wordsNeverLearnt/wordsDueInPast and put into wordsDueInPast
             4. The presentation flag should be set to true: so the word described before the next display
           */
@@ -279,7 +279,51 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(self.learnerController.wordsDueInFuture[0] == learntWord3, "the word 3 should be in the middle of the list")
     }
     
+    func testScheduleWordCase1() {
+        // when the wordsDueInPast list is empty
+        // 1. Add it to the wordsDueInPast.
+        // 2. set the learning date in the past
+        var words :[Word] = self.learnerController.words
+        var learntWord1: Word = words[0]
+        
+        self.learnerController.schduleForNextTestAfterANumberOfRounds(learntWord1, numberOFTurnsAhead: 0)
+        
+        XCTAssert(self.learnerController.wordsDueInPast.count == 1, "there should be one word in the list")
+        XCTAssert(self.learnerController.wordsDueInPast[0] == learntWord1, "it should be the word scheduled")
+        XCTAssert(self.learnerController.wordsDueInPast[0].learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending, "its due date should be in the past")
+        
+    }
     
+    func testScheduleWordCase2() {
+        // when wordsDueInPast list has one item
+        // 1. test for order 1 and order 0
+        
+        var words :[Word] = self.learnerController.words
+        var learntWord1: Word = words[0]
+        var learntWord2: Word = words[1]
+        
+        learntWord2.learningDueDate = NSDate().dateByAddingTimeInterval(-500)
+        learntWord1.learningDueDate = NSDate().dateByAddingTimeInterval(-1000)
+        
+        self.learnerController.wordsDueInPast.append(learntWord1)
+        self.learnerController.wordsDueInPast.append(learntWord2)
+        
+        XCTAssert(false, "description")
+    }
+    
+    func testScheduleWordCase3() {
+        // when wordsDueInPast list has two items
+        // 1. test for order 2 and order 1 and 0
+        
+        XCTAssert(false, "description")
+    }
+    
+    func testScheduleWordCase4() {
+        // when wordsDueInPast list has three items
+        // 1. test for order 3 and order 2 and 1 and 0
+        
+        XCTAssert(false, "description")
+    }
     
     func testAddWordtoFutureListWhenFutureListEmpty() {
         var words :[Word] = self.learnerController.words

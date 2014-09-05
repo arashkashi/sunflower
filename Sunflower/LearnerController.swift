@@ -87,6 +87,10 @@ class LearnerController {
         self.wordsDueInPast.insert(word, atIndex: 0)
     }
     
+    func schduleWordForFutureTest(word: Word, wordsDueInPast: [Word], order: Int) {
+        
+    }
+    
     func addWordToFutureList(wordToBeAdded: Word, currentFutureList: [Word]) -> [Word] {
         var newFutureList: [Word] = currentFutureList
         var indexToBeAdded: Int?
