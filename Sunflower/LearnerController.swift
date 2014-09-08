@@ -151,27 +151,14 @@ class LearnerController {
         self.words = words
         
         for word in self.words as [Word] {
-            if word.learningDueDate == nil {
-                self.wordsDueInPast.insert(word, atIndex: self.wordsDueInPast.count)
-            } else if (word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending) {
+            if word.learningDueDate == nil || word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 self.wordsDueInPast.append(word)
             } else {
                 self.wordsDueInFuture.append(word)
             }
         }
         
-        sort(&self.wordsDueInFuture, {(word1: Word, word2: Word) -> Bool in word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending})
-        sort(&self.wordsDueInPast, {(word1: Word, word2: Word) -> Bool in
-            if word1.learningDueDate != nil && word2.learningDueDate != nil {
-                return word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending
-            } else if word1.learningDueDate != nil && word2.learningDueDate == nil {
-                return true
-            } else if word1.learningDueDate == nil && word2.learningDueDate != nil {
-                return false
-            } else
-            {
-                return true
-            }
-        })
+        sort(&self.wordsDueInFuture, {(word1: Word, word2: Word) -> Bool in word1 < word2})
+        sort(&self.wordsDueInPast, {(word1: Word, word2: Word) -> Bool in word1 < word2})
     }
 }
