@@ -11,19 +11,15 @@ import UIKit
 
 class LearnerController {
     var words: [Word];
-    var wordsNeverLearnt: [Word] = [Word]()
     var wordsDueInFuture: [Word] = [Word]()
     var wordsDueInPast: [Word] = [Word]()
     
-    func nextWordToLearn(futureList: [Word], pastList: [Word], neverLearntList: [Word]) -> Word? {
-        self.refreshWithFutureList(futureList, pastList: pastList)
+    func nextWordToLearn(inout futureList: [Word], inout pastList: [Word]) -> Word? {
+        self.refreshWithFutureList(&futureList, pastList: &pastList)
         
         var wordToRelearn: Word? = self.wordsDueInPast.first
-        if (wordToRelearn != nil) {
-            return wordToRelearn!
-        }
         
-        return neverLearntList.first?
+        return wordToRelearn?
     }
     
     func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
@@ -36,12 +32,10 @@ class LearnerController {
         }
     }
     
-    func refreshWithFutureList(futureList: [Word], pastList:[Word]) -> (resultingFutureList: [Word], resultingPastList: [Word]){
+    func refreshWithFutureList(inout futureList: [Word], inout pastList:[Word]) -> (resultingFutureList: [Word], resultingPastList: [Word]){
         var wordsToPutBackInPastDue: [Word] = []
-        var newFutureList: [Word] = futureList
-        var newPastList: [Word] = pastList
         
-        for word in newFutureList as [Word] {
+        for word in futureList as [Word] {
             if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 wordsToPutBackInPastDue.append(word)
             } else {
@@ -50,14 +44,19 @@ class LearnerController {
         }
         
         for word in wordsToPutBackInPastDue {
-            newFutureList = newFutureList.filter{$0 != word}
-            newPastList.append(word)
+            futureList = futureList.filter{$0 != word}
+            self.enqueueInThePastDueList(word, wordsListDuePast:&pastList)
         }
         
-        self.wordsDueInFuture = newFutureList
-        self.wordsDueInPast = newPastList
-        
-        return (newFutureList, newPastList)
+        return (futureList, pastList)
+    }
+    
+    func enqueueInThePastDueList(word: Word, inout wordsListDuePast: [Word]) -> [Word] {
+        for duePastWord in wordsListDuePast {
+            
+        }
+        wordsListDuePast.append(word)
+        return wordsListDuePast
     }
     
     func schduleForNextTestAfterANumberOfRounds(word: Word, numberOFTurnsAhead: Int) {
@@ -101,12 +100,12 @@ class LearnerController {
                 break
             }
             
-            if index != newFutureList.count - 1 && wordToBeAdded > wordItem && wordToBeAdded < newFutureList[index + 1] {
+            if index != newFutureList.count - 1 && wordItem < wordToBeAdded && wordToBeAdded < newFutureList[index + 1] {
                 indexToBeAdded = index + 1
                 break;
             }
             
-            if index == newFutureList.count - 1 && wordToBeAdded > wordItem {
+            if index == newFutureList.count - 1 && wordItem < wordToBeAdded{
                 indexToBeAdded = index + 1
                 break;
             }
@@ -131,9 +130,6 @@ class LearnerController {
     }
     
     func removeWordFromAllLists(word: Word) {
-        self.wordsNeverLearnt = self.wordsNeverLearnt.filter({ (wordInList: Word) -> Bool in
-            wordInList != word
-        })
         self.wordsDueInPast = self.wordsDueInPast.filter({ (wordInList: Word) -> Bool in
             wordInList != word
         })
@@ -156,7 +152,7 @@ class LearnerController {
         
         for word in self.words as [Word] {
             if word.learningDueDate == nil {
-                self.wordsNeverLearnt.append(word)
+                self.wordsDueInPast.insert(word, atIndex: self.wordsDueInPast.count)
             } else if (word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending) {
                 self.wordsDueInPast.append(word)
             } else {
@@ -165,6 +161,17 @@ class LearnerController {
         }
         
         sort(&self.wordsDueInFuture, {(word1: Word, word2: Word) -> Bool in word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending})
-        sort(&self.wordsDueInPast, {(word1: Word, word2: Word) -> Bool in word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending})
+        sort(&self.wordsDueInPast, {(word1: Word, word2: Word) -> Bool in
+            if word1.learningDueDate != nil && word2.learningDueDate != nil {
+                return word1.learningDueDate!.compare(word2.learningDueDate!) == NSComparisonResult.OrderedAscending
+            } else if word1.learningDueDate != nil && word2.learningDueDate == nil {
+                return true
+            } else if word1.learningDueDate == nil && word2.learningDueDate != nil {
+                return false
+            } else
+            {
+                return true
+            }
+        })
     }
 }

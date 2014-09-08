@@ -13,11 +13,23 @@ func == (lhs: Word, rhs: Word) -> Bool {
 }
 
 func < (lhs: Word, rhs: Word) -> Bool {
+    if lhs.learningDueDate != nil && rhs.learningDueDate == nil {
+        if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+            return true
+        } else if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+            return false
+        }
+    }
+    
+    if lhs.learningDueDate == nil && rhs.learningDueDate != nil {
+        if rhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+            return true
+        } else if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+            return false
+        }
+    }
+    
     return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
-}
-
-func > (lhs: Word, rhs: Word) -> Bool {
-    return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedDescending
 }
 
 class Word : Equatable, Printable{
