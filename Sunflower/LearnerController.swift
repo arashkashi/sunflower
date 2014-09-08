@@ -52,10 +52,8 @@ class LearnerController {
     }
     
     func enqueueInThePastDueList(word: Word, inout wordsListDuePast: [Word]) -> [Word] {
-        for duePastWord in wordsListDuePast {
-            
-        }
         wordsListDuePast.append(word)
+        sort(&wordsListDuePast, {$0 < $1})
         return wordsListDuePast
     }
     
