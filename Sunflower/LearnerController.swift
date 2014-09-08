@@ -9,140 +9,119 @@
 import Foundation
 import UIKit
 
+enum NextWordNilStatus: Int {
+    case NO_WORD_TODAY = 1
+    case ALL_WORDS_MASTERED = 2
+    case MORE_WORDS_TO_GO = 3
+}
+
 class LearnerController {
     var words: [Word];
-    var wordsDueInFuture: [Word] = [Word]()
-    var wordsDueInPast: [Word] = [Word]()
+    var wordsDueInFuture: [Word] = []
+    var wordsDueNow: [Word] = []
+    var currentLearningQueue: [Word] = []
     
-    func nextWordToLearn(inout futureList: [Word], inout pastList: [Word]) -> Word? {
-        self.refreshWithFutureList(&futureList, pastList: &pastList)
-        
-        var wordToRelearn: Word? = self.wordsDueInPast.first
-        
-        return wordToRelearn?
-    }
+    let queueSize: Int = 2
     
-    func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
-        if testResult == TestResult.Pass {
-            word.testsSuccessfulyDoneForCurrentStage.append(testType)
-        }
+    func nextWordToLearn(inout futureList: [Word], inout dueNowWords: [Word], inout currentQueue: [Word]) -> (Word?, NextWordNilStatus) {
+        // If words in future are due now, move them to the due now list
+        self.refreshWithFutureList(&futureList, dueNowList: &dueNowWords)
         
-        if testResult == TestResult.Fail {
+        // If the current queue has a word which has a learning due date in future, 
+        // instead of putting it in the button of the list, put it into the future list
+        // and its place put an item from the due now list and then take one word from 
+        // the button and put it onto the top.
+        if (currentQueue.first?.hasDueDateInFuture() != nil) {
+            var learntWord = currentQueue.first!
+            self.addWordToFutureList(learntWord)
             
+            if var newDueWord = dueNowWords.first? {
+                dueNowWords.filter({$0 != newDueWord})
+                currentQueue.insert(newDueWord, atIndex: 0)
+                return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+            } else {
+                if futureList.isEmpty {
+                    return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
+                } else {
+                    return (nil, NextWordNilStatus.NO_WORD_TODAY)
+                }
+            }
         }
+
+        
+        // If current queue has a word for presentation on top, present it.
+        if (currentQueue.first?.shouldShowWordPresentation != nil) {
+            return (currentQueue.first!, NextWordNilStatus.MORE_WORDS_TO_GO)
+        }
+        
+        // If current queue is not full, fill it up with ealierst dueNowWords member
+        if currentQueue.count < self.queueSize && dueNowWords.count > 0 {
+            var wordDueNow = dueNowWords.first;
+            currentQueue.insert(wordDueNow!, atIndex: 0)
+            dueNowWords.filter({$0 != wordDueNow})
+            return (wordDueNow, NextWordNilStatus.MORE_WORDS_TO_GO)
+        }
+        
+        // If current queue is full, take the one from the buttom of list.
+        if currentQueue.count >= self.queueSize {
+            return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+        }
+        
+        if currentQueue.count < self.queueSize && dueNowWords.count == 0 {
+            if currentQueue.count == 0 && futureList.count == 0 {
+                return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
+            }
+            
+            if currentQueue.count == 0 && futureList.count > 0 {
+                return (nil, NextWordNilStatus.NO_WORD_TODAY)
+            }
+            
+            if currentQueue.count > 0 {
+                return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+            }
+        }
+        
+        return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
     }
     
-    func refreshWithFutureList(inout futureList: [Word], inout pastList:[Word]) -> (resultingFutureList: [Word], resultingPastList: [Word]){
-        var wordsToPutBackInPastDue: [Word] = []
+    func insertLastItemInFirstAndReturnTheItem(inout list: [Word]) -> Word {
+        var lastWord = list.last
+        list.filter({$0 != lastWord})
+        list.insert(lastWord!, atIndex: 0)
+        return lastWord!
+    }
+    
+    func refreshWithFutureList(inout futureList: [Word], inout dueNowList:[Word]) {
+        var wordsWereInFutureDueNow: [Word] = []
         
         for word in futureList as [Word] {
             if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-                wordsToPutBackInPastDue.append(word)
+                wordsWereInFutureDueNow.append(word)
             } else {
                 break
             }
         }
         
-        for word in wordsToPutBackInPastDue {
+        for word in wordsWereInFutureDueNow {
             futureList = futureList.filter{$0 != word}
-            self.enqueueInThePastDueList(word, wordsListDuePast:&pastList)
+            dueNowList.append(word)
         }
         
-        return (futureList, pastList)
+        sort(&dueNowList, {(word1: Word, word2: Word) -> Bool in word1 < word2})
     }
     
-    func enqueueInThePastDueList(word: Word, inout wordsListDuePast: [Word]) -> [Word] {
-        wordsListDuePast.append(word)
-        sort(&wordsListDuePast, {$0 < $1})
-        return wordsListDuePast
-    }
-    
-    func schduleForNextTestAfterANumberOfRounds(word: Word, numberOFTurnsAhead: Int) {
-//        self.removeWordFromAllLists(word)
-//        
-//        // First look into into the words in the past
-//        if self.wordsDueInPast.count >= numberOFTurnsAhead {
-//            self.wordsDueInPast.insert(word, atIndex: numberOFTurnsAhead - 2)
-//        } else if self.wordsNeverLearnt.count >= numberOFTurnsAhead {
-//            self.wordsNeverLearnt.insert(word, atIndex: num)
-//        }
-//        
-//        // Second Look into the words in the Future
-//        
-//        // third look into words never learnt
-    }
-    
-    func onWordPassAllTestSetForCurrentLearningStage(word: Word) {
-        word.onPassAllTestSetForCurrentStage()
-        self.removeWordFromAllLists(word)
-        self.addWordToFutureList(word, currentFutureList: self.wordsDueInFuture)
-    }
-    
-    func onWordFailedTestSetForCurrentLearningStage(word: Word) {
-        word.onFailTestSetForCurrentStage()
-        self.removeWordFromAllLists(word)
-        self.wordsDueInPast.insert(word, atIndex: 0)
-    }
-    
-    func schduleWordForFutureTest(word: Word, wordsDueInPast: [Word], order: Int) {
+    func addWordToFutureList(wordToBeAdded: Word) {
+        // Remove from due now list
+        self.wordsDueNow.filter({$0 != wordToBeAdded})
+
+        // Remove from the current queue
+        self.currentLearningQueue.filter({$0 != wordToBeAdded})
         
-    }
-    
-    func addWordToFutureList(wordToBeAdded: Word, currentFutureList: [Word]) -> [Word] {
-        var newFutureList: [Word] = currentFutureList
-        var indexToBeAdded: Int?
+        // Add to the future list
+        self.wordsDueInFuture.append(wordToBeAdded)
         
-        for (index, wordItem: Word) in enumerate(newFutureList)  {
-            if index == 0 && wordToBeAdded < wordItem {
-                indexToBeAdded = 0
-                break
-            }
-            
-            if index != newFutureList.count - 1 && wordItem < wordToBeAdded && wordToBeAdded < newFutureList[index + 1] {
-                indexToBeAdded = index + 1
-                break;
-            }
-            
-            if index == newFutureList.count - 1 && wordItem < wordToBeAdded{
-                indexToBeAdded = index + 1
-                break;
-            }
-        }
-        
-        if indexToBeAdded == nil {
-            indexToBeAdded = 0
-        }
-        
-        newFutureList.insert(wordToBeAdded, atIndex: indexToBeAdded!)
-        
-        self.wordsDueInFuture = newFutureList
-        return newFutureList
-    }
-    
-    func relearnDueDateForFailedTest(word: Word) -> NSDate {
-        if self.wordsDueInPast.count > 0 {
-            return self.wordsDueInPast.first!.learningDueDate!.dateByAddingTimeInterval(-20)
-        } else {
-            return NSDate().dateByAddingTimeInterval(-20)
-        }
-    }
-    
-    func removeWordFromAllLists(word: Word) {
-        self.wordsDueInPast = self.wordsDueInPast.filter({ (wordInList: Word) -> Bool in
-            wordInList != word
-        })
-        self.wordsDueInFuture = self.wordsDueInFuture.filter({ (wordInList: Word) -> Bool in
-            wordInList != word
-        })
-    }
-    
-    func shouldShowWordPresentation(word: Word) -> Bool
-    {
-        if word.currentLearningStage == LearningStage.Cram || word.shouldShowWordPresentation {
-            return true
-        } else {
-            return false
-        }
+        // Sort the future list
+        sort(&self.wordsDueInFuture, {$0 < $1})
     }
     
     init (words:[Word]) {
@@ -150,13 +129,31 @@ class LearnerController {
         
         for word in self.words as [Word] {
             if word.learningDueDate == nil || word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-                self.wordsDueInPast.append(word)
+                self.wordsDueNow.append(word)
             } else {
                 self.wordsDueInFuture.append(word)
             }
         }
         
-        sort(&self.wordsDueInFuture, {(word1: Word, word2: Word) -> Bool in word1 < word2})
-        sort(&self.wordsDueInPast, {(word1: Word, word2: Word) -> Bool in word1 < word2})
+        sort(&self.wordsDueInFuture, {$0 < $1})
+        sort(&self.wordsDueNow, {$0 < $1})
     }
+    
+    func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
+        word.onWordFinishedTest(testType, testResult: testResult)
+        
+        if word.isFinishedAllTestsForCurrentStage() {
+            self.onWordSuccesssfullyFinishedAllTestsInLearningStage(word)
+        }
+    }
+    
+    func onWordSuccesssfullyFinishedAllTestsInLearningStage(word: Word) {
+        word.onWordSuccessfullyFinishedAllTests()
+    }
+    
+    func onWordFinishedPresentation(word: Word) {
+        word.onWordFinihsedPresentation()
+    }
+    
+
 }

@@ -13,6 +13,10 @@ func == (lhs: Word, rhs: Word) -> Bool {
 }
 
 func < (lhs: Word, rhs: Word) -> Bool {
+    if lhs.learningDueDate == nil && rhs.learningDueDate == nil {
+        return true
+    }
+    
     if lhs.learningDueDate != nil && rhs.learningDueDate == nil {
         if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
@@ -32,7 +36,7 @@ func < (lhs: Word, rhs: Word) -> Bool {
     return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
-class Word : Equatable, Printable{
+class Word : Equatable {
     var name: String?
     var meaning: String?
     var currentLearningStage: LearningStage = LearningStage.Cram
@@ -40,24 +44,28 @@ class Word : Equatable, Printable{
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [TestType] = []
     
-    var description: String {
-        return "WordType: \(self.name), \(self.learningDueDate?)"
-    }
-    
     init (name: String, meaning: String) {
         self.name = name
         self.meaning = meaning
     }
     
-    func onPassAllTestSetForCurrentStage() {
+    func onWordFinishedTest(testType: TestType, testResult: TestResult) {
+        if testResult == TestResult.Pass {
+            self.testsSuccessfulyDoneForCurrentStage.append(testType)
+        } else {
+            self.testsSuccessfulyDoneForCurrentStage.removeAll(keepCapacity: false)
+            self.currentLearningStage.decrement()
+            self.shouldShowWordPresentation = true
+        }
+    }
+    
+    func onWordSuccessfullyFinishedAllTests() {
         self.currentLearningStage.increment()
         self.learningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
     }
     
-    func onFailTestSetForCurrentStage() {
-        self.currentLearningStage.decrement()
-        self.learningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
-        self.shouldShowWordPresentation = true
+    func onWordFinihsedPresentation() {
+        self.shouldShowWordPresentation = false
     }
     
     class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
@@ -73,5 +81,22 @@ class Word : Equatable, Printable{
         case LearningStage.Mature:
             return nil
         }
+    }
+    
+    func hasDueDateInFuture() -> Bool {
+        if self.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isFinishedAllTestsForCurrentStage() -> Bool {
+        for requiredTestType in Test.testSetForLearningStage(self.currentLearningStage) {
+            if !contains(self.testsSuccessfulyDoneForCurrentStage, requiredTestType) {
+                return false
+            }
+        }
+        return true
     }
 }
