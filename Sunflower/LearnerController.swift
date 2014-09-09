@@ -64,8 +64,8 @@ class LearnerController {
         // If current queue is not full, fill it up with ealierst dueNowWords member
         if currentQueue.count < self.queueSize && dueNowWords.count > 0 {
             var wordDueNow = dueNowWords.first;
+            dueNowWords.removeAtIndex(0)
             currentQueue.insert(wordDueNow!, atIndex: 0)
-            dueNowWords.filter({$0 != wordDueNow})
             return (wordDueNow, NextWordNilStatus.MORE_WORDS_TO_GO)
         }
         
@@ -93,7 +93,7 @@ class LearnerController {
     
     func insertLastItemInFirstAndReturnTheItem(inout list: [Word]) -> Word {
         var lastWord = list.last
-        list.filter({$0 != lastWord})
+        list.removeLast()
         list.insert(lastWord!, atIndex: 0)
         return lastWord!
     }
@@ -119,10 +119,10 @@ class LearnerController {
     
     func addWordToFutureList(wordToBeAdded: Word) {
         // Remove from due now list
-        self.wordsDueNow.filter({$0 != wordToBeAdded})
+        self.wordsDueNow = self.wordsDueNow.filter({$0 != wordToBeAdded})
 
         // Remove from the current queue
-        self.currentLearningQueue.filter({$0 != wordToBeAdded})
+        self.currentLearningQueue = self.currentLearningQueue.filter({$0 != wordToBeAdded})
         
         // Add to the future list
         self.wordsDueInFuture.append(wordToBeAdded)

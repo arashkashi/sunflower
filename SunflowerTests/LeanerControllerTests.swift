@@ -46,6 +46,8 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(firstWordToLearn!.name == "schwangerschaft", "learning Stage is cram")
         XCTAssert(contains(self.learnerController.currentLearningQueue, firstWordToLearn!) , "the next word should bein the current queue")
         XCTAssert(firstWordToLearn!.shouldShowWordPresentation, "the first word should show the word presentation")
+        XCTAssert(self.learnerController.wordsDueNow.count == 9, "the word should be removed from dueNow list ")
+        XCTAssert(self.learnerController.currentLearningQueue.count == 1, "and added to the current learning queue")
     }
     
     // First word passes the first test 1 (ROOT)-(o)
