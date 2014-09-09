@@ -21,7 +21,7 @@ class LearnerController {
     var wordsDueNow: [Word] = []
     var currentLearningQueue: [Word] = []
     
-    let queueSize: Int = 2
+    let queueSize: Int = 4
     
     func nextWordToLearn(inout futureList: [Word], inout dueNowWords: [Word], inout currentQueue: [Word]) -> (word: Word?, status: NextWordNilStatus) {
         // If words in future are due now, move them to the due now list
@@ -31,32 +31,36 @@ class LearnerController {
         // instead of putting it in the button of the list, put it into the future list
         // and its place, put an item from the due now list and then take one word from
         // the button and put it onto the top.
-        if (currentQueue.first?.hasDueDateInFuture() != nil) {
-            var learntWord = currentQueue.first!
-            self.addWordToFutureList(learntWord)
-            
-            if var newDueWord = dueNowWords.first? {
-                dueNowWords.filter({$0 != newDueWord})
-                currentQueue.insert(newDueWord, atIndex: 0)
-                return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
-            } else {
-                if !currentQueue.isEmpty {
+        if var learntWordI = currentQueue.first? {
+            if learntWordI.hasDueDateInFuture() {
+                self.addWordToFutureList(learntWordI)
+                
+                if var newDueWord = dueNowWords.first? {
+                    dueNowWords.filter({$0 != newDueWord})
+                    currentQueue.insert(newDueWord, atIndex: 0)
                     return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
-                }
-                if futureList.isEmpty {
-                    return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
                 } else {
-                    return (nil, NextWordNilStatus.NO_MORE_WORD_TODAY)
+                    if !currentQueue.isEmpty {
+                        return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+                    }
+                    if futureList.isEmpty {
+                        return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
+                    } else {
+                        return (nil, NextWordNilStatus.NO_MORE_WORD_TODAY)
+                    }
                 }
             }
         }
-
         
         // If current queue has a word for presentation on top, present it.
-        if (currentQueue.first?.shouldShowWordPresentation != nil) {
-            return (currentQueue.first!, NextWordNilStatus.MORE_WORDS_TO_GO)
+        if var learntWord = currentQueue.first? {
+            if learntWord.shouldShowWordPresentation {
+                return (learntWord, NextWordNilStatus.MORE_WORDS_TO_GO)
+            }
         }
         
+        println("\(currentQueue)")
+        println("\(dueNowWords)")
         // If current queue is not full, fill it up with ealierst dueNowWords member
         if currentQueue.count < self.queueSize && dueNowWords.count > 0 {
             var wordDueNow = dueNowWords.first;
