@@ -146,6 +146,8 @@ class LearnerController {
         sort(&self.wordsDueNow, {$0 < $1})
     }
     
+    //MARK: Events
+    
     func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
         word.onWordFinishedTest(testType, testResult: testResult)
         

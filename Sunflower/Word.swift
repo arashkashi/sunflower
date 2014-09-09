@@ -99,4 +99,13 @@ class Word : Equatable {
         }
         return true
     }
+    
+    func nextTest() -> TestType? {
+        for testType in Test.testSetForLearningStage(self.currentLearningStage) {
+            if !contains(self.testsSuccessfulyDoneForCurrentStage, testType) {
+                return testType
+            }
+        }
+        return nil
+    }
 }

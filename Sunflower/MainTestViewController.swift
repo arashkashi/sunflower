@@ -18,18 +18,22 @@ class MainTestViewController : UIViewController {
     @IBOutlet var testContentView: UIView!
     @IBOutlet var labelLearningStage: UILabel!
     
+    //MARK: UIViewController Override
+    override func viewDidAppear(animated: Bool) {
+        learnNextWord()
+    }
+    
     func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult, Word) -> ()) {
         self.testViewController = self.testSubViewController(testType, word: word, completionHandler: result)
-        
         self.labelLearningStage.text = word.currentLearningStage.toString()
         
         UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
             self.cleanTestContentView()
             self.testContentView.addSubview(self.testViewController!.view)
-            }) { (isFinished: Bool) -> Void in
-                // Finished Code
-        }
+            }) { (isFinished: Bool) -> Void in }
     }
+    
+    //MARK: Helper
     
     func cleanTestContentView() {
         for item in self.testContentView.subviews {
@@ -46,10 +50,6 @@ class MainTestViewController : UIViewController {
         return testViewController
     }
     
-    func onWordPresented(word: Word) {
-        self.learnerController.onWordFinishedPresentation(word)
-    }
-    
     func viewControllerForTestType(testType: TestType) -> TestBaseViewController {
         switch testType {
         case TestType.Test1:
@@ -61,32 +61,38 @@ class MainTestViewController : UIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        learnNextWord()
-    }
-    
     func learnNextWord() {
         var next  = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
         
         if next.word == nil {
-            self.showNoMoreWordToLearn(next.word!)
+            self.showNoMoreWordToLearn()
         } else if next.word!.shouldShowWordPresentation {
             self.showPresentationView(next.word!)
         } else {
-            self.doTestSetForWord(next.word!, lastPassedTest: nil,  completionHandler: { (testSetResult: TestSetResult) -> () in
-                self.onTestSetFinishedForWord(next.word!, testSetResult: testSetResult)
-            })
+            if var nextTest = next.word!.nextTest()? {
+                self.doTestTypeForWord(next.word!, testType: nextTest, result: { (testType: TestType, testResult: TestResult, word: Word) -> () in
+                    self.learnerController.onWordFinishedTestType(word, testType: testType, testResult: testResult)
+                    self.learnNextWord()
+                })
+            } else {
+                self.learnNextWord()
+            }
         }
     }
     
-    func showNoMoreWordToLearn(word: Word) {
+    func showNoMoreWordToLearn() {
 
     }
     
     func showPresentationView(word: Word) {
         self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
         self.presentationViewController!.word = word
-        self.presentationViewController!.completionHandler = {() -> () in self.onWordPresented(word)}
+        self.presentationViewController!.completionHandler = {() -> ()
+            
+            in self.learnerController.onWordFinishedPresentation(word)
+            self.learnNextWord()
+        }
+        
         self.labelLearningStage.text = word.currentLearningStage.toString()
         
         UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
@@ -98,36 +104,5 @@ class MainTestViewController : UIViewController {
             }) { (isFinished: Bool) -> Void in
                 // Finished Code
         }
-    }
-    
-    func doTestSetForWord(word: Word, lastPassedTest: TestType?, completionHandler: ((TestSetResult) -> ())) {
-        var nextTestType: TestType? = Test.nextTestFor(word.currentLearningStage, lastPassedTest:lastPassedTest)
-        
-        if nextTestType == nil {
-            completionHandler(TestSetResult.pass)
-        } else {
-            self.doTestTypeForWord(word, testType: nextTestType!, result: { (doneTestType: TestType, doneTestResult: TestResult, word: Word) -> () in
-                
-                self.learnerController.onWordFinishedTestType(word, testType: doneTestType, testResult: doneTestResult)
-                
-                if doneTestResult == TestResult.Pass {
-                    self.doTestSetForWord(word, lastPassedTest: doneTestType, completionHandler: completionHandler)
-                } else if doneTestResult == TestResult.Fail {
-                    completionHandler(TestSetResult.Fail)
-                }
-            })
-        }
-    }
-    
-    func onTestSetFinishedForWord(word: Word, testSetResult: TestSetResult) {
-        if testSetResult == TestSetResult.pass {
-//            self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
-        } else if testSetResult == TestSetResult.Fail {
-//            self.learnerController.onWordFailedTestSetForCurrentLearningStage(word)
-        } else {
-            assert(false, "Test set result not right!")
-        }
-        
-        self.learnNextWord()
     }
 }

@@ -19,6 +19,7 @@
 		41A0634919A90E7100E400D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634719A90E7100E400D1 /* Main.storyboard */; };
 		41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634A19A90E7100E400D1 /* Images.xcassets */; };
 		41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0635619A90E7100E400D1 /* SunflowerTests.swift */; };
+		41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D1E3C919BF8FFB001E86F3 /* WordTests.swift */; };
 		41D415E219A9D84F0038EFE6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */; };
@@ -59,6 +60,7 @@
 		41A0635019A90E7100E400D1 /* SunflowerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunflowerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0635519A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0635619A90E7100E400D1 /* SunflowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunflowerTests.swift; sourceTree = "<group>"; };
+		41D1E3C919BF8FFB001E86F3 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		41D415E119A9D84F0038EFE6 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				41A0635619A90E7100E400D1 /* SunflowerTests.swift */,
 				41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */,
+				41D1E3C919BF8FFB001E86F3 /* WordTests.swift */,
 				41A0635419A90E7100E400D1 /* Supporting Files */,
 			);
 			path = SunflowerTests;
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */,
+				41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */,
 				41EA254E19AA877B0045402E /* TestWords.swift in Sources */,
 				41EA254F19AB05EC0045402E /* Word.swift in Sources */,
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,

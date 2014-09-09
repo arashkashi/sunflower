@@ -20,11 +20,6 @@ enum TestResult: Int {
     case Fail
 }
 
-enum TestSetResult: Int {
-    case pass = 1
-    case Fail
-}
-
 class Test {
     var type: TestType?
     
@@ -41,21 +36,5 @@ class Test {
         case LearningStage.Mature:
             return [TestType.Test2, TestType.Test3]
         }
-    }
-    
-    // WARNING: Write Test case for this methos
-    class func nextTestFor(leaningState: LearningStage, lastPassedTest: TestType?) -> TestType? {
-        // If no tests is done before, return the first test
-        if lastPassedTest == nil { return Test.testSetForLearningStage(leaningState)[0] }
-        
-        var testSet : [TestType] = Test.testSetForLearningStage(leaningState)
-        
-        for (index, item) in enumerate(testSet) {
-            var testType: TestType = item as TestType
-            if testType == lastPassedTest && testSet.last != testType {
-                return testSet[index + 1]
-            }
-        }
-        return nil
     }
 }
