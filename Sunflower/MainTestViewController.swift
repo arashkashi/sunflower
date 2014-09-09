@@ -57,17 +57,17 @@ class MainTestViewController : UIViewController {
     }
     
     func learnNextWord() {
-        var nextWord = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, pastList: &self.learnerController.wordsDueInPast)
-        
-        if nextWord == nil {
-            self.showNoMoreWordToLearn(nextWord!)
-        } else if nextWord!.shouldShowWordPresentation {
-            self.showPresentationView(nextWord!)
-        } else {
-            self.doTestSetForWord(nextWord!, lastPassedTest: nil,  completionHandler: { (testSetResult: TestSetResult) -> () in
-                self.onTestSetFinishedForWord(nextWord!, testSetResult: testSetResult)
-            })
-        }
+//        var nextWord = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, pastList: &self.learnerController.currentLearningQueue)
+//        
+//        if nextWord == nil {
+//            self.showNoMoreWordToLearn(nextWord!)
+//        } else if nextWord!.shouldShowWordPresentation {
+//            self.showPresentationView(nextWord!)
+//        } else {
+//            self.doTestSetForWord(nextWord!, lastPassedTest: nil,  completionHandler: { (testSetResult: TestSetResult) -> () in
+//                self.onTestSetFinishedForWord(nextWord!, testSetResult: testSetResult)
+//            })
+//        }
     }
     
     func showNoMoreWordToLearn(word: Word) {
@@ -112,9 +112,9 @@ class MainTestViewController : UIViewController {
     
     func onTestSetFinishedForWord(word: Word, testSetResult: TestSetResult) {
         if testSetResult == TestSetResult.pass {
-            self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
+//            self.learnerController.onWordPassAllTestSetForCurrentLearningStage(word)
         } else if testSetResult == TestSetResult.Fail {
-            self.learnerController.onWordFailedTestSetForCurrentLearningStage(word)
+//            self.learnerController.onWordFailedTestSetForCurrentLearningStage(word)
         } else {
             assert(false, "Test set result not right!")
         }
