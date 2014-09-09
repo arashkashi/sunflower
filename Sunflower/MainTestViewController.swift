@@ -23,6 +23,25 @@ class MainTestViewController : UIViewController {
         learnNextWord()
     }
     
+    func learnNextWord() {
+        var next  = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
+        
+        if next.word == nil {
+            self.showNoMoreWordToLearn()
+        } else if next.word!.shouldShowWordPresentation {
+            self.showPresentationView(next.word!)
+        } else {
+            if var nextTest = next.word!.nextTest()? {
+                self.doTestTypeForWord(next.word!, testType: nextTest, result: { (testType: TestType, testResult: TestResult, word: Word) -> () in
+                    self.learnerController.onWordFinishedTestType(word, testType: testType, testResult: testResult)
+                    self.learnNextWord()
+                })
+            } else {
+                self.learnNextWord()
+            }
+        }
+    }
+    
     func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult, Word) -> ()) {
         self.testViewController = self.testSubViewController(testType, word: word, completionHandler: result)
         self.labelLearningStage.text = word.currentLearningStage.toString()
@@ -34,7 +53,6 @@ class MainTestViewController : UIViewController {
     }
     
     //MARK: Helper
-    
     func cleanTestContentView() {
         for item in self.testContentView.subviews {
             var subview: UIView = item as UIView
@@ -58,25 +76,6 @@ class MainTestViewController : UIViewController {
             return Test2ViewController(nibName: "Test2View", bundle: NSBundle.mainBundle())
         default:
             return Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
-        }
-    }
-    
-    func learnNextWord() {
-        var next  = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
-        
-        if next.word == nil {
-            self.showNoMoreWordToLearn()
-        } else if next.word!.shouldShowWordPresentation {
-            self.showPresentationView(next.word!)
-        } else {
-            if var nextTest = next.word!.nextTest()? {
-                self.doTestTypeForWord(next.word!, testType: nextTest, result: { (testType: TestType, testResult: TestResult, word: Word) -> () in
-                    self.learnerController.onWordFinishedTestType(word, testType: testType, testResult: testResult)
-                    self.learnNextWord()
-                })
-            } else {
-                self.learnNextWord()
-            }
         }
     }
     

@@ -59,8 +59,6 @@ class LearnerController {
             }
         }
         
-        println("\(currentQueue)")
-        println("\(dueNowWords)")
         // If current queue is not full, fill it up with ealierst dueNowWords member
         if currentQueue.count < self.queueSize && dueNowWords.count > 0 {
             var wordDueNow = dueNowWords.first;
