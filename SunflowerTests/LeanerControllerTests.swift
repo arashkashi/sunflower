@@ -97,6 +97,7 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(contains(self.learnerController.currentLearningQueue, nextWord!) , "the next word should bein the current queue")
         XCTAssert(nextWord!.shouldShowWordPresentation, "the first word should show the word presentation")
         XCTAssert(self.learnerController.currentLearningQueue.count == 2, "the learning queue now has two items in it")
+        XCTAssert(self.learnerController.wordsDueNow.count == 8, "the words have been removed from the learning queue")
     }
 
     func testPerformanceExample() {
