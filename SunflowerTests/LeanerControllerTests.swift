@@ -12,7 +12,7 @@ import Foundation
 
 class LeanerControllerTests: XCTestCase {
     
-    var learnerController: LearnerController = LearnerController(words: TestWords.words())
+    var learnerController: LearnerController = LearnerController(learningPack: TestLearningPack.instance())
 
     override func setUp() {
         super.setUp()

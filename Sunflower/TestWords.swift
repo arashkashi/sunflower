@@ -8,8 +8,11 @@
 
 import UIKit
 
-class TestWords {
+class TestLearningPack: LearningPackModel {
     
+    class func instance() -> LearningPackModel {
+        return LearningPackModel(id: TestLearningPackID, words: TestLearningPack.words())
+    }
     
     class func words() -> Array<Word> {
         var rawWords =  [

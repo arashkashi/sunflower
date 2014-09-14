@@ -28,6 +28,16 @@
 		41EA254E19AA877B0045402E /* TestWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestWords.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */; };
+		D9B246BC19C2E85A00E4737C /* CloudDocPersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BB19C2E85A00E4737C /* CloudDocPersController.swift */; };
+		D9B246BE19C583DE00E4737C /* LocalDocsPersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BD19C583DE00E4737C /* LocalDocsPersController.swift */; };
+		D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BF19C583FA00E4737C /* LearningPackController.swift */; };
+		D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
+		D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
+		D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BF19C583FA00E4737C /* LearningPackController.swift */; };
+		D9B246C519C5E8C000E4737C /* CloudDocPersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BB19C2E85A00E4737C /* CloudDocPersController.swift */; };
+		D9B246C619C5E8C500E4737C /* LocalDocsPersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BD19C583DE00E4737C /* LocalDocsPersController.swift */; };
+		D9B246C819C5E93300E4737C /* DocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C719C5E93300E4737C /* DocumentHelper.swift */; };
+		D9B246CA19C5EDA400E4737C /* DocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C719C5E93300E4737C /* DocumentHelper.swift */; };
 		D9D43F3219B8647C00E420B0 /* LearningStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D43F3119B8647C00E420B0 /* LearningStage.swift */; };
 		D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D43F3119B8647C00E420B0 /* LearningStage.swift */; };
 		D9FD437919B0CDB900984399 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1C19AE77340020EF58 /* Test.swift */; };
@@ -66,6 +76,11 @@
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
 		41D415F019AA6E490038EFE6 /* TestWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWords.swift; sourceTree = "<group>"; };
 		D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBaseViewController.swift; sourceTree = "<group>"; };
+		D9B246BB19C2E85A00E4737C /* CloudDocPersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDocPersController.swift; sourceTree = "<group>"; };
+		D9B246BD19C583DE00E4737C /* LocalDocsPersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDocsPersController.swift; sourceTree = "<group>"; };
+		D9B246BF19C583FA00E4737C /* LearningPackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackController.swift; sourceTree = "<group>"; };
+		D9B246C119C5841200E4737C /* LearningPackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackModel.swift; sourceTree = "<group>"; };
+		D9B246C719C5E93300E4737C /* DocumentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentHelper.swift; sourceTree = "<group>"; };
 		D9D43F3119B8647C00E420B0 /* LearningStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningStage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D43F3119B8647C00E420B0 /* LearningStage.swift */,
+				D9B246C719C5E93300E4737C /* DocumentHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -200,6 +216,7 @@
 			children = (
 				41D415E119A9D84F0038EFE6 /* Word.swift */,
 				41614D1C19AE77340020EF58 /* Test.swift */,
+				D9B246C119C5841200E4737C /* LearningPackModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -208,6 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				41D415E419A9D8CE0038EFE6 /* LearnerController.swift */,
+				D9B246BB19C2E85A00E4737C /* CloudDocPersController.swift */,
+				D9B246BD19C583DE00E4737C /* LocalDocsPersController.swift */,
+				D9B246BF19C583FA00E4737C /* LearningPackController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -314,16 +334,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9B246BE19C583DE00E4737C /* LocalDocsPersController.swift in Sources */,
 				41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */,
 				D9D43F3219B8647C00E420B0 /* LearningStage.swift in Sources */,
 				41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */,
+				D9B246BC19C2E85A00E4737C /* CloudDocPersController.swift in Sources */,
 				41D415F119AA6E490038EFE6 /* TestWords.swift in Sources */,
 				41614D1D19AE77340020EF58 /* Test.swift in Sources */,
+				D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
+				D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */,
 				41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */,
 				41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */,
 				D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
+				D9B246C819C5E93300E4737C /* DocumentHelper.swift in Sources */,
 				41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,10 +360,15 @@
 				41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */,
 				41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */,
 				41EA254E19AA877B0045402E /* TestWords.swift in Sources */,
+				D9B246C519C5E8C000E4737C /* CloudDocPersController.swift in Sources */,
 				41EA254F19AB05EC0045402E /* Word.swift in Sources */,
+				D9B246CA19C5EDA400E4737C /* DocumentHelper.swift in Sources */,
+				D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */,
+				D9B246C619C5E8C500E4737C /* LocalDocsPersController.swift in Sources */,
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
+				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

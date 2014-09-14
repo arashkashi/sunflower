@@ -129,8 +129,8 @@ class LearnerController {
         sort(&self.wordsDueInFuture, {$0 < $1})
     }
     
-    init (words:[Word]) {
-        self.words = words
+    init (learningPack: LearningPackModel) {
+        self.words = learningPack.words
         
         for word in self.words as [Word] {
             if word.learningDueDate == nil || word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
