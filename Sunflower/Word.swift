@@ -14,7 +14,7 @@ func == (lhs: Word, rhs: Word) -> Bool {
 
 func < (lhs: Word, rhs: Word) -> Bool {
     if lhs.learningDueDate == nil && rhs.learningDueDate == nil {
-        return true
+        return false
     }
     
     if lhs.learningDueDate != nil && rhs.learningDueDate == nil {
@@ -28,7 +28,7 @@ func < (lhs: Word, rhs: Word) -> Bool {
     if lhs.learningDueDate == nil && rhs.learningDueDate != nil {
         if rhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
             return true
-        } else if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+        } else if rhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return false
         }
     }
@@ -36,13 +36,16 @@ func < (lhs: Word, rhs: Word) -> Bool {
     return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
-class Word : Equatable {
-    var name: String?
-    var meaning: String?
+class Word : Equatable, Printable, DebugPrintable {
+    var name: String
+    var meaning: String
     var currentLearningStage: LearningStage = LearningStage.Cram
     var learningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [TestType] = []
+    
+    var description: String { get {return self.name}}
+    var debugDescription: String { get {return self.name}}
     
     init (name: String, meaning: String) {
         self.name = name

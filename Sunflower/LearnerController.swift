@@ -26,11 +26,18 @@ class LearnerController {
     // #MARK: Clean up here after debugging
     func isQueueBigger() {
         if self.currentLearningQueue.count > self.queueSize {
-            println("Error" )
+            printall(self.currentLearningQueue)
+        }
+    }
+    
+    func printall(list: [Word]) {
+        for (index, item) in enumerate(list) {
+            println("\(index) ,\(item.description)")
         }
     }
     
     func nextWordToLearn(inout futureList: [Word], inout dueNowWords: [Word], inout currentQueue: [Word]) -> (word: Word?, status: NextWordNilStatus) {
+        self.printall(self.wordsDueNow)
         // If words in future are due now, move them to the due now list
         self.refreshWithFutureList(&futureList, dueNowList: &dueNowWords)
         
@@ -149,8 +156,12 @@ class LearnerController {
             }
         }
         
+        self.printall(self.wordsDueNow)
+        
         sort(&self.wordsDueInFuture, {$0 < $1})
         sort(&self.wordsDueNow, {$0 < $1})
+        
+        self.printall(self.wordsDueNow)
     }
     
     //MARK: Events

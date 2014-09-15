@@ -24,19 +24,6 @@ class LeanerControllerTests: XCTestCase {
         super.tearDown()
     }
     
-    func giveMeNextWord() -> Word? {
-        var result = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
-        return result.word
-    }
-    
-    func firstWordDoneWithFirstTestAndResult(testResult: TestResult, theTestTypeOrder: Int) -> (word: Word, testType: TestType) {
-        var firstWordToLearn = self.giveMeNextWord()
-        var theTestType = Test.testSetForLearningStage(firstWordToLearn!.currentLearningStage)[theTestTypeOrder]
-        self.learnerController.onWordFinishedTestType(firstWordToLearn!, testType: theTestType, testResult: testResult)
-        
-        return (firstWordToLearn!, theTestType)
-    }
-    
     // Pick up the first word and put it into the current queue (ROOT)
     func testFirstWordPickup() {
         var firstWordToLearn = self.giveMeNextWord()
@@ -118,7 +105,59 @@ class LeanerControllerTests: XCTestCase {
             }
         }
     }
+    
+    func testSortWords() {
+        var word1 = Word(name: "word future", meaning: "Meaning1")
+        var word2 = Word(name: "word past", meaning: "Meaning2")
+        var word3 = Word(name: "word nil 1", meaning: "Meaning3")
+        var word4 = Word(name: "word nil 2", meaning: "Meaning4")
+        var word5 = Word(name: "word nil 3", meaning: "Meaning4")
+        
+        word1.learningDueDate = NSDate().dateByAddingTimeInterval(1000)
+        word2.learningDueDate = NSDate().dateByAddingTimeInterval(-1000)
+        
+        var list: [Word] = [word5, word1, word4, word2, word3]
+        
+        sort(&list, {$0 < $1})
+        
+        XCTAssert(list[0] == word2, "the first word is in past, \(list[0])")
+        XCTAssert(list[1] == word5, "the second word has nil due date, \(list[1])")
+        XCTAssert(list[2] == word4, "the second word has nil due date, \(list[2])")
+        XCTAssert(list[3] == word3, "the second word has nil due date, \(list[3])")
+        XCTAssert(list[4] == word1, " the last word has due date in future, , \(list[4])")
+        self.printall(list)
+    }
+    
+    func testWordEqualComp() {
+        var word1 = Word(name: "word future", meaning: "Meaning1")
+        var word2 = Word(name: "word past", meaning: "Meaning2")
+        var word3 = Word(name: "word past", meaning: "Meaning2")
+        
+        XCTAssert(!(word1 == word2), "when not equal")
+        XCTAssert(word2 == word3, "when equal")
+    }
+    
+    // #MARK: Helpers
+    func printall(list: [Word]) {
+        for item in list {
+            println("\(item.name)")
+        }
+    }
+    
+    func giveMeNextWord() -> Word? {
+        var result = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
+        return result.word
+    }
+    
+    func firstWordDoneWithFirstTestAndResult(testResult: TestResult, theTestTypeOrder: Int) -> (word: Word, testType: TestType) {
+        var firstWordToLearn = self.giveMeNextWord()
+        var theTestType = Test.testSetForLearningStage(firstWordToLearn!.currentLearningStage)[theTestTypeOrder]
+        self.learnerController.onWordFinishedTestType(firstWordToLearn!, testType: theTestType, testResult: testResult)
+        
+        return (firstWordToLearn!, theTestType)
+    }
 
+    // #MARK: Performace
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {

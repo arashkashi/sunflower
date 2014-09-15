@@ -29,7 +29,7 @@ class TestLearningPack: LearningPackModel {
         ]
         
         
-        var result: Array<Word> = [Word]()
+        var result: [Word] = []
         for item: Dictionary<String, String> in rawWords {
             var name: String = item["name"]!
             var meaning: String = item["meaning"]!
@@ -39,4 +39,5 @@ class TestLearningPack: LearningPackModel {
         
         return result
     }
+
 }
