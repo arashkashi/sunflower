@@ -23,21 +23,11 @@ class LearnerController {
     
     let queueSize: Int = 4
     
-    // #MARK: Clean up here after debuggin
-    
-    func printall(list: [Word]) {
-        println("======================")
-        for (index, item) in enumerate(list) {
-            println("\(index) ,\(item.description), \(item.testsSuccessfulyDoneForCurrentStage)")
-        }
-    }
-    
     // This is the only method that operates on the three following variables
     // 1. wordsDueInFuture
     // 2. wordsDueNow
     // 3. currentLearningQueue
     func nextWordToLearn() -> (word: Word?, status: NextWordNilStatus) {
-        self.printall(self.currentLearningQueue)
         // If words in future are due now, move them to the due now list
         self.moveToDueNowFromFutureListIfApplicable()
         
@@ -51,7 +41,6 @@ class LearnerController {
                 
                 if var newDueWord = self.wordsDueNow.first? {
                     self.wordsDueNow.removeAtIndex(0)
-                    self.printall(self.currentLearningQueue)
                     self.currentLearningQueue.insert(newDueWord, atIndex: 0)
                     return (self.insertLastItemInFirstAndReturnTheItem(&self.currentLearningQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
                 } else {
@@ -134,10 +123,8 @@ class LearnerController {
         // Remove from due now list
         self.wordsDueNow = self.wordsDueNow.filter({$0 != wordToBeAdded})
 
-        self.printall(self.currentLearningQueue)
         // Remove from the current queue
         self.currentLearningQueue = self.currentLearningQueue.filter({$0 != wordToBeAdded})
-        self.printall(self.currentLearningQueue)
         
         // Add to the future list
         self.wordsDueInFuture.append(wordToBeAdded)
