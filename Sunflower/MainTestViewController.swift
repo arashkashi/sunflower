@@ -24,7 +24,7 @@ class MainTestViewController : UIViewController {
     }
     
     func learnNextWord() {
-        var next  = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
+        var next  = self.learnerController.nextWordToLearn()
         
         if next.word == nil {
             self.showNoMoreWordToLearn()

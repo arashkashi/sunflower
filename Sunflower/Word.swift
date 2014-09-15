@@ -86,8 +86,16 @@ class Word : Equatable, Printable, DebugPrintable {
         }
     }
     
-    func hasDueDateInFuture() -> Bool {
+    func isDueInFuture() -> Bool {
         if self.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isDueInPast() -> Bool {
+        if self.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
         } else {
             return false

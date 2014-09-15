@@ -23,42 +23,42 @@ class LearnerController {
     
     let queueSize: Int = 4
     
-    // #MARK: Clean up here after debugging
-    func isQueueBigger() {
-        if self.currentLearningQueue.count > self.queueSize {
-            printall(self.currentLearningQueue)
-        }
-    }
+    // #MARK: Clean up here after debuggin
     
     func printall(list: [Word]) {
+        println("======================")
         for (index, item) in enumerate(list) {
-            println("\(index) ,\(item.description)")
+            println("\(index) ,\(item.description), \(item.testsSuccessfulyDoneForCurrentStage)")
         }
     }
     
-    func nextWordToLearn(inout futureList: [Word], inout dueNowWords: [Word], inout currentQueue: [Word]) -> (word: Word?, status: NextWordNilStatus) {
-        self.printall(self.wordsDueNow)
+    // This is the only method that operates on the three following variables
+    // 1. wordsDueInFuture
+    // 2. wordsDueNow
+    // 3. currentLearningQueue
+    func nextWordToLearn() -> (word: Word?, status: NextWordNilStatus) {
+        self.printall(self.currentLearningQueue)
         // If words in future are due now, move them to the due now list
-        self.refreshWithFutureList(&futureList, dueNowList: &dueNowWords)
+        self.moveToDueNowFromFutureListIfApplicable()
         
         // If the current queue has a word which has a learning due date in future, 
         // instead of putting it in the button of the list, put it into the future list
         // and its place, put an item from the due now list and then take one word from
         // the button and put it onto the top.
-        if var learntWordI = currentQueue.first? {
-            if learntWordI.hasDueDateInFuture() {
-                self.isQueueBigger()
+        if var learntWordI = self.currentLearningQueue.first? {
+            if learntWordI.isDueInFuture() {
                 self.addWordToFutureList(learntWordI)
                 
-                if var newDueWord = dueNowWords.first? {
-                    dueNowWords.removeAtIndex(0)
-                    currentQueue.insert(newDueWord, atIndex: 0)
-                    return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+                if var newDueWord = self.wordsDueNow.first? {
+                    self.wordsDueNow.removeAtIndex(0)
+                    self.printall(self.currentLearningQueue)
+                    self.currentLearningQueue.insert(newDueWord, atIndex: 0)
+                    return (self.insertLastItemInFirstAndReturnTheItem(&self.currentLearningQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
                 } else {
-                    if !currentQueue.isEmpty {
-                        return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+                    if !self.currentLearningQueue.isEmpty {
+                        return (self.insertLastItemInFirstAndReturnTheItem(&self.currentLearningQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
                     }
-                    if futureList.isEmpty {
+                    if self.wordsDueInFuture.isEmpty {
                         return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
                     } else {
                         return (nil, NextWordNilStatus.NO_MORE_WORD_TODAY)
@@ -68,37 +68,36 @@ class LearnerController {
         }
         
         // If current queue has a word for presentation on top, present it.
-        if var learntWord = currentQueue.first? {
+        if var learntWord = self.currentLearningQueue.first? {
             if learntWord.shouldShowWordPresentation {
                 return (learntWord, NextWordNilStatus.MORE_WORDS_TO_GO)
             }
         }
         
         // If current queue is not full, fill it up with ealierst dueNowWords member
-        if currentQueue.count < self.queueSize && dueNowWords.count > 0 {
-            var wordDueNow = dueNowWords.first;
-            dueNowWords.removeAtIndex(0)
-            currentQueue.insert(wordDueNow!, atIndex: 0)
-            self.isQueueBigger()
+        if self.currentLearningQueue.count < self.queueSize && self.wordsDueNow.count > 0 {
+            var wordDueNow = self.wordsDueNow.first;
+            self.wordsDueNow.removeAtIndex(0)
+            self.currentLearningQueue.insert(wordDueNow!, atIndex: 0)
             return (wordDueNow, NextWordNilStatus.MORE_WORDS_TO_GO)
         }
         
         // If current queue is full, take the one from the buttom of list.
-        if currentQueue.count >= self.queueSize {
-            return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+        if self.currentLearningQueue.count >= self.queueSize {
+            return (self.insertLastItemInFirstAndReturnTheItem(&self.currentLearningQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
         }
         
-        if currentQueue.count < self.queueSize && dueNowWords.count == 0 {
-            if currentQueue.count == 0 && futureList.count == 0 {
+        if self.currentLearningQueue.count < self.queueSize && self.wordsDueNow.count == 0 {
+            if self.currentLearningQueue.count == 0 && self.wordsDueInFuture.count == 0 {
                 return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
             }
             
-            if currentQueue.count == 0 && futureList.count > 0 {
+            if self.currentLearningQueue.count == 0 && self.wordsDueInFuture.count > 0 {
                 return (nil, NextWordNilStatus.NO_MORE_WORD_TODAY)
             }
             
-            if currentQueue.count > 0 {
-                return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
+            if self.currentLearningQueue.count > 0 {
+                return (self.insertLastItemInFirstAndReturnTheItem(&self.currentLearningQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
             }
         }
         
@@ -112,10 +111,10 @@ class LearnerController {
         return lastWord!
     }
     
-    func refreshWithFutureList(inout futureList: [Word], inout dueNowList:[Word]) {
+    func moveToDueNowFromFutureListIfApplicable() {
         var wordsWereInFutureDueNow: [Word] = []
         
-        for word in futureList as [Word] {
+        for word in self.wordsDueInFuture as [Word] {
             if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 wordsWereInFutureDueNow.append(word)
             } else {
@@ -124,19 +123,21 @@ class LearnerController {
         }
         
         for word in wordsWereInFutureDueNow {
-            futureList = futureList.filter{$0 != word}
-            dueNowList.append(word)
+            self.wordsDueInFuture = self.wordsDueInFuture.filter{$0 != word}
+            self.wordsDueNow.append(word)
         }
         
-        sort(&dueNowList, {(word1: Word, word2: Word) -> Bool in word1 < word2})
+        sort(&self.wordsDueNow, {(word1: Word, word2: Word) -> Bool in word1 < word2})
     }
     
     func addWordToFutureList(wordToBeAdded: Word) {
         // Remove from due now list
         self.wordsDueNow = self.wordsDueNow.filter({$0 != wordToBeAdded})
 
+        self.printall(self.currentLearningQueue)
         // Remove from the current queue
         self.currentLearningQueue = self.currentLearningQueue.filter({$0 != wordToBeAdded})
+        self.printall(self.currentLearningQueue)
         
         // Add to the future list
         self.wordsDueInFuture.append(wordToBeAdded)
@@ -156,16 +157,11 @@ class LearnerController {
             }
         }
         
-        self.printall(self.wordsDueNow)
-        
         sort(&self.wordsDueInFuture, {$0 < $1})
         sort(&self.wordsDueNow, {$0 < $1})
-        
-        self.printall(self.wordsDueNow)
     }
     
     //MARK: Events
-    
     func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
         word.onWordFinishedTest(testType, testResult: testResult)
         

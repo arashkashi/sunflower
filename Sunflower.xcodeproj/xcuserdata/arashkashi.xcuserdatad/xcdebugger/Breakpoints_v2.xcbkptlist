@@ -2,4 +2,68 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SunflowerTests/LeanerControllerTests.swift"
+            timestampString = "432476163.340788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "testWordPassingAllTests()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sunflower/LearnerController.swift"
+            timestampString = "432477995.488778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "nextWordToLearn()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sunflower.LearnerController.nextWordToLearn (Sunflower.LearnerController)() -&gt; (word : Swift.Optional&lt;Sunflower.Word&gt;, status : Sunflower.NextWordNilStatus)"
+                  moduleName = "Sunflower"
+                  urlString = "file:///Users/arashkashi/Desktop/sunflower/Sunflower/LearnerController.swift"
+                  timestampString = "432477995.490778"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SunflowerTests.LearnerController.nextWordToLearn (SunflowerTests.LearnerController)() -&gt; (word : Swift.Optional&lt;SunflowerTests.Word&gt;, status : SunflowerTests.NextWordNilStatus)"
+                  moduleName = "SunflowerTests"
+                  urlString = "file:///Users/arashkashi/Desktop/sunflower/Sunflower/LearnerController.swift"
+                  timestampString = "432477995.490942"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "106">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

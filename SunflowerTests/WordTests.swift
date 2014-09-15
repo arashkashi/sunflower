@@ -68,6 +68,24 @@ class WordTests: XCTestCase {
         XCTAssert(!(word1 == word2), "when not equal")
         XCTAssert(word2 == word3, "when equal")
     }
+    
+    func testWordDueDateHelpers() {
+        var word1 = Word(name: "word future", meaning: "Meaning1")
+        var word2 = Word(name: "word past", meaning: "Meaning2")
+        var word3 = Word(name: "word past", meaning: "Meaning2")
+        
+        word1.learningDueDate = NSDate().dateByAddingTimeInterval(1000)
+        word2.learningDueDate = NSDate().dateByAddingTimeInterval(-1000)
+        
+        XCTAssert(word1.isDueInFuture() == true, "word is due in future")
+        XCTAssert(word2.isDueInFuture() == false, "word is due is past")
+        XCTAssert(word3.isDueInFuture() == false, "nil due date is not future")
+        
+        XCTAssert(word1.isDueInPast() == false, "word is due in future")
+        XCTAssert(word2.isDueInPast() == true, "word is due is past")
+        XCTAssert(word3.isDueInPast() == false, "nil due date is not past")
+        
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

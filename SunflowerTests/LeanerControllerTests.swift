@@ -106,8 +106,6 @@ class LeanerControllerTests: XCTestCase {
         }
     }
     
-
-    
     // #MARK: Helpers
     func printall(list: [Word]) {
         for item in list {
@@ -116,7 +114,7 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func giveMeNextWord() -> Word? {
-        var result = self.learnerController.nextWordToLearn(&self.learnerController.wordsDueInFuture, dueNowWords: &self.learnerController.wordsDueNow, currentQueue: &self.learnerController.currentLearningQueue)
+        var result = self.learnerController.nextWordToLearn()
         return result.word
     }
     
