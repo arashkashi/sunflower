@@ -36,7 +36,7 @@ class LearnerController {
                 self.addWordToFutureList(learntWordI)
                 
                 if var newDueWord = dueNowWords.first? {
-                    dueNowWords.filter({$0 != newDueWord})
+                    dueNowWords.removeAtIndex(0)
                     currentQueue.insert(newDueWord, atIndex: 0)
                     return (self.insertLastItemInFirstAndReturnTheItem(&currentQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
                 } else {
