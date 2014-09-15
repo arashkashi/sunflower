@@ -99,6 +99,25 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(self.learnerController.currentLearningQueue.count == 2, "the learning queue now has two items in it")
         XCTAssert(self.learnerController.wordsDueNow.count == 8, "the words have been removed from the learning queue")
     }
+    
+    func testWordPassingAllTests() {
+        // Pass the presentation for all the initial words
+        for index in 1...self.learnerController.queueSize {
+            var nextWord = self.giveMeNextWord()
+            self.learnerController.onWordFinishedPresentation(nextWord!)
+            XCTAssert(self.learnerController.currentLearningQueue.count == index, "new cards pile up in the current queue" )
+        }
+        
+        // Pass the first test for all the initial words
+        for index in 1...Test.testSetForLearningStage(LearningStage.Cram).count {
+            for _ in 1...self.learnerController.queueSize {
+                var nextWord = self.giveMeNextWord()
+                var nextTestType = nextWord?.nextTest()
+                self.learnerController.onWordFinishedTestType(nextWord!, testType: nextTestType!, testResult: TestResult.Pass)
+                XCTAssert(self.learnerController.currentLearningQueue.count == self.learnerController.queueSize, "the current queue: \(self.learnerController.currentLearningQueue.count) queue limit size \(self.learnerController.queueSize)")
+            }
+        }
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

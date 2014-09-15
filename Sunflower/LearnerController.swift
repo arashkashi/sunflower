@@ -23,6 +23,13 @@ class LearnerController {
     
     let queueSize: Int = 4
     
+    // #MARK: Clean up here after debugging
+    func isQueueBigger() {
+        if self.currentLearningQueue.count > self.queueSize {
+            println("Error" )
+        }
+    }
+    
     func nextWordToLearn(inout futureList: [Word], inout dueNowWords: [Word], inout currentQueue: [Word]) -> (word: Word?, status: NextWordNilStatus) {
         // If words in future are due now, move them to the due now list
         self.refreshWithFutureList(&futureList, dueNowList: &dueNowWords)
@@ -33,6 +40,7 @@ class LearnerController {
         // the button and put it onto the top.
         if var learntWordI = currentQueue.first? {
             if learntWordI.hasDueDateInFuture() {
+                self.isQueueBigger()
                 self.addWordToFutureList(learntWordI)
                 
                 if var newDueWord = dueNowWords.first? {
@@ -64,6 +72,7 @@ class LearnerController {
             var wordDueNow = dueNowWords.first;
             dueNowWords.removeAtIndex(0)
             currentQueue.insert(wordDueNow!, atIndex: 0)
+            self.isQueueBigger()
             return (wordDueNow, NextWordNilStatus.MORE_WORDS_TO_GO)
         }
         

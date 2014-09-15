@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SunflowerTests/LeanerControllerTests.swift"
-            timestampString = "431941119.408628"
+            filePath = "Sunflower/LearnerController.swift"
+            timestampString = "432463994.152699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "testOnWordAfterFirstWordFinishedShowingPresentation()"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "isQueueBigger()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
