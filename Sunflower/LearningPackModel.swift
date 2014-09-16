@@ -9,38 +9,32 @@
 import UIKit
 
 
-func < (lhs: LearningPackModel, rhs: LearningPackModel) -> Bool {
-    if lhs.lastDateModified == nil && rhs.lastDateModified == nil {
-        return true
-    }
-    
-    if lhs.lastDateModified != nil && rhs.lastDateModified == nil {
-        if lhs.lastDateModified!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-            return true
-        } else if lhs.lastDateModified!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
-            return false
-        }
-    }
-    
-    if lhs.lastDateModified == nil && rhs.lastDateModified != nil {
-        if rhs.lastDateModified!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
-            return true
-        } else if lhs.lastDateModified!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-            return false
-        }
-    }
-    
-    return lhs.lastDateModified!.compare(rhs.lastDateModified!) == NSComparisonResult.OrderedAscending
-}
-
-class LearningPackModel : UIDocument  {
+class LearningPackModel : UIDocument, NSCoding  {
     var id: String
     var words: [Word]
-    var lastDateModified: NSDate?
     
     init (id: String, words: [Word]) {
         self.id = id
         self.words = words
         super.init(fileURL: DocumentHelper.localLearningPackURLWithID(id))
+    }
+    
+    override func loadFromContents(contents: AnyObject, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
+        var data: NSData = contents as NSData
+        var loadedModel: LearningPackModel = NSKeyedUnarchiver.unarchiveObjectWithData(data) as LearningPackModel
+        
+        return true
+        
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        var learningPackModel: LearningPackModel = aDecoder.decodeObject() as LearningPackModel
+        self.id = learningPackModel.id
+        self.words = learningPackModel.words
+        super.init()
     }
 }
