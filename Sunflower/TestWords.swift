@@ -11,7 +11,9 @@ import UIKit
 class TestLearningPack: LearningPackModel {
     
     class func instance() -> LearningPackModel {
-        return LearningPackModel(id: TestLearningPackID, words: TestLearningPack.words())
+        var result = LearningPackModel(id: TestLearningPackID, words: TestLearningPack.words())
+        result.id = TestLearningPackID
+        return result
     }
     
     class func words() -> Array<Word> {
@@ -27,7 +29,6 @@ class TestLearningPack: LearningPackModel {
             ["name":"schaden","meaning":"schaden"],
             ["name":"freude","meaning":"joy"]
         ]
-        
         
         var result: [Word] = []
         for item: Dictionary<String, String> in rawWords {

@@ -8,50 +8,36 @@
 
 import Foundation
 
-var TestLearningPackID: String = "firstPackID"
+var TestLearningPackID: String = "TestLearningPack"
 
-protocol DocPersistanceController {
-    func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> ()
-    func saveLearningPack(learningPackModel: LearningPackModel, completionHandler: ((Bool)->())?)
-}
 
-class LearningPackPersController: DocPersistanceController {
-    var cloudDocPersController: CloudDocumentPersistantController
-    var localDocPersController: LocalDocsPersController
+
+class LearningPackPersController {
     
     var listOfAvialablePackIDs: [String] = [TestLearningPackID]
     
-    init() {
-        self.cloudDocPersController = CloudDocumentPersistantController()
-        self.localDocPersController = LocalDocsPersController()
-    }
-    
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
-        if contains(listOfAvialablePackIDs, id) {
-            self.localDocPersController.loadLearningPackWithID(id, completionHandler: completionHandler)
-            self.merge(id, completionHanler: nil)
+        if self.hasCashedModelForID(id) {
+            self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
-            assert(false, "file id is not avaiable")
+            completionHandler?(self.rawLearningPackWithID(id))
         }
     }
     
-    func saveLearningPack(learningPackModel: LearningPackModel, completionHandler: ((Bool)->())?) {
-        self.localDocPersController.saveLearningPack(learningPackModel, completionHandler: completionHandler)
-        self.cloudDocPersController.saveLearningPack(learningPackModel, completionHandler: nil)
+    func rawLearningPackWithID(id: String) -> LearningPackModel {
+        switch id {
+        case TestLearningPackID:
+            return TestLearningPack.instance()
+        default:
+            return TestLearningPack.instance()
+        }
     }
     
-    // #TODO: Move the merge function to the Model
-    func merge(id: String, completionHanler: ((Bool) -> ())?) {
-        self.localDocPersController.loadLearningPackWithID(id, completionHandler: { (localLearningPackModel: LearningPackModel) -> () in
-            var localLearningPackID: String = localLearningPackModel.id
-            self.cloudDocPersController.loadLearningPackWithID(localLearningPackID, completionHandler: { (cloudLearningPackModel: LearningPackModel) -> () in
-                if cloudLearningPackModel < localLearningPackModel {
-                    self.cloudDocPersController.saveLearningPack(localLearningPackModel, completionHanler?)
-                } else {
-                    self.localDocPersController.saveLearningPack(cloudLearningPackModel, completionHandler: completionHanler?)
-                }
-            })
-        })
+    func hasCashedModelForID(id: String) -> Bool {
+        return false
     }
+    
+    func loadLocalCachWithID(id: String, completionHandler: ((LearningPackModel)->())?) {
         
+    }
 }
