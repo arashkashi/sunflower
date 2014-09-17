@@ -8,14 +8,14 @@
 
 import Foundation
 
-var TestLearningPackI: String = "TestLearningPackI"
-var TestLearningPackII: String = "TestLearningPackII"
+var TestLearningPackIDI: String = "TestLearningPackI"
+var TestLearningPackIDII: String = "TestLearningPackII"
 
 
 
 class LearningPackPersController {
     
-    var listOfAvialablePackIDs: [String] = [TestLearningPackI, TestLearningPackII]
+    var listOfAvialablePackIDs: [String] = [TestLearningPackIDI, TestLearningPackIDII]
     var query: NSMetadataQuery?
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
@@ -28,10 +28,12 @@ class LearningPackPersController {
     
     func rawLearningPackWithID(id: String) -> LearningPackModel {
         switch id {
-        case TestLearningPackID:
-            return TestLearningPack.instance()
+        case TestLearningPackIDI:
+            return TestLearningPackI.instance()
+        case TestLearningPackIDII:
+            return TestLearningPackII.instance()
         default:
-            return TestLearningPack.instance()
+            return TestLearningPackI.instance()
         }
     }
     
@@ -44,25 +46,28 @@ class LearningPackPersController {
     }
     
     // #MARK : Query local and cloud documents
-    func queryListOfDocsInCloud() {
-        self.query = NSMetadataQuery()
-        self.query!.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cloudFileListReceived:", name:NSMetadataQueryDidFinishGatheringNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cloudFileListReceived:", name:NSMetadataQueryDidUpdateNotification, object: nil)
-        self.query!.startQuery()
-    }
-    
     func queryListOfDocsInLocal() -> [String]  {
         var result: [String] = []
         var localDocs = NSFileManager.defaultManager().contentsOfDirectoryAtPath(DocumentHelper.localDocumentDirectoryURL().path!, error: nil)
-        for document in localDocs as [String] {
-            result.append(document)
+
+        if let localDocuments = localDocs {
+            for document in localDocs! {
+                result.append(document as String)
+            }
         }
         return result
     }
     
-    func cloudFileListReceived() {
-        var queryResults = self.query!.results
-        assert(false, "pending implementation")
+    func cloudFileListReceived(notification: NSNotification) {
+//        var queryResults = self.query!.results
+//        assert(false, "pending implementation")
+    }
+    
+    func queryListOfDocsInCloud() {
+//        self.query = NSMetadataQuery()
+//        self.query!.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("cloudFileListReceived:"), name:NSMetadataQueryDidFinishGatheringNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("cloudFileListReceived:"), name:NSMetadataQueryDidUpdateNotification, object: nil)
+//        self.query!.startQuery()
     }
 }

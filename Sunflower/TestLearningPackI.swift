@@ -11,8 +11,8 @@ import UIKit
 class TestLearningPackI: LearningPackModel {
     
     class func instance() -> LearningPackModel {
-        var result = LearningPackModel(id: TestLearningPackI, words: TestLearningPackI.words())
-        result.id = TestLearningPackI
+        var result = LearningPackModel(id: TestLearningPackIDI, words: TestLearningPackI.words())
+        result.id = TestLearningPackIDI
         return result
     }
     

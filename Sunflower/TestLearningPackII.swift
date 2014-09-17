@@ -12,8 +12,8 @@ import Foundation
 class TestLearningPackII: LearningPackModel {
     
     class func instance() -> LearningPackModel {
-        var result = LearningPackModel(id: TestLearningPackII, words: TestLearningPackII.words())
-        result.id = TestLearningPackII
+        var result = LearningPackModel(id: TestLearningPackIDII, words: TestLearningPackII.words())
+        result.id = TestLearningPackIDII
         return result
     }
     

@@ -27,6 +27,7 @@
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* TestLearningPackI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestLearningPackI.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
+		41F83DB319CA155A00213C47 /* TestLearningPackII.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A81219C9E86700964C3D /* TestLearningPackII.swift */; };
 		D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A80D19C9A27000964C3D /* DocumentHelper.swift */; };
 		D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A80D19C9A27000964C3D /* DocumentHelper.swift */; };
 		D958A81319C9E86700964C3D /* TestLearningPackII.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A81219C9E86700964C3D /* TestLearningPackII.swift */; };
@@ -359,6 +360,7 @@
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
+				41F83DB319CA155A00213C47 /* TestLearningPackII.swift in Sources */,
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
