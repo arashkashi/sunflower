@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TestLearningPack: LearningPackModel {
+class TestLearningPackI: LearningPackModel {
     
     class func instance() -> LearningPackModel {
-        var result = LearningPackModel(id: TestLearningPackID, words: TestLearningPack.words())
-        result.id = TestLearningPackID
+        var result = LearningPackModel(id: TestLearningPackI, words: TestLearningPackI.words())
+        result.id = TestLearningPackI
         return result
     }
     

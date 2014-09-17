@@ -11,7 +11,7 @@ import Foundation
 
 class MainTestViewController : UIViewController {
     
-    var learnerController : LearnerController = LearnerController(learningPack: TestLearningPack(id: TestLearningPackID, words: TestLearningPack.words()))
+    var learnerController : LearnerController = LearnerController(learningPack: TestLearningPack(id: TestLearningPackI, words: TestLearningPack.words()))
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
     

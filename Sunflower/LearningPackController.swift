@@ -8,13 +8,14 @@
 
 import Foundation
 
-var TestLearningPackID: String = "TestLearningPack"
+var TestLearningPackI: String = "TestLearningPackI"
+var TestLearningPackII: String = "TestLearningPackII"
 
 
 
 class LearningPackPersController {
     
-    var listOfAvialablePackIDs: [String] = [TestLearningPackID]
+    var listOfAvialablePackIDs: [String] = [TestLearningPackI, TestLearningPackII]
     var query: NSMetadataQuery?
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
