@@ -15,6 +15,7 @@ var TestLearningPackID: String = "TestLearningPack"
 class LearningPackPersController {
     
     var listOfAvialablePackIDs: [String] = [TestLearningPackID]
+    var query: NSMetadataQuery?
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
         if self.hasCashedModelForID(id) {
@@ -43,11 +44,11 @@ class LearningPackPersController {
     
     // #MARK : Query local and cloud documents
     func queryListOfDocsInCloud() {
-        var query = NSMetadataQuery()
-        query.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
+        self.query = NSMetadataQuery()
+        self.query!.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cloudFileListReceived:", name:NSMetadataQueryDidFinishGatheringNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cloudFileListReceived:", name:NSMetadataQueryDidUpdateNotification, object: nil)
-        query.startQuery()
+        self.query!.startQuery()
     }
     
     func queryListOfDocsInLocal() -> [String]  {
