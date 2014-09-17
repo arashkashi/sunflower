@@ -8,6 +8,9 @@
 
 import UIKit
 
+let kWordsKey: String = "kWordsKey"
+let kIDKey: String = "kIDKey"
+
 
 class LearningPackModel : UIDocument, NSCoding  {
     var id: String
@@ -28,13 +31,13 @@ class LearningPackModel : UIDocument, NSCoding  {
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self)
+        aCoder.encodeObject(self.words, forKey: kWordsKey)
+        aCoder.encodeObject(self.id, forKey: kIDKey)
     }
     
     required init(coder aDecoder: NSCoder) {
-        var learningPackModel: LearningPackModel = aDecoder.decodeObject() as LearningPackModel
-        self.id = learningPackModel.id
-        self.words = learningPackModel.words
+        self.words = aDecoder.decodeObjectForKey(kWordsKey) as Array
+        self.id = aDecoder.decodeObjectForKey(kIDKey) as String
         super.init()
     }
 }
