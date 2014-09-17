@@ -30,10 +30,21 @@ class LearningPackModel : UIDocument, NSCoding  {
         super.init(fileURL: self.fileURL)
     }
     
+    // #MARK: Document Facade
     class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool) -> ())?) -> LearningPackModel {
         var result = LearningPackModel(id: id, words: words)
         result.saveToURL(result.fileURL, forSaveOperation: UIDocumentSaveOperation.ForCreating, completionHandler: completionHandlerForPersistance)
         return result
+    }
+    
+    class func open(id: String, completionHandler: ((Bool) -> Void)? ) {
+        var document = LearningPackModel(id: id, words: [])
+        document.openWithCompletionHandler(completionHandler)
+    }
+    
+    class func close(id: String,  completionHandler: ((Bool) -> Void)?) {
+        var document = LearningPackModel(id: id, words: [])
+        document.closeWithCompletionHandler(completionHandler)
     }
     
     // #MARK: UIDocument Overwrites
@@ -50,10 +61,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     override func contentsForType(typeName: String, error outError: NSErrorPointer) -> AnyObject? {
         return NSKeyedArchiver.archivedDataWithRootObject(self)
     }
-    
-    // #MARK: Helper
 
-    
     // #MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.words, forKey: kWordsKey)
