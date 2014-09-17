@@ -61,6 +61,7 @@ class LearningPackPersController {
     }
     
     func cloudFileListReceived() {
-        
+        var queryResults = self.query!.results
+        assert(false, "pending implementation")
     }
 }
