@@ -18,27 +18,33 @@ class LearningPackModel : UIDocument, NSCoding  {
     
     var localDocumentsDirectoryURL: NSURL?
     let fileExtension: String = "lwp";
+    override var fileURL: NSURL {
+        get {
+            var baseURL = self.localDocumentDirectoryURL()
+            return NSURL.URLWithString("id" +  self.fileExtension, relativeToURL: baseURL)
+        }
+    }
     
     
     init (id: String, words: [Word]) {
         self.id = id
         self.words = words
-        super.init(fileURL: DocumentHelper.localLearningPackURLWithID(id))
+        super.init(fileURL: self.fileURL)
     }
     
-    class func create(id: String, words: [Word]) {
+    class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool) -> ())?) -> LearningPackModel {
         var result = LearningPackModel(id: id, words: words)
-    }
-    
-    class func fileURL() -> NSURL {
-        var path = LearningPackModel.localDocumentDirectoryURL()
-        path.file
+        result.saveToURL(result.fileURL, forSaveOperation: UIDocumentSaveOperation.ForCreating, completionHandler: completionHandlerForPersistance)
+        return result
     }
     
     // #MARK: UIDocument Overwrites
     override func loadFromContents(contents: AnyObject, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
         var data: NSData = contents as NSData
         var loadedModel: LearningPackModel = NSKeyedUnarchiver.unarchiveObjectWithData(data) as LearningPackModel
+        
+        self.id = loadedModel.id
+        self.words = loadedModel.words
         
         return true
     }
@@ -48,7 +54,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     }
     
     // #MARK: Helper
-    class func localDocumentDirectoryURL() -> NSURL {
+    func localDocumentDirectoryURL() -> NSURL {
         if (self.localDocumentsDirectoryURL == nil) {
             var documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
             self.localDocumentsDirectoryURL = NSURL.fileURLWithPath(documentsDirectoryPath)
