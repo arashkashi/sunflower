@@ -16,15 +16,13 @@ class LearningPackModel : UIDocument, NSCoding  {
     var id: String
     var words: [Word]
     
-    var localDocumentsDirectoryURL: NSURL?
     let fileExtension: String = "lwp";
     override var fileURL: NSURL {
         get {
-            var baseURL = self.localDocumentDirectoryURL()
+            var baseURL = DocumentHelper.localDocumentDirectoryURL()
             return NSURL.URLWithString("id" +  self.fileExtension, relativeToURL: baseURL)
         }
     }
-    
     
     init (id: String, words: [Word]) {
         self.id = id
@@ -54,13 +52,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     }
     
     // #MARK: Helper
-    func localDocumentDirectoryURL() -> NSURL {
-        if (self.localDocumentsDirectoryURL == nil) {
-            var documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
-            self.localDocumentsDirectoryURL = NSURL.fileURLWithPath(documentsDirectoryPath)
-        }
-        return self.localDocumentsDirectoryURL!;
-    }
+
     
     // #MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {

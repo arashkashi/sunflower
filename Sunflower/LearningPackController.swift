@@ -40,4 +40,26 @@ class LearningPackPersController {
     func loadLocalCachWithID(id: String, completionHandler: ((LearningPackModel)->())?) {
         
     }
+    
+    // #MARK : Query local and cloud documents
+    func queryListOfDocsInCloud() {
+        var query = NSMetadataQuery()
+        query.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cloudFileListReceived:", name:NSMetadataQueryDidFinishGatheringNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cloudFileListReceived:", name:NSMetadataQueryDidUpdateNotification, object: nil)
+        query.startQuery()
+    }
+    
+    func queryListOfDocsInLocal() -> [String]  {
+        var result: [String] = []
+        var localDocs = NSFileManager.defaultManager().contentsOfDirectoryAtPath(DocumentHelper.localDocumentDirectoryURL().path!, error: nil)
+        for document in localDocs as [String] {
+            result.append(document)
+        }
+        return result
+    }
+    
+    func cloudFileListReceived() {
+        
+    }
 }
