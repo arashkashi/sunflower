@@ -8,9 +8,18 @@
 
 import Foundation
 
+let fileExtension: String = "lwp";
+
 class DocumentHelper {
+    
+    
     class func localDocumentDirectoryURL() -> NSURL? {
         var documentsDirectoryPath = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
         return documentsDirectoryPath
+    }
+    
+    class func cashURLForID(id: String) -> NSURL {
+        var baseURL = DocumentHelper.localDocumentDirectoryURL()
+        return NSURL.URLWithString("\(id)." + fileExtension, relativeToURL: baseURL)
     }
 }

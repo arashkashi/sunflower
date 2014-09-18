@@ -16,11 +16,9 @@ class LearningPackModel : UIDocument, NSCoding  {
     var id: String
     var words: [Word]
     
-    let fileExtension: String = "lwp";
     override var fileURL: NSURL {
         get {
-            var baseURL = DocumentHelper.localDocumentDirectoryURL()
-            return NSURL.URLWithString("\(self.id)." + self.fileExtension, relativeToURL: baseURL)
+            return DocumentHelper.cashURLForID(self.id)
         }
     }
     
