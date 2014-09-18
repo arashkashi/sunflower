@@ -48,13 +48,17 @@ class LearningPackPersController {
     // #MARK : Query local and cloud documents
     func queryListOfDocsInLocal() -> [String]  {
         var result: [String] = []
-        var localDocs = NSFileManager.defaultManager().contentsOfDirectoryAtPath(DocumentHelper.localDocumentDirectoryURL().path!, error: nil)
-
-        if let localDocuments = localDocs {
-            for document in localDocs! {
-                result.append(document as String)
+        var docURL: NSURL? = DocumentHelper.localDocumentDirectoryURL()
+        if docURL != nil {
+            var localDocs = NSFileManager.defaultManager().contentsOfDirectoryAtPath(docURL!.path!, error: nil)
+            
+            if localDocs != nil {
+                for document in localDocs! {
+                    result.append(document as String)
+                }
             }
         }
+        
         return result
     }
     

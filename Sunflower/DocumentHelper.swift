@@ -9,8 +9,8 @@
 import Foundation
 
 class DocumentHelper {
-    class func localDocumentDirectoryURL() -> NSURL {
-        var documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
-        return NSURL.fileURLWithPath(documentsDirectoryPath)!
+    class func localDocumentDirectoryURL() -> NSURL? {
+        var documentsDirectoryPath = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+        return documentsDirectoryPath
     }
 }
