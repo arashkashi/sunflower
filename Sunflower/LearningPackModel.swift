@@ -20,7 +20,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     override var fileURL: NSURL {
         get {
             var baseURL = DocumentHelper.localDocumentDirectoryURL()
-            return NSURL.URLWithString("id" +  self.fileExtension, relativeToURL: baseURL)
+            return NSURL.URLWithString("\(self.id)." + self.fileExtension, relativeToURL: baseURL)
         }
     }
     

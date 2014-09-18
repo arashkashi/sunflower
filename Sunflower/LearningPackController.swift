@@ -19,7 +19,7 @@ class LearningPackPersController {
     var query: NSMetadataQuery?
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
-        if self.hasCashedModelForID(id) {
+        if self.hasCashedPackForID(id) {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
             completionHandler?(self.rawLearningPackWithID(id))
@@ -37,7 +37,8 @@ class LearningPackPersController {
         }
     }
     
-    func hasCashedModelForID(id: String) -> Bool {
+    func hasCashedPackForID(id: String) -> Bool {
+        var listOfLocalDocs = self.queryListOfDocsInLocal()
         return false
     }
     

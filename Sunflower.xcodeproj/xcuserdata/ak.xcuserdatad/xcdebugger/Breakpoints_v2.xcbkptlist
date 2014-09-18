@@ -33,44 +33,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sunflower/LearningPackModel.swift"
-            timestampString = "432679177.83164"
+            filePath = "Sunflower/DocumentHelper.swift"
+            timestampString = "432711815.243609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "LearningPackModel"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sunflower.LearningPackModel.fileURL.getter : ObjectiveC.NSURL"
-                  moduleName = "Sunflower"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/LearningPackModel.swift"
-                  timestampString = "432711616.726033"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sunflower.LearningPackModel.fileURL.getter : ObjectiveC.NSURL"
-                  moduleName = "Sunflower"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/LearningPackModel.swift"
-                  timestampString = "432711616.72634"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "279">
-               </Location>
-            </Locations>
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "localDocumentDirectoryURL()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
