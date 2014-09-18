@@ -18,6 +18,13 @@ class LearningPackPersController {
     var listOfAvialablePackIDs: [String] = [TestLearningPackIDI, TestLearningPackIDII]
     var query: NSMetadataQuery?
     
+    class var sharedInstance : LearningPackPersController {
+    struct Static {
+        static let instance : LearningPackPersController = LearningPackPersController()
+        }
+        return Static.instance
+    }
+    
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
         if self.hasCashedPackForID(id) {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
