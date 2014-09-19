@@ -11,7 +11,8 @@ import Foundation
 
 class MainTestViewController : UIViewController {
     
-    var learnerController : LearnerController = LearnerController(learningPack: TestLearningPackI(id: TestLearningPackIDI, words: TestLearningPackI.words()))
+    var learnerController : LearnerController?
+
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
     
@@ -23,8 +24,14 @@ class MainTestViewController : UIViewController {
         learnNextWord()
     }
     
+    override func viewDidLoad() {
+        LearningPackPersController.sharedInstance.loadLearningPackWithID(TestLearningPackIDI, completionHandler: { (lpm: LearningPackModel) -> () in
+            self.learnerController = LearnerController(learningPack: lpm)
+        })
+    }
+    
     func learnNextWord() {
-        var next  = self.learnerController.nextWordToLearn()
+        var next  = self.learnerController!.nextWordToLearn()
         
         if next.word == nil {
             self.showNoMoreWordToLearn()
@@ -33,7 +40,7 @@ class MainTestViewController : UIViewController {
         } else {
             if var nextTest = next.word!.nextTest()? {
                 self.doTestTypeForWord(next.word!, testType: nextTest, result: { (testType: TestType, testResult: TestResult, word: Word) -> () in
-                    self.learnerController.onWordFinishedTestType(word, testType: testType, testResult: testResult)
+                    self.learnerController!.onWordFinishedTestType(word, testType: testType, testResult: testResult)
                     self.learnNextWord()
                 })
             } else {
@@ -88,7 +95,7 @@ class MainTestViewController : UIViewController {
         self.presentationViewController!.word = word
         self.presentationViewController!.completionHandler = {() -> ()
             
-            in self.learnerController.onWordFinishedPresentation(word)
+            in self.learnerController!.onWordFinishedPresentation(word)
             self.learnNextWord()
         }
         

@@ -25,7 +25,7 @@ class LearningPackPersController {
         return Static.instance
     }
     
-    func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) -> () {
+    func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) {
         if self.hasCashedPackForID(id) {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
