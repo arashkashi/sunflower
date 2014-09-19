@@ -9,7 +9,7 @@
 import Foundation
 
 let kName = "kName"
-let kMeaning = "kName"
+let kMeaning = "kMeaning"
 let kLearningStage = "kLeaningStage"
 let kLearningDueDate = "kLearningDueDate"
 let kShouldShowPresentation = "kShouldShowPresentation"
@@ -135,7 +135,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         aCoder.encodeObject(self.name, forKey: kName)
         aCoder.encodeObject(self.meaning, forKey: kMeaning)
         if let learningDue = self.learningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
-        aCoder.encodeObject(self.currentLearningStage.toInt(), forKey: kLearningStage)
+        aCoder.encodeInt32(self.currentLearningStage.toInt(), forKey: kLearningStage)
         aCoder.encodeObject(self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
         aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
     }

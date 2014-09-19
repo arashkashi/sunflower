@@ -35,9 +35,13 @@ class LearningPackModel : UIDocument, NSCoding  {
         return result
     }
     
-    class func open(id: String, completionHandler: ((Bool) -> Void)? ) {
+    class func open(id: String, completionHandler: ((LearningPackModel) -> ())? ) {
         var document = LearningPackModel(id: id, words: [])
-        document.openWithCompletionHandler(completionHandler)
+        document.openWithCompletionHandler { (finished: Bool) -> Void in
+            if finished {
+                completionHandler?(document)
+            }
+        }
     }
     
     class func close(id: String,  completionHandler: ((Bool) -> Void)?) {
@@ -69,6 +73,6 @@ class LearningPackModel : UIDocument, NSCoding  {
     required init(coder aDecoder: NSCoder) {
         self.words = aDecoder.decodeObjectForKey(kWordsKey) as Array
         self.id = aDecoder.decodeObjectForKey(kIDKey) as String
-        super.init()
+        super.init(fileURL: self.fileURL)
     }
 }

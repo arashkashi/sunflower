@@ -54,7 +54,7 @@ class LearningPackPersController {
     }
     
     func loadLocalCachWithID(id: String, completionHandler: ((LearningPackModel)->())?) {
-        
+        LearningPackModel.open(id, completionHandler: completionHandler)
     }
     
     // #MARK : Query local and cloud documents

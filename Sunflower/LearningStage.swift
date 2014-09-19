@@ -50,7 +50,7 @@ enum LearningStage: Int32 {
         }
     }
     
-    func toInt () -> Int {
+    func toInt () -> Int32 {
         switch self {
         case .Cram:
             return 1
