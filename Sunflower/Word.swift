@@ -110,21 +110,22 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     }
     
     func isFinishedAllTestsForCurrentStage() -> Bool {
-        for requiredTestType in Test.testSetForLearningStage(self.currentLearningStage) {
-            // FIXME: Uncomment
-//            if contains(self.testsSuccessfulyDoneForCurrentStage, requiredTestType) {
-//                return false
-//            }
-        }
-        return true
+        return self.nextTest() == nil
     }
     
     func nextTest() -> Test? {
-        for test in Test.testSetForLearningStage(self.currentLearningStage) {
+        for testToBeDone in Test.testSetForLearningStage(self.currentLearningStage) {
              // FIXME: Uncomment
-//            if !contains(self.testsSuccessfulyDoneForCurrentStage, test) {
-//                return test
-//            }
+            var isDone: Bool = false
+            for testDone in self.testsSuccessfulyDoneForCurrentStage {
+                if testToBeDone == testDone {
+                    isDone = true
+                }
+            }
+            
+            if !isDone {
+                return testToBeDone
+            }
         }
         return nil
     }
