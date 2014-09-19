@@ -43,7 +43,7 @@ func < (lhs: Word, rhs: Word) -> Bool {
     return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
-class Word : Equatable, Printable, DebugPrintable, NSCoding {
+class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     var name: String
     var meaning: String
     var currentLearningStage: LearningStage = LearningStage.Cram
@@ -51,8 +51,8 @@ class Word : Equatable, Printable, DebugPrintable, NSCoding {
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [Test] = []
     
-    var description: String { get {return self.name}}
-    var debugDescription: String { get {return self.name}}
+    override var description: String { get {return self.name}}
+    override var debugDescription: String { get {return self.name}}
     
     init (name: String, meaning: String) {
         self.name = name
@@ -144,6 +144,7 @@ class Word : Equatable, Printable, DebugPrintable, NSCoding {
         self.meaning = aDecoder.decodeObjectForKey(kMeaning) as String
         self.learningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate)? as? NSDate
         self.currentLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kLearningStage) as Int32)
-        
+        self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as [Test]
+        self.shouldShowWordPresentation = aDecoder.decodeBoolForKey(kShouldShowPresentation)
     }
 }

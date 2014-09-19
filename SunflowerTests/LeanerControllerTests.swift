@@ -39,7 +39,7 @@ class LeanerControllerTests: XCTestCase {
     
     // First word passes the first test 1 (ROOT)-(o)
     func testWordFirstTestPass() {
-        var result = self.firstWordDoneWithFirstTestAndResult(TestResult.Pass, theTestTypeOrder: 0)
+        var result = self.firstWordDoneWithFirstTestAndResult(TestResult.Pass)
         
         XCTAssert(result.word.testsSuccessfulyDoneForCurrentStage.count == 1, "word has passed one test and knows about it")
         XCTAssert(result.word.testsSuccessfulyDoneForCurrentStage[0] == result.testType, "it should be correct test type")
@@ -47,7 +47,7 @@ class LeanerControllerTests: XCTestCase {
     
     // First word fails the first test 1 (o)-(ROOT)
     func testWordFirstTestFail() {
-        var result = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail, theTestTypeOrder: 0)
+        var result = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail)
         
         XCTAssert(result.word.testsSuccessfulyDoneForCurrentStage.count == 0, "successful matrix should be clear")
         XCTAssert(result.word.shouldShowWordPresentation, "should show the presentation layer")
@@ -57,7 +57,7 @@ class LeanerControllerTests: XCTestCase {
     // First word fails the first test 1 (o)-(ROOT)
     // When the first word fails a test, the next word should be the same word but with presentation
     func testNextWordAfterFirstTestForFirstWordFailed() {
-        var firstFailedTestWord = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail, theTestTypeOrder: 0)
+        var firstFailedTestWord = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail)
         var secondWord = self.giveMeNextWord()
         
         XCTAssert(firstFailedTestWord.word == secondWord, "when a word fails a test, next word is the same with presentation")
@@ -65,7 +65,7 @@ class LeanerControllerTests: XCTestCase {
     
     // First word finishes showing the presentation layer 2 (1-ROOT)
     func testOnFirstWordFinishedShowingPresentation() {
-        var firstFailedTestWord = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail, theTestTypeOrder: 0)
+        var firstFailedTestWord = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail)
         self.learnerController.onWordFinishedPresentation(firstFailedTestWord.word)
         
         XCTAssert(firstFailedTestWord.word.shouldShowWordPresentation == false, "the should show presentation flag should be reset")
@@ -73,7 +73,7 @@ class LeanerControllerTests: XCTestCase {
     
     // First word finishes showing the presentation after failing a test once layer 2 (1-ROOT)
     func testOnWordAfterFirstWordFinishedShowingPresentation() {
-        var firstFailedTestWord = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail, theTestTypeOrder: 0)
+        var firstFailedTestWord = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail)
         var nextWord = self.giveMeNextWord()
         self.learnerController.onWordFinishedPresentation(nextWord!)
         nextWord = self.giveMeNextWord()
@@ -125,9 +125,9 @@ class LeanerControllerTests: XCTestCase {
         return result.word
     }
     
-    func firstWordDoneWithFirstTestAndResult(testResult: TestResult, theTestTypeOrder: Int) -> (word: Word, testType: Test) {
+    func firstWordDoneWithFirstTestAndResult(testResult: TestResult) -> (word: Word, testType: Test) {
         var firstWordToLearn = self.giveMeNextWord()
-        var theTest = Test.testSetForLearningStage(firstWordToLearn!.currentLearningStage)[theTestTypeOrder]
+        var theTest: Test = firstWordToLearn!.nextTest()!
         self.learnerController.onWordFinishedTestType(firstWordToLearn!, test: theTest, testResult: testResult)
         
         return (firstWordToLearn!, theTest)
