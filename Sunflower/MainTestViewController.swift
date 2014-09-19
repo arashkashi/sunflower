@@ -18,6 +18,7 @@ class MainTestViewController : UIViewController {
     
     @IBOutlet var testContentView: UIView!
     @IBOutlet var labelLearningStage: UILabel!
+    @IBOutlet var viewLoadingOverlay: UIView!
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
@@ -25,11 +26,22 @@ class MainTestViewController : UIViewController {
     }
     
     override func viewDidLoad() {
+        self.initLeanerController()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+    }
+    
+    // #MARK: Initiation
+    func initLeanerController() {
+        self.showLoadingOverlay()
         LearningPackPersController.sharedInstance.loadLearningPackWithID(TestLearningPackIDI, completionHandler: { (lpm: LearningPackModel) -> () in
             self.learnerController = LearnerController(learningPack: lpm)
+            self.hideLoadingOverlay()
         })
     }
     
+    // #MARK: Learning logic
     func learnNextWord() {
         var next  = self.learnerController!.nextWordToLearn()
         
@@ -59,6 +71,41 @@ class MainTestViewController : UIViewController {
             }) { (isFinished: Bool) -> Void in }
     }
     
+    // #MARK: View manipulation 
+    func showNoMoreWordToLearn() {
+        
+    }
+    
+    func showPresentationView(word: Word) {
+        self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
+        self.presentationViewController!.word = word
+        self.presentationViewController!.completionHandler = {() -> ()
+            
+            in self.learnerController!.onWordFinishedPresentation(word)
+            self.learnNextWord()
+        }
+        
+        self.labelLearningStage.text = word.currentLearningStage.toString()
+        
+        UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
+            for item in self.testContentView.subviews {
+                var subview: UIView = item as UIView
+                subview.removeFromSuperview()
+            }
+            self.testContentView.addSubview(self.presentationViewController!.view)
+            }) { (isFinished: Bool) -> Void in
+                // Finished Code
+        }
+    }
+    
+    func showLoadingOverlay() {
+        self.viewLoadingOverlay.hidden = false
+    }
+    
+    func hideLoadingOverlay() {
+        self.viewLoadingOverlay.hidden = true
+    }
+    
     //MARK: Helper
     func cleanTestContentView() {
         for item in self.testContentView.subviews {
@@ -83,32 +130,6 @@ class MainTestViewController : UIViewController {
             return Test2ViewController(nibName: "Test2View", bundle: NSBundle.mainBundle())
         default:
             return Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
-        }
-    }
-    
-    func showNoMoreWordToLearn() {
-
-    }
-    
-    func showPresentationView(word: Word) {
-        self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
-        self.presentationViewController!.word = word
-        self.presentationViewController!.completionHandler = {() -> ()
-            
-            in self.learnerController!.onWordFinishedPresentation(word)
-            self.learnNextWord()
-        }
-        
-        self.labelLearningStage.text = word.currentLearningStage.toString()
-        
-        UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
-            for item in self.testContentView.subviews {
-                var subview: UIView = item as UIView
-                subview.removeFromSuperview()
-            }
-            self.testContentView.addSubview(self.presentationViewController!.view)
-            }) { (isFinished: Bool) -> Void in
-                // Finished Code
         }
     }
 }
