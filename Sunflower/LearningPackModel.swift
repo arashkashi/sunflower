@@ -8,8 +8,8 @@
 
 import UIKit
 
-let kWordsKey: String = "kWordsKey"
-let kIDKey: String = "kIDKey"
+let kWordsKey: String = "kWords"
+let kIDKey: String = "kID"
 
 
 class LearningPackModel : UIDocument, NSCoding  {

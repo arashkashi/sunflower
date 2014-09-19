@@ -8,6 +8,13 @@
 
 import Foundation
 
+let kName = "kName"
+let kMeaning = "kName"
+let kLearningStage = "kLeaningStage"
+let kLearningDueDate = "kLearningDueDate"
+let kShouldShowPresentation = "kShouldShowPresentation"
+let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
+
 func == (lhs: Word, rhs: Word) -> Bool {
     return lhs.name == rhs.name
 }
@@ -36,7 +43,7 @@ func < (lhs: Word, rhs: Word) -> Bool {
     return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
-class Word : Equatable, Printable, DebugPrintable {
+class Word : Equatable, Printable, DebugPrintable, NSCoding {
     var name: String
     var meaning: String
     var currentLearningStage: LearningStage = LearningStage.Cram
@@ -118,5 +125,25 @@ class Word : Equatable, Printable, DebugPrintable {
             }
         }
         return nil
+    }
+    
+    // MARK: NSCoding
+    func encodeWithCoder(aCoder: NSCoder) {
+//        var name: String
+//        var meaning: String
+//        var currentLearningStage: LearningStage = LearningStage.Cram
+//        var learningDueDate: NSDate?
+//        var shouldShowWordPresentation: Bool = true
+//        var testsSuccessfulyDoneForCurrentStage: [TestType] = []
+        aCoder.encodeObject(self.name, forKey: kName)
+        aCoder.encodeObject(self.meaning, forKey: kMeaning)
+        if let learningDue = self.learningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
+        aCoder.encodeObject(self.currentLearningStage.toInt(), forKey: kLearningStage)
+        aCoder.encodeValueOfObjCType(<#type: UnsafePointer<Int8>#>, at: <#UnsafePointer<Void>#>) (self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
+        aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        //
     }
 }

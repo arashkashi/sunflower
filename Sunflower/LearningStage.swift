@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum LearningStage: Int8 {
+enum LearningStage: Int32 {
     case Cram = 1
     case Learn
     case Relearn
@@ -44,6 +44,38 @@ enum LearningStage: Int8 {
         case .Young:
             self = Relearn
         case .Mature:
+            self = Young
+        default:
+            self = Cram
+        }
+    }
+    
+    func toInt () -> Int {
+        switch self {
+        case .Cram:
+            return 1
+        case .Learn:
+            return 2
+        case .Relearn:
+            return 3
+        case .Young:
+            return 4
+        case .Mature:
+            return 5
+        }
+    }
+    
+    mutating func fromInt(int: Int) {
+        switch int {
+        case 1:
+            self = Cram
+        case 2:
+            self = Cram
+        case 3:
+            self = Learn
+        case 4:
+            self = Relearn
+        case 5:
             self = Young
         default:
             self = Cram
