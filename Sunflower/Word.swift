@@ -49,7 +49,7 @@ class Word : Equatable, Printable, DebugPrintable, NSCoding {
     var currentLearningStage: LearningStage = LearningStage.Cram
     var learningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
-    var testsSuccessfulyDoneForCurrentStage: [TestType] = []
+    var testsSuccessfulyDoneForCurrentStage: [Test] = []
     
     var description: String { get {return self.name}}
     var debugDescription: String { get {return self.name}}
@@ -59,9 +59,9 @@ class Word : Equatable, Printable, DebugPrintable, NSCoding {
         self.meaning = meaning
     }
     
-    func onWordFinishedTest(testType: TestType, testResult: TestResult) {
+    func onWordFinishedTest(test: Test, testResult: TestResult) {
         if testResult == TestResult.Pass {
-            self.testsSuccessfulyDoneForCurrentStage.append(testType)
+            self.testsSuccessfulyDoneForCurrentStage.append(test)
         } else {
             self.testsSuccessfulyDoneForCurrentStage.removeAll(keepCapacity: false)
             self.currentLearningStage.decrement()
@@ -139,7 +139,7 @@ class Word : Equatable, Printable, DebugPrintable, NSCoding {
         aCoder.encodeObject(self.meaning, forKey: kMeaning)
         if let learningDue = self.learningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
         aCoder.encodeObject(self.currentLearningStage.toInt(), forKey: kLearningStage)
-        aCoder.encodeValueOfObjCType(<#type: UnsafePointer<Int8>#>, at: <#UnsafePointer<Void>#>) (self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
+//        aCoder.encode (self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
         aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
     }
     
