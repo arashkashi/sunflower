@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TestType: Int {
+enum TestType: Int32 {
     case Test1 = 1
     case Test2 = 2
     case Test3 = 3
@@ -31,7 +31,7 @@ enum TestType: Int {
         }
     }
     
-    func typeWithInt(intInput: Int) -> TestType {
+    static func initWithInt(intInput: Int32) -> TestType {
         switch intInput {
         case 1:
             return .Test1
@@ -66,18 +66,18 @@ class Test: NSCoding {
         self.type = testType
     }
     
-    class func testSetForLearningStage(learningStage: LearningStage) -> [TestType] {
+    class func testSetForLearningStage(learningStage: LearningStage) -> [Test] {
         switch learningStage {
         case LearningStage.Cram:
-            return [TestType.Test1, TestType.Test2]
+            return [Test(testType: .Test1), Test(testType: .Test2)]
         case LearningStage.Learn:
-            return [TestType.Test1, TestType.Test2]
+            return [Test(testType: .Test1), Test(testType: .Test2)]
         case LearningStage.Relearn:
-            return [TestType.Test2, TestType.Test3]
+            return [Test(testType: .Test2), Test(testType: .Test3)]
         case LearningStage.Young:
-            return [TestType.Test2, TestType.Test3]
+            return [Test(testType: .Test2), Test(testType: .Test3)]
         case LearningStage.Mature:
-            return [TestType.Test2, TestType.Test3]
+            return [Test(testType: .Test2), Test(testType: .Test3)]
         }
     }
     
@@ -86,6 +86,6 @@ class Test: NSCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.type = aDecoder.decodeInt32ForKey(kTestType)
+        self.type = TestType.initWithInt(aDecoder.decodeInt32ForKey(kTestType))
     }
 }

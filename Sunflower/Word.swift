@@ -111,39 +111,39 @@ class Word : Equatable, Printable, DebugPrintable, NSCoding {
     
     func isFinishedAllTestsForCurrentStage() -> Bool {
         for requiredTestType in Test.testSetForLearningStage(self.currentLearningStage) {
-            if !contains(self.testsSuccessfulyDoneForCurrentStage, requiredTestType) {
-                return false
-            }
+            // FIXME: Uncomment
+//            if contains(self.testsSuccessfulyDoneForCurrentStage, requiredTestType) {
+//                return false
+//            }
         }
         return true
     }
     
-    func nextTest() -> TestType? {
-        for testType in Test.testSetForLearningStage(self.currentLearningStage) {
-            if !contains(self.testsSuccessfulyDoneForCurrentStage, testType) {
-                return testType
-            }
+    func nextTest() -> Test? {
+        for test in Test.testSetForLearningStage(self.currentLearningStage) {
+             // FIXME: Uncomment
+//            if !contains(self.testsSuccessfulyDoneForCurrentStage, test) {
+//                return test
+//            }
         }
         return nil
     }
     
     // MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
-//        var name: String
-//        var meaning: String
-//        var currentLearningStage: LearningStage = LearningStage.Cram
-//        var learningDueDate: NSDate?
-//        var shouldShowWordPresentation: Bool = true
-//        var testsSuccessfulyDoneForCurrentStage: [TestType] = []
         aCoder.encodeObject(self.name, forKey: kName)
         aCoder.encodeObject(self.meaning, forKey: kMeaning)
         if let learningDue = self.learningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
         aCoder.encodeObject(self.currentLearningStage.toInt(), forKey: kLearningStage)
-//        aCoder.encode (self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
+        aCoder.encodeObject(self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
         aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
     }
     
     required init(coder aDecoder: NSCoder) {
-        //
+        self.name = aDecoder.decodeObjectForKey(kName) as String
+        self.meaning = aDecoder.decodeObjectForKey(kMeaning) as String
+        self.learningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate)? as? NSDate
+        self.currentLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kLearningStage) as Int32)
+        
     }
 }

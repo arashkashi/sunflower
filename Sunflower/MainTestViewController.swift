@@ -51,8 +51,8 @@ class MainTestViewController : UIViewController {
             self.showPresentationView(next.word!)
         } else {
             if var nextTest = next.word!.nextTest()? {
-                self.doTestTypeForWord(next.word!, testType: nextTest, result: { (testType: TestType, testResult: TestResult, word: Word) -> () in
-                    self.learnerController!.onWordFinishedTestType(word, testType: testType, testResult: testResult)
+                self.doTestTypeForWord(next.word!, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
+                    self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
                     self.learnNextWord()
                 })
             } else {
@@ -61,8 +61,8 @@ class MainTestViewController : UIViewController {
         }
     }
     
-    func doTestTypeForWord(word: Word, testType: TestType, result: (TestType, TestResult, Word) -> ()) {
-        self.testViewController = self.testSubViewController(testType, word: word, completionHandler: result)
+    func doTestTypeForWord(word: Word, test: Test, result: (Test, TestResult, Word) -> ()) {
+        self.testViewController = self.testSubViewController(test, word: word, completionHandler: result)
         self.labelLearningStage.text = word.currentLearningStage.toString()
         
         UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
@@ -114,16 +114,16 @@ class MainTestViewController : UIViewController {
         }
     }
     
-    func testSubViewController(testType: TestType, word: Word, completionHandler: ((TestType, TestResult, Word) -> ())) -> TestBaseViewController {
-        var testViewController = self.viewControllerForTestType(testType)
+    func testSubViewController(test: Test, word: Word, completionHandler: ((Test, TestResult, Word) -> ())) -> TestBaseViewController {
+        var testViewController = self.viewControllerForTestType(test)
         testViewController.word = word
-        testViewController.testType = testType
+        testViewController.test = test
         testViewController.completionHandler = completionHandler
         return testViewController
     }
     
-    func viewControllerForTestType(testType: TestType) -> TestBaseViewController {
-        switch testType {
+    func viewControllerForTestType(test: Test) -> TestBaseViewController {
+        switch test.type {
         case TestType.Test1:
             return Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
         case TestType.Test2:

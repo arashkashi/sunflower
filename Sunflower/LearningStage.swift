@@ -65,20 +65,21 @@ enum LearningStage: Int32 {
         }
     }
     
-    mutating func fromInt(int: Int) {
-        switch int {
+    static func initWithInt(intInput: Int32) -> LearningStage {
+        switch intInput {
         case 1:
-            self = Cram
+            return .Cram
         case 2:
-            self = Cram
+            return .Learn
         case 3:
-            self = Learn
+            return .Relearn
         case 4:
-            self = Relearn
+            return .Young
         case 5:
-            self = Young
+            return .Mature
         default:
-            self = Cram
+            assert(false, "type is not supported")
+            return .Cram
         }
     }
     

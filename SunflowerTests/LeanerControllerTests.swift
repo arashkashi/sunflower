@@ -101,8 +101,8 @@ class LeanerControllerTests: XCTestCase {
         for index in 1...Test.testSetForLearningStage(LearningStage.Cram).count {
             for _ in 1...self.learnerController.queueSize {
                 var nextWord = self.giveMeNextWord()
-                var nextTestType = nextWord?.nextTest()
-                self.learnerController.onWordFinishedTestType(nextWord!, testType: nextTestType!, testResult: TestResult.Pass)
+                var nextTest = nextWord?.nextTest()
+                self.learnerController.onWordFinishedTestType(nextWord!, test: nextTest!, testResult: TestResult.Pass)
                 XCTAssert(self.learnerController.currentLearningQueue.count == self.learnerController.queueSize, "the current queue: \(self.learnerController.currentLearningQueue.count) queue limit size \(self.learnerController.queueSize)")
                 self.checkDataConsistency()
             }
@@ -125,12 +125,12 @@ class LeanerControllerTests: XCTestCase {
         return result.word
     }
     
-    func firstWordDoneWithFirstTestAndResult(testResult: TestResult, theTestTypeOrder: Int) -> (word: Word, testType: TestType) {
+    func firstWordDoneWithFirstTestAndResult(testResult: TestResult, theTestTypeOrder: Int) -> (word: Word, testType: Test) {
         var firstWordToLearn = self.giveMeNextWord()
-        var theTestType = Test.testSetForLearningStage(firstWordToLearn!.currentLearningStage)[theTestTypeOrder]
-        self.learnerController.onWordFinishedTestType(firstWordToLearn!, testType: theTestType, testResult: testResult)
+        var theTest = Test.testSetForLearningStage(firstWordToLearn!.currentLearningStage)[theTestTypeOrder]
+        self.learnerController.onWordFinishedTestType(firstWordToLearn!, test: theTest, testResult: testResult)
         
-        return (firstWordToLearn!, theTestType)
+        return (firstWordToLearn!, theTest)
     }
 
     // #MARK: Performace

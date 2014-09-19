@@ -23,19 +23,19 @@ class WordTests: XCTestCase {
     
     func testNextTestAtCram() {
         var word = Word(name: "kann", meaning: "can")
-        word.testsSuccessfulyDoneForCurrentStage = [TestType.Test1]
+        word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test1)]
         
-        XCTAssert(word.nextTest() == TestType.Test2, " the next test should be test 1")
+        XCTAssert(word.nextTest()! == Test(testType: .Test2), " the next test should be test 1")
     }
     
     func testNextTestAtYoung() {
         var word = Word(name: "kann", meaning: "can")
         word.currentLearningStage = LearningStage.Young
-        word.testsSuccessfulyDoneForCurrentStage = [TestType.Test2]
+        word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test2)]
         
-        XCTAssert(word.nextTest() == TestType.Test3, " the next test should be test 3")
+        XCTAssert(word.nextTest()! == Test(testType: .Test3), " the next test should be test 3")
         
-        word.testsSuccessfulyDoneForCurrentStage = [TestType.Test2, TestType.Test3]
+        word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test2), Test(testType: .Test3)]
         XCTAssert(word.nextTest() == nil, "there is no test left")
     }
     

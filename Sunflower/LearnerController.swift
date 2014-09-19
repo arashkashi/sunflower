@@ -149,8 +149,8 @@ class LearnerController {
     }
     
     //MARK: Events
-    func onWordFinishedTestType(word: Word, testType: TestType, testResult: TestResult) {
-        word.onWordFinishedTest(testType, testResult: testResult)
+    func onWordFinishedTestType(word: Word, test: Test, testResult: TestResult) {
+        word.onWordFinishedTest(test, testResult: testResult)
         
         if word.isFinishedAllTestsForCurrentStage() {
             self.onWordSuccesssfullyFinishedAllTestsInLearningStage(word)
