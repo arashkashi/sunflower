@@ -22,7 +22,6 @@ class MainTestViewController : UIViewController {
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
-        learnNextWord()
     }
     
     override func viewDidLoad() {
@@ -38,6 +37,7 @@ class MainTestViewController : UIViewController {
         LearningPackPersController.sharedInstance.loadLearningPackWithID(TestLearningPackIDI, completionHandler: { (lpm: LearningPackModel) -> () in
             self.learnerController = LearnerController(learningPack: lpm)
             self.hideLoadingOverlay()
+            self.learnNextWord()
         })
     }
     

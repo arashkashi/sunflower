@@ -50,7 +50,7 @@ class LearningPackPersController {
     
     func hasCashedPackForID(id: String) -> Bool {
         var listOfLocalDocs = self.queryListOfDocsInLocal()
-        return false
+        return listOfLocalDocs.count > 0
     }
     
     func loadLocalCachWithID(id: String, completionHandler: ((LearningPackModel)->())?) {
