@@ -47,8 +47,6 @@ class MainTestViewController : UIViewController {
     func learnNextWord() {
         var next  = self.learnerController!.nextWordToLearn()
         
-        LearnerController.printWord(next.word)
-        
         if next.word == nil {
             self.showNoMoreWordToLearn()
             self.updateLabelPackProgress()

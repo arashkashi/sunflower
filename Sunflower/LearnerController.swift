@@ -33,6 +33,8 @@ class LearnerController {
         // If words in future are due now, move them to the due now list
         self.moveToDueNowFromFutureListIfApplicable()
         
+        LearnerController.printListOfWords(self.currentLearningQueue)
+        
         // If the current queue has a word which has a learning due date in future, 
         // instead of putting it in the button of the list, put it into the future list
         // and its place, put an item from the due now list and then take one word from
@@ -178,6 +180,7 @@ class LearnerController {
             println("Name: \(printedWord.name)")
             println("Learning Due Date:\(printedWord.relearningDueDate)")
             println("Next Test Type: \(printedWord.nextTest()?.type.toString())")
+            println("Learning Stage: \(word?.currentLearningStage.toString())")
             println("Tests done:")
             for test in printedWord.testsSuccessfulyDoneForCurrentStage {
                 println("\t \(test.type.toString())")

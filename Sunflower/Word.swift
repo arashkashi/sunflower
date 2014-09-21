@@ -109,7 +109,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         case LearningStage.Cram:
             return NSDate().dateByAddingTimeInterval(60)            // 1 minute
         case LearningStage.Learn:
-            return NSDate().dateByAddingTimeInterval(20 * 60)       // 20 minute
+            return NSDate().dateByAddingTimeInterval(2 * 60)       // 20 minute
         case LearningStage.Relearn:
             return NSDate().dateByAddingTimeInterval(60 * 60)       // 60 minute
         case LearningStage.Young:
