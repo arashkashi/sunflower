@@ -141,9 +141,21 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObjectForKey(kName) as String
-        self.meaning = aDecoder.decodeObjectForKey(kMeaning) as String
-        self.learningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate)? as? NSDate
+        if let name = aDecoder.decodeObjectForKey(kName) as? NSString {
+            self.name = name as String
+        } else {
+            assert(false, "ERROR: could not decode")
+            self.name = "ERROR"
+        }
+        
+        if let meaning = aDecoder.decodeObjectForKey(kMeaning) as? NSString {
+            self.meaning = meaning as String
+        } else {
+            assert(false, "ERROR: could not decode")
+            self.meaning = "ERROR"
+        }
+        
+        self.learningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate) as? NSDate
         self.currentLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kLearningStage) as Int32)
         self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as [Test]
         self.shouldShowWordPresentation = aDecoder.decodeBoolForKey(kShouldShowPresentation)

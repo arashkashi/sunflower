@@ -41,6 +41,36 @@
             endingLineNumber = "13"
             landmarkName = "localDocumentDirectoryURL()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sunflower.DocumentHelper.deinit"
+                  moduleName = "Sunflower"
+                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
+                  timestampString = "432978504.6549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sunflower.DocumentHelper.__deallocating_deinit"
+                  moduleName = "Sunflower"
+                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
+                  timestampString = "432978504.655302"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
