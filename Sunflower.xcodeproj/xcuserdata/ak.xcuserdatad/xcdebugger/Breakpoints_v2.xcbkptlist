@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SunflowerTests/LeanerControllerTests.swift"
-            timestampString = "431824050.70826"
+            timestampString = "433023225.090882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289">
+            startingLineNumber = "293"
+            endingLineNumber = "293">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -49,7 +49,7 @@
                   symbolName = "Sunflower.DocumentHelper.deinit"
                   moduleName = "Sunflower"
                   urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "433000240.048847"
+                  timestampString = "433023326.995539"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -63,7 +63,7 @@
                   symbolName = "Sunflower.DocumentHelper.__deallocating_deinit"
                   moduleName = "Sunflower"
                   urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "433000240.049169"
+                  timestampString = "433023326.995921"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -71,6 +71,22 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SunflowerTests/LeanerControllerTests.swift"
+            timestampString = "433023225.090882"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "testPassAllTests()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

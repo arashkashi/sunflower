@@ -170,4 +170,27 @@ class LearnerController {
     func onWordFinishedPresentation(word: Word) {
         word.onWordFinihsedPresentation()
     }
+    
+    // MARK: Helper
+    class func printWord(word: Word?, index: Int = 0) {
+        if let printedWord = word {
+            println("\(index)---------------------------")
+            println("Name: \(printedWord.name)")
+            println("Learning Due Date:\(printedWord.relearningDueDate)")
+            println("Next Test Type: \(printedWord.nextTest()?.type.toString())")
+            println("Tests done:")
+            for test in printedWord.testsSuccessfulyDoneForCurrentStage {
+                println("\t \(test.type.toString())")
+            }
+        } else {
+            println("THE GIVEN WORD IN NIL")
+        }
+        println("----------------------------------------")
+    }
+    
+    class func printListOfWords(words: [Word]) {
+        for (index, word) in enumerate(words) {
+            LearnerController.printWord(word, index: index)
+        }
+    }
 }

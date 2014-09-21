@@ -47,25 +47,27 @@ class MainTestViewController : UIViewController {
     func learnNextWord() {
         var next  = self.learnerController!.nextWordToLearn()
         
+        LearnerController.printWord(next.word)
+        
         if next.word == nil {
             self.showNoMoreWordToLearn()
+            self.updateLabelPackProgress()
             return
         } else if next.word!.shouldShowWordPresentation {
             self.showPresentationView(next.word!)
         } else {
             if var nextTest = next.word!.nextTest()? {
+                self.updateUI(next.word!)
                 self.doTestTypeForWord(next.word!, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
-                    self.updateUI(word, completionHandler: { () -> Void in
-                        self.learnNextWord()
-                    })
+                    self.learnNextWord()
                 })
             } else {
                 self.learnNextWord()
             }
         }
         
-        self.updateUI(next.word!, completionHandler:nil)
+
     }
     
     func doTestTypeForWord(word: Word, test: Test, result: (Test, TestResult, Word) -> ()) {
@@ -80,12 +82,13 @@ class MainTestViewController : UIViewController {
     }
     
     // #MARK: View manipulation
-    func updateUI(word: Word, completionHandler:(() -> Void)?) {
+    func updateUI(word: Word) {
         self.updateLabelLearningStage(word)
-        
-        if let block = completionHandler? {
-            dispatch_after(1, dispatch_get_main_queue(), block)
-        }
+        self.updateLabelPackProgress()
+    }
+    
+    func updateLabelPackProgress() {
+        self.labelPackProgress.text = "Pack Progress (\(self.learnerController!.wordsDueInFuture.count)/\(self.learnerController!.words.count))"
     }
     
     func updateLabelLearningStage(word: Word) {

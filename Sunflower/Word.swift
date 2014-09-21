@@ -97,6 +97,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     func onWordSuccessfullyFinishedAllTests() {
         self.currentLearningStage.increment()
         self.relearningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
+        self.testsSuccessfulyDoneForCurrentStage.removeAll(keepCapacity: false)
     }
     
     func onWordFinihsedPresentation() {

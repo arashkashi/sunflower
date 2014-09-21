@@ -109,6 +109,21 @@ class LeanerControllerTests: XCTestCase {
         }
     }
     
+    func testPassAllTests() {
+        while (true) {
+            var nextWord = self.giveMeNextWord()
+            
+            if nextWord == nil {
+                XCTAssert(self.learnerController.wordsDueInFuture.count == self.learnerController.words.count, "all words should be in the future list")
+                LearnerController.printListOfWords(self.learnerController.wordsDueInFuture)
+                LearnerController.printListOfWords(self.learnerController.words)
+                return
+            } else if var nextTest = nextWord?.nextTest() {
+                self.learnerController.onWordFinishedTestType(nextWord!, test: nextTest, testResult: .Pass)
+            }
+        }
+    }
+    
     // #MARK: Helpers
     func printall(list: [Word]) {
         for item in list {

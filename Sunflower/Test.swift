@@ -31,6 +31,22 @@ enum TestType: Int32 {
         }
     }
     
+    func toString() -> String {
+        switch self {
+        case .Test1:
+            return "Test1"
+        case .Test2:
+            return "Test2"
+        case .Test3:
+            return "Test3"
+        case .Test4:
+            return "Test4"
+        default:
+            assert(false, "not supperted")
+            return "Test0"
+        }
+    }
+    
     static func initWithInt(intInput: Int32) -> TestType {
         switch intInput {
         case 1:
@@ -69,7 +85,7 @@ class Test: NSObject, NSCoding {
     class func testSetForLearningStage(learningStage: LearningStage) -> [Test] {
         switch learningStage {
         case LearningStage.Cram:
-            return [Test(testType: .Test1), Test(testType: .Test2)]
+            return [Test(testType: .Test1), Test(testType: .Test2), Test(testType: .Test3)]
         case LearningStage.Learn:
             return [Test(testType: .Test1), Test(testType: .Test2)]
         case LearningStage.Relearn:
