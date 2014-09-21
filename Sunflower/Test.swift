@@ -59,7 +59,7 @@ func == (lhs: Test, rhs: Test) -> Bool {
 
 let kTestType = "kTestType"
 
-class Test: NSCoding {
+class Test: NSObject, NSCoding {
     var type: TestType
     
     init(testType: TestType) {

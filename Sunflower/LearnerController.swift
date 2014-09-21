@@ -21,6 +21,8 @@ class LearnerController {
     var wordsDueNow: [Word] = []
     var currentLearningQueue: [Word] = []
     
+    var learningPackModel: LearningPackModel
+    
     let queueSize: Int = 4
     
     // This is the only method that operates on the three following variables
@@ -144,6 +146,8 @@ class LearnerController {
             }
         }
         
+        self.learningPackModel = learningPack
+
         sort(&self.wordsDueInFuture, {$0 < $1})
         sort(&self.wordsDueNow, {$0 < $1})
     }
@@ -155,6 +159,8 @@ class LearnerController {
         if word.isFinishedAllTestsForCurrentStage() {
             self.onWordSuccesssfullyFinishedAllTestsInLearningStage(word)
         }
+        
+        self.learningPackModel.updateChangeCount(UIDocumentChangeKind.Done)
     }
     
     func onWordSuccesssfullyFinishedAllTestsInLearningStage(word: Word) {
