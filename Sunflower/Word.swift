@@ -11,6 +11,7 @@ import Foundation
 let kName = "kName"
 let kMeaning = "kMeaning"
 let kLearningStage = "kLeaningStage"
+let kPrevLEarningStage = "kPrevLearningStage"
 let kLearningDueDate = "kLearningDueDate"
 let kShouldShowPresentation = "kShouldShowPresentation"
 let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
@@ -46,7 +47,31 @@ func < (lhs: Word, rhs: Word) -> Bool {
 class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     var name: String
     var meaning: String
-    var currentLearningStage: LearningStage = LearningStage.Cram
+    
+    var currentLearningStage: LearningStage = .Cram {
+        didSet {
+            if currentLearningStage != oldValue {
+                self.prevLearningStage = oldValue
+            }
+        }
+    }
+    
+    var prevLearningStage: LearningStage = .Cram
+    var stageProgression: String {
+        get {
+            if self.currentLearningStage > self.prevLearningStage { return "UP" }
+            if self.currentLearningStage < self.prevLearningStage { return "DOWN" }
+            if self.currentLearningStage == self.prevLearningStage { return "UNCHANGED" }
+            return "UNKNOWN"
+        }
+    }
+    
+    var testProgression: Int {
+        get {
+            return Int(Double(self.testsSuccessfulyDoneForCurrentStage.count) / Double(Test.testSetForLearningStage(self.currentLearningStage).count) * 100)
+        }
+    }
+    
     var relearningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [Test] = []
@@ -136,6 +161,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         aCoder.encodeObject(self.meaning, forKey: kMeaning)
         if let learningDue = self.relearningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
         aCoder.encodeInt32(self.currentLearningStage.toInt(), forKey: kLearningStage)
+        aCoder.encodeInt32(self.prevLearningStage.toInt(), forKey: kPrevLEarningStage)
         aCoder.encodeObject(self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
         aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
     }
@@ -157,6 +183,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         
         self.relearningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate) as? NSDate
         self.currentLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kLearningStage) as Int32)
+        self.prevLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kPrevLEarningStage) as Int32)
         self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as [Test]
         self.shouldShowWordPresentation = aDecoder.decodeBoolForKey(kShouldShowPresentation)
     }

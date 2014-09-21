@@ -8,8 +8,15 @@
 
 import Foundation
 
+func < (lhs: LearningStage, rhs: LearningStage) -> Bool {
+    return lhs.toInt() < rhs.toInt()
+}
 
-enum LearningStage: Int32 {
+func != (lhs: LearningStage, rhs: LearningStage) -> Bool {
+    return lhs.toInt() != rhs.toInt()
+}
+
+enum LearningStage: Int32, Comparable {
     case Cram = 1
     case Learn
     case Relearn

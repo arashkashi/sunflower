@@ -19,6 +19,8 @@ class MainTestViewController : UIViewController {
     @IBOutlet var testContentView: UIView!
     @IBOutlet var labelLearningStage: UILabel!
     @IBOutlet var viewLoadingOverlay: UIView!
+    @IBOutlet var labelComparisonWithPrevStage: UILabel!
+    @IBOutlet var labelPackProgress: UILabel!
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
@@ -47,23 +49,29 @@ class MainTestViewController : UIViewController {
         
         if next.word == nil {
             self.showNoMoreWordToLearn()
+            return
         } else if next.word!.shouldShowWordPresentation {
             self.showPresentationView(next.word!)
         } else {
             if var nextTest = next.word!.nextTest()? {
                 self.doTestTypeForWord(next.word!, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
-                    self.learnNextWord()
+                    self.updateUI(word, completionHandler: { () -> Void in
+                        self.learnNextWord()
+                    })
                 })
             } else {
                 self.learnNextWord()
             }
         }
+        
+        self.updateUI(next.word!, completionHandler:nil)
     }
     
     func doTestTypeForWord(word: Word, test: Test, result: (Test, TestResult, Word) -> ()) {
         self.testViewController = self.testSubViewController(test, word: word, completionHandler: result)
-        self.labelLearningStage.text = word.currentLearningStage.toString()
+        
+        self.updateLabelLearningStage(word)
         
         UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
             self.cleanTestContentView()
@@ -71,7 +79,19 @@ class MainTestViewController : UIViewController {
             }) { (isFinished: Bool) -> Void in }
     }
     
-    // #MARK: View manipulation 
+    // #MARK: View manipulation
+    func updateUI(word: Word, completionHandler:(() -> Void)?) {
+        self.updateLabelLearningStage(word)
+        
+        if let block = completionHandler? {
+            dispatch_after(1, dispatch_get_main_queue(), block)
+        }
+    }
+    
+    func updateLabelLearningStage(word: Word) {
+        self.labelLearningStage.text = "\(word.currentLearningStage.toString())(\(word.testProgression)%)"
+    }
+    
     func showNoMoreWordToLearn() {
         
     }
