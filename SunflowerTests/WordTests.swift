@@ -46,8 +46,8 @@ class WordTests: XCTestCase {
         var word4 = Word(name: "word nil 2", meaning: "Meaning4")
         var word5 = Word(name: "word nil 3", meaning: "Meaning4")
         
-        word1.learningDueDate = NSDate().dateByAddingTimeInterval(1000)
-        word2.learningDueDate = NSDate().dateByAddingTimeInterval(-1000)
+        word1.relearningDueDate = NSDate().dateByAddingTimeInterval(1000)
+        word2.relearningDueDate = NSDate().dateByAddingTimeInterval(-1000)
         
         var list: [Word] = [word5, word1, word4, word2, word3]
         
@@ -74,8 +74,8 @@ class WordTests: XCTestCase {
         var word2 = Word(name: "word past", meaning: "Meaning2")
         var word3 = Word(name: "word past", meaning: "Meaning2")
         
-        word1.learningDueDate = NSDate().dateByAddingTimeInterval(1000)
-        word2.learningDueDate = NSDate().dateByAddingTimeInterval(-1000)
+        word1.relearningDueDate = NSDate().dateByAddingTimeInterval(1000)
+        word2.relearningDueDate = NSDate().dateByAddingTimeInterval(-1000)
         
         XCTAssert(word1.isDueInFuture() == true, "word is due in future")
         XCTAssert(word2.isDueInFuture() == false, "word is due is past")

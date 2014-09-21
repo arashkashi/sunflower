@@ -20,34 +20,34 @@ func == (lhs: Word, rhs: Word) -> Bool {
 }
 
 func < (lhs: Word, rhs: Word) -> Bool {
-    if lhs.learningDueDate == nil && rhs.learningDueDate == nil {
+    if lhs.relearningDueDate == nil && rhs.relearningDueDate == nil {
         return false
     }
     
-    if lhs.learningDueDate != nil && rhs.learningDueDate == nil {
-        if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+    if lhs.relearningDueDate != nil && rhs.relearningDueDate == nil {
+        if lhs.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
-        } else if lhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+        } else if lhs.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
             return false
         }
     }
     
-    if lhs.learningDueDate == nil && rhs.learningDueDate != nil {
-        if rhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+    if lhs.relearningDueDate == nil && rhs.relearningDueDate != nil {
+        if rhs.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedDescending {
             return true
-        } else if rhs.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+        } else if rhs.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return false
         }
     }
     
-    return lhs.learningDueDate!.compare(rhs.learningDueDate!) == NSComparisonResult.OrderedAscending
+    return lhs.relearningDueDate!.compare(rhs.relearningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
 class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     var name: String
     var meaning: String
     var currentLearningStage: LearningStage = LearningStage.Cram
-    var learningDueDate: NSDate?
+    var relearningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [Test] = []
     
@@ -71,7 +71,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     
     func onWordSuccessfullyFinishedAllTests() {
         self.currentLearningStage.increment()
-        self.learningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
+        self.relearningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
     }
     
     func onWordFinihsedPresentation() {
@@ -94,7 +94,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     }
     
     func isDueInFuture() -> Bool {
-        if self.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+        if self.relearningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
             return true
         } else {
             return false
@@ -102,7 +102,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     }
     
     func isDueInPast() -> Bool {
-        if self.learningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+        if self.relearningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedAscending {
             return true
         } else {
             return false
@@ -134,7 +134,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: kName)
         aCoder.encodeObject(self.meaning, forKey: kMeaning)
-        if let learningDue = self.learningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
+        if let learningDue = self.relearningDueDate { aCoder.encodeObject(learningDue, forKey: kLearningDueDate)}
         aCoder.encodeInt32(self.currentLearningStage.toInt(), forKey: kLearningStage)
         aCoder.encodeObject(self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
         aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
@@ -155,7 +155,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
             self.meaning = "ERROR"
         }
         
-        self.learningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate) as? NSDate
+        self.relearningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate) as? NSDate
         self.currentLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kLearningStage) as Int32)
         self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as [Test]
         self.shouldShowWordPresentation = aDecoder.decodeBoolForKey(kShouldShowPresentation)

@@ -106,7 +106,7 @@ class LearnerController {
         var wordsWereInFutureDueNow: [Word] = []
         
         for word in self.wordsDueInFuture as [Word] {
-            if word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+            if word.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 wordsWereInFutureDueNow.append(word)
             } else {
                 break
@@ -139,7 +139,7 @@ class LearnerController {
         self.words = learningPack.words
         
         for word in self.words as [Word] {
-            if word.learningDueDate == nil || word.learningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+            if word.relearningDueDate == nil || word.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 self.wordsDueNow.append(word)
             } else {
                 self.wordsDueInFuture.append(word)

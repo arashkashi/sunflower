@@ -28,7 +28,7 @@ class LeanerControllerTests: XCTestCase {
     func testFirstWordPickup() {
         var firstWordToLearn = self.giveMeNextWord()
 
-        XCTAssert(firstWordToLearn!.learningDueDate == nil, "the first word due date is nil")
+        XCTAssert(firstWordToLearn!.relearningDueDate == nil, "the first word due date is nil")
         XCTAssert(firstWordToLearn!.currentLearningStage == LearningStage.Cram, "learning Stage is cram")
         XCTAssert(firstWordToLearn!.name == "schwangerschaft", "learning Stage is cram")
         XCTAssert(contains(self.learnerController.currentLearningQueue, firstWordToLearn!) , "the next word should bein the current queue")
@@ -78,7 +78,7 @@ class LeanerControllerTests: XCTestCase {
         self.learnerController.onWordFinishedPresentation(nextWord!)
         nextWord = self.giveMeNextWord()
         
-        XCTAssert(nextWord!.learningDueDate == nil, "the first word due date is nil")
+        XCTAssert(nextWord!.relearningDueDate == nil, "the first word due date is nil")
         XCTAssert(nextWord!.currentLearningStage == LearningStage.Cram, "learning Stage is cram")
         XCTAssert(nextWord!.name == "verhütung", "the second word in the test words list")
         XCTAssert(contains(self.learnerController.currentLearningQueue, nextWord!) , "the next word should bein the current queue")
