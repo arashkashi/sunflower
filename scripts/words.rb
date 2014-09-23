@@ -16,7 +16,7 @@ file.each_line do |line|
 end
 sorted_values = hash_of_words.sort_by { |key, value| -value}
 
-File.open('result.json', 'w') do |f|
+File.open('words.json', 'w') do |f|
   f.write(sorted_values.to_json)
 end
 
