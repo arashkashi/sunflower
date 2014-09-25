@@ -22,8 +22,13 @@ module Sentence
   end
 
   def sortedSentenceForWord(word, knownWords, sentences)
-    # for each sentence fine a rank
-
+    result = Hash.new()
+    for sentence in sentences
+      words_in_sentence = Words.wordsFromString(sentence)
+      known_words_in_sentence = words_in_sentence.select {|word| knownWords.include?(word)}
+      result[sentence] = known_words_in_sentence.length.to_f / words_in_sentence.length
+    end
+    result.sort_by {|key, value| -value}
   end
 end
 
