@@ -1,30 +1,33 @@
+$LOAD_PATH << '.'
+
 require 'json'
+require 'words'
 
 module Sentence
+  include Words
   def Sentence.sentences(filename)
     hash_of_sentences = Hash.new(0)
+
     file = File.open(filename, 'rb')
 
     file.each_line do |raw_sentence|
-      words = raw_sentence.split(' ')
-      key = []
-      words.each do |word|
-        if word
-          word = word.downcase
-          key << word
-        end
-      end
-  
-      if key.length > 0
-        key = key.sort
-       hash_of_sentences[key] = raw_sentence
-      end
-      break if hash_of_sentences.length > 10
+      raw_sentence = raw_sentence.gsub("\n", '')
+      words = Words.wordsFromString(raw_sentence)
+      
+      hash_of_sentences[words.sort] = raw_sentence if words.length > 0
+      break if hash_of_sentences.keys.length > 10
     end
+    
     hash_of_sentences
+  end
+
+  def sortedSentenceForWord(word, knownWords, sentences)
+    # for each sentence fine a rank
+
   end
 end
 
+puts "Aras"
 puts Sentence.sentences(ARGV[0])
 
 #File.open('sentences.json', 'w') do |f|
