@@ -24,7 +24,7 @@ module Sentence
       result[sentence] = known_words_in_sentence.length.to_f / words_in_sentence.length
     end
     result = result.sort_by {|key, value| -value}
-    result.first
+    result.first.first
   end
 end
 
@@ -34,6 +34,7 @@ end
 #  f.write(hash_of_sentences.to_json)
 #end
 
+
 words = ['arash', 'kiarash', 'is', 'good', 'boy']
 sentences = []
 sentences << 'arash is good'
@@ -42,4 +43,3 @@ sentences << 'arash and kiarash is good boy'
 
 result = Sentence.sentenceForWord('arash', ['arash'], sentences)
 
-assert_equal('arash is good boy', result, "first case")
