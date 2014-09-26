@@ -18,9 +18,10 @@ module Sentence
 
   def Sentence.sentenceForWord(word, knownWords, sentences)
     result = Hash.new()
+    knownWords << word
     for sentence in sentences
       words_in_sentence = Words.wordsFromString(sentence)
-      known_words_in_sentence = words_in_sentence.select {|word| knownWords.include?(word)}
+      known_words_in_sentence = words_in_sentence.select {|w| knownWords.include?(w)}
       result[sentence] = known_words_in_sentence.length.to_f / words_in_sentence.length
     end
     result = result.sort_by {|key, value| -value}

@@ -20,5 +20,16 @@ class TestSentence < Minitest::Test
       result = Sentence.sentenceForWord('arash', ['arash'], sentences)
       assert_equal "arash is good", result
     end
+
+    def test_2
+      result = Sentence.sentenceForWord('arash', ['kiarash', 'boy'], sentences)
+      assert_equal "arash and kiarash is good boy", result
+    end
+
+    def test_3
+      result = Sentence.sentenceForWord('kiarash', ['boy'], sentences)
+      assert_equal "arash and kiarash is good boy", result
+    end
+
      
 end
