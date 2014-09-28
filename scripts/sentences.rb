@@ -4,8 +4,12 @@ require 'words'
 
 module Sentence
   def Sentence.sentenceForWord(word, knownWords, sentences, n)
+    startTime = Time.new
     sentence_rank_hash = Sentence.rankHash(word, sentences, knownWords)
     sorted_sentences_by_ranks = Words.sortedKeysByValue(sentence_rank_hash)
+    endTime = Time.new
+    puts "DURATION:#{endTime - startTime}"
+    puts "-" * 40
     return sorted_sentences_by_ranks.take(n)
   end
 
