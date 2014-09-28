@@ -50,6 +50,7 @@ module Words
 
   def Words.knownWords(words, word)
     index = words.index(word) - 1
+    index = 0 if index < 0 || index > words.length - 1
     return words[0..index]
   end
 
