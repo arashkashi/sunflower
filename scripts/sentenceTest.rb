@@ -1,7 +1,6 @@
 $LOAD_PATH << '.'
 require 'sentences'
 require "minitest/autorun"
-require 'words'
 
 class TestSentence < Minitest::Test
     def sentences
@@ -12,32 +11,14 @@ class TestSentence < Minitest::Test
       sentences
     end 
     
-    def words
-      words_hash = Hash.new(0)
-      for sentence in sentences
-        words = Words.wordsForString(sentence)
-        for word in words
-          words_hash[word] = words_Hash[word] + 1
-        end
-      end
-      words_hash
-      ['arash', 'kiarash', 'is', 'good', 'boy']
-    end
-
     def test_1
-      words = words 
-      result = Sentence.sentenceForWord('arash', ['arash'], sentences, 1)
-      assert_equal "arash is good", result[0]
+      result = Sentence.rankForSentence('arash is very good', ['arash'])
+      assert_equal 0.25, result
     end
 
     def test_2
-      result = Sentence.sentenceForWord('arash', ['kiarash', 'boy'], sentences, 1)
-      assert_equal "arash and kiarash is good boy", result[0]
-    end
-
-    def test_3
-      result = Sentence.sentenceForWord('kiarash', ['boy'], sentences, 1)
-      assert_equal "arash and kiarash is good boy", result[0]
+      result = Sentence.rankForSentence('arash is very good', ['arash', 'is'])
+      assert_equal 0.5, result
     end
 
 end
