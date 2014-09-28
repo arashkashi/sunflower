@@ -16,7 +16,8 @@ module Sentence
     sentences.each do |sentence|
       counter = counter + 1
       print "\t#{'%.02f %' % (counter.to_f * 100.0/ sentences.length.to_f)} \t of sentnces ranked.\r"
-      sentence_rank_hash[sentence] = Sentence.rankForSentence(sentence, knownWords, word)
+      score = Sentence.rankForSentence(sentence, knownWords, word)
+      sentence_rank_hash[sentence] = score if score != 0.0
     end
     puts "Rank hash finished. (#{Time.new})"
     sentence_rank_hash
