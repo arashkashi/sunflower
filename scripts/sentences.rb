@@ -13,18 +13,18 @@ module Sentence
     puts "Rank hash of sentences for word (#{word}) . (#{Time.new})"
     counter = 0
     sentence_rank_hash = Hash.new()
-    sentences.each do |sentence|
+    sentences.keys.each do |sentence|
       counter = counter + 1
-      print "\t#{'%.02f %' % (counter.to_f * 100.0/ sentences.length.to_f)} \t of sentnces ranked.\r"
-      sentence_rank_hash[sentence] = Sentence.rankForSentence(sentence, knownWords, word)
+      print "\t#{'%.02f %' % (counter.to_f * 100.0/ sentences.keys.length.to_f)} \t of sentnces ranked.\r"
+      sentence_rank_hash[sentence] = Sentence.rankForSentence(sentences[sentence], knownWords, word)
     end
     puts "Rank hash finished. (#{Time.new})"
     sentence_rank_hash
   end
 
-  def Sentence.rankForSentence(sentence, knownWords, word)
-    words_in_sentence = Words.wordsFromString(sentence)
-    return 0.0 unless words_in_sentence.include?(word)
+  def Sentence.rankForSentence(tokeniseSentence, knownWords, word)
+    return 0.0 unless tokeniseSentence.include?(word)
+    words_in_sentence = tokeniseSentence
     known_words_in_sentence = words_in_sentence.select {|w| knownWords.include?(w)}
     known_words_in_sentence.length.to_f / words_in_sentence.length.to_f
   end

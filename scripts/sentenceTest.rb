@@ -9,6 +9,12 @@ class TestSentence < Minitest::Test
       sentences << 'arash is good boy'
       sentences << 'arash and kiarash is good boy' 
       sentences
+
+      result = {}
+      for sentence in sentences
+        result[sentence] = Words.wordsFromString(sentence)
+      end
+      result
     end
 
     def prettyPrint(word, knownWords, sentences)
@@ -21,42 +27,39 @@ class TestSentence < Minitest::Test
     end
     
     def test_1
-      result = Sentence.rankForSentence('arash is very good', ['arash'], 'arash')
+      result = Sentence.rankForSentence(Words.wordsFromString('arash is very good'), ['arash'], 'arash')
       assert_equal 0.25, result
     end
 
     def test_2
-      result = Sentence.rankForSentence('arash is very good', ['arash', 'is'], 'arash')
+      result = Sentence.rankForSentence(Words.wordsFromString('arash is very good'), ['arash', 'is'], 'arash')
       assert_equal 0.5, result
     end
 
     def test_3
       hash_rank = Sentence.rankHash('arash', sentences, ['arash'])
-      assert_equal hash_rank[sentences[1]], 0.25 
+      assert_equal hash_rank['arash is good boy'], 0.25 
     end
 
     def test_4
       hash_rank = Sentence.rankHash('ahmad', sentences, ['arash', 'is'])
-      for sentence in sentences
+      for sentence in sentences.keys
         assert_equal hash_rank[sentence], 0
       end
     end
 
     def test_5
-      raw_sentences = Words.sentences('wordsTest.txt')
-      words = Words.words('wordsTest.txt')
+      words, raw_sentences = Words.words('wordsTest.txt')
       word = words[50]
       knownWords = Words.knownWords(words, word)
       result_sentences = Sentence.sentenceForWord(word, knownWords, raw_sentences, 5)
-      prettyPrint(word, knownWords, result_sentences)
+      # prettyPrint(word, knownWords, result_sentences)
     end
 
     def test_6
       result = Hash.new { |hash, key| hash[key] = Hash.new({}) }
-      raw_sentences = Words.sentences('wordsTest.txt')
-      words = Words.words('wordsTest.txt')
+      words, raw_sentences = Words.words('wordsTest.txt')
       word = words[50]
-
       knownWords = Words.knownWords(words, word)
       sample_sentences = Sentence.sentenceForWord(word, knownWords, raw_sentences, 10)
       result[word]['sample_sentences'] = sample_sentences

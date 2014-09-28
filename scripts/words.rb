@@ -33,11 +33,14 @@ module Words
 
   def Words.sentences(filename)
     puts "Getting sentences (#{Time.new})..."
-    result = []
+    result = Hash.new
     File.open(filename, 'rb') do |f|
       f.each_line do |raw_sentence|
           raw_sentence = raw_sentence.strip
-          result << raw_sentence.gsub("\n", '').downcase if raw_sentence.length > 0
+          if raw_sentence.length > 0
+            raw_sentence = raw_sentence.gsub("\n", '').downcase
+            result[raw_sentence] = Words.wordsFromString(raw_sentence)
+          end
       end
       f.close
     end
@@ -60,10 +63,10 @@ module Words
     puts "Hash of words from Sentences (#{Time.new})... "
     hash_of_words = Hash.new(0)
     counter = 0
-    for sentence in sentences
+    for sentence in sentences.keys
       counter = counter + 1
       print "\t#{'%.02f %' % (counter.to_f * 100.0/ sentences.length.to_f)} \t of sentnces\r"
-      words = Words.wordsFromString(sentence)
+      words = sentences[sentence]
       for word in words
         hash_of_words[word] = hash_of_words[word] + 1
       end
