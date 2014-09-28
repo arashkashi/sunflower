@@ -9,20 +9,16 @@ if ARGV[0].nil?
 end
 
 # 1. Get the words
-words = Words.words(ARGV[0])
+words, sentences = Words.words(ARGV[0])
 puts
 puts "Words are loaded: #{words.length}"
-
-# 2. Get the sentences
-sentences = Words.sentences(ARGV[0])
-puts
 puts "Sentences are loaded: #{sentences.length}"
 
 # 3. For each word find 3 sentences
 result = Hash.new { |hash, key| hash[key] = Hash.new({}) }
 counter = 1
 
-for word in words
+for word in words.take(10000)
 	knownWords = Words.knownWords(words, word)
 	sample_sentences = Sentence.sentenceForWord(word, knownWords, sentences, 4)
 	result[word]['sample_sentences'] = sample_sentences

@@ -28,7 +28,7 @@ module Words
 
   def Words.words(filename)
     sentences = Words.sentences(filename)
-    Words.freqSortedWordsFromSentences(sentences)
+    return Words.freqSortedWordsFromSentences(sentences), sentences
   end
 
   def Words.sentences(filename)
