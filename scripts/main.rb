@@ -17,8 +17,14 @@ puts "Sentences are loaded: #{sentences.length}"
 # 3. For each word find 3 sentences
 result = Hash.new { |hash, key| hash[key] = Hash.new({}) }
 counter = 1
+progress_counter = 0
+number_of_words = 10000
 
-for word in words.take(10000)
+puts "Getting sentences for words (#{Time.new})... "
+
+for word in words.take(number_of_words)
+	progress_counter = progress_counter + 1
+	print "\t#{'%.02f %' % (progress_counter.to_f * 100.0/ number_of_words.to_f)} \t of words)\r"
 	knownWords = Words.knownWords(words, word)
 	sample_sentences = Sentence.sentenceForWord(word, knownWords, sentences, 4)
 	result[word]['sample_sentences'] = sample_sentences
