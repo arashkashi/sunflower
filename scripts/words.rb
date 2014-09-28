@@ -18,7 +18,7 @@ module Words
         result << word
       end 
     end
-    Error.error("Words.wordsFromString > " + input_string) if result.length == 0
+    Error.error("Words.wordsFromString > #{input_string}") if result.length == 0
     result
   end
 

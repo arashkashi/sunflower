@@ -2,8 +2,8 @@ $LOAD_PATH << '.'
 
 module Error
 
-  def error(msg)
-    puts msd
+  def Error.error(msg)
+    puts "ERROR::#{msg}"
     gets
   end
 
