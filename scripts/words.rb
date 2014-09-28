@@ -1,3 +1,4 @@
+# encoding: utf-8
 $LOAD_PATH << '.'
 
 require 'json'
@@ -5,8 +6,10 @@ require 'error'
 
 module Words
 
+  # TODO: Make sure everything is stripped off properly
   def Words.wordsFromString(input_string)
     result = []
+    input_string.force_encoding('UTF-8').encoding
     words = input_string.gsub("\n", '').split(' ')
     words.each do |word|
       word.gsub!(/[^\p{Alnum}\p{Space}-]/, '')
@@ -42,7 +45,7 @@ module Words
 
   def Words.freqSortedWordsFromSentences(sentences)
     hash_of_words = Words.hashOfWordsFromSentences(sentences)
-    Words.sortedKeysByValues(hash_of_words)
+    Words.sortedKeysByValue(hash_of_words)
   end
 
   def Words.knownWords(words, word)
@@ -53,7 +56,7 @@ module Words
   def Words.hashOfWordsFromSentences(sentences)
     hash_of_words = Hash.new(0)
     for sentence in sentences
-      words = Word.wordsFromString(sentence)
+      words = Words.wordsFromString(sentence)
       for word in words
         hash_of_words[word] = hash_of_words[word] + 1
       end
@@ -62,7 +65,7 @@ module Words
   end
 
   def Words.sortedKeysByValue(hash)
-    final_result
+    final_result = []
     keys_values = hash.sort_by { |key, value| - value }
     keys_values.each do |key_value|
       final_result << key_value[0]

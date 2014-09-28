@@ -6,7 +6,6 @@ require 'test'
 module Sentence
   def Sentence.sentenceForWord(word, knownWords, sentences, n)
     result = Hash.new()
-    knownWords << word
     sentences.each do |sentence|
       words_in_sentence = Words.wordsFromString(sentence)
       if words_in_sentence.length > 0
