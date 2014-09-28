@@ -12,9 +12,12 @@ class TestSentence < Minitest::Test
     end
 
     def prettyPrint(word, knownWords, sentences)
-      puts "Word is \t\t\t:#{word}"
-      puts "KnownWords \t\t\t:#{knownWords}"
-      puts "Sentences \t\t\t:#{sentences}"
+      puts "Word => \t\t#{word}"
+      # puts "KnownWords \t\t\t:#{knownWords}"
+      puts "Sentences =>"
+      for sentence in sentences
+        puts "\t\t #{sentence}"
+      end
     end
     
     def test_1
@@ -42,9 +45,26 @@ class TestSentence < Minitest::Test
     def test_5
       raw_sentences = Words.sentences('wordsTest.txt')
       words = Words.words('wordsTest.txt')
-      word = words[0]
+      word = words[50]
       knownWords = Words.knownWords(words, word)
       result_sentences = Sentence.sentenceForWord(word, knownWords, raw_sentences, 5)
       prettyPrint(word, knownWords, result_sentences)
+    end
+
+    def test_6
+      result = Hash.new { |hash, key| hash[key] = Hash.new({}) }
+      raw_sentences = Words.sentences('wordsTest.txt')
+      words = Words.words('wordsTest.txt')
+      word = words[50]
+
+      knownWords = Words.knownWords(words, word)
+      sample_sentences = Sentence.sentenceForWord(word, knownWords, raw_sentences, 10)
+      result[word]['sample_sentences'] = sample_sentences
+
+      File.open("xxx.json","w") do |f|
+        f.write(result.to_json)
+        f.close
+      end
+      
     end
 end

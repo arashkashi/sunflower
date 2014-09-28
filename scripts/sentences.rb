@@ -23,4 +23,11 @@ module Sentence
     known_words_in_sentence = words_in_sentence.select {|w| knownWords.include?(w)}
     known_words_in_sentence.length.to_f / words_in_sentence.length.to_f
   end
+
+  def Sentence.writeHashToJsonFile(hash, filename)
+    File.open(filename,"w") do |f|
+      f.write(hash.to_json)
+      f.close
+    end
+  end
 end
