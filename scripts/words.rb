@@ -2,9 +2,27 @@ $LOAD_PATH << '.'
 
 require 'json'
 require 'error'
-# require 'sentence'
 
 module Words
+
+  def Words.wordsFromString(input_string)
+    result = []
+    words = input_string.gsub("\n", '').split(' ')
+    words.each do |word|
+      word.gsub!(/[^\p{Alnum}\p{Space}-]/, '')
+      if word && word.length > 0
+        word = word.downcase
+        result << word
+      end 
+    end
+    Error.error("Words.wordsFromString > " + input_string) if result.length == 0
+    result
+  end
+
+  def Words.cleanupString(input)
+    input.gsub(/[^\p{Alnum}\p{Space}-]/, '')
+  end
+
   def Words.words(filename)
     sentences = Words.sentences(filename)
     Words.freqSortedWordsFromSentences(sentences)
@@ -14,7 +32,8 @@ module Words
     result = []
     File.open(filename, 'rb') do |f|
       f.each_line do |raw_sentence|
-        result << raw_sentence.gsub("\n", '')
+          raw_sentence = raw_sentence.strip
+          result << raw_sentence.gsub("\n", '').downcase if raw_sentence.length > 0
       end
       f.close
     end
@@ -57,17 +76,4 @@ module Words
     end
   end
   
-  def Words.wordsFromString(input_string)
-    result = []
-    words = input_string.gsub("\n", '').split(' ')
-    words.each do |word|
-      word = word.gsub(/[;:,\.']/, '')
-      if word
-        word = word.downcase
-        result << word
-      end 
-    end
-    Error.error("Words.wordsFromString > " + input_string) if result.length == 0
-    result
-  end
 end
