@@ -141,15 +141,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     
     func nextTest() -> Test? {
         for testToBeDone in Test.testSetForLearningStage(self.currentLearningStage) {
-             // FIXME: Uncomment
-            var isDone: Bool = false
-            for testDone in self.testsSuccessfulyDoneForCurrentStage {
-                if testToBeDone == testDone {
-                    isDone = true
-                }
-            }
-            
-            if !isDone {
+            if !self.testsSuccessfulyDoneForCurrentStage.includes(testToBeDone) {
                 return testToBeDone
             }
         }
