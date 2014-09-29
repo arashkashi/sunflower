@@ -28,6 +28,8 @@
 		41EA254E19AA877B0045402E /* TestLearningPackI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* TestLearningPackI.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41F83DB319CA155A00213C47 /* TestLearningPackII.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A81219C9E86700964C3D /* TestLearningPackII.swift */; };
+		D92B013519D99E9400CE11A8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B013419D99E9400CE11A8 /* ArrayExtension.swift */; };
+		D92B013719D9A0BF00CE11A8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B013419D99E9400CE11A8 /* ArrayExtension.swift */; };
 		D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A80D19C9A27000964C3D /* DocumentHelper.swift */; };
 		D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A80D19C9A27000964C3D /* DocumentHelper.swift */; };
 		D958A81319C9E86700964C3D /* TestLearningPackII.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A81219C9E86700964C3D /* TestLearningPackII.swift */; };
@@ -73,6 +75,7 @@
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
 		41D415F019AA6E490038EFE6 /* TestLearningPackI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLearningPackI.swift; sourceTree = "<group>"; };
+		D92B013419D99E9400CE11A8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D958A80D19C9A27000964C3D /* DocumentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentHelper.swift; sourceTree = "<group>"; };
 		D958A81219C9E86700964C3D /* TestLearningPackII.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLearningPackII.swift; sourceTree = "<group>"; };
 		D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBaseViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 			children = (
 				D9D43F3119B8647C00E420B0 /* LearningStage.swift */,
 				D958A80D19C9A27000964C3D /* DocumentHelper.swift */,
+				D92B013419D99E9400CE11A8 /* ArrayExtension.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -341,6 +345,7 @@
 				D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */,
 				41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */,
 				41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */,
+				D92B013519D99E9400CE11A8 /* ArrayExtension.swift in Sources */,
 				D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
@@ -364,6 +369,7 @@
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
+				D92B013719D9A0BF00CE11A8 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

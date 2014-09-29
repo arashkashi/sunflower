@@ -75,7 +75,7 @@ func == (lhs: Test, rhs: Test) -> Bool {
 
 let kTestType = "kTestType"
 
-class Test: NSObject, NSCoding {
+class Test: NSObject, Equatable, NSCoding {
     var type: TestType
     
     init(testType: TestType) {
