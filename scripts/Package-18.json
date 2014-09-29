@@ -1,0 +1,911 @@
+{
+  "knast": {
+    "sample_sentences": [
+      "es ist mir lieber du bist im knast als tot",
+      "du gehst in den knast wenn du mir nicht",
+      "er kam vor ein paar jahren aus dem knast",
+      "ich lass dich auf keinen fall in den knast"
+    ],
+    "meanings": []
+  },
+  "offensichtlich": {
+    "sample_sentences": [
+      "es ist doch offensichtlich was zu tun ist",
+      "aber offensichtlich nein hatte ich nichts zu tun",
+      "da es offensichtlich ist dass die regierung",
+      "mein freund du kennst mich offensichtlich nicht"
+    ],
+    "meanings": []
+  },
+  "traurig": {
+    "sample_sentences": [
+      "dass du in letzter zeit traurig bist weiß ich",
+      "es ist traurig wenn ich an die menschen",
+      "ich fand es nur traurig dass ich nicht",
+      "keine zeit traurig zu sein nicht wahr"
+    ],
+    "meanings": []
+  },
+  "ball": {
+    "sample_sentences": [
+      "los hol den ball geh und hol ihn hol ihn",
+      "nur weil du einen ball nicht gefangen hast",
+      "nur so schnell wären wie mit dem ball",
+      "dann ist die luft raus aus dem ball"
+    ],
+    "meanings": []
+  },
+  "kümmert": {
+    "sample_sentences": [
+      "er hat keinen der sich um ihn kümmert",
+      "warum kümmert dich denn die hochzeit so sehr",
+      "deine frau kümmert sich gut um dich oder",
+      "und ich schicke jemanden der sich darum kümmert"
+    ],
+    "meanings": []
+  },
+  "nutzen": {
+    "sample_sentences": [
+      "das ist mein name nutzen sie ihn nicht",
+      "wenn sie richtig nutzen was ich ihnen sage",
+      "dort könnte ich am besten von nutzen sein",
+      "wir nutzen diesen moment um uns an die"
+    ],
+    "meanings": []
+  },
+  "versprechen": {
+    "sample_sentences": [
+      "ich machte sie zu einem versprechen daß wir würden",
+      "das ist ein versprechen dass ich nicht halten kann",
+      "er hat allen von euch jungen ein versprechen gegeben",
+      "hör mir gut zu wenn wir unser versprechen"
+    ],
+    "meanings": []
+  },
+  "schlange": {
+    "sample_sentences": [
+      "warum hatte die schlange angst vor dawn",
+      "bei dir sollten die männer schlange stehen",
+      "habe ich schon jetzt stehen sie schlange",
+      "wir werden den kopf der schlange finden"
+    ],
+    "meanings": []
+  },
+  "mut": {
+    "sample_sentences": [
+      "mike er ist mein bruder ok  hab keine angst nur mut großer",
+      "finde den mut das für uns beide zu tun ok",
+      "sie hatte den mut 'nen zug daran zu",
+      "mut hat sie das muss man ihr lassen"
+    ],
+    "meanings": []
+  },
+  "beeil": {
+    "sample_sentences": [
+      "beeil dich oder der bus ist weg komm schon lass uns gehen",
+      "jack hol uns hier raus beeil dich",
+      "los john beeil dich mal ein bisschen",
+      "was machst du denn beeil dich bitte"
+    ],
+    "meanings": []
+  },
+  "freunden": {
+    "sample_sentences": [
+      "oder den freunden um zu sehen ob irgend",
+      "dann lässt sie es an ihren freunden aus",
+      "freunden wie leicht du zu haben bist",
+      "hör mal wenn du mit deinen freunden"
+    ],
+    "meanings": []
+  },
+  "mehrere": {
+    "sample_sentences": [
+      "ja hier steht alles drin sie hatten mehrere",
+      "davon gibt es mehrere in dieser aufnahme",
+      "ich sagte doch es wären mehrere",
+      "ja da war mal ja mehrere"
+    ],
+    "meanings": []
+  },
+  "danken": {
+    "sample_sentences": [
+      "lch weiß nicht wie ich dir danken soll",
+      "ich weiß nicht wie dir zu danken bist",
+      "möchte ich ihnen allen für ihr kommen danken",
+      "ich weiß nicht ob ich ihnen danken"
+    ],
+    "meanings": []
+  },
+  "besuchen": {
+    "sample_sentences": [
+      "ich meine wir besuchen ihn doch nicht",
+      "und hätte gern dass sie ihn besuchen",
+      "wie nett das sie uns wieder besuchen",
+      "geht und wann wir ihn besuchen können"
+    ],
+    "meanings": []
+  },
+  "geschah": {
+    "sample_sentences": [
+      "du willst hören was ich denke daß zu meister oder nicht geschah",
+      "geschah an bord mein schiff auf meiner uhr",
+      "ich bin überrascht daß es nicht früher geschah",
+      "es geschah im krieg mit lhrem volk"
+    ],
+    "meanings": []
+  },
+  "almeida": {
+    "sample_sentences": [
+      "ich versuche almeida zu finden bevor es zu spät ist",
+      "ich denke almeida ist noch dabei vielleicht können wir",
+      "was auch geschieht ich werde bauer und almeida finden",
+      "ich kann ihnen helfen tony almeida zu finden"
+    ],
+    "meanings": []
+  },
+  "zweifel": {
+    "sample_sentences": [
+      "ich habe zweifel daran daß sie das sehr mögen",
+      "wenn du zweifel an deiner menschheit hast und ihr",
+      "ja es gibt keine zweifel dass es logan ist",
+      "ja es besteht kein zweifel es ist logan"
+    ],
+    "meanings": []
+  },
+  "größte": {
+    "sample_sentences": [
+      "der größte ich zeig euch wie das geht",
+      "du bist der größte fehler in ihrem leben",
+      "du bist doch wohl das größte arschloch",
+      "für mich ist das größte verbrechen ein"
+    ],
+    "meanings": []
+  },
+  "messer": {
+    "sample_sentences": [
+      "ah ich habe ein messer in der tasche",
+      "das ist das messer das faith in der",
+      "du musst mir trotzdem mein messer zurück geben",
+      "dass das blut auf dem messer das hier"
+    ],
+    "meanings": []
+  },
+  "gewartet": {
+    "sample_sentences": [
+      "wieso haben sie nicht bis morgen früh gewartet",
+      "ich habe lange auf dich gewartet sehr lange",
+      "Äh ich habe ich habe gewartet bis du",
+      "ich hab zwei jahre auf den job gewartet"
+    ],
+    "meanings": []
+  },
+  "abteilung": {
+    "sample_sentences": [
+      "jack hat seine abteilung und ich meine aber",
+      "der grund warum meine abteilung keine zeit hat",
+      "sag das auch allen in deiner abteilung",
+      "weiß ich nicht das ist lhre abteilung"
+    ],
+    "meanings": []
+  },
+  "gehalten": {
+    "sample_sentences": [
+      "hast aber sie hat sich nicht gehalten also",
+      "ich hab mich verdammt gut gehalten nicht wahr",
+      "der dich auf new caprica gefangen gehalten hat",
+      "ich glaube er hat nie viel davon gehalten"
+    ],
+    "meanings": []
+  },
+  "mindestens": {
+    "sample_sentences": [
+      "nicht schon wieder ich hab es dir schon mindestens ein zwei sieben",
+      "es wird also noch mindestens zwei stunden dauern",
+      "mindestens drei tage mit dem zweiten team",
+      "mindestens  stunden bis sie zu ihr kommen"
+    ],
+    "meanings": []
+  },
+  "leer": {
+    "sample_sentences": [
+      "er ist nicht hier das flugzeug ist leer",
+      "und die andere dass er leer ist",
+      "ist es deshalb weil es leer ist",
+      "die andere zeigt ihn als leer an"
+    ],
+    "meanings": []
+  },
+  "besorgen": {
+    "sample_sentences": [
+      "ich brauche eine woche um das zeug zu besorgen",
+      "zurück in den knast und es mir selbst besorgen",
+      "besorgen sie alles was wir über ihn haben",
+      "aber du musst mir das teil besorgen"
+    ],
+    "meanings": []
+  },
+  "fanden": {
+    "sample_sentences": [
+      "sie fanden eine leiche in la die mit einem",
+      "hey wir machen das erst einige stunden fanden",
+      "sie war bereits tot als sie sie fanden",
+      "was sie von mir fanden war ein film"
+    ],
+    "meanings": []
+  },
+  "hängen": {
+    "sample_sentences": [
+      "dann bleibt es wohl doch an mir hängen",
+      "wie der mann den man hängen wird",
+      "es hängen da zu viele mit drin",
+      "mir hängen sie auch zum hals raus"
+    ],
+    "meanings": []
+  },
+  "club": {
+    "sample_sentences": [
+      "wir haben uns gestern abend in einem club",
+      "ich gehe in den club hole mein geld",
+      "warte wenn du zurück in den club gehst",
+      "ja er hat sich jetzt 'n club gekauft"
+    ],
+    "meanings": []
+  },
+  "is": {
+    "sample_sentences": [
+      "ich kann nicht schießen das is das problem",
+      "da is' es ja alles klar danke",
+      "ich meine das is' es doch",
+      "is' alles in ordnung mit dir"
+    ],
+    "meanings": []
+  },
+  "innerhalb": {
+    "sample_sentences": [
+      "innerhalb der nächsten stunde in die luft bekommen",
+      "in den usa innerhalb der nächsten  tage vor",
+      "würde ich sagen dass er sich innerhalb der",
+      "innerhalb einer stunde steht der neue plan"
+    ],
+    "meanings": []
+  },
+  "trägt": {
+    "sample_sentences": [
+      "was eher bringe ich jeden um der sie trägt",
+      "und auf dem kopf trägt er äh",
+      "und glauben dass man so etwas trägt",
+      "sie trägt ja nicht einmal eine waffe"
+    ],
+    "meanings": []
+  },
+  "folgt": {
+    "sample_sentences": [
+      "er sagt dass der der dieser frau folgt",
+      "ich gehe als erster und ihr folgt mir",
+      "heißt das nicht dass mir keiner folgt",
+      "tut mir leid nina folgt einer spur"
+    ],
+    "meanings": []
+  },
+  "kaputt": {
+    "sample_sentences": [
+      "das fenster ging kaputt ich glaube der schüler neben mir wurde getroffen",
+      "geht mir so seit meine uhr kaputt ist",
+      "meine uhr ist kaputt das ist meine sache",
+      "new york lachen sich über uns kaputt"
+    ],
+    "meanings": []
+  },
+  "visiontext": {
+    "sample_sentences": [
+      "untertitel visiontext",
+      "untertitel von visiontext astrid fuhrmeister",
+      "visiontext untertitel stefanie lotz",
+      "visiontext untertitel rainer schwalb"
+    ],
+    "meanings": []
+  },
+  "maul": {
+    "sample_sentences": [
+      "warum nimmst du nicht dein recht wahr das maul zu halten",
+      "wenn du mal dein maul hältst und mich fahren lässt",
+      "du hältst dein maul lch hör mir deine",
+      "was sagst du willst du eine auf's maul"
+    ],
+    "meanings": []
+  },
+  "vizepräsident": {
+    "sample_sentences": [
+      "drei jahre später vizepräsident einer firma",
+      "sie denken der vizepräsident hat recht",
+      "ich meine ich bin der vizepräsident",
+      "ich wollte nie der vizepräsident sein"
+    ],
+    "meanings": []
+  },
+  "drink": {
+    "sample_sentences": [
+      "ich brauch nen drink den hab ich nötig",
+      "zu sein und bring mir noch einen drink",
+      "wie wär's mit einem drink bei mir",
+      "ich bringe mark noch auf einen drink"
+    ],
+    "meanings": []
+  },
+  "picard": {
+    "sample_sentences": [
+      "captain picard hat sich an bord",
+      "werde ich jetzt captain picard sehen",
+      "dann auch der andere captain picard",
+      "picard sollte es dir nicht sagen"
+    ],
+    "meanings": []
+  },
+  "schaut": {
+    "sample_sentences": [
+      "her er schaut sich um und sucht sie",
+      "he kommt und schaut euch das mal an",
+      "macht er mit oder schaut er nur zu",
+      "wie gefällt dir der club schaut gut aus"
+    ],
+    "meanings": []
+  },
+  "wand": {
+    "sample_sentences": [
+      "bis wir mit dem rücken an der wand stehen",
+      "an die wand los wo ist der chip",
+      "hier rüber sie soll an der wand bleiben",
+      "wir sehen den film jetzt an der wand"
+    ],
+    "meanings": []
+  },
+  "informiert": {
+    "sample_sentences": [
+      "es sind nicht so viele es sieht so aus als wären sie informiert worden",
+      "ist er oder sie nicht darüber informiert dass wir anfangen",
+      "ich weiß nicht wie weit sie informiert sind",
+      "tony almeida hat uns informiert dass sie den"
+    ],
+    "meanings": []
+  },
+  "fern": {
+    "sample_sentences": [
+      "aber wenn du das zeichen von   siehst bleib fern",
+      "siehst du nie fern ich dachte alle kinder",
+      "haltet euch verdammt noch mal fern von mir",
+      "halt ihn verdammt noch mal fern von mir"
+    ],
+    "meanings": []
+  },
+  "de": {
+    "sample_sentences": [
+      "ich weiß nicht was de gothia sich von",
+      "vielen dank für de",
+      "erinnerst du dich an tony de marco",
+      "de ridefort wir haben wirklich keine zeit"
+    ],
+    "meanings": []
+  },
+  "geschossen": {
+    "sample_sentences": [
+      "der tag hat  stunden und jede stunde hat  minuten und genau um  uhr wird geschossen",
+      "dann hat er dem mädchen vor mir in den kopf geschossen",
+      "einer wurde in den kopf geschossen in den kopf",
+      "das ist nicht die die auf mich geschossen hat"
+    ],
+    "meanings": []
+  },
+  "botschaft": {
+    "sample_sentences": [
+      "du musst nicht in die nähe der botschaft gehen",
+      "ich versuche ihn zur botschaft zu bringen",
+      "nimm nur die kinder mit zur botschaft",
+      "der botschaft ist 'ne ziemlich große sache"
+    ],
+    "meanings": []
+  },
+  "kannte": {
+    "sample_sentences": [
+      "ich kannte ihn nicht persönlich er ging bevor ich hierher kam",
+      "er war es als ich dich in paris kannte",
+      "und ich bin stolz daß ich dich kannte",
+      "in der zeit in der ich ihn kannte"
+    ],
+    "meanings": []
+  },
+  "panik": {
+    "sample_sentences": [
+      "es geht um  mark für jeden von uns also keine panik ja",
+      "ich bin nicht in panik ich kenne das",
+      "oder doch es gibt einen grund zur panik",
+      "ja wenn ich nicht gerade panik habe"
+    ],
+    "meanings": []
+  },
+  "handeln": {
+    "sample_sentences": [
+      "ich bin nicht hier um mit dir zu handeln",
+      "leute die irgend etwas handeln das sie können",
+      "jetzt handeln ich kann nicht nur nett sein",
+      "die toten sind tot aber du kannst handeln"
+    ],
+    "meanings": []
+  },
+  "geschlossen": {
+    "sample_sentences": [
+      "wir haben schon geschlossen tut mir leid",
+      "sie haben die abteilung in paris geschlossen",
+      "wenn er den mund geschlossen hat",
+      "die bank ist seit jahren geschlossen"
+    ],
+    "meanings": []
+  },
+  "behandelt": {
+    "sample_sentences": [
+      "er wird keine zukunft haben wenn er nicht behandelt wird",
+      "ich habe dich aber wie ein kind behandelt",
+      "und wenn ein paar arbeitet wird es behandelt",
+      "so wie du ihn behandelt hast würde es"
+    ],
+    "meanings": []
+  },
+  "koordinaten": {
+    "sample_sentences": [
+      "ich bin auf kurs wie sind die koordinaten",
+      "hier ist die ctu haben sie die koordinaten",
+      "sie treffen das team an diesen koordinaten",
+      "sie auf ihre koordinaten zu halten und"
+    ],
+    "meanings": []
+  },
+  "al": {
+    "sample_sentences": [
+      "hier kumpel al höre dich laut und stolz",
+      "al kann sich glücklich schätzen so eine",
+      "al mein kleiner freund dein vater wäre",
+      "keine angst al ich bringe sie zurück"
+    ],
+    "meanings": []
+  },
+  "längst": {
+    "sample_sentences": [
+      "okay wir sind schon längst raus wir sind raus",
+      "ja aber längst nicht so gut wie er hier",
+      "sicher ist der junge längst auf dem weg",
+      "dann wäre ich längst so tot wie du"
+    ],
+    "meanings": []
+  },
+  "verdammter": {
+    "sample_sentences": [
+      "du verdammter mistkerl ich sage dir",
+      "verdammter mist da fährt unser wagen",
+      "wird es ein verdammter kampf sein",
+      "verdammter mistkerl ich hasse dich und"
+    ],
+    "meanings": []
+  },
+  "übel": {
+    "sample_sentences": [
+      "tut mir leid dass dir übel wird wegen mir",
+      "gar nicht so übel für den ersten tag",
+      "tut mir leid aber mir ist so übel",
+      "nimm es mir nicht übel aber ich muss"
+    ],
+    "meanings": []
+  },
+  "pistole": {
+    "sample_sentences": [
+      "sie halten sich die pistole an den kopf",
+      "er wollte eine pistole wie du eine hast",
+      "bist dumm oder was ich hab die pistole",
+      "da nahm er mir die pistole ab"
+    ],
+    "meanings": []
+  },
+  "süße": {
+    "sample_sentences": [
+      "du hast angst ich bin scharf auf deine süße",
+      "ach komm süße sei doch nicht so",
+      "aber sie haben eine sehr süße tochter",
+      "ihre gute süße zeit die hierher kommt"
+    ],
+    "meanings": []
+  },
+  "verdammten": {
+    "sample_sentences": [
+      "und zu der kannst du jeden verdammten tag",
+      "jetzt wo diese verdammten  mädchen gestorben sind",
+      "ich hab Ärger ich habe verdammten Ärger",
+      "hätte nicht diesen verdammten chip im kopf"
+    ],
+    "meanings": []
+  },
+  "anweisungen": {
+    "sample_sentences": [
+      "nicht nötig mom gibt mir die anweisungen",
+      "bis ich ihnen meine anweisungen gebe dann",
+      "die leute brauchen anweisungen was ist",
+      "dort haben wir letzte anweisungen erhalten"
+    ],
+    "meanings": []
+  },
+  "dadurch": {
+    "sample_sentences": [
+      "weil das unser land dadurch auch nicht besser wird",
+      "für sie dadurch wird sie ein teil von dir",
+      "dadurch können wir zeigen an welcher stelle",
+      "was wir haben und dadurch erhalten wir"
+    ],
+    "meanings": []
+  },
+  "fassen": {
+    "sample_sentences": [
+      "nicht zu fassen dass sie sich mit dieser frau",
+      "sie selbst weit weg und nicht zu fassen sind",
+      "aber sie versucht es in worte zu fassen",
+      "es ist ja nicht zu fassen was ihr"
+    ],
+    "meanings": []
+  },
+  "lautet": {
+    "sample_sentences": [
+      "da steht ein name wie lautet er",
+      "erzähl doch mal wie lautet dein plan",
+      "mr president wie lautet lhre antwort",
+      "ja dad so lautet meine entscheidung"
+    ],
+    "meanings": []
+  },
+  "machs": {
+    "sample_sentences": [
+      "wisst ihr was ich mach's jetzt auf meine art",
+      "ich mach`s mit ihm nicht er ist ein kind",
+      "ich mach's ja aber du musst mir sagen",
+      "mach's gut ich bin froh dich nicht"
+    ],
+    "meanings": []
+  },
+  "glas": {
+    "sample_sentences": [
+      "ich hol dir einen ich hol dir ein glas",
+      "warum ist ein glas mit uns so gefährlich",
+      "dazu tut man einfach alles in ein glas",
+      "setzen sie sich hin trinken sie ein glas"
+    ],
+    "meanings": []
+  },
+  "sprache": {
+    "sample_sentences": [
+      "raus mit der sprache  wo ist sie",
+      "nicht geredet also raus mit der sprache",
+      "der sprache raus oder sie werden leiden",
+      "an mir ich spreche ihre sprache nicht"
+    ],
+    "meanings": []
+  },
+  "russischen": {
+    "sample_sentences": [
+      "vor zehn minuten hat er einen russischen",
+      "in der russischen regierung geholfen hat",
+      "mit russischen mädchen die dort arbeiten",
+      "president logan und dem russischen"
+    ],
+    "meanings": []
+  },
+  "schwarze": {
+    "sample_sentences": [
+      "was er von einem system hält das arme schwarze",
+      "zwei weiße drei schwarze was sagst du dazu",
+      "ich weiß nicht ob wir schwarze und",
+      "was ist das schwarze ding da"
+    ],
+    "meanings": []
+  },
+  "wette": {
+    "sample_sentences": [
+      "ich wette daß er es tut ich bin lee durch den weg",
+      "ich wette heute ist der tag an dem du dir",
+      "wer von euch läuft mit ihm um die wette",
+      "ich wette der ist mal so viel wert"
+    ],
+    "meanings": []
+  },
+  "van": {
+    "sample_sentences": [
+      "sie haben wohl den van gestohlen und",
+      "sie sind sauber aber der van",
+      "der van ist auf der brücke",
+      "wer in dem van sitzt"
+    ],
+    "meanings": []
+  },
+  "gemeint": {
+    "sample_sentences": [
+      "dann habe ich damit nicht gemeint daß ich nicht",
+      "ich habe ernst gemeint was ich gesagt habe jack",
+      "ich habe nicht dich gemeint also sei kein",
+      "ich schwöre bei gott das ist ernst gemeint"
+    ],
+    "meanings": []
+  },
+  "sorry": {
+    "sample_sentences": [
+      "sorry aber besser konnte ich es nicht",
+      "sorry sie sagte ich sollte sie anrufen",
+      "ja ich bekam gerade den bericht sorry",
+      "stimmt sorry muss wohl die drei sein"
+    ],
+    "meanings": []
+  },
+  "leon": {
+    "sample_sentences": [
+      "sind sie sicher daß es ok ist leon",
+      "ehrlich glaubst du dass es leon gefällt",
+      "leon kommt heute hast du das gewusst",
+      "leon ist ja doch schwer in ordnung"
+    ],
+    "meanings": []
+  },
+  "wind": {
+    "sample_sentences": [
+      "ich hab keine ahnung  wie die bullen wind bekommen haben",
+      "seit mehr als  jahren haben wir den wind",
+      "ich bin nur ein wenig durch den wind",
+      "von selbst oder ist es der wind"
+    ],
+    "meanings": []
+  },
+  "mami": {
+    "sample_sentences": [
+      "warum gehst du nicht nach hause zu deiner mami",
+      "kann ich dann auch endlich meine mami sehen",
+      "weil wir schon bald unsere mami suchen werden",
+      "es ist mami gehst du nicht ran"
+    ],
+    "meanings": []
+  },
+  "geschlagen": {
+    "sample_sentences": [
+      "ich habe sie in ihrem eigenen spiel geschlagen",
+      "tut mir leid dass ich dich geschlagen habe",
+      "du gibst dich nicht so schnell geschlagen",
+      "ich glaub ich hab 'ne frau geschlagen"
+    ],
+    "meanings": []
+  },
+  "hoffen": {
+    "sample_sentences": [
+      "ich war nett davon zu hoffen daß du sehen würdest",
+      "hoffen wir dass es der rat nie sehen wird",
+      "ich will doch hoffen das du mit karten",
+      "wir müssen hoffen dass es das nicht tut"
+    ],
+    "meanings": []
+  },
+  "hielt": {
+    "sample_sentences": [
+      "das klingt als hätte sich tony den man für tot hielt",
+      "ihm helfen aber sie hielt mir den arm fest",
+      "sogar hielt auf sie fest für eine weile außer",
+      "oh ja einmal hielt mich ein typ am boden"
+    ],
+    "meanings": []
+  },
+  "cheng": {
+    "sample_sentences": [
+      "kannst du uns sagen wie wir cheng finden",
+      "dass cheng die ctu sofort verlassen muss",
+      "wir sind also ziemlich sicher dass cheng",
+      "das uns bei der suche nach cheng"
+    ],
+    "meanings": []
+  },
+  "big": {
+    "sample_sentences": [
+      "als big al es mit dir gemacht hat",
+      "nicht für dich und nicht für big daddy",
+      "ich wurde anwalt big daddy wollte es so",
+      "oh man uh hab gehört big mike"
+    ],
+    "meanings": []
+  },
+  "erfahrung": {
+    "sample_sentences": [
+      "ja ich hab erfahrung mit ihnen sie sind gut",
+      "in erfahrung gebracht hat das wir herausfinden müssen",
+      "wir haben erfahrung mit dieser art krieg",
+      "er hatte wenig erfahrung er hatte zwar"
+    ],
+    "meanings": []
+  },
+  "anscheinend": {
+    "sample_sentences": [
+      "sie ist anscheinend auf dem weg zu deinem raum",
+      "anscheinend war an der spur was dran",
+      "ja aber anscheinend habe ich einen fehler",
+      "anscheinend war ich viel zu lange blöd"
+    ],
+    "meanings": []
+  },
+  "victor": {
+    "sample_sentences": [
+      "victor ist in diesem zimmer das ist die mission",
+      "wieso warst du vor mir bei victor und",
+      "victor auf dem weg nach paris",
+      "das ist nicht victor er sieht"
+    ],
+    "meanings": []
+  },
+  "wusstest": {
+    "sample_sentences": [
+      "willst du mir sagen warum du wusstest das der kerl am flughafen ist",
+      "aber du wusstest immer du bist zu mehr bestimmt",
+      "hey wusstest du dass sie  jahre alt ist",
+      "sie würden dir glauben dass du nicht wusstest"
+    ],
+    "meanings": []
+  },
+  "soldat": {
+    "sample_sentences": [
+      "ein soldat ist tot und das boot ist weg",
+      "ich war ein soldat ich hatte einen auftrag",
+      "erinnerst du dich daran wie du soldat warst",
+      "er ist soldat und sie sind der feind"
+    ],
+    "meanings": []
+  },
+  "bar": {
+    "sample_sentences": [
+      "ich wollte nur noch eine weile in der bar gehen",
+      "wenn ich das mit an die bar nehmen kann",
+      "es gab einen anderen typen an der bar",
+      "an der bar noch bevor sie mich kennen"
+    ],
+    "meanings": []
+  },
+  "london": {
+    "sample_sentences": [
+      "da er und paul gerade in london sind",
+      "ja als monica und ich in london waren",
+      "hat in london nicht gerade den besten ruf",
+      "also über dich und mich und london"
+    ],
+    "meanings": []
+  },
+  "dateien": {
+    "sample_sentences": [
+      "ja aber ich komme nicht in die dateien rein",
+      "dann sag mir was du in den dateien",
+      "bitte geben sie mir zugang zu den dateien",
+      "hätte ins auge gehen können ohne dateien"
+    ],
+    "meanings": []
+  },
+  "dämonen": {
+    "sample_sentences": [
+      "ich fand es besser als die dämonen",
+      "lhr dämonen kriegt wohl nie genug was",
+      "die dämonen sind ganz in der nähe",
+      "lhr kennt euch mit dämonen aus buffy"
+    ],
+    "meanings": []
+  },
+  "fragte": {
+    "sample_sentences": [
+      "er hielt mir eine pistole an den kopf und fragte ob wir alle sterben wollen",
+      "fragte sie ihren bruder ob sie für ein paar wochen bei ihm wohnen könnten",
+      "er fragte wie es dir geht und es tut mir leid aber",
+      "font color=  und dann fragte ich mich ob mom auch den"
+    ],
+    "meanings": []
+  },
+  "m": {
+    "sample_sentences": [
+      "und ob das stimmt und nach 'm krieg",
+      "aber warum glauben sie dass m der",
+      "ziel ist weniger als m vor ihnen",
+      "was m über sie sagte stimmt"
+    ],
+    "meanings": []
+  },
+  "wald": {
+    "sample_sentences": [
+      "ich war im wald du im auto keiner",
+      "er hat recht ab in den wald",
+      "wenn wir nicht durch den wald kommen",
+      "aber ich sehe es als einen wald"
+    ],
+    "meanings": []
+  },
+  "jaime": {
+    "sample_sentences": [
+      "ehrlich gesagt nicht jaime habe ich nicht",
+      "jaime aber du lässt mir keine wahl",
+      "du weißt wie glücklich sich jaime schätzen",
+      "lass das niemals mit dir machen jaime"
+    ],
+    "meanings": []
+  },
+  "schuhe": {
+    "sample_sentences": [
+      "nein ich habe dieses tolle paar schuhe gesehen",
+      "doch einfach raus und hol die schuhe",
+      "jemand will es ihm in die schuhe",
+      "einen tag für  paar schuhe komm her"
+    ],
+    "meanings": []
+  },
+  "kirche": {
+    "sample_sentences": [
+      "auf einem ball in der kirche sie haben sie",
+      "dann sollte ich auch in die kirche gehen",
+      "sie waren in der kirche und auf dem",
+      "wir treffen uns um vier an der kirche"
+    ],
+    "meanings": []
+  },
+  "halbe": {
+    "sample_sentences": [
+      "eine halbe stunde ist mehr als ein paar minuten",
+      "etwas mehr als eine halbe seite die hälfte in",
+      "ja aber ich bin nur das halbe team",
+      "es ist gerade mal eine halbe stunde her"
+    ],
+    "meanings": []
+  },
+  "programm": {
+    "sample_sentences": [
+      "seit ich das programm vor  jahren verlassen habe",
+      "ok ich glaube das programm ist fertig",
+      "der tut so peacemässig aber in seinem kopf läuft 'ne ganz anderes programm ab",
+      "ein programm das man nicht beenden kann"
+    ],
+    "meanings": []
+  },
+  "nem": {
+    "sample_sentences": [
+      "in 'nem krankenhaus wo er gar nicht ist",
+      "ich hab gehört dass er mit so 'nem",
+      "ein kerl zu 'nem anderen kerl sagen sollte",
+      "wer fährt an so 'nem tag schon rum"
+    ],
+    "meanings": []
+  },
+  "lehrer": {
+    "sample_sentences": [
+      "du bist der beste lehrer ich weiß es",
+      "na die lehrer hier sind ja wirklich nett",
+      "sie braucht einen lehrer du einen job",
+      "lehrer und der schüler an einem tisch"
+    ],
+    "meanings": []
+  },
+  "major": {
+    "sample_sentences": [
+      "es tut mir leid major wir lassen sie ihnen",
+      "nein aber ich bin kurz davor major",
+      "sie sind der einzige major der dem",
+      "wir alle müssen opfer bringen major"
+    ],
+    "meanings": []
+  },
+  "bessere": {
+    "sample_sentences": [
+      "weißt du was ich hab 'ne bessere idee",
+      "ich denke das wäre ne bessere idee yeah",
+      "wirst du sehen wer der bessere mann ist",
+      "ich mache aus dir eine bessere jägerin"
+    ],
+    "meanings": []
+  },
+  "akte": {
+    "sample_sentences": [
+      "ich will die akte von jedem hier haben",
+      "schicken sie lhre akte und alles was sie",
+      "in einer akte sondern wirklich hier in la",
+      "ist ja gut aber in der akte steht"
+    ],
+    "meanings": []
+  }
+}

@@ -1,0 +1,911 @@
+{
+  "verdient": {
+    "sample_sentences": [
+      "es gibt nur eine sache die diese stadt verdient",
+      "jeder mensch hat würde verdient   und meine würde",
+      "ich werde es ihm sagen er verdient es",
+      "sich warum es es verdient erhalten zu bleiben"
+    ],
+    "meanings": []
+  },
+  "partner": {
+    "sample_sentences": [
+      "das muss er erfahren dass ihr nicht mehr länger partner seid",
+      "wir sind partner ein mann und ein geist",
+      "seinen partner nicht für eine stunde spaß",
+      "weisst du wieso du mein partner bist"
+    ],
+    "meanings": []
+  },
+  "anfangen": {
+    "sample_sentences": [
+      "weiß er oder sie nicht dass wir jetzt anfangen",
+      "weiß gar nicht wo ich bei dir anfangen soll",
+      "sie einen krieg mit der cia anfangen wollen",
+      "du hast recht wo soll man da anfangen"
+    ],
+    "meanings": []
+  },
+  "herzen": {
+    "sample_sentences": [
+      "in meinem herzen weiß ich dass ich immer das tat",
+      "ich suche dich du hast was auf dem herzen",
+      "aus dem herzen wenn ich dir dafür danke",
+      "und lhr glück liegt ihm sehr am herzen"
+    ],
+    "meanings": []
+  },
+  "brauch": {
+    "sample_sentences": [
+      "wenn irgendwas passiert kommen sie zuerst zu mir und das brauch' ich nicht",
+      "ich brauch ein wenig zeit um mich mit",
+      "die brauch ich im kampf gegen sie nicht",
+      "ich brauch einen mann der sich da oben"
+    ],
+    "meanings": []
+  },
+  "hörte": {
+    "sample_sentences": [
+      "ich hörte gerade daß du ganz gut bin",
+      "wie ich hörte hast du mit der sechs",
+      "es hörte sich so an als wollten sie",
+      "ich hörte so lange zeit nichts von dir"
+    ],
+    "meanings": []
+  },
+  "ruft": {
+    "sample_sentences": [
+      "das habe ich ich bin sicher er ruft sie an",
+      "er ruft an wenn er da etwas finden sollte",
+      "wer ruft mich denn jetzt an na so was",
+      "ihr gehört und jetzt ruft sie mich an"
+    ],
+    "meanings": []
+  },
+  "beispiel": {
+    "sample_sentences": [
+      "ein bisschen was so was zum beispiel",
+      "zu sehen von der ctu zum beispiel",
+      "ich würde sie nicht als beispiel nehmen",
+      "das hier zum beispiel du gehst dem"
+    ],
+    "meanings": []
+  },
+  "george": {
+    "sample_sentences": [
+      "george helfen sie kim und wenn sie",
+      "george wie lange wirst du fort sein",
+      "aber du musst es gewesen sein george",
+      "dran bist als du es bist george"
+    ],
+    "meanings": []
+  },
+  "stoppen": {
+    "sample_sentences": [
+      "ich weiß dass sie hier sind um ihn zu stoppen",
+      "wo es ist oder ob ich es stoppen kann",
+      "aber du hast eine du kannst es stoppen",
+      "wie man diese art von virus stoppen kann"
+    ],
+    "meanings": []
+  },
+  "bleibe": {
+    "sample_sentences": [
+      "dann bring' ich mich eben um wie findest du das aber hier bleibe ich nicht",
+      "dann wollte er auf einmal doch ganz gerne dass ich bleibe",
+      "ob es eine gute idee ist wenn ich bleibe",
+      "wenn ich die nacht über nicht hier bleibe"
+    ],
+    "meanings": []
+  },
+  "angeles": {
+    "sample_sentences": [
+      "ich werde meine rede in los angeles halten",
+      "glauben sie dass er in los angeles ist",
+      "wie lange sind sie schon in los angeles",
+      "mich zu beschützen aber hier in los angeles"
+    ],
+    "meanings": []
+  },
+  "briareos": {
+    "sample_sentences": [
+      "briareos meinst du nicht dass du als",
+      "briareos es gibt nur eine person",
+      "briareos bleib stehen hör mir zu",
+      "briareos ich muss dem guten doktor"
+    ],
+    "meanings": []
+  },
+  "näher": {
+    "sample_sentences": [
+      "jack sie ist es  sekunden näher am tod jack",
+      "ich höre was ein auto das näher kommt",
+      "ich will dass wir uns näher kennen",
+      "sie kamen näher um uns zu zerstören"
+    ],
+    "meanings": []
+  },
+  "namens": {
+    "sample_sentences": [
+      "da ist ein mann namens jack bauer bei dir",
+      "es war einmal ein mann namens",
+      "von einem mann namens fayed angerufen",
+      "schauen sie ob ein mann namens"
+    ],
+    "meanings": []
+  },
+  "kümmere": {
+    "sample_sentences": [
+      "dann bleibe ich mit dir und kümmere mich darum mit dir",
+      "ich sagte daß ich mich darum von hier kümmere",
+      "ich kümmere mich ab und zu um ihn",
+      "ich kümmere mich um dich nach der schule"
+    ],
+    "meanings": []
+  },
+  "versteckt": {
+    "sample_sentences": [
+      "überall in der stadt versteckt ich kann noch ein",
+      "nun er versteckt sich nun schon seit einem jahr",
+      "es wäre gut zu wissen wo sie sich versteckt",
+      "vor mir versteckt hast und er ist gekommen"
+    ],
+    "meanings": []
+  },
+  "bekommt": {
+    "sample_sentences": [
+      "zu töten wenn er nicht bekommt was er will",
+      "aber heute bekommt er es mit uns zu tun",
+      "also stell sicher daß sie viel ruhe bekommt",
+      "da bekommt man ja auch ein neues leben"
+    ],
+    "meanings": []
+  },
+  "handy": {
+    "sample_sentences": [
+      "und ich kann ihn auf seinem handy nicht erreichen",
+      "ich weiß aber er geht nicht an sein handy",
+      "ich weiß nicht aber ich habe ein handy",
+      "wozu brauchst du ein handy das ist eher"
+    ],
+    "meanings": []
+  },
+  "deckard": {
+    "sample_sentences": [
+      "deckard was auch immer da in der",
+      "komm schon sei kein arsch deckard",
+      "ich glaub' nicht herr deckard",
+      "ich glaube nicht herr deckard"
+    ],
+    "meanings": []
+  },
+  "willen": {
+    "sample_sentences": [
+      "ich habe das gefühl ich tue das gegen meinen willen",
+      "ich meine um gottes willen es ist ihr vater",
+      "denn die wahrheit ist wenn wir gottes willen",
+      "weil ich mich meiner selbst willen liebe"
+    ],
+    "meanings": []
+  },
+  "fürs": {
+    "sample_sentences": [
+      "im moment würde ich alles fürs fliegen geben",
+      "weißt du das ist nicht gut fürs geschäft",
+      "danke fürs kommen  ich danke ihnen",
+      "sie ist eine frau für's leben"
+    ],
+    "meanings": []
+  },
+  "wussten": {
+    "sample_sentences": [
+      "es ist etwas dass wir nicht über sie wussten",
+      "sind und genau wussten was zu tun war",
+      "und ich bin mir sicher sie wussten es",
+      "ich denke sie wussten dass ich auf dem"
+    ],
+    "meanings": []
+  },
+  "ran": {
+    "sample_sentences": [
+      "rechts ran und halten sie auf der stelle an",
+      "das kann nicht wahr sein geh doch ran",
+      "du willst an mich ran hier bin ich",
+      "ja was machst du denn da näher ran"
+    ],
+    "meanings": []
+  },
+  "wach": {
+    "sample_sentences": [
+      "sie kann nur nichts sehen wenn sie wach ist",
+      "bitte wach auf falls du mich hören kannst",
+      "der kaffee hält dich die ganze nacht wach",
+      "was ist los bist du noch nicht wach"
+    ],
+    "meanings": []
+  },
+  "letzter": {
+    "sample_sentences": [
+      "aber in letzter zeit bist du nicht ganz da",
+      "das haben wir in letzter zeit getan oh gott",
+      "dass buffy sie in letzter minute retten wird",
+      "in letzter zeit kommt es mir so vor"
+    ],
+    "meanings": []
+  },
+  "unbedingt": {
+    "sample_sentences": [
+      "was ist es das du jetzt unbedingt tun musst",
+      "ok dann lässt du's eben wenn du unbedingt",
+      "man ist in der schule man will unbedingt",
+      "ich will nur unbedingt dass alles gut wird"
+    ],
+    "meanings": []
+  },
+  "verhindern": {
+    "sample_sentences": [
+      "es ging zu schnell um es zu verhindern",
+      "es ist mein job die sache zu verhindern",
+      "opfer zu verhindern ist die aufgabe immer noch",
+      "die uns genug zeit lassen sie zu verhindern"
+    ],
+    "meanings": []
+  },
+  "super": {
+    "sample_sentences": [
+      "super ich hol dich dann um sieben uhr ab",
+      "super was kann ich tun um zu helfen",
+      "und halt super deine klappe ist das klar",
+      "es ist super hier aber ich dachte"
+    ],
+    "meanings": []
+  },
+  "müde": {
+    "sample_sentences": [
+      "es ist zu spät und ich bin zu müde",
+      "es ist spät ich bin müde und ich hab",
+      "dann ins bett denn wir sind echt müde also",
+      "es tut mir leid ich bin nur müde"
+    ],
+    "meanings": []
+  },
+  "nachrichten": {
+    "sample_sentences": [
+      "aber jedes mal wenn ich hier bin höre ich in den nachrichten",
+      "lhr gesicht ist in den nachrichten zu sehen",
+      "es kam in den nachrichten da hat wer",
+      "heute will ich nur gute nachrichten hören"
+    ],
+    "meanings": []
+  },
+  "liebst": {
+    "sample_sentences": [
+      "du musst bei der person sein die du liebst",
+      "jedes mal wenn du gesagt hast du liebst mich",
+      "ich weiß du liebst mich ich mich auch",
+      "werde sie los wenn du sie nicht liebst"
+    ],
+    "meanings": []
+  },
+  "links": {
+    "sample_sentences": [
+      "danke danke links kann ich einfach nicht",
+      "wenn man den kopf etwas nach links",
+      "die  links sind meine die rechts deine",
+      "ist es nicht vielleicht das da links"
+    ],
+    "meanings": []
+  },
+  "umgebracht": {
+    "sample_sentences": [
+      "also denken sie dass sie ihn umgebracht hat",
+      "bevor der rest von uns umgebracht wird",
+      "umgebracht und als ich faith war wieder",
+      "erzählt als er lhre eltern umgebracht hat"
+    ],
+    "meanings": []
+  },
+  "firma": {
+    "sample_sentences": [
+      "er ist einer der partner in der firma",
+      "ich bin boss einer firma die zu",
+      "jetzt können wir nur noch diese firma",
+      "es geht immer nur um die firma"
+    ],
+    "meanings": []
+  },
+  "bezahlt": {
+    "sample_sentences": [
+      "noch was für das du bezahlt werden willst",
+      "die neue frau macht sich bezahlt ich hätte",
+      "denn das ist der preis den man bezahlt",
+      "wer bezahlt dir denn so viel geld"
+    ],
+    "meanings": []
+  },
+  "karte": {
+    "sample_sentences": [
+      "ich dich auch aber die karte hole ich mir",
+      "und er lässt seine karte da ich soll ihn",
+      "die es noch nicht auf der karte gibt",
+      "colonel das ist die karte die ich für"
+    ],
+    "meanings": []
+  },
+  "planeten": {
+    "sample_sentences": [
+      "lee und seine leute von dem planeten zu holen",
+      "ich ging mit ihnen runter auf diesen planeten",
+      "oh ja wir haben eine verbindung zum planeten",
+      "als du unten auf dem planeten warst"
+    ],
+    "meanings": []
+  },
+  "sex": {
+    "sample_sentences": [
+      "was soll ich machen ich denke nur an sex",
+      "du willst also sex dann los hier und jetzt",
+      "ich liebe dich ich will sex mit dir",
+      "in mit mir und hatte sex mit ihm"
+    ],
+    "meanings": []
+  },
+  "henderson": {
+    "sample_sentences": [
+      "henderson gab uns  namen von denen er denkt",
+      "henderson hat ihnen gesagt dass sie den namen",
+      "dass wir uns nicht mehr auf henderson",
+      "was getan werden muss mr henderson"
+    ],
+    "meanings": []
+  },
+  "schmerz": {
+    "sample_sentences": [
+      "du bist gewesen in schmerz für eine wirklich lange zeit",
+      "zu fühlen selbst wenn es nur schmerz ist",
+      "du willst nicht mit dem schmerz leben",
+      "geben sie ihr was gegen den schmerz"
+    ],
+    "meanings": []
+  },
+  "aussehen": {
+    "sample_sentences": [
+      "es muss aussehen als ob ich verletzt wurde",
+      "ich werde gut darin aussehen das ist cool",
+      "er lässt es wie einen unfall aussehen",
+      "er wird mal wie sein papa aussehen"
+    ],
+    "meanings": []
+  },
+  "fehlt": {
+    "sample_sentences": [
+      "ich stelle nur sicher dass mir nichts fehlt",
+      "das land weg ist fehlt jeder halt",
+      "warum mir die fehlt wissen sie ja",
+      "weißt du was mir am meisten fehlt"
+    ],
+    "meanings": []
+  },
+  "herein": {
+    "sample_sentences": [
+      "aber darauf fall ich auf keinen fall herein",
+      "und seine leute nicht hier herein kommen",
+      "er kam zurück und konnte nicht herein",
+      "und bitten sie auch meinen sohn herein"
+    ],
+    "meanings": []
+  },
+  "klein": {
+    "sample_sentences": [
+      "als ich klein war ich hab sie alle gehört",
+      "es wird wie als ich klein war nur dass",
+      "er war nie da als ich klein war",
+      "wo hat er gelernt so klein zu schreiben"
+    ],
+    "meanings": []
+  },
+  "verschwunden": {
+    "sample_sentences": [
+      "seit er verschwunden ist musste ich mich mit",
+      "du wirst aus meinem kopf verschwunden sein",
+      "und dann war er so schnell verschwunden",
+      "warum ist er ohne sein handy verschwunden"
+    ],
+    "meanings": []
+  },
+  "schätze": {
+    "sample_sentences": [
+      "und ich schätze das nächste was sie mir erzählen wollen ist",
+      "ich schätze sie ist ganz in der nähe",
+      "ich schätze das aber du weißt dort ist",
+      "ich schätze es wirklich sehr dass sie mit"
+    ],
+    "meanings": []
+  },
+  "wunder": {
+    "sample_sentences": [
+      "kein wunder dass ich so viel arbeit hatte",
+      "als an die zukunft und all ihre wunder",
+      "dein vater hat in diesen tagen mehr als nur ein paar wunder zu stande gebracht",
+      "eure welt sie ist so voller wunder"
+    ],
+    "meanings": []
+  },
+  "gruppe": {
+    "sample_sentences": [
+      "denken sie daran was das beste für die gruppe ist",
+      "wenn das ziel nicht unter diese gruppe fällt",
+      "die gruppe an der wir dran sind",
+      "ich war in dieser gruppe weil das"
+    ],
+    "meanings": []
+  },
+  "zumindest": {
+    "sample_sentences": [
+      "na gut dann hole ich dir zumindest ein",
+      "er am ende zumindest sein leben behalten darf",
+      "zumindest wissen wir nun wo wir stehen was",
+      "zumindest solange wie du und kara mich lasst"
+    ],
+    "meanings": []
+  },
+  "monster": {
+    "sample_sentences": [
+      "um mehr geht als nur um ein paar monster",
+      "dass die person nicht immer ein monster war",
+      "jetzt den hinter dem das monster her war",
+      "wir haben vor monster zu töten falls"
+    ],
+    "meanings": []
+  },
+  "seele": {
+    "sample_sentences": [
+      "sich alles von der seele zu reden erinnerst du dich",
+      "ich hatte eine seele und jetzt bin ich frei",
+      "es hörte auf als ich wieder eine seele",
+      "nehmen sie die mit die keine seele hat"
+    ],
+    "meanings": []
+  },
+  "lacht": {
+    "sample_sentences": [
+      "weißt du noch spaß ist wenn man lacht",
+      "lacht  wenn er bleibt bleibe ich auch",
+      "lacht  soll das heißen du würdest sie",
+      "dann lacht er sich den arsch weg"
+    ],
+    "meanings": []
+  },
+  "fährt": {
+    "sample_sentences": [
+      "vom wagen weg   sagen sie mir wie er sich fährt",
+      "sonst fährt er hin und sie bringen ihn um",
+      "wie schon der typ fährt vor sich hin",
+      "und dann fährt er jeden tag drei stunden"
+    ],
+    "meanings": []
+  },
+  "statt": {
+    "sample_sentences": [
+      "statt an david du weißt was zu tun ist",
+      "das leben in einem haus statt einem schiff",
+      "gott sei dank wann findet es statt",
+      "lch wusste nie sie finden da statt"
+    ],
+    "meanings": []
+  },
+  "chandler": {
+    "sample_sentences": [
+      "es tut mir leid bei chandler und monica",
+      "hallo ich bin chandler und ich hab",
+      "chandler oh mein gott sie ist es",
+      "hier chandler nimm dir mal was davon"
+    ],
+    "meanings": []
+  },
+  "schwöre": {
+    "sample_sentences": [
+      "kein witz ich bin vom fbi ich schwöre es",
+      "ich habe gar nichts gemacht das schwöre ich",
+      "ich hatte es tony ich schwöre bei gott",
+      "ich schwöre bei gott wenn du nicht kommst"
+    ],
+    "meanings": []
+  },
+  "redet": {
+    "sample_sentences": [
+      "du bist sogar die erste die mit mir redet",
+      "richtig da zu sein wenn man mit ihr redet",
+      "er sagt er stirbt lieber als dass er redet",
+      "jemand will nicht dass sie mit mir redet"
+    ],
+    "meanings": []
+  },
+  "gewonnen": {
+    "sample_sentences": [
+      "es ist mir egal wie oft sie gewonnen haben",
+      "palmer hat die wahl in new york gewonnen",
+      "wenn wir gewonnen hätten und das hätten wir",
+      "wenn wir gewonnen haben können wir den"
+    ],
+    "meanings": []
+  },
+  "interessant": {
+    "sample_sentences": [
+      "hallo ich finde das ganz interessant was dein freund so macht",
+      "es ist nur wir finden dich so interessant",
+      "es ist interessant  als ob man mit dem",
+      "das hat ihn am anfang interessant gemacht"
+    ],
+    "meanings": []
+  },
+  "verkauft": {
+    "sample_sentences": [
+      "und an wen hätten sie die dann wohl verkauft",
+      "also wem hat ihr mann das auto verkauft",
+      "sie weiß nicht was sie ihnen verkauft hat",
+      "sie hat mir die informationen verkauft mr bauer"
+    ],
+    "meanings": []
+  },
+  "kamera": {
+    "sample_sentences": [
+      "sonst muss die kamera auf einer seite sein",
+      "du machst das auch toll mit der kamera",
+      "ich glaube ich kann die kamera von hier",
+      "was ist denn das eine kamera oder so"
+    ],
+    "meanings": []
+  },
+  "jedenfalls": {
+    "sample_sentences": [
+      "denn wer weiß ich weiß es jedenfalls nicht",
+      "dass er tot ist sag ich jedenfalls nicht",
+      "jedenfalls bin ich dann in deiner nähe",
+      "ich will jedenfalls noch nicht nach hause"
+    ],
+    "meanings": []
+  },
+  "bob": {
+    "sample_sentences": [
+      "nein du hast recht tut mir leid bob",
+      "tut mir leid bob du hast völlig recht",
+      "weißt du was ich mal machen will bob",
+      "du musst ganz und gar nichts tun bob"
+    ],
+    "meanings": []
+  },
+  "übrig": {
+    "sample_sentences": [
+      "ihr dad hat viel für musik übrig und ich",
+      "in ein paar stunden wird niemand mehr übrig sein",
+      "aber es bleibt nie was für uns übrig",
+      "und dann wenn nichts mehr übrig ist als"
+    ],
+    "meanings": []
+  },
+  "mörder": {
+    "sample_sentences": [
+      "alles was wir tun müssen ist diese mörder zu töten richtig",
+      "wir haben keine zeit um uns um unsere mörder zu kümmern",
+      "du bist kein mörder und werd auch jetzt keiner",
+      "du bist kein mörder wie ich das ist gut"
+    ],
+    "meanings": []
+  },
+  "hältst": {
+    "sample_sentences": [
+      "er ist nicht der für den du ihn hältst",
+      "ich weiß ja nicht für wen du mich hältst",
+      "vielleicht sogar tat aber wenn du nicht wort hältst",
+      "aber du hältst mich nicht von meinem job ab"
+    ],
+    "meanings": []
+  },
+  "öffnen": {
+    "sample_sentences": [
+      "er sagte daß du die eins sein solltest um es zu öffnen",
+      "chloe öffnen sie das und tun sie so als",
+      "ich weiß ich hätte ihn nicht öffnen dürfen",
+      "du brauchst einen schlüssel um es zu öffnen"
+    ],
+    "meanings": []
+  },
+  "sloane": {
+    "sample_sentences": [
+      "was kann ich für sie tun mr sloane",
+      "du weißt das sloane auf der suche",
+      "mr sloane es ist so lange her",
+      "können sie nicht schlafen mr sloane"
+    ],
+    "meanings": []
+  },
+  "neben": {
+    "sample_sentences": [
+      "okay er ist etwas neben der spur aber immer",
+      "hier die kannst du jetzt neben deinen computer stellen",
+      "aber die frau die hier neben mir sitzt sagt",
+      "neben dir ist das erste was ich jeden"
+    ],
+    "meanings": []
+  },
+  "verspreche": {
+    "sample_sentences": [
+      "komm mit mir ich verspreche dir ich werde dir nicht weh tun",
+      "sag mir was du weißt oder ich verspreche dir",
+      "wir kümmern uns um alles ich verspreche es",
+      "es wird alles gut das verspreche ich dir"
+    ],
+    "meanings": []
+  },
+  "haltet": {
+    "sample_sentences": [
+      "haltet die klappe und tut was ich euch sage",
+      "lhr beide haltet ihn und du wirst ihm",
+      "haltet endlich mal die klappe verdammt noch mal",
+      "team zwei haltet uns den rücken frei"
+    ],
+    "meanings": []
+  },
+  "heiß": {
+    "sample_sentences": [
+      "seid ihr deshalb jetzt so heiß auf dieses spiel",
+      "und er war heiß darauf es mir zu zeigen",
+      "weil es hier bei lhnen so heiß ist",
+      "ich habe gesagt daß es heiß ist"
+    ],
+    "meanings": []
+  },
+  "ichs": {
+    "sample_sentences": [
+      "ich will wissen mit wem ich's zu tun habe",
+      "mom wie oft hab ich's dir schon gesagt",
+      "aber ich hab vergessen wo ich's hin hab",
+      "wenn ich sie vorher sehe sage ich's ihr"
+    ],
+    "meanings": []
+  },
+  "kriegt": {
+    "sample_sentences": [
+      "und kriegt raus ob jemand bei ihm war",
+      "sie kriegt mein baby und ist nicht da",
+      "so kriegt ihr mich nicht seit wann ist",
+      "ach ja sie kriegt ein baby von mir"
+    ],
+    "meanings": []
+  },
+  "verraten": {
+    "sample_sentences": [
+      "kannst du mir verraten warum du noch am leben bist",
+      "für uns ich wollte es dir nicht verraten",
+      "wissen sie dass bauer sie verraten hat",
+      "falls er glaubt sie könnte uns verraten"
+    ],
+    "meanings": []
+  },
+  "beschäftigt": {
+    "sample_sentences": [
+      "sie hat sich mit vielen sachen beschäftigt sam",
+      "ich war zu sehr damit beschäftigt dir zu",
+      "tut mir leid warst du mit etwas beschäftigt",
+      "aber er ist ja immer so beschäftigt"
+    ],
+    "meanings": []
+  },
+  "erschossen": {
+    "sample_sentences": [
+      "bleibt unten ich will nicht dass ihr erschossen werdet",
+      "ich hätte mich an ort und stelle erschossen",
+      "in dem so viele leute erschossen werden",
+      "sie war dort als sie erschossen wurden"
+    ],
+    "meanings": []
+  },
+  "drogen": {
+    "sample_sentences": [
+      "leute die waffen oder drogen wollen kommen zu mir nach hause",
+      "keine drogen gut na schön  dann habt ihr das geld",
+      "wie bei drogen aus der guten alten zeit",
+      "was ist los mit euch sind es drogen"
+    ],
+    "meanings": []
+  },
+  "schicke": {
+    "sample_sentences": [
+      "ich schicke den bericht so ab wie er ist",
+      "tun sie das für mich und ich schicke",
+      "jeden tag schicke ich leute in den kampf",
+      "ich dachte das wäre vielleicht eine schicke"
+    ],
+    "meanings": []
+  },
+  "verfolgen": {
+    "sample_sentences": [
+      "warum verfolgen die mich dann wenn sie von nichts wissen",
+      "wie lange wird das dauert den anruf zu verfolgen",
+      "ich werde sie verfolgen mit oder ohne dich",
+      "wir verfolgen eine spur und sobald wir was"
+    ],
+    "meanings": []
+  },
+  "erwischt": {
+    "sample_sentences": [
+      "wenn man sie genau zwischen den augen erwischt",
+      "haben sie mich erwischt und ihr geht alleine",
+      "dich mit ihr erwischt wärst du jetzt tot",
+      "wir hatten den ort doch sie wurde erwischt"
+    ],
+    "meanings": []
+  },
+  "gesucht": {
+    "sample_sentences": [
+      "dass ich das gefunden habe was ich gesucht habe",
+      "ah da sind sie ja ich habe sie gesucht",
+      "was machst du hier   ich hab sie überall gesucht",
+      "du weisst doch ich habe mir eine frau gesucht"
+    ],
+    "meanings": []
+  },
+  "einsatz": {
+    "sample_sentences": [
+      "ich will dich nicht in diesem einsatz sehen",
+      "er ist noch im einsatz warten sie hier",
+      "du bist seit drei tagen ständig im einsatz",
+      "das hat nichts mit dem einsatz zu tun"
+    ],
+    "meanings": []
+  },
+  "weder": {
+    "sample_sentences": [
+      "ich weiß weder wer du bist noch wer er ist",
+      "ich weiß weder ob er lebt oder tot ist",
+      "du weißt weder von ihr noch von mir etwas",
+      "ich sagte wenn wir hier leben soll weder mein"
+    ],
+    "meanings": []
+  },
+  "sekunde": {
+    "sample_sentences": [
+      "gib mir 'ne sekunde ich habe ihn gleich soweit",
+      "gib mir eine sekunde damit ich sie dazu bringe",
+      "bill bleib eine sekunde dran ich will dich auf",
+      "warte eine sekunde ich hole dich gleich hier rüber"
+    ],
+    "meanings": []
+  },
+  "schickt": {
+    "sample_sentences": [
+      "zukunft schickt den ganzen weg zurück durch die zeit",
+      "schickt andere leute aus um getötet zu werden",
+      "wenn sie was findet schickt sie es her",
+      "und das team schickt mich einfach weg"
+    ],
+    "meanings": []
+  },
+  "niemandem": {
+    "sample_sentences": [
+      "ich gab ihm mein wort es niemandem zu sagen",
+      "bitte sag niemandem dass ich etwas gesagt habe",
+      "aber sagen sie niemandem bei der ctu was",
+      "und es niemandem zu erzählen weil ich ihn"
+    ],
+    "meanings": []
+  },
+  "haut": {
+    "sample_sentences": [
+      "wenn er aus der haut fährt ruf ich dich",
+      "das geht einem unter die haut so was",
+      "das haut ihn um ich glaube es nicht",
+      "ich hab doch gesagt er haut ab tony"
+    ],
+    "meanings": []
+  },
+  "flughafen": {
+    "sample_sentences": [
+      "bist du sicher er ist bis zum flughafen gekommen",
+      "das wars was er auf dem flughafen gemacht hat",
+      "wayne palmer sollte auch auf dem flughafen sein",
+      "ich bin jetzt auf dem weg zum flughafen"
+    ],
+    "meanings": []
+  },
+  "dasselbe": {
+    "sample_sentences": [
+      "bei uns tragen die leute fast immer dasselbe",
+      "es ist immer dasselbe mit dir und jetzt",
+      "aber es ist nicht dasselbe es ist wichtig",
+      "ich sag dir jetzt genau dasselbe was"
+    ],
+    "meanings": []
+  },
+  "beweis": {
+    "sample_sentences": [
+      "es tut mir leid aber das ist kein beweis",
+      "selbst wenn das wahr ist hast du keinen beweis",
+      "es gibt keinen beweis dass ich es war",
+      "aber wenn du bis dann keinen beweis hast"
+    ],
+    "meanings": []
+  },
+  "teams": {
+    "sample_sentences": [
+      "ja eines unserer teams hat ihn vor  minuten an",
+      "an alle teams das war nicht die bombe",
+      "die teams vor ort verlassen sich auf uns",
+      "wir haben ihn wir schicken teams von hier"
+    ],
+    "meanings": []
+  },
+  "tasche": {
+    "sample_sentences": [
+      "und wenn sie dir das geld aus der tasche ziehen wollen",
+      "er denkt immer noch er ist in der tasche",
+      "von einem von euch in der tasche haben",
+      "sie wird in der tasche an der seite"
+    ],
+    "meanings": []
+  },
+  "seltsam": {
+    "sample_sentences": [
+      "ich muss schon sagen mir als amerikaner kam das alles ziemlich seltsam vor",
+      "sie ist etwas seltsam aber sie kennt sich aus",
+      "und das kommt mir alles etwas seltsam vor",
+      "es ist seltsam dass sie nicht hier sind"
+    ],
+    "meanings": []
+  },
+  "stimmts": {
+    "sample_sentences": [
+      "du bist alles was dein bruder nicht war stimmt's",
+      "und denkst du bist jetzt frei stimmts",
+      "die wahrheit tut weh stimmt's was ich",
+      "die bombe ist immer noch hier stimmt's"
+    ],
+    "meanings": []
+  },
+  "volk": {
+    "sample_sentences": [
+      "er darf es nicht vor dem volk erfahren",
+      "sag ihm wenn sein volk mit uns geht",
+      "er ging fort um unser volk zu retten",
+      "bekommt das volk die regierung die es verdient"
+    ],
+    "meanings": []
+  },
+  "gleichen": {
+    "sample_sentences": [
+      "kein essen mit dem kerl den du am gleichen tag",
+      "dass das alles die arbeit der gleichen gruppe war",
+      "ich weiß wir sind nicht im gleichen raum",
+      "er ist immer noch an der gleichen stelle"
+    ],
+    "meanings": []
+  },
+  "foto": {
+    "sample_sentences": [
+      "hey das sieht viel besser als auf dem foto aus",
+      "schau dir das foto von ihnen an auf dem",
+      "du warst doch mit auf dem foto in dem",
+      "e#s ist ok wenn du das foto nicht magst"
+    ],
+    "meanings": []
+  },
+  "passen": {
+    "sample_sentences": [
+      "wir passen auf sag mir wo du gern wärst",
+      "passen sie auf die frau und den mann auf",
+      "sie haben eine minute passen sie auf ihn auf",
+      "jetzt passen sie auf es ist immer noch zeit"
+    ],
+    "meanings": []
+  },
+  "frieden": {
+    "sample_sentences": [
+      "wir sind hier um einen weg zu finden in frieden",
+      "'lch bin im frieden mit mir und der welt",
+      "lass mich in frieden ich will jetzt nicht",
+      "und um ein wenig frieden und ruhe bitten"
+    ],
+    "meanings": []
+  }
+}
