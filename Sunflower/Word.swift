@@ -148,6 +148,20 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         return nil
     }
     
+    // MARK: Helper
+    func printToSTD() {
+        println("-----------------START----------------")
+        println("Name: \(self.name)")
+        println("Learning Due Date:\(self.relearningDueDate)")
+        println("Next Test Type: \(self.nextTest()?.type.toString())")
+        println("Learning Stage: \(self.currentLearningStage.toString())")
+        println("Tests done:")
+        for test in self.testsSuccessfulyDoneForCurrentStage {
+            println("\t \(test.type.toString())")
+        }
+        println("----------------END--------------------")
+    }
+    
     // MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: kName)
