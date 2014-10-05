@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zI7-A1-vsr" userLabel="Label - Name">
-                    <rect key="frame" x="0.0" y="82" width="274" height="84"/>
+                    <rect key="frame" x="0.0" y="15" width="274" height="84"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="zI7-A1-vsr" secondAttribute="height" multiplier="49:15" id="wsI-2G-Di4"/>
                     </constraints>
@@ -30,7 +30,7 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meaning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q1z-iS-Kpg" userLabel="Label - Meaning">
-                    <rect key="frame" x="0.0" y="226" width="274" height="31"/>
+                    <rect key="frame" x="0.0" y="159" width="274" height="31"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
             <constraints>
                 <constraint firstItem="Q1z-iS-Kpg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Efe-GQ-yip"/>
                 <constraint firstAttribute="centerX" secondItem="zI7-A1-vsr" secondAttribute="centerX" id="FPw-TB-MaA"/>
-                <constraint firstItem="zI7-A1-vsr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="82" id="TQw-dP-PcX"/>
+                <constraint firstItem="zI7-A1-vsr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="TQw-dP-PcX"/>
                 <constraint firstItem="zI7-A1-vsr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cjK-ED-LWb"/>
                 <constraint firstItem="Q1z-iS-Kpg" firstAttribute="top" secondItem="zI7-A1-vsr" secondAttribute="bottom" constant="60" id="dYv-lg-oca"/>
                 <constraint firstAttribute="trailing" secondItem="Q1z-iS-Kpg" secondAttribute="trailing" id="eyt-4f-igu"/>

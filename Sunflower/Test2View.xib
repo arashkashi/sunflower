@@ -115,6 +115,7 @@
                 <constraint firstItem="d1l-ED-B3v" firstAttribute="centerX" secondItem="cPv-lZ-Ij1" secondAttribute="centerX" id="mmW-1l-EdK"/>
                 <constraint firstItem="Ae2-EG-6PI" firstAttribute="top" secondItem="2Mx-3U-3D8" secondAttribute="top" constant="15" id="mxZ-gt-8PW">
                     <variation key="widthClass=compact" constant="5"/>
+                    <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="d1l-ED-B3v" secondAttribute="trailing" constant="17" id="oaf-IQ-ZRK"/>
                 <constraint firstAttribute="trailing" secondItem="Ae2-EG-6PI" secondAttribute="trailing" id="rWO-eO-CAv"/>
