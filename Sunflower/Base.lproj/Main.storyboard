@@ -12,22 +12,22 @@
                         <viewControllerLayoutGuide type="top" id="2Bv-c2-04K"/>
                         <viewControllerLayoutGuide type="bottom" id="fpI-Py-2Yu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BYi-3n-KZ0">
+                    <view key="view" contentMode="scaleToFill" id="BYi-3n-KZ0" userLabel="View-Container">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="370" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
-                                <rect key="frame" x="0.0" y="115" width="320" height="370"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="31" y="81" width="331" height="369"/>
+                                    <rect key="frame" x="0.0" y="81" width="320" height="519"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="126" width="320" height="370"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="16" y="126" width="368" height="674"/>
                                 </variation>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLm-jS-3Fh" userLabel="View - Activity Indicator">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLm-jS-3Fh" userLabel="View - Activity Indicator">
+                                <rect key="frame" x="-82" y="37" width="81" height="31"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-IA-uzx">
                                         <rect key="frame" x="290" y="290" width="20" height="20"/>
@@ -35,9 +35,37 @@
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="AkS-8J-5dh">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="600"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="fs3-AG-LwK">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="320"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AkS-8J-5dh"/>
+                                        <exclude reference="fs3-AG-LwK"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="95" y="9" width="600" height="91"/>
+                                    <mask key="constraints">
+                                        <include reference="AkS-8J-5dh"/>
+                                        <include reference="fs3-AG-LwK"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="vFO-0N-GnU" firstAttribute="right" secondItem="BYi-3n-KZ0" secondAttribute="right" id="85l-1j-HKJ"/>
+                            <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" constant="30" id="A1q-QM-EJx"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" id="EE1-ja-Fgo"/>
+                            <constraint firstItem="vFO-0N-GnU" firstAttribute="left" secondItem="BYi-3n-KZ0" secondAttribute="left" id="XuX-6c-c5H"/>
+                        </constraints>
+                        <variation key="heightClass=regular-widthClass=compact"/>
                     </view>
                     <connections>
                         <outlet property="testContentView" destination="vFO-0N-GnU" id="GFh-zP-VQ5"/>
@@ -46,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YA-24-k59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1149" y="41"/>
+            <point key="canvasLocation" x="1092" y="-86.25"/>
         </scene>
     </scenes>
 </document>
