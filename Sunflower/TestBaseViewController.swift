@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol TestViewControllerDelegate {
+    func onAsnwerSelected()
+}
+
 class TestBaseViewController : UIViewController {
     var word : Word?
     var test: Test?
     
     var completionHandler: ((Test, TestResult, Word) -> ())?
+    var delegate: TestViewControllerDelegate?
     
     @IBOutlet var wordLabel: UILabel!
     
@@ -20,6 +25,12 @@ class TestBaseViewController : UIViewController {
         self.wordLabel!.text = self.word!.name
     }
     
+    // MARK: Logic
+    func checkAnswer() {
+        
+    }
+    
+    // MARK: IBAction
     @IBAction func onTestFail(sender: AnyObject) {
         self.completionHandler?(self.test!, TestResult.Fail, self.word!)
 

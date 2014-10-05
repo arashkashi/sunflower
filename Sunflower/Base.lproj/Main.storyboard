@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ToX-di-gUg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main Test View Controller-->
@@ -16,14 +17,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wE-W2-5wb" userLabel="Button - Check">
+                                <rect key="frame" x="217" y="543" width="167" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="167:45" id="DEW-74-uIt"/>
+                                    <constraint firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="130:35" id="mKT-zH-DgS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
+                                <state key="normal" title="Check">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DEW-74-uIt"/>
+                                        <exclude reference="mKT-zH-DgS"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onCheckTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="UKK-uG-tMI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFW-NR-EoJ" userLabel="Button - Continue">
+                                <rect key="frame" x="202" y="543" width="197" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" constant="30" id="c1K-GT-cUB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onContinueTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="enk-BX-nJ2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4k-3X-hI1" userLabel="Button - Got it">
+                                <rect key="frame" x="217" y="543" width="167" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="z4k-3X-hI1" secondAttribute="height" multiplier="130:35" id="oUT-df-Njx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
+                                <state key="normal" title="Got it!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGotItTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="rUU-j3-Ibk"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
-                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="480"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLm-jS-3Fh" userLabel="View - Activity Indicator">
-                                        <rect key="frame" x="259" y="260" width="81" height="31"/>
+                                        <rect key="frame" x="98" y="96" width="5" height="59"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-IA-uzx">
-                                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                 <color key="color" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </activityIndicatorView>
                                         </subviews>
@@ -33,7 +86,7 @@
                                         </variation>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="81" width="320" height="519"/>
                                 </variation>
@@ -44,20 +97,42 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="JFW-NR-EoJ" secondAttribute="centerX" constant="201.5" id="1BY-M4-zw5"/>
+                            <constraint firstAttribute="centerX" secondItem="z4k-3X-hI1" secondAttribute="centerX" id="4Dj-AW-SjI"/>
+                            <constraint firstAttribute="centerX" secondItem="7wE-W2-5wb" secondAttribute="centerX" id="7ZP-sG-jrA"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="right" secondItem="BYi-3n-KZ0" secondAttribute="right" id="85l-1j-HKJ"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="JFW-NR-EoJ" secondAttribute="bottom" constant="12" id="97j-Qb-xzj"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" constant="30" id="A1q-QM-EJx"/>
-                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" id="EE1-ja-Fgo"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="30" id="EE1-ja-Fgo"/>
+                            <constraint firstAttribute="centerX" secondItem="JFW-NR-EoJ" secondAttribute="centerX" id="LTb-Fh-RXO"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="z4k-3X-hI1" secondAttribute="bottom" constant="12" id="RaP-9g-Smv"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="7wE-W2-5wb" secondAttribute="bottom" constant="12" id="U3k-ps-owU"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="left" secondItem="BYi-3n-KZ0" secondAttribute="left" id="XuX-6c-c5H"/>
+                            <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="YCI-y7-ZT7"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="70" id="b1G-tR-GTN"/>
+                            <constraint firstItem="7wE-W2-5wb" firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="130:35" id="ehg-oh-8wl"/>
+                            <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="n02-JC-dTT"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1BY-M4-zw5"/>
+                                <exclude reference="YCI-y7-ZT7"/>
+                                <exclude reference="n02-JC-dTT"/>
+                                <exclude reference="EE1-ja-Fgo"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="buttonCheck" destination="7wE-W2-5wb" id="ohv-Wz-Jgp"/>
+                        <outlet property="buttonContinue" destination="JFW-NR-EoJ" id="SWd-Wx-4FG"/>
+                        <outlet property="buttonGotIt" destination="z4k-3X-hI1" id="Tnf-bq-LAT"/>
                         <outlet property="testContentView" destination="vFO-0N-GnU" id="GFh-zP-VQ5"/>
                         <outlet property="viewLoadingOverlay" destination="NLm-jS-3Fh" id="tId-sg-ErT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YA-24-k59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="-86.25"/>
+            <point key="canvasLocation" x="1081" y="-87"/>
         </scene>
     </scenes>
 </document>

@@ -1,54 +1,129 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Test2ViewController" customModule="Sunflower" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="S4v-O3-IH3"/>
-                <outlet property="wordLabel" destination="SNG-Qb-RuC" id="tKn-Ib-VBL"/>
+                <outlet property="view" destination="2Mx-3U-3D8" id="GFB-ed-IjT"/>
+                <outlet property="wordLabel" destination="Ae2-EG-6PI" id="mr5-hb-qBP"/>
+                <outletCollection property="buttonsChoices" destination="cPv-lZ-Ij1" collectionClass="NSMutableArray" id="teu-bb-moV"/>
+                <outletCollection property="buttonsChoices" destination="d1l-ED-B3v" collectionClass="NSMutableArray" id="Itl-pn-H6P"/>
+                <outletCollection property="buttonsChoices" destination="wMS-ks-haL" collectionClass="NSMutableArray" id="8Rs-5Q-glT"/>
+                <outletCollection property="buttonsChoices" destination="QwS-5m-uAa" collectionClass="NSMutableArray" id="ytd-mr-rw9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
+        <view contentMode="scaleToFill" id="2Mx-3U-3D8" userLabel="ViewMain">
+            <rect key="frame" x="0.0" y="0.0" width="333" height="454"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNh-Dy-wex" userLabel="Fail">
-                    <rect key="frame" x="36" y="284" width="80" height="40"/>
-                    <state key="normal" title="Test2 Fail ">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="45" y="334" width="69" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="onTestFail:" destination="-1" eventType="touchUpInside" id="kZ3-Nz-txA"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-L5-c7w" userLabel="Pass">
-                    <rect key="frame" x="197" y="284" width="80" height="40"/>
-                    <state key="normal" title="Test2 Pass">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="149" y="334" width="75" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="onTestPass:" destination="-1" eventType="touchUpInside" id="hQR-2A-06f"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-Qb-RuC" userLabel="Label - Word">
-                    <rect key="frame" x="39" y="43" width="242" height="52"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ae2-EG-6PI" userLabel="Label - Name">
+                    <rect key="frame" x="0.0" y="15" width="333" height="102"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Ae2-EG-6PI" secondAttribute="height" multiplier="49:15" id="5oV-5J-ouN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPv-lZ-Ij1" userLabel="ButtonChoice1">
+                    <rect key="frame" x="18" y="208" width="298" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="87" y="139" width="135" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="onChoiceSelected:" destination="-1" eventType="touchUpInside" id="lVo-dd-vRq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1l-ED-B3v" userLabel="ButtonChoice2">
+                    <rect key="frame" x="18" y="271" width="298" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="87" y="139" width="135" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="onChoiceSelected:" destination="-1" eventType="touchUpInside" id="qIr-G8-aCq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwS-5m-uAa" userLabel="ButtonChoice4">
+                    <rect key="frame" x="18" y="397" width="298" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="87" y="139" width="135" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="onChoiceSelected:" destination="-1" eventType="touchUpInside" id="IQs-cV-OgE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-ks-haL" userLabel="ButtonChoice3">
+                    <rect key="frame" x="18" y="334" width="298" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="87" y="139" width="135" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="onChoiceSelected:" destination="-1" eventType="touchUpInside" id="mKX-c1-egh"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="top" secondItem="cPv-lZ-Ij1" secondAttribute="bottom" constant="30" id="0Jl-Td-hab"/>
+                <constraint firstAttribute="trailing" secondItem="cPv-lZ-Ij1" secondAttribute="trailing" constant="17" id="5Pu-df-mZa"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="width" secondItem="wMS-ks-haL" secondAttribute="width" id="5WZ-zz-LsE"/>
+                <constraint firstAttribute="trailing" secondItem="wMS-ks-haL" secondAttribute="trailing" constant="17" id="EUA-YT-zcm"/>
+                <constraint firstItem="QwS-5m-uAa" firstAttribute="centerX" secondItem="wMS-ks-haL" secondAttribute="centerX" id="J82-CY-t0Z"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="height" secondItem="wMS-ks-haL" secondAttribute="height" id="L4O-zo-SNg"/>
+                <constraint firstItem="Ae2-EG-6PI" firstAttribute="leading" secondItem="2Mx-3U-3D8" secondAttribute="leading" id="Pwo-AW-x0Y"/>
+                <constraint firstItem="QwS-5m-uAa" firstAttribute="height" secondItem="wMS-ks-haL" secondAttribute="height" id="QuH-9k-bEF"/>
+                <constraint firstItem="QwS-5m-uAa" firstAttribute="leading" secondItem="2Mx-3U-3D8" secondAttribute="leading" constant="18" id="SRy-NO-24d"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="leading" secondItem="2Mx-3U-3D8" secondAttribute="leading" constant="18" id="TF9-jt-4YH"/>
+                <constraint firstAttribute="centerX" secondItem="cPv-lZ-Ij1" secondAttribute="centerX" constant="-0.5" id="VKl-7o-5BR"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="height" secondItem="cPv-lZ-Ij1" secondAttribute="height" id="WVV-GX-Iee"/>
+                <constraint firstAttribute="bottom" secondItem="QwS-5m-uAa" secondAttribute="bottom" constant="24" id="YFm-Db-fs9"/>
+                <constraint firstAttribute="centerX" secondItem="Ae2-EG-6PI" secondAttribute="centerX" id="YuF-E6-JaE"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="width" secondItem="cPv-lZ-Ij1" secondAttribute="width" id="aa1-Vw-oSn"/>
+                <constraint firstItem="QwS-5m-uAa" firstAttribute="width" secondItem="wMS-ks-haL" secondAttribute="width" id="cua-mD-tuO"/>
+                <constraint firstAttribute="trailing" secondItem="QwS-5m-uAa" secondAttribute="trailing" constant="17" id="ehf-zc-v2P"/>
+                <constraint firstItem="cPv-lZ-Ij1" firstAttribute="leading" secondItem="2Mx-3U-3D8" secondAttribute="leading" constant="18" id="gGK-Tu-wh0"/>
+                <constraint firstItem="wMS-ks-haL" firstAttribute="leading" secondItem="2Mx-3U-3D8" secondAttribute="leading" constant="18" id="hJc-MC-8F1"/>
+                <constraint firstItem="QwS-5m-uAa" firstAttribute="top" secondItem="wMS-ks-haL" secondAttribute="bottom" constant="30" id="l3f-cq-iIp"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="centerX" secondItem="cPv-lZ-Ij1" secondAttribute="centerX" id="mmW-1l-EdK"/>
+                <constraint firstItem="Ae2-EG-6PI" firstAttribute="top" secondItem="2Mx-3U-3D8" secondAttribute="top" constant="15" id="mxZ-gt-8PW">
+                    <variation key="widthClass=compact" constant="5"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="d1l-ED-B3v" secondAttribute="trailing" constant="17" id="oaf-IQ-ZRK"/>
+                <constraint firstAttribute="trailing" secondItem="Ae2-EG-6PI" secondAttribute="trailing" id="rWO-eO-CAv"/>
+                <constraint firstItem="d1l-ED-B3v" firstAttribute="centerX" secondItem="wMS-ks-haL" secondAttribute="centerX" id="rie-Er-xWE"/>
+                <constraint firstItem="wMS-ks-haL" firstAttribute="top" secondItem="d1l-ED-B3v" secondAttribute="bottom" constant="30" id="suN-lu-OZM"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-598.5" y="-45"/>
         </view>
     </objects>
 </document>

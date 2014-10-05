@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Test2ViewController : TestBaseViewController {
+class Test2ViewController : Test1ViewController {
     
 
 

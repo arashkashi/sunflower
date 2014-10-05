@@ -9,22 +9,25 @@
 import UIKit
 import Foundation
 
-class MainTestViewController : UIViewController {
+class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     var learnerController : LearnerController?
     
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
     
+    @IBOutlet var buttonGotIt: UIButton!
     @IBOutlet var testContentView: UIView!
     @IBOutlet var viewLoadingOverlay: UIView!
-    
+    @IBOutlet var buttonCheck: UIButton!
+    @IBOutlet var buttonContinue: UIButton!
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
     }
     
     override func viewDidLoad() {
         self.initLeanerController()
+        self.hideAllButtons()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +46,7 @@ class MainTestViewController : UIViewController {
     // #MARK: Learning logic
     func learnNextWord() {
         var next = self.learnerController!.nextWordToLearn()
+        self.hideAllButtons()
         
         next.word?.printToSTD()
         
@@ -78,9 +82,48 @@ class MainTestViewController : UIViewController {
         self.animateViewContainerWithNewView(self.testViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
     }
     
+    // #MARK: Delegations
+    func onAsnwerSelected() {
+        self.showCheckButton()
+    }
+    
+    // #MARK: IBACtion
+    @IBAction func onCheckTapped(sender: UIButton) {
+        self.testViewController?.checkAnswer()
+    }
+    
+    @IBAction func onContinueTapped(sender: UIButton) {
+    }
+    
+    @IBAction func onGotItTapped(sender: UIButton) {
+        self.presentationViewController?.onGotItTapped()
+    }
+    
     // #MARK: View manipulation
     func showNoMoreWordToLearn() {
         
+    }
+    
+    func showGotIt() {
+        self.hideAllButtons()
+        self.showItemWithAnimation(self.buttonGotIt)
+    }
+    
+    func showCheckButton() {
+        self.hideAllButtons()
+        self.showItemWithAnimation(self.buttonCheck)
+    }
+    
+    func hideAllButtons() {
+        self.buttonGotIt.hidden = true
+        self.buttonContinue.hidden = true
+        self.buttonCheck.hidden = true
+    }
+    
+    func showItemWithAnimation(view: UIView) {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            view.hidden = false
+        })
     }
     
     func showPresentationView(word: Word, completionHandler: ()-> ()) {
@@ -89,6 +132,8 @@ class MainTestViewController : UIViewController {
         self.presentationViewController!.completionHandler = completionHandler
         
         self.animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
+        
+        self.showGotIt()
     }
     
     func animateViewContainerWithNewView(newView: UIView, viewContainer: UIView, completionHandler: (()-> ())?) {
@@ -122,6 +167,27 @@ class MainTestViewController : UIViewController {
         testViewController.word = word
         testViewController.test = test
         testViewController.completionHandler = completionHandler
+        
+        var wordChoices = self.learnerController!.someRandomWords(5, excludeList: [word])
+        if wordChoices.count == 0 {
+            assert(false, "it should not be it")
+        }
+        
+        if test.type == TestType.Test1 {
+            (testViewController as Test1ViewController).wordChoices = wordChoices
+            (testViewController as Test1ViewController).delegate = self
+        }
+        
+        if test.type == TestType.Test2 {
+            (testViewController as Test2ViewController).wordChoices = wordChoices
+            (testViewController as Test2ViewController).delegate = self
+        }
+        
+        if test.type == TestType.Test3 {
+            (testViewController as Test1ViewController).wordChoices = wordChoices
+            (testViewController as Test1ViewController).delegate = self
+        }
+        
         return testViewController
     }
     

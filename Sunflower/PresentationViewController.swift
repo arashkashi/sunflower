@@ -16,7 +16,7 @@ class PresentationViewController : UIViewController {
     var completionHandler: (() -> ())?
     var word : Word?
 
-    @IBAction func onOkTapped(sender: AnyObject) {
+    func onGotItTapped() {
         self.completionHandler?()
     }
     
