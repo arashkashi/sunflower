@@ -97,6 +97,18 @@ class LearnerController {
         return (nil, NextWordNilStatus.ALL_WORDS_MASTERED)
     }
     
+    func someRandomWords(number_of_words: Int, excludeList: [Word]) -> [Word] {
+        var result: [Word] = []
+        
+        result = result + self.someWordsFromQueue(number_of_words, excludeList: excludeList, queue: self.currentLearningQueue)
+        
+        result = result + self.someWordsFromQueue(number_of_words - result.count, excludeList: excludeList, queue: self.wordsDueNow)
+        
+        result = result + self.someWordsFromQueue(number_of_words - result.count, excludeList: excludeList, queue: self.wordsDueInFuture)
+        
+        return result
+    }
+    
     func insertLastItemInFirstAndReturnTheItem(inout list: [Word]) -> Word {
         var lastWord = list.last
         list.removeLast()
@@ -174,6 +186,18 @@ class LearnerController {
     }
     
     // MARK: Helper
+    func someWordsFromQueue(number_of_words: Int, excludeList: [Word], queue: [Word]) -> [Word] {
+        var result: [Word] = []
+        if number_of_words <= 0 { return result }
+        for word in queue {
+            if !excludeList.includes(word) {
+                result.append(word)
+            }
+            if result.count > number_of_words { break }
+        }
+        return result
+    }
+    
     class func printWord(word: Word?, index: Int = 0) {
         if let printedWord = word {
             println("\(index)---------------------------")
