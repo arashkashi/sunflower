@@ -22,7 +22,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="zI7-A1-vsr" secondAttribute="height" multiplier="49:15" id="wsI-2G-Di4"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="60"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -30,9 +30,9 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meaning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q1z-iS-Kpg" userLabel="Label - Meaning">
-                    <rect key="frame" x="0.0" y="230" width="289" height="30"/>
-                    <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="26"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="230" width="289" height="31"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="45" y="168" width="230" height="34"/>
@@ -40,7 +40,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-wX-3Tz">
                     <rect key="frame" x="41" y="427" width="209" height="44"/>
-                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="zwf-wX-3Tz" secondAttribute="height" multiplier="130:35" constant="45.285714285714278" id="hSO-C9-OVw"/>
                     </constraints>

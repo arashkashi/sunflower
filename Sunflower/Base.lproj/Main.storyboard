@@ -16,45 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view autoresizesSubviews="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-0N-GnU" userLabel="View - Test Container">
                                 <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLm-jS-3Fh" userLabel="View - Activity Indicator">
+                                        <rect key="frame" x="259" y="260" width="81" height="31"/>
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-IA-uzx">
+                                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                                <color key="color" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="95" y="9" width="600" height="91"/>
+                                        </variation>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="81" width="320" height="519"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="16" y="126" width="368" height="674"/>
-                                </variation>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLm-jS-3Fh" userLabel="View - Activity Indicator">
-                                <rect key="frame" x="-82" y="37" width="81" height="31"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-IA-uzx">
-                                        <rect key="frame" x="290" y="290" width="20" height="20"/>
-                                        <color key="color" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="AkS-8J-5dh">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="600"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="fs3-AG-LwK">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="320"/>
-                                    </constraint>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="AkS-8J-5dh"/>
-                                        <exclude reference="fs3-AG-LwK"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="95" y="9" width="600" height="91"/>
-                                    <mask key="constraints">
-                                        <include reference="AkS-8J-5dh"/>
-                                        <include reference="fs3-AG-LwK"/>
-                                    </mask>
                                 </variation>
                             </view>
                         </subviews>
@@ -65,7 +49,6 @@
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" id="EE1-ja-Fgo"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="left" secondItem="BYi-3n-KZ0" secondAttribute="left" id="XuX-6c-c5H"/>
                         </constraints>
-                        <variation key="heightClass=regular-widthClass=compact"/>
                     </view>
                     <connections>
                         <outlet property="testContentView" destination="vFO-0N-GnU" id="GFh-zP-VQ5"/>

@@ -11,32 +11,68 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="vHd-gM-z3R">
+        <view autoresizesSubviews="NO" contentMode="TopLeft" id="vHd-gM-z3R" userLabel="ViewMain">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnO-bX-8ex" userLabel="Label - Word">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Spass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnO-bX-8ex" userLabel="Label - Word">
                     <rect key="frame" x="179" y="111" width="242" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="CUD-SC-ix4"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="33"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="CUD-SC-ix4"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="CUD-SC-ix4"/>
+                        </mask>
+                    </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiJ-Sx-jaw" userLabel="Label - Word">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Fun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiJ-Sx-jaw" userLabel="Label - Word">
                     <rect key="frame" x="179" y="229" width="242" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="DY9-vD-Mzl"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="33"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="DY9-vD-Mzl"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="DY9-vD-Mzl"/>
+                        </mask>
+                    </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Y-Yg-EE6" userLabel="Pass">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Y-Yg-EE6" userLabel="Pass">
                     <rect key="frame" x="50" y="505" width="500" height="72"/>
                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="aVn-Sa-DE8"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="33"/>
                     <state key="normal" title="Got it!">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="149" y="334" width="75" height="30"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="aVn-Sa-DE8"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="aVn-Sa-DE8"/>
+                        </mask>
                     </variation>
                     <connections>
                         <action selector="onTestPass:" destination="-1" eventType="touchUpInside" id="eU7-Up-460"/>
@@ -44,9 +80,48 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="JnO-bX-8ex" firstAttribute="top" secondItem="vHd-gM-z3R" secondAttribute="top" constant="97" id="35G-8W-vPZ"/>
+                <constraint firstItem="13Y-Yg-EE6" firstAttribute="leading" secondItem="vHd-gM-z3R" secondAttribute="leading" constant="20" id="6WZ-t1-xRr"/>
+                <constraint firstItem="AiJ-Sx-jaw" firstAttribute="top" secondItem="vHd-gM-z3R" secondAttribute="top" constant="260" id="Hcj-9t-0jW"/>
+                <constraint firstItem="JnO-bX-8ex" firstAttribute="leading" secondItem="vHd-gM-z3R" secondAttribute="leading" constant="39" id="KgC-EB-f0S"/>
+                <constraint firstItem="AiJ-Sx-jaw" firstAttribute="trailing" secondItem="JnO-bX-8ex" secondAttribute="trailing" id="MNU-cq-bGb"/>
+                <constraint firstItem="AiJ-Sx-jaw" firstAttribute="centerX" secondItem="vHd-gM-z3R" secondAttribute="centerX" id="Pab-1a-cbG"/>
+                <constraint firstItem="AiJ-Sx-jaw" firstAttribute="leading" secondItem="JnO-bX-8ex" secondAttribute="leading" id="hxb-7Q-h0h"/>
+                <constraint firstItem="13Y-Yg-EE6" firstAttribute="centerX" secondItem="AiJ-Sx-jaw" secondAttribute="centerX" id="pLq-zu-ifO"/>
+                <constraint firstAttribute="bottom" secondItem="13Y-Yg-EE6" secondAttribute="bottom" constant="59" id="uBF-8t-Pra">
+                    <variation key="heightClass=regular-widthClass=compact" constant="17"/>
+                </constraint>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-2" y="67"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="35G-8W-vPZ"/>
+                    <exclude reference="KgC-EB-f0S"/>
+                    <exclude reference="Hcj-9t-0jW"/>
+                    <exclude reference="MNU-cq-bGb"/>
+                    <exclude reference="Pab-1a-cbG"/>
+                    <exclude reference="hxb-7Q-h0h"/>
+                    <exclude reference="6WZ-t1-xRr"/>
+                    <exclude reference="pLq-zu-ifO"/>
+                    <exclude reference="uBF-8t-Pra"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="35G-8W-vPZ"/>
+                    <include reference="KgC-EB-f0S"/>
+                    <include reference="Hcj-9t-0jW"/>
+                    <include reference="MNU-cq-bGb"/>
+                    <include reference="Pab-1a-cbG"/>
+                    <include reference="hxb-7Q-h0h"/>
+                    <include reference="6WZ-t1-xRr"/>
+                    <include reference="pLq-zu-ifO"/>
+                    <include reference="uBF-8t-Pra"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-66" y="236"/>
         </view>
     </objects>
 </document>
