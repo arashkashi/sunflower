@@ -12,15 +12,12 @@ import Foundation
 class MainTestViewController : UIViewController {
     
     var learnerController : LearnerController?
-
+    
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
     
     @IBOutlet var testContentView: UIView!
-    @IBOutlet var labelLearningStage: UILabel!
     @IBOutlet var viewLoadingOverlay: UIView!
-    @IBOutlet var labelComparisonWithPrevStage: UILabel!
-    @IBOutlet var labelPackProgress: UILabel!
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
@@ -45,18 +42,27 @@ class MainTestViewController : UIViewController {
     
     // #MARK: Learning logic
     func learnNextWord() {
-        var next  = self.learnerController!.nextWordToLearn()
+        var next = self.learnerController!.nextWordToLearn()
+        
+        next.word?.printToSTD()
         
         if next.word == nil {
             self.showNoMoreWordToLearn()
-            self.updateLabelPackProgress()
             return
-        } else if next.word!.shouldShowWordPresentation {
-            self.showPresentationView(next.word!)
         } else {
-            if var nextTest = next.word!.nextTest()? {
-                self.updateUI(next.word!)
-                self.doTestTypeForWord(next.word!, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
+            self.showNextWord(next.word!)
+        }
+    }
+    
+    func showNextWord(word: Word) {
+        if word.shouldShowWordPresentation {
+            self.showPresentationView(word, completionHandler: { () -> () in
+                self.learnerController!.onWordFinishedPresentation(word)
+                self.learnNextWord()
+            })
+        } else {
+            if var nextTest = word.nextTest()? {
+                self.doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
                     self.learnNextWord()
                 })
@@ -64,58 +70,34 @@ class MainTestViewController : UIViewController {
                 self.learnNextWord()
             }
         }
-        
-
     }
     
     func doTestTypeForWord(word: Word, test: Test, result: (Test, TestResult, Word) -> ()) {
         self.testViewController = self.testSubViewController(test, word: word, completionHandler: result)
         
-        self.updateLabelLearningStage(word)
-        
-        UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
-            self.cleanTestContentView()
-            self.testContentView.addSubview(self.testViewController!.view)
-            }) { (isFinished: Bool) -> Void in }
+        self.animateViewContainerWithNewView(self.testViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
     }
     
     // #MARK: View manipulation
-    func updateUI(word: Word) {
-        self.updateLabelLearningStage(word)
-        self.updateLabelPackProgress()
-    }
-    
-    func updateLabelPackProgress() {
-        self.labelPackProgress.text = "Pack Progress (\(self.learnerController!.wordsDueInFuture.count)/\(self.learnerController!.words.count))"
-    }
-    
-    func updateLabelLearningStage(word: Word) {
-        self.labelLearningStage.text = "\(word.currentLearningStage.toString())(\(word.testProgression)%)"
-    }
-    
     func showNoMoreWordToLearn() {
         
     }
     
-    func showPresentationView(word: Word) {
+    func showPresentationView(word: Word, completionHandler: ()-> ()) {
         self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
         self.presentationViewController!.word = word
-        self.presentationViewController!.completionHandler = {() -> ()
-            
-            in self.learnerController!.onWordFinishedPresentation(word)
-            self.learnNextWord()
-        }
+        self.presentationViewController!.completionHandler = completionHandler
         
-        self.labelLearningStage.text = word.currentLearningStage.toString()
-        
-        UIView.transitionWithView(self.testContentView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: { () -> Void in
-            for item in self.testContentView.subviews {
-                var subview: UIView = item as UIView
-                subview.removeFromSuperview()
-            }
-            self.testContentView.addSubview(self.presentationViewController!.view)
+        self.animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
+    }
+    
+    func animateViewContainerWithNewView(newView: UIView, viewContainer: UIView, completionHandler: (()-> ())?) {
+        UIView.transitionWithView(viewContainer, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: { () -> Void in
+            self.removeAllSubviewsFor(viewContainer)
+            newView.frame = viewContainer.bounds
+            viewContainer.addSubview(newView)
             }) { (isFinished: Bool) -> Void in
-                // Finished Code
+            // Handle completion here
         }
     }
     
@@ -128,8 +110,8 @@ class MainTestViewController : UIViewController {
     }
     
     //MARK: Helper
-    func cleanTestContentView() {
-        for item in self.testContentView.subviews {
+    func removeAllSubviewsFor(view: UIView) {
+        for item in view.subviews {
             var subview: UIView = item as UIView
             subview.removeFromSuperview()
         }
