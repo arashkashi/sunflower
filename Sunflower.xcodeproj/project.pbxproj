@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		414F93EB19E267CB002BFDE0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F93E919E267CB002BFDE0 /* ResultViewController.swift */; };
+		414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 414F93EA19E267CB002BFDE0 /* ResultViewController.xib */; };
 		41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1819AE76150020EF58 /* MainTestViewController.swift */; };
 		41614D1D19AE77340020EF58 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1C19AE77340020EF58 /* Test.swift */; };
 		41614D1F19AE77920020EF58 /* Test1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D1E19AE77920020EF58 /* Test1View.xib */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		414F93E919E267CB002BFDE0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		414F93EA19E267CB002BFDE0 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		41614D1819AE76150020EF58 /* MainTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTestViewController.swift; sourceTree = "<group>"; };
 		41614D1C19AE77340020EF58 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		41614D1E19AE77920020EF58 /* Test1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1View.xib; sourceTree = "<group>"; };
@@ -102,11 +106,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		414F93E819E267A3002BFDE0 /* Test Result */ = {
+			isa = PBXGroup;
+			children = (
+				414F93E919E267CB002BFDE0 /* ResultViewController.swift */,
+				414F93EA19E267CB002BFDE0 /* ResultViewController.xib */,
+			);
+			name = "Test Result";
+			sourceTree = "<group>";
+		};
 		41614D1719AE76040020EF58 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				41614D1819AE76150020EF58 /* MainTestViewController.swift */,
 				41614D2219AE77C00020EF58 /* Tests */,
+				414F93E819E267A3002BFDE0 /* Test Result */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -313,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */,
+				414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
@@ -342,6 +357,7 @@
 				D958A81319C9E86700964C3D /* TestLearningPackII.swift in Sources */,
 				D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
+				414F93EB19E267CB002BFDE0 /* ResultViewController.swift in Sources */,
 				D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */,
 				41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */,
 				41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */,

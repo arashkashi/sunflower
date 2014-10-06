@@ -202,6 +202,7 @@ class LearnerController {
         if let printedWord = word {
             println("\(index)---------------------------")
             println("Name: \(printedWord.name)")
+            println("Meaning: \(printedWord.meaning)")
             println("Learning Due Date:\(printedWord.relearningDueDate)")
             println("Next Test Type: \(printedWord.nextTest()?.type.toString())")
             println("Learning Stage: \(word?.currentLearningStage.toString())")
