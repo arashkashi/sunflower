@@ -68,7 +68,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
             if var nextTest = word.nextTest()? {
                 self.doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
-                    self.learnNextWord()
                 })
             } else {
                 self.learnNextWord()
@@ -89,10 +88,14 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     // #MARK: IBACtion
     @IBAction func onCheckTapped(sender: UIButton) {
-        self.testViewController?.checkAnswer()
+        self.hideAllButtons()
+        self.testViewController?.checkAnswer({ () -> () in
+            self.showContinueButton()
+        })
     }
     
     @IBAction func onContinueTapped(sender: UIButton) {
+        self.learnNextWord()
     }
     
     @IBAction func onGotItTapped(sender: UIButton) {
@@ -112,6 +115,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     func showCheckButton() {
         self.hideAllButtons()
         self.showItemWithAnimation(self.buttonCheck)
+    }
+    
+    func showContinueButton() {
+        self.hideAllButtons()
+        self.showItemWithAnimation(self.buttonContinue)
     }
     
     func hideAllButtons() {

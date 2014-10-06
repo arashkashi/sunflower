@@ -16,6 +16,8 @@ class TestBaseViewController : UIViewController {
     var word : Word?
     var test: Test?
     
+    var resultViewController: ResultViewController = ResultViewController(nibName: "ResultViewController", bundle: NSBundle.mainBundle())
+    
     var completionHandler: ((Test, TestResult, Word) -> ())?
     var delegate: TestViewControllerDelegate?
     
@@ -23,10 +25,18 @@ class TestBaseViewController : UIViewController {
     
     override func viewDidLoad() {
         self.wordLabel!.text = self.word!.name
+        
+        initResultViewController()
+    }
+    
+    // MARK: Initiation
+    func initResultViewController() {
+        resultViewController.view.frame = view.frame
+        view.addSubview(resultViewController.view)
     }
     
     // MARK: Logic
-    func checkAnswer() {
+    func checkAnswer(completionHandler:(()->())?) {
         
     }
     

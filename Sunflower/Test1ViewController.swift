@@ -45,12 +45,17 @@ class Test1ViewController : TestBaseViewController {
     }
     
     // MARK: Logic
-    override func checkAnswer() {
+    override func checkAnswer(completionHandler:(()->())?) {
+        disableButtons()
         if selectedAnswer != nil {
             if selectedAnswer! == word?.meaning {
-                completionHandler?(test!, .Pass, word!)
+                resultViewController.showCorrect(true
+                    , completionHandler: completionHandler)
+                self.completionHandler?(test!, .Pass, word!)
             } else {
-                completionHandler?(test!, .Fail, word!)
+                resultViewController.showWrong(true
+                    , completionHandler: completionHandler)
+                self.completionHandler?(test!, .Fail, word!)
             }
         }
     }
@@ -59,6 +64,12 @@ class Test1ViewController : TestBaseViewController {
     func highlightButton(button: UIButton) {
         self.removeHighlight(self.buttonsChoices)
         button.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func disableButtons() {
+        for button in buttonsChoices {
+            button.enabled = false
+        }
     }
     
     func removeHighlight(buttons: [UIButton]) {
