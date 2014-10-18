@@ -19,6 +19,9 @@ result = Hash.new { |hash, key| hash[key] = Hash.new({}) }
 counter = 1
 progress_counter = 0
 number_of_words = 10000
+number_of_sentences = 2000000
+sentences = sentences.take(number_of_sentences)
+
 
 puts "Getting sentences for words (#{Time.new})... "
 
