@@ -9,6 +9,7 @@ module Sentence
     sorted_sentences_by_ranks = Words.sortedKeysByValue(sentence_rank_hash)
     endTime = Time.new
     puts "DURATION:#{endTime - startTime}"
+    puts sorted_sentences_by_ranks.take(n)
     puts "-" * 40
     return sorted_sentences_by_ranks.take(n)
   end
