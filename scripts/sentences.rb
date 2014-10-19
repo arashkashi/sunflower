@@ -40,4 +40,11 @@ module Sentence
       f.close
     end
   end
+
+  def Sentence.loadJsonFileAsHash(filename)
+    File.open( filename, "r" ) do |f|
+      JSON.load( f )
+    end
+  end
+
 end
