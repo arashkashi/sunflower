@@ -107,13 +107,13 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
         switch learningStage {
         case LearningStage.Cram:
-            return NSDate().dateByAddingTimeInterval(60)            // 1 minute
+            return NSDate().dateByAddingTimeInterval(15)            // 1 minute
         case LearningStage.Learn:
-            return NSDate().dateByAddingTimeInterval(2 * 60)       // 20 minute
+            return NSDate().dateByAddingTimeInterval(16)       // 20 minute
         case LearningStage.Relearn:
-            return NSDate().dateByAddingTimeInterval(60 * 60)       // 60 minute
+            return NSDate().dateByAddingTimeInterval(18)       // 60 minute
         case LearningStage.Young:
-            return NSDate().dateByAddingTimeInterval(9 * 60 * 60)   // 9 hours
+            return NSDate().dateByAddingTimeInterval(20)   // 9 hours
         case LearningStage.Mature:
             return nil
         }

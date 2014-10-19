@@ -29,22 +29,10 @@ class LearningPackPersController {
         if self.hasCashedPackForID(id) {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
-            var wordPack: [Word] = self.wordPackWithID(id)
-            var learningPack = LearningPackModel.create(id, words: wordPack, completionHandlerForPersistance: { (success: Bool) -> () in
+            var learningPack = LearningPackModel.create(id, completionHandlerForPersistance: { (success: Bool) -> () in
                 // Handle error in case persistance goes wrong
             })
             completionHandler?(learningPack)
-        }
-    }
-    
-    func wordPackWithID(id: String) -> [Word] {
-        switch id {
-        case TestLearningPackIDI:
-            return TestLearningPackI.instance().words
-        case TestLearningPackIDII:
-            return TestLearningPackII.instance().words
-        default:
-            return TestLearningPackI.instance().words
         }
     }
     
