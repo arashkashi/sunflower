@@ -14,7 +14,7 @@ module Words
     words.each do |word|
       word.gsub!(/[^\p{Alnum}\p{Space}-]/, '')
       if word && word.length > 0
-        word = word.downcase
+        # word = word.downcase
         result << word
       end 
     end
@@ -34,10 +34,13 @@ module Words
   def Words.sentences(filename)
     puts "Getting sentences (#{Time.new})..."
     result = []
+    counter = 0
     File.open(filename, 'rb') do |f|
       f.each_line do |raw_sentence|
-          raw_sentence = raw_sentence.strip
-          result << raw_sentence.gsub("\n", '').downcase if raw_sentence.length > 0
+        print "\t#{counter} \t sentnces are read ... \r"
+        counter = counter + 1
+        raw_sentence = raw_sentence.strip
+        result << raw_sentence.gsub("\n", '').downcase if raw_sentence.length > 0
       end
       f.close
     end
