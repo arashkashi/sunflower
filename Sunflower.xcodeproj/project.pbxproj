@@ -40,6 +40,7 @@
 		D97E88E719F5410400B7FE4E /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88E519F52D1900B7FE4E /* Sentence.swift */; };
 		D97E88EB19F5422400B7FE4E /* pack_1.json in Resources */ = {isa = PBXBuildFile; fileRef = D97E88E919F5422400B7FE4E /* pack_1.json */; };
 		D97E88EC19F5422400B7FE4E /* pack_2.json in Resources */ = {isa = PBXBuildFile; fileRef = D97E88EA19F5422400B7FE4E /* pack_2.json */; };
+		D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88ED19F5438D00B7FE4E /* JSONHelper.swift */; };
 		D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BF19C583FA00E4737C /* LearningPackController.swift */; };
 		D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
 		D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
@@ -90,6 +91,7 @@
 		D97E88E519F52D1900B7FE4E /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
 		D97E88E919F5422400B7FE4E /* pack_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_1.json; sourceTree = "<group>"; };
 		D97E88EA19F5422400B7FE4E /* pack_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_2.json; sourceTree = "<group>"; };
+		D97E88ED19F5438D00B7FE4E /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
 		D9B246BF19C583FA00E4737C /* LearningPackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackController.swift; sourceTree = "<group>"; };
 		D9B246C119C5841200E4737C /* LearningPackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackModel.swift; sourceTree = "<group>"; };
 		D9D43F3119B8647C00E420B0 /* LearningStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningStage.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				D9D43F3119B8647C00E420B0 /* LearningStage.swift */,
 				D958A80D19C9A27000964C3D /* DocumentHelper.swift */,
 				D92B013419D99E9400CE11A8 /* ArrayExtension.swift */,
+				D97E88ED19F5438D00B7FE4E /* JSONHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -221,18 +224,18 @@
 			isa = PBXGroup;
 			children = (
 				D97E88E819F5420C00B7FE4E /* JSON Packs */,
-				41A0636219A9511800E400D1 /* RawPackages */,
+				41A0636219A9511800E400D1 /* Pack Manager */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		41A0636219A9511800E400D1 /* RawPackages */ = {
+		41A0636219A9511800E400D1 /* Pack Manager */ = {
 			isa = PBXGroup;
 			children = (
 				41D415F019AA6E490038EFE6 /* TestLearningPackI.swift */,
 				D958A81219C9E86700964C3D /* TestLearningPackII.swift */,
 			);
-			name = RawPackages;
+			name = "Pack Manager";
 			sourceTree = "<group>";
 		};
 		41D415E019A9D83C0038EFE6 /* Models */ = {
@@ -386,6 +389,7 @@
 				D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
+				D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */,
 				41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

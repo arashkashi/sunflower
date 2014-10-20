@@ -42,3 +42,15 @@ class TestLearningPackI: LearningPackModel {
     }
 
 }
+
+class RawPackage {
+    
+    class func packWithID(id: String) -> LearningPackModel! {
+        return nil
+        
+    }
+    
+    class func jsonFileNameFromID(id: String) -> String {
+        return "pack_\(id).json"
+    }
+}
