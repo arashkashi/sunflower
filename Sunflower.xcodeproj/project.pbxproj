@@ -38,6 +38,8 @@
 		D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */; };
 		D97E88E619F52D1900B7FE4E /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88E519F52D1900B7FE4E /* Sentence.swift */; };
 		D97E88E719F5410400B7FE4E /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88E519F52D1900B7FE4E /* Sentence.swift */; };
+		D97E88EB19F5422400B7FE4E /* pack_1.json in Resources */ = {isa = PBXBuildFile; fileRef = D97E88E919F5422400B7FE4E /* pack_1.json */; };
+		D97E88EC19F5422400B7FE4E /* pack_2.json in Resources */ = {isa = PBXBuildFile; fileRef = D97E88EA19F5422400B7FE4E /* pack_2.json */; };
 		D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BF19C583FA00E4737C /* LearningPackController.swift */; };
 		D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
 		D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
@@ -86,6 +88,8 @@
 		D958A81219C9E86700964C3D /* TestLearningPackII.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLearningPackII.swift; sourceTree = "<group>"; };
 		D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBaseViewController.swift; sourceTree = "<group>"; };
 		D97E88E519F52D1900B7FE4E /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
+		D97E88E919F5422400B7FE4E /* pack_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_1.json; sourceTree = "<group>"; };
+		D97E88EA19F5422400B7FE4E /* pack_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_2.json; sourceTree = "<group>"; };
 		D9B246BF19C583FA00E4737C /* LearningPackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackController.swift; sourceTree = "<group>"; };
 		D9B246C119C5841200E4737C /* LearningPackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackModel.swift; sourceTree = "<group>"; };
 		D9D43F3119B8647C00E420B0 /* LearningStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningStage.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		41A0636119A9511200E400D1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D97E88E819F5420C00B7FE4E /* JSON Packs */,
 				41A0636219A9511800E400D1 /* RawPackages */,
 			);
 			name = Resources;
@@ -248,6 +253,15 @@
 				D9B246BF19C583FA00E4737C /* LearningPackController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		D97E88E819F5420C00B7FE4E /* JSON Packs */ = {
+			isa = PBXGroup;
+			children = (
+				D97E88E919F5422400B7FE4E /* pack_1.json */,
+				D97E88EA19F5422400B7FE4E /* pack_2.json */,
+			);
+			name = "JSON Packs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,8 +347,10 @@
 				41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */,
 				414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
+				D97E88EC19F5422400B7FE4E /* pack_2.json in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
+				D97E88EB19F5422400B7FE4E /* pack_1.json in Resources */,
 				41614D2419AE77E60020EF58 /* Test2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
