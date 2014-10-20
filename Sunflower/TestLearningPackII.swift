@@ -35,7 +35,7 @@ class TestLearningPackII: LearningPackModel {
         for item: Dictionary<String, String> in rawWords {
             var name: String = item["name"]!
             var meaning: String = item["meaning"]!
-            var newWord: Word = Word(name: name, meaning: meaning)
+            var newWord: Word = Word(name: name, meaning: meaning, sentences: [])
             result.append(newWord)
         }
         
