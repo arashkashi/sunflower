@@ -15,6 +15,7 @@ let kPrevLEarningStage = "kPrevLearningStage"
 let kLearningDueDate = "kLearningDueDate"
 let kShouldShowPresentation = "kShouldShowPresentation"
 let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
+let kSentences = "kSentences"
 
 func == (lhs: Word, rhs: Word) -> Bool {
     return lhs.name == rhs.name
@@ -48,6 +49,8 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     var name: String
     var meaning: String
     
+    var sentences: [Sentence]
+    
     var currentLearningStage: LearningStage = .Cram {
         didSet {
             if currentLearningStage != oldValue {
@@ -57,20 +60,6 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     }
     
     var prevLearningStage: LearningStage = .Cram
-    var stageProgression: String {
-        get {
-            if self.currentLearningStage > self.prevLearningStage { return "UP" }
-            if self.currentLearningStage < self.prevLearningStage { return "DOWN" }
-            if self.currentLearningStage == self.prevLearningStage { return "UNCHANGED" }
-            return "UNKNOWN"
-        }
-    }
-    
-    var testProgression: Int {
-        get {
-            return Int(Double(self.testsSuccessfulyDoneForCurrentStage.count) / Double(Test.testSetForLearningStage(self.currentLearningStage).count) * 100)
-        }
-    }
     
     var relearningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
@@ -79,9 +68,10 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     override var description: String { get {return self.name}}
     override var debugDescription: String { get {return self.name}}
     
-    init (name: String, meaning: String) {
+    init (name: String, meaning: String, sentences: [Sentence]) {
         self.name = name
         self.meaning = meaning
+        self.sentences = sentences
     }
     
     func onWordFinishedTest(test: Test, testResult: TestResult) {
@@ -171,6 +161,7 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         aCoder.encodeInt32(self.prevLearningStage.toInt(), forKey: kPrevLEarningStage)
         aCoder.encodeObject(self.testsSuccessfulyDoneForCurrentStage, forKey: kTestsSuccessfullyDone)
         aCoder.encodeBool(self.shouldShowWordPresentation, forKey: kShouldShowPresentation)
+        aCoder.encodeObject(self.sentences, forKey: kSentences)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -193,5 +184,6 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
         self.prevLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kPrevLEarningStage) as Int32)
         self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as [Test]
         self.shouldShowWordPresentation = aDecoder.decodeBoolForKey(kShouldShowPresentation)
+        self.sentences = aDecoder.decodeObjectForKey(kSentences) as [Sentence]
     }
 }
