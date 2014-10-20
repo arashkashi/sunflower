@@ -28,20 +28,11 @@ class LearningPackModel : UIDocument, NSCoding  {
         super.init(fileURL: self.fileURL)
     }
     
-    class func wordPackWithID(id: String) -> [Word] {
-        switch id {
-        case TestLearningPackIDI:
-            return TestLearningPackI.instance().words
-        case TestLearningPackIDII:
-            return TestLearningPackII.instance().words
-        default:
-            return TestLearningPackI.instance().words
-        }
-    }
+
     
     // #MARK: Document Facade
-    class func create(id: String, completionHandlerForPersistance: ((Bool) -> ())?) -> LearningPackModel {
-        var result = LearningPackModel(id: id, words: LearningPackModel.wordPackWithID(id))
+    class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool) -> ())?) -> LearningPackModel {
+        var result = LearningPackModel(id: id, words: words)
         result.saveToURL(result.fileURL, forSaveOperation: UIDocumentSaveOperation.ForCreating, completionHandler: completionHandlerForPersistance)
         return result
     }

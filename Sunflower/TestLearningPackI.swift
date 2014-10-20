@@ -17,6 +17,9 @@ class TestLearningPackI: LearningPackModel {
     }
     
     class func words() -> Array<Word> {
+        var filePath = NSBundle.mainBundle().pathForResource("Package-1_translated", ofType: "json")
+        var jsonDATA = NSData.dataWithContentsOfFile(filePath!, options: .DataReadingMappedIfSafe, error: nil)
+        var package = NSJSONSerialization.JSONObjectWithData(jsonDATA!, options: NSJSONReadingOptions.AllowFragments, error: nil) as? Dictionary
         var rawWords =  [
             ["name":"schwangerschaft","meaning":"pregnancy"],
             ["name":"verhütung","meaning":"averting"],

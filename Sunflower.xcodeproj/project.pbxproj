@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41084B8419F4D7AB00227EF0 /* Package-1_translated.json in Resources */ = {isa = PBXBuildFile; fileRef = 41084B8219F4D7AB00227EF0 /* Package-1_translated.json */; };
+		41084B8519F4D7AB00227EF0 /* Package-2_translated.json in Resources */ = {isa = PBXBuildFile; fileRef = 41084B8319F4D7AB00227EF0 /* Package-2_translated.json */; };
 		414F93EB19E267CB002BFDE0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F93E919E267CB002BFDE0 /* ResultViewController.swift */; };
 		414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 414F93EA19E267CB002BFDE0 /* ResultViewController.xib */; };
 		41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1819AE76150020EF58 /* MainTestViewController.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41084B8219F4D7AB00227EF0 /* Package-1_translated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-1_translated.json"; sourceTree = "<group>"; };
+		41084B8319F4D7AB00227EF0 /* Package-2_translated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-2_translated.json"; sourceTree = "<group>"; };
 		414F93E919E267CB002BFDE0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		414F93EA19E267CB002BFDE0 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		41614D1819AE76150020EF58 /* MainTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTestViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 		41A0636219A9511800E400D1 /* RawPackages */ = {
 			isa = PBXGroup;
 			children = (
+				41084B8219F4D7AB00227EF0 /* Package-1_translated.json */,
+				41084B8319F4D7AB00227EF0 /* Package-2_translated.json */,
 				41D415F019AA6E490038EFE6 /* TestLearningPackI.swift */,
 				D958A81219C9E86700964C3D /* TestLearningPackII.swift */,
 			);
@@ -328,8 +334,10 @@
 			files = (
 				41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */,
 				414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */,
+				41084B8419F4D7AB00227EF0 /* Package-1_translated.json in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
+				41084B8519F4D7AB00227EF0 /* Package-2_translated.json in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
 				41614D2419AE77E60020EF58 /* Test2View.xib in Resources */,
 			);
