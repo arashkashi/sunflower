@@ -22,14 +22,14 @@ class WordTests: XCTestCase {
     }
     
     func testNextTestAtCram() {
-        var word = Word(name: "kann", meaning: "can")
+        var word = Word(name: "kann", meaning: "can", sentences: [])
         word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test1)]
         
         XCTAssert(word.nextTest()! == Test(testType: .Test2), " the next test should be test 1")
     }
     
     func testNextTestAtYoung() {
-        var word = Word(name: "kann", meaning: "can")
+        var word = Word(name: "kann", meaning: "can", sentences: [])
         word.currentLearningStage = LearningStage.Young
         word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test2)]
         
@@ -40,11 +40,11 @@ class WordTests: XCTestCase {
     }
     
     func testSortWords() {
-        var word1 = Word(name: "word future", meaning: "Meaning1")
-        var word2 = Word(name: "word past", meaning: "Meaning2")
-        var word3 = Word(name: "word nil 1", meaning: "Meaning3")
-        var word4 = Word(name: "word nil 2", meaning: "Meaning4")
-        var word5 = Word(name: "word nil 3", meaning: "Meaning4")
+        var word1 = Word(name: "word future", meaning: "Meaning1" , sentences: [])
+        var word2 = Word(name: "word past", meaning: "Meaning2", sentences: [])
+        var word3 = Word(name: "word nil 1", meaning: "Meaning3", sentences: [])
+        var word4 = Word(name: "word nil 2", meaning: "Meaning4", sentences: [])
+        var word5 = Word(name: "word nil 3", meaning: "Meaning4", sentences: [])
         
         word1.relearningDueDate = NSDate().dateByAddingTimeInterval(1000)
         word2.relearningDueDate = NSDate().dateByAddingTimeInterval(-1000)
@@ -61,18 +61,18 @@ class WordTests: XCTestCase {
     }
     
     func testWordEqualComp() {
-        var word1 = Word(name: "word future", meaning: "Meaning1")
-        var word2 = Word(name: "word past", meaning: "Meaning2")
-        var word3 = Word(name: "word past", meaning: "Meaning2")
+        var word1 = Word(name: "word future", meaning: "Meaning1", sentences: [])
+        var word2 = Word(name: "word past", meaning: "Meaning2", sentences: [])
+        var word3 = Word(name: "word past", meaning: "Meaning2", sentences: [])
         
         XCTAssert(!(word1 == word2), "when not equal")
         XCTAssert(word2 == word3, "when equal")
     }
     
     func testWordDueDateHelpers() {
-        var word1 = Word(name: "word future", meaning: "Meaning1")
-        var word2 = Word(name: "word past", meaning: "Meaning2")
-        var word3 = Word(name: "word past", meaning: "Meaning2")
+        var word1 = Word(name: "word future", meaning: "Meaning1", sentences: [])
+        var word2 = Word(name: "word past", meaning: "Meaning2", sentences: [])
+        var word3 = Word(name: "word past", meaning: "Meaning2", sentences: [])
         
         word1.relearningDueDate = NSDate().dateByAddingTimeInterval(1000)
         word2.relearningDueDate = NSDate().dateByAddingTimeInterval(-1000)

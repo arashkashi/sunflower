@@ -45,10 +45,10 @@ func < (lhs: Word, rhs: Word) -> Bool {
     return lhs.relearningDueDate!.compare(rhs.relearningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
-class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
+class Word : NSObject, Equatable, NSCoding {
+    
     var name: String
     var meaning: String
-    
     var sentences: [Sentence]
     
     var currentLearningStage: LearningStage = .Cram {
@@ -64,9 +64,6 @@ class Word : NSObject, Equatable, Printable, DebugPrintable, NSCoding {
     var relearningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
     var testsSuccessfulyDoneForCurrentStage: [Test] = []
-    
-    override var description: String { get {return self.name}}
-    override var debugDescription: String { get {return self.name}}
     
     init (name: String, meaning: String, sentences: [Sentence]) {
         self.name = name

@@ -37,6 +37,7 @@
 		D958A81319C9E86700964C3D /* TestLearningPackII.swift in Sources */ = {isa = PBXBuildFile; fileRef = D958A81219C9E86700964C3D /* TestLearningPackII.swift */; };
 		D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */; };
 		D97E88E619F52D1900B7FE4E /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88E519F52D1900B7FE4E /* Sentence.swift */; };
+		D97E88E719F5410400B7FE4E /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88E519F52D1900B7FE4E /* Sentence.swift */; };
 		D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BF19C583FA00E4737C /* LearningPackController.swift */; };
 		D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
 		D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
@@ -389,6 +390,7 @@
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
+				D97E88E719F5410400B7FE4E /* Sentence.swift in Sources */,
 				D92B013719D9A0BF00CE11A8 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
