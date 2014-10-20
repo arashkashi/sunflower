@@ -20,6 +20,20 @@ class Sentence : NSCoding {
         self.translated = translated
     }
     
+    // MARK: Helper
+    class func sentencesFromArrays(sourceSentences: [String], targetSentences: [String]) -> [Sentence] {
+        assert(sourceSentences.count == targetSentences.count, "all sentences have translation")
+        var result: [Sentence] = []
+        
+        for (index, item) in enumerate(sourceSentences) {
+            var sentence = Sentence(original: item, translated: targetSentences[index])
+            result.append(sentence)
+        }
+        
+        return result
+    }
+    
+    // MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.original, forKey: kOriginalSentence)
         aCoder.encodeObject(self.translated, forKey: kTranslatedSentence)

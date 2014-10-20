@@ -8,15 +8,6 @@
 
 import Foundation
 
-let kName = "kName"
-let kMeaning = "kMeaning"
-let kLearningStage = "kLeaningStage"
-let kPrevLEarningStage = "kPrevLearningStage"
-let kLearningDueDate = "kLearningDueDate"
-let kShouldShowPresentation = "kShouldShowPresentation"
-let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
-let kSentences = "kSentences"
-
 func == (lhs: Word, rhs: Word) -> Bool {
     return lhs.name == rhs.name
 }
@@ -46,6 +37,14 @@ func < (lhs: Word, rhs: Word) -> Bool {
 }
 
 class Word : NSObject, Equatable, NSCoding {
+    let kName = "kName"
+    let kMeaning = "kMeaning"
+    let kLearningStage = "kLeaningStage"
+    let kPrevLEarningStage = "kPrevLearningStage"
+    let kLearningDueDate = "kLearningDueDate"
+    let kShouldShowPresentation = "kShouldShowPresentation"
+    let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
+    let kSentences = "kSentences"
     
     var name: String
     var meaning: String
