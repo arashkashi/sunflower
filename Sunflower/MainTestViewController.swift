@@ -36,10 +36,15 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     // #MARK: Initiation
     func initLeanerController() {
         self.showLoadingOverlay()
-        LearningPackPersController.sharedInstance.loadLearningPackWithID(TestLearningPackIDI, completionHandler: { (lpm: LearningPackModel) -> () in
-            self.learnerController = LearnerController(learningPack: lpm)
-            self.hideLoadingOverlay()
-            self.learnNextWord()
+        LearningPackPersController.sharedInstance.loadLearningPackWithID(TestLearningPackIDI, completionHandler: { (lpm: LearningPackModel?) -> () in
+            if (lpm != nil) {
+                self.learnerController = LearnerController(learningPack: lpm!)
+                self.hideLoadingOverlay()
+                self.learnNextWord()
+            } else {
+                // TODO: Handle the error
+            }
+
         })
     }
     

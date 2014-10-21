@@ -28,13 +28,16 @@ class LearningPackModel : UIDocument, NSCoding  {
         super.init(fileURL: self.fileURL)
     }
     
-
-    
     // #MARK: Document Facade
-    class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool) -> ())?) -> LearningPackModel {
-        var result = LearningPackModel(id: id, words: words)
-        result.saveToURL(result.fileURL, forSaveOperation: UIDocumentSaveOperation.ForCreating, completionHandler: completionHandlerForPersistance)
-        return result
+    class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
+        var learningPackModel = LearningPackModel(id: id, words: words)
+        learningPackModel.saveToURL(learningPackModel.fileURL, forSaveOperation: .ForCreating) { (success: Bool) -> Void in
+            if (success) {
+                completionHandlerForPersistance?(true, learningPackModel)
+            } else {
+                completionHandlerForPersistance?(false, nil)
+            }
+        }
     }
     
     class func open(id: String, completionHandler: ((LearningPackModel) -> ())? ) {

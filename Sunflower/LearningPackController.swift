@@ -25,26 +25,18 @@ class LearningPackPersController {
         return Static.instance
     }
     
-    class func wordPackWithID(id: String) -> [Word] {
-        switch id {
-        case TestLearningPackIDI:
-            var temp: LearningPackModel =  TestLearningPackI.instance()
-            return temp.words
-        case TestLearningPackIDII:
-            return TestLearningPackII.instance().words
-        default:
-            return TestLearningPackI.instance().words
-        }
-    }
-    
-    func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel)->())?) {
+    func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel?)->())?) {
         if self.hasCashedPackForID(id) {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
-            var learningPack = LearningPackModel.create(id, words: LearningPackPersController.wordPackWithID(id),completionHandlerForPersistance: { (success: Bool) -> () in
-                // Handle error in case persistance goes wrong
+            var words = RawPackage.packWithID(id)
+            LearningPackModel.create(id, words: words, completionHandlerForPersistance: { (success: Bool, model: LearningPackModel?) -> () in
+                if (success) {
+                    completionHandler?(model)
+                } else {
+                    completionHandler?(nil)
+                }
             })
-            completionHandler?(learningPack)
         }
     }
     
@@ -60,9 +52,8 @@ class LearningPackPersController {
     // #MARK : Query local and cloud documents
     func queryListOfDocsInLocal() -> [NSString]  {
         var result: [NSString] = []
-        var docURL: NSURL? = DocumentHelper.localDocumentDirectoryURL()
-        if docURL != nil {
-            var localDocs = NSFileManager.defaultManager().contentsOfDirectoryAtPath(docURL!.path!, error: nil)
+        if let docURL = DocumentHelper.localDocumentDirectoryURL() {
+            var localDocs = NSFileManager.defaultManager().contentsOfDirectoryAtPath(docURL.path!, error: nil)
             
             if localDocs != nil {
                 for document in localDocs! {

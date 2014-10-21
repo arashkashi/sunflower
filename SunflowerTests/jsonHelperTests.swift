@@ -24,6 +24,9 @@ class jsonHelperTests: XCTestCase {
     func testReadJson() {
         var result = JSONHelper.hashFromJSONFile("pack_1")
         XCTAssert(result != nil , "Pass")
+        
+        var PackModel = RawPackage.packWithID("1")
+        
     }
 
     func testPerformanceExample() {
