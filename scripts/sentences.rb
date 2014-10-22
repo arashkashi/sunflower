@@ -42,6 +42,16 @@ module Sentence
     end
   end
 
+  # if hash is {"key1" => "value1", "key2" => "value2"}
+  # returns [{"key1" => "value1"}, {"key2" => "value2"}]
+  def Sentence.convertHashToList(hash)
+    result = []
+    hash.each do |key, value|
+      result << {key => value}
+    end
+    result
+  end
+
   def Sentence.loadJsonFileAsHash(filename)
     File.open( filename, "r" ) do |f|
       JSON.load( f )
