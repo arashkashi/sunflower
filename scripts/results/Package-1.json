@@ -1,911 +1,1113 @@
-{
-  "ich": {
-    "sample_sentences": [
-      "ich ich",
-      "ich",
-      "vater ich ich",
-      "bin ich"
-    ],
-    "meanings": []
-  },
-  "sie": {
-    "sample_sentences": [
-      "ich hatte sie ich auch",
-      "ich fühle sie",
-      "ich ich mach schon hol sie",
-      "ich sandte sie"
-    ],
-    "meanings": []
-  },
-  "ist": {
-    "sample_sentences": [
-      "sie ist alarmgesichert ziehen sie sie raus",
-      "sie ist gut ich weiß",
-      "sie ist sexy sie ist",
-      "wer ist sie"
-    ],
-    "meanings": []
-  },
-  "das": {
-    "sample_sentences": [
-      "sie ist bezaubernd das ist sie",
-      "das ist gutwarte sie",
-      "das ist",
-      "ja das ist sie"
-    ],
-    "meanings": []
-  },
-  "die": {
-    "sample_sentences": [
-      "das ist die katze",
-      "das ist die regel",
-      "ist das die torte ja das war sie",
-      "das ist die wahrheit"
-    ],
-    "meanings": []
-  },
-  "nicht": {
-    "sample_sentences": [
-      "das ist das ist nicht",
-      "sie ist nicht",
-      "das ist nicht",
-      "ist das nicht unglaublich"
-    ],
-    "meanings": []
-  },
-  "du": {
-    "sample_sentences": [
-      "nicht du sie",
-      "das verstehst du nicht das ist ausgeschlossen",
-      "hattest du das gefühl das ist sie",
-      "sie kann das nicht allein sie ist clever du weißt das"
-    ],
-    "meanings": []
-  },
-  "es": {
-    "sample_sentences": [
-      "das ist es nicht",
-      "sie ist es",
-      "es ist das",
-      "ist es das"
-    ],
-    "meanings": []
-  },
-  "und": {
-    "sample_sentences": [
-      "und das ist",
-      "du und ich",
-      "und ich glaub es nicht",
-      "und das ist das wohnzimmer"
-    ],
-    "meanings": []
-  },
-  "wir": {
-    "sample_sentences": [
-      "und und wir taten es",
-      "träume ich ist das nicht das zeug das wir mitgebracht haben",
-      "wir wissen es nicht",
-      "die mögen wir nicht"
-    ],
-    "meanings": []
-  },
-  "der": {
-    "sample_sentences": [
-      "ist das nicht der wahnsinn",
-      "es ist die supergxkanone der invincible",
-      "ist das der atmosphärprozessor jep das ist er",
-      "der mann und sie"
-    ],
-    "meanings": []
-  },
-  "was": {
-    "sample_sentences": [
-      "und was ist das",
-      "was ist das",
-      "was ist das ich weiß nicht",
-      "ist es das was es war"
-    ],
-    "meanings": []
-  },
-  "zu": {
-    "sample_sentences": [
-      "das ist zu lang ich tue es nicht",
-      "sie ist nicht zu hause",
-      "das lasse ich nicht zu",
-      "das zu fürchten was sie nicht verstehen"
-    ],
-    "meanings": []
-  },
-  "er": {
-    "sample_sentences": [
-      "und das ist es was er will",
-      "er ist es",
-      "ist das der atmosphärprozessor jep das ist er",
-      "was wenn er der falsche ist und du der richtige"
-    ],
-    "meanings": []
-  },
-  "in": {
-    "sample_sentences": [
-      "er ist in die richtung",
-      "sie ist in der nähe",
-      "ist das nicht das auto in dem die madame gefahren ist",
-      "weißt du was er sagte dass er hoffnungslos in sie verliebt ist"
-    ],
-    "meanings": []
-  },
-  "ein": {
-    "sample_sentences": [
-      "ein was das wusstest du nicht",
-      "er ist witzig sie ist ein",
-      "was ist das was ist das für ein flimmern",
-      "er ist ein"
-    ],
-    "meanings": []
-  },
-  "mit": {
-    "sample_sentences": [
-      "sie ist in der gießerei mit der bestie",
-      "und was ist mit dir es ist seltsam",
-      "was ist kommst du mit",
-      "und was ist mit mindy"
-    ],
-    "meanings": []
-  },
-  "den": {
-    "sample_sentences": [
-      "und was ist mit den vögeln",
-      "was ist mit den beiden",
-      "was ist mit den anderen",
-      "es ist das blut in den adern der welt"
-    ],
-    "meanings": []
-  },
-  "mir": {
-    "sample_sentences": [
-      "was ist in mir",
-      "was ist mit mir",
-      "nicht das es mir was ausmacht",
-      "was ist traust du mir nicht"
-    ],
-    "meanings": []
-  },
-  "auf": {
-    "sample_sentences": [
-      "wir kriegen sie nicht auf",
-      "das ist das notfallkonto der agentur auf den kaimaninseln",
-      "hudson  es hält sie nicht auf es hält sie nicht auf",
-      "ich wache morgens auf und du sagst was zu machen ist"
-    ],
-    "meanings": []
-  },
-  "ja": {
-    "sample_sentences": [
-      "ja das ist er",
-      "ja das ist sie",
-      "ja das ist es",
-      "ja und was ist mit der mgaktie"
-    ],
-    "meanings": []
-  },
-  "haben": {
-    "sample_sentences": [
-      "ja wir haben sie",
-      "ja haben wir",
-      "was haben sie",
-      "wir haben wir das geschafft ich"
-    ],
-    "meanings": []
-  },
-  "wie": {
-    "sample_sentences": [
-      "die ist wie du",
-      "wie haben sie",
-      "das ist ja wie ein vogelpärchen",
-      "ich weiß nicht wie das ist"
-    ],
-    "meanings": []
-  },
-  "mich": {
-    "sample_sentences": [
-      "ja ja ich erinnere mich",
-      "es kommt auf mich zu",
-      "aber die beinhalten nicht sie und mich",
-      "das ist es was mich nervös macht"
-    ],
-    "meanings": []
-  },
-  "dass": {
-    "sample_sentences": [
-      "ich hoffe ja dass es die frau ist",
-      "aber ich weiß dass es das nicht ist",
-      "ja ich weiß dass er nicht vollkommen ist",
-      "was erwartest du von mir dass ich den"
-    ],
-    "meanings": []
-  },
-  "hier": {
-    "sample_sentences": [
-      "was ist das hier",
-      "und hier ist er",
-      "er ist hier",
-      "es ist hier"
-    ],
-    "meanings": []
-  },
-  "hat": {
-    "sample_sentences": [
-      "zu mir ist er nett und er hat ein hobby",
-      "sie hat es",
-      "er hat sie getötet nicht du",
-      "was hat das hier zu bedeuten"
-    ],
-    "meanings": []
-  },
-  "aber": {
-    "sample_sentences": [
-      "aber ich weiß dass es das nicht ist",
-      "ist es aber nicht es ist mir passiert",
-      "aber die beinhalten nicht sie und mich",
-      "ja aber ich bin nicht das was er erwartet hat"
-    ],
-    "meanings": []
-  },
-  "sind": {
-    "sample_sentences": [
-      "das sind sie nicht",
-      "sie sind nicht das was sie vorgeben",
-      "aber sie sind der auf den knien",
-      "es bewegt sich was und es sind nicht wir"
-    ],
-    "meanings": []
-  },
-  "eine": {
-    "sample_sentences": [
-      "ja es ist eine sie",
-      "wir befürchtetendaß sie nicht kommen es ist mir eine ehre das sie hier sind",
-      "das hier ist eine der situationen",
-      "was du hier kaufst ist eine"
-    ],
-    "meanings": []
-  },
-  "von": {
-    "sample_sentences": [
-      "was erwartest du von mir dass ich den",
-      "ja ich weiß der ist von mir",
-      "er ist ein freund von mir er ist schwul und",
-      "ja wir sind hier in der nähe von istrien"
-    ],
-    "meanings": []
-  },
-  "so": {
-    "sample_sentences": [
-      "ja so ist es",
-      "ist es nicht so",
-      "ist das so ja",
-      "wie ist das so"
-    ],
-    "meanings": []
-  },
-  "wenn": {
-    "sample_sentences": [
-      "und wenn du nicht",
-      "sie hören von mir wenn wir sie haben",
-      "aber was ist wenn",
-      "und was wenn sie das nicht macht"
-    ],
-    "meanings": []
-  },
-  "für": {
-    "sample_sentences": [
-      "was ist das was ist das für ein flimmern",
-      "was ist das für ein lärm wie das eben so ist",
-      "und was für eine mission ist das",
-      "ja das ist zu viel für mich"
-    ],
-    "meanings": []
-  },
-  "dich": {
-    "sample_sentences": [
-      "wir haben was für dich",
-      "und du auf dich",
-      "es ist so schön dich hier zu haben",
-      "mir ist es recht wenn es für dich in ordnung ist"
-    ],
-    "meanings": []
-  },
-  "an": {
-    "sample_sentences": [
-      "wieso ist mir das nicht und wie fang ich das an",
-      "setzen wir echelon auf sie an das haben wir",
-      "was ist das letzte an das du dich erinnerst",
-      "so darfst du das nicht fass mich nicht an"
-    ],
-    "meanings": []
-  },
-  "war": {
-    "sample_sentences": [
-      "ja das war ich aber du",
-      "ist es das was es war",
-      "und wie war er so",
-      "ist das die torte ja das war sie"
-    ],
-    "meanings": []
-  },
-  "noch": {
-    "sample_sentences": [
-      "was was war das noch",
-      "sie ist ja noch hier",
-      "sie ist noch an",
-      "ist sie noch hier"
-    ],
-    "meanings": []
-  },
-  "habe": {
-    "sample_sentences": [
-      "ich habe was für dich was ein geschenk",
-      "das habe ich",
-      "ich habe es",
-      "das ist alles was ich habe"
-    ],
-    "meanings": []
-  },
-  "uns": {
-    "sample_sentences": [
-      "sie kommen mit uns hier ist es zu gefährlich für sie",
-      "ja auf uns trifft das zu aber was ist mit julie",
-      "und für uns",
-      "das wird es nicht wir lieben uns aber ja"
-    ],
-    "meanings": []
-  },
-  "nur": {
-    "sample_sentences": [
-      "es war nur was es war",
-      "es ist nur nicht das",
-      "nur er ist so",
-      "es ist nur so"
-    ],
-    "meanings": []
-  },
-  "da": {
-    "sample_sentences": [
-      "was ist sie nicht da",
-      "sind sie noch nicht da",
-      "und da war so ein",
-      "so hier da ist sie"
-    ],
-    "meanings": []
-  },
-  "sich": {
-    "sample_sentences": [
-      "es bewegt sich was und es sind nicht wir",
-      "hat sie sich",
-      "sie sollten sich nicht auf den",
-      "er erinnert sich aber an dich"
-    ],
-    "meanings": []
-  },
-  "bin": {
-    "sample_sentences": [
-      "so ist das wie ich bin",
-      "ich bin für dich da",
-      "aber ich bin es nicht",
-      "ja aber ich bin nicht das was er erwartet hat"
-    ],
-    "meanings": []
-  },
-  "dir": {
-    "sample_sentences": [
-      "und was ist mit dir es ist seltsam",
-      "die sind von dir",
-      "von dir sie haben dich erschossen aber ich bin doch hier",
-      "so schrecklich wie du dir das vorstellst ist es nicht"
-    ],
-    "meanings": []
-  },
-  "einen": {
-    "sample_sentences": [
-      "einen mann haben der weiß was er hat wenn er dich hat",
-      "ich glaube sie haben einen in sich",
-      "wir haben noch einen kaputten ich weiß nicht was mit dem ist",
-      "ja sie ist da einen augenblick"
-    ],
-    "meanings": []
-  },
-  "dem": {
-    "sample_sentences": [
-      "nur in dem einen",
-      "wir haben noch einen kaputten ich weiß nicht was mit dem ist",
-      "das von aaron und was ist mit dem von duffy",
-      "an dem du mich an dich heranziehen würdest und ich"
-    ],
-    "meanings": []
-  },
-  "nein": {
-    "sample_sentences": [
-      "nein nur wir sind noch da",
-      "nein er war noch nicht hier",
-      "nein so ist das nicht",
-      "nein die sind für dich"
-    ],
-    "meanings": []
-  },
-  "ihr": {
-    "sample_sentences": [
-      "sagt ihr nicht dass ich hier bin",
-      "was seht ihr mich so an ich wusste das nicht",
-      "und mit ihr abhänge so eine ist sie weißt du",
-      "das blut und die zellen von dir und von ihr"
-    ],
-    "meanings": []
-  },
-  "kann": {
-    "sample_sentences": [
-      "nein ich ich kann das nicht",
-      "nein das kann es nicht",
-      "ja das kann ich",
-      "ich kann nicht schlafen wenn es hier ist"
-    ],
-    "meanings": []
-  },
-  "ihn": {
-    "sample_sentences": [
-      "ja er ist hier ich gebe ihn dir",
-      "du irrst dich er ist nicht der für den du ihn hältst",
-      "die sind nicht für ihn sondern für mich",
-      "sie ist glücklich dass sie ihn hat"
-    ],
-    "meanings": []
-  },
-  "wird": {
-    "sample_sentences": [
-      "das wird es nicht wir lieben uns aber ja",
-      "das kann ich nicht ich kann ihn nicht anrufen er wird es hören",
-      "nein mit uns wird es nicht funktionieren",
-      "sie wird ihn in der handtasche haben"
-    ],
-    "meanings": []
-  },
-  "hast": {
-    "sample_sentences": [
-      "was hast du da was haltet ihr von dem hier",
-      "hast du ihr gesagt dass ich nicht nein",
-      "du hast mich doch nein nein nur dich",
-      "was ist was hast du was ist denn"
-    ],
-    "meanings": []
-  },
-  "jetzt": {
-    "sample_sentences": [
-      "aber so wie ich jetzt bin",
-      "und sie sind jetzt hier ja",
-      "aber jetzt bin ich ja da",
-      "ich bin jetzt hier"
-    ],
-    "meanings": []
-  },
-  "sein": {
-    "sample_sentences": [
-      "wie kann das sein",
-      "kann aber nicht sein",
-      "das kann nicht sein",
-      "aber ich glaub nicht dass es bei dir so sein wird"
-    ],
-    "meanings": []
-  },
-  "auch": {
-    "sample_sentences": [
-      "ich aber nicht nein nein ich auch nicht",
-      "du hast ja auch mit ihr nein",
-      "es war mir ja mir auch",
-      "das haben wir auch nicht"
-    ],
-    "meanings": []
-  },
-  "gut": {
-    "sample_sentences": [
-      "ich war da gut wie war es",
-      "das ist nicht so gut",
-      "und wie gut die ist",
-      "gut dass ich da war"
-    ],
-    "meanings": []
-  },
-  "um": {
-    "sample_sentences": [
-      "um dich und mich",
-      "um für uns von nutzen zu sein",
-      "nur um zu sehen wie es ist",
-      "wir sind nur hier um zu beobachten"
-    ],
-    "meanings": []
-  },
-  "schon": {
-    "sample_sentences": [
-      "hier hier hier ist schon gut hier",
-      "da haben wir es schon",
-      "ross ich bin ja da ich bin ja schon da",
-      "wir haben schon zu ja und was macht der da"
-    ],
-    "meanings": []
-  },
-  "aus": {
-    "sample_sentences": [
-      "ist es auch schon aus",
-      "noch sind wir aber nicht aus dem schneider",
-      "jetzt pack das aus das ist von mir",
-      "was wird aus ihr"
-    ],
-    "meanings": []
-  },
-  "dann": {
-    "sample_sentences": [
-      "nur du und ich dann",
-      "aber dann ist da noch",
-      "und dann noch das hier",
-      "und von dem du dann"
-    ],
-    "meanings": []
-  },
-  "als": {
-    "sample_sentences": [
-      "ja aber ich bin schneller als du",
-      "ja aber es ist mehr als das",
-      "was hat sie gesagt als sie mit ihr gesprochen haben",
-      "wird es so sein als habe ich nie existiert"
-    ],
-    "meanings": []
-  },
-  "im": {
-    "sample_sentences": [
-      "was ist wenn sie auf der betty sind die aktivität war im",
-      "und was bedeutet das dass du eine bombe im kopf hast",
-      "dann wird es nicht schwer sein sie im auge zu behalten",
-      "sie ist zu viel für mich im bett"
-    ],
-    "meanings": []
-  },
-  "alles": {
-    "sample_sentences": [
-      "ich bin alles was sie noch hat",
-      "und das ist noch nicht alles",
-      "das ist alles was ich habe",
-      "hast du mir noch was zu erzählen nein das war schon alles"
-    ],
-    "meanings": []
-  },
-  "mal": {
-    "sample_sentences": [
-      "ich war auch mal so wie du",
-      "ist gut dann geh ich noch mal darüber nein nein nein nein",
-      "es war nicht leicht für mich als ich dich das erste mal",
-      "ich war mal gut"
-    ],
-    "meanings": []
-  },
-  "meine": {
-    "sample_sentences": [
-      "ja das meine ich",
-      "ich meine ich bleibe ja auch hier",
-      "und er ist auch nicht meine thermoskanne",
-      "ja sie ist meine gib sie mir"
-    ],
-    "meanings": []
-  },
-  "keine": {
-    "sample_sentences": [
-      "ich habe keine zeit ja sie ist jetzt hier",
-      "nein sie hat keine",
-      "sie wird keine zeit für dich haben",
-      "das war keine rede es war nur"
-    ],
-    "meanings": []
-  },
-  "werden": {
-    "sample_sentences": [
-      "das werden wir auch nicht",
-      "nein das werden wir nicht",
-      "alles wird gut werden",
-      "kann ja noch werden"
-    ],
-    "meanings": []
-  },
-  "bist": {
-    "sample_sentences": [
-      "es ist so gut dass du da bist",
-      "und dass du jetzt da bist",
-      "aber wenn du sie kennst und so wie sie bist",
-      "ja genau der bin ich und was bist du"
-    ],
-    "meanings": []
-  },
-  "weiß": {
-    "sample_sentences": [
-      "dann weiß ich dass du so wie ich",
-      "aber ich weiß dass es das nicht ist",
-      "ja ich weiß der ist von mir",
-      "einen mann haben der weiß was er hat wenn er dich hat"
-    ],
-    "meanings": []
-  },
-  "doch": {
-    "sample_sentences": [
-      "du hast mich doch nein nein nur dich",
-      "aber sie sind doch noch nicht da",
-      "was aber das kann doch nicht sein",
-      "von dir sie haben dich erschossen aber ich bin doch hier"
-    ],
-    "meanings": []
-  },
-  "mein": {
-    "sample_sentences": [
-      "ja ja und um mein",
-      "da war mein name was ist das nein nein da irrst du dich",
-      "ja er ist mein",
-      "ist ja gut und das ist mein knie"
-    ],
-    "meanings": []
-  },
-  "ihnen": {
-    "sample_sentences": [
-      "nein es war nur von ihnen die rede",
-      "das bin nur ich wie ich ihnen klarmache",
-      "und das ist ihnen",
-      "und jetzt haben sie es aus ihnen rausgeholt"
-    ],
-    "meanings": []
-  },
-  "nach": {
-    "sample_sentences": [
-      "nach dem was auf dem  hochzeitstag war",
-      "ich schickte einen jungen nach dir war er nicht da",
-      "das war sie auch dann bin ich nach hause gekommen",
-      "dann als ich nach der nummer"
-    ],
-    "meanings": []
-  },
-  "nichts": {
-    "sample_sentences": [
-      "aber dann war ich da und da war nichts",
-      "hast du nichts an doch doch",
-      "ich weiß dass ich nichts weiß",
-      "ich weiß dass das alles nichts mit mir zu tun hat"
-    ],
-    "meanings": []
-  },
-  "wo": {
-    "sample_sentences": [
-      "ich weiß nicht wo er ist",
-      "sie weiß wo es ist",
-      "weiß er wo er ist",
-      "wo ist er er ist doch hier gib es zu"
-    ],
-    "meanings": []
-  },
-  "will": {
-    "sample_sentences": [
-      "ich weiß nur was ich nicht will",
-      "und das ist es was er will",
-      "und was will er von ihr",
-      "ich will nicht hier sein"
-    ],
-    "meanings": []
-  },
-  "oder": {
-    "sample_sentences": [
-      "er ist nicht von hier oder",
-      "kann sein oder auch nicht",
-      "ok das war doch auch schon alles oder",
-      "wenn sie mit mir befreundet ist wird sie das schon verstehen oder"
-    ],
-    "meanings": []
-  },
-  "etwas": {
-    "sample_sentences": [
-      "haben sie etwas für mich ja",
-      "sie haben etwas von uns",
-      "ich meine war es etwas",
-      "du bist für mich immer so etwas wie ein"
-    ],
-    "meanings": []
-  },
-  "muss": {
-    "sample_sentences": [
-      "aber es muss nicht so sein",
-      "sie muss wissen dass du alles bist was er nicht ist",
-      "ich bin nicht sicher es muss etwas sein das wir noch nicht gesehen haben",
-      "er will nicht was muss ich da hören"
-    ],
-    "meanings": []
-  },
-  "los": {
-    "sample_sentences": [
-      "was ist los ich weiß es nicht",
-      "was ist das was ist los",
-      "ich kann nicht ich muss los",
-      "was ist los mit dir"
-    ],
-    "meanings": []
-  },
-  "können": {
-    "sample_sentences": [
-      "werden wir nicht und können wir nicht",
-      "wir können ihn nicht hier lassen sie sind hier um sie zu vernichten",
-      "sie können mich mal",
-      "das können sie nicht"
-    ],
-    "meanings": []
-  },
-  "mehr": {
-    "sample_sentences": [
-      "auch von dir nicht jetzt nicht mehr",
-      "ja aber es ist mehr als das",
-      "wir haben doch nicht mehr  oder",
-      "was ist wenn es mehr sind"
-    ],
-    "meanings": []
-  },
-  "bei": {
-    "sample_sentences": [
-      "aber wenn du jetzt nicht bei ihr bist",
-      "aber ich glaub nicht dass es bei dir so sein wird",
-      "kann mir das bei dir nicht vorstellen ich schon",
-      "er weiß nicht dass rachel bei dir ist"
-    ],
-    "meanings": []
-  },
-  "bitte": {
-    "sample_sentences": [
-      "es wird alles gut werden bitte töten sie mich",
-      "ach ja und was ist dann das bitte hier",
-      "bitte ich weiß nicht was ihr von mir wollt",
-      "nein doch nicht entschuldige bitte ich war schon"
-    ],
-    "meanings": []
-  },
-  "warum": {
-    "sample_sentences": [
-      "warum nicht sie sind ja auch hier",
-      "warum bist du dann hier",
-      "warum weiß ich auch nicht",
-      "und warum du hier bist und das du nichts sagst"
-    ],
-    "meanings": []
-  },
-  "vor": {
-    "sample_sentences": [
-      "und was hast du jetzt vor",
-      "was haben sie vor was",
-      "was hast du vor von hier aus sehen wir nichts",
-      "was hast du jetzt vor"
-    ],
-    "meanings": []
-  },
-  "man": {
-    "sample_sentences": [
-      "gut man kann nicht oder du kannst nicht",
-      "wenn man es will",
-      "ich weiß wie man mit ihnen umgehen muss",
-      "wird dir klar werden dass ich nicht der typ bin mit dem man sich anlegt"
-    ],
-    "meanings": []
-  },
-  "alle": {
-    "sample_sentences": [
-      "das weiß ich auch nicht ich weiß nur dass sie es alle auf dich abgesehen haben",
-      "von mir aus werden sie alle mit ihr sterben",
-      "ich bin nicht der für den mich alle halten",
-      "ein für alle mal"
-    ],
-    "meanings": []
-  },
-  "hab": {
-    "sample_sentences": [
-      "ich hab auch etwas für dich",
-      "mich was ich noch nicht hab",
-      "ich hab ihr doch nur",
-      "ich hab ihn dann los"
-    ],
-    "meanings": []
-  },
-  "sagen": {
-    "sample_sentences": [
-      "da muss ich dir noch etwas sagen",
-      "nein haben sie mir was zu sagen",
-      "aber das kann ich dir nicht sagen",
-      "ja da kann man auch 'uns' sagen"
-    ],
-    "meanings": []
-  },
-  "tun": {
-    "sample_sentences": [
-      "ich weiß dass das alles nichts mit mir zu tun hat",
-      "ich weiß was ich zu tun habe",
-      "ich weiß wenn sie es nicht tun",
-      "ich weiß nicht was die da tun"
-    ],
-    "meanings": []
-  },
-  "geht": {
-    "sample_sentences": [
-      "aber das geht dich nichts an nicht mehr",
-      "es geht um mich und ich will",
-      "es geht ihnen doch nicht gut oder",
-      "es geht mich ja nichts an"
-    ],
-    "meanings": []
-  },
-  "müssen": {
-    "sample_sentences": [
-      "müssen sie auch etwas für mich tun",
-      "nein das müssen wir nicht",
-      "ich will das ding und sie müssen es tun",
-      "das weiß ich nicht aber wir müssen wachsam sein"
-    ],
-    "meanings": []
-  },
-  "jack": {
-    "sample_sentences": [
-      "aber jack doch nicht hier",
-      "haben sie das wir gehen der sache nach jack",
-      "alle sagen   jack geller der ist ja so berechenbar",
-      "nein so glaub mir doch jack"
-    ],
-    "meanings": []
-  },
-  "wieder": {
-    "sample_sentences": [
-      "nein das bin auch wieder ich",
-      "mir geht es wieder gut",
-      "und da sind sie wieder",
-      "es wird alles wieder gut"
-    ],
-    "meanings": []
-  },
-  "machen": {
-    "sample_sentences": [
-      "wenn ich alles noch mal machen muss",
-      "und wenn alles gut geht will sie mit mir noch ein album machen",
-      "ich will das nicht hier machen",
-      "und was machen wir jetzt"
-    ],
-    "meanings": []
-  },
-  "immer": {
-    "sample_sentences": [
-      "du bist für mich immer so etwas wie ein",
-      "was immer das auch war es war",
-      "immer dann wenn wir nicht hier sind",
-      "sie ist immer noch in dir"
-    ],
-    "meanings": []
-  },
-  "wissen": {
-    "sample_sentences": [
-      "sie muss wissen dass du alles bist was er nicht ist",
-      "ich weiß es nicht ich will es aber wissen",
-      "ich will wissen was los ist nichts",
-      "ich will helfen aber ich muss wissen was hier vor sich geht"
-    ],
-    "meanings": []
-  },
-  "gehen": {
-    "sample_sentences": [
-      "so wir müssen jetzt gehen",
-      "nein aber er muss gehen",
-      "wo sind sie sie sind tot kann ich jetzt gehen",
-      "es wird schon gut gehen"
-    ],
-    "meanings": []
-  },
-  "diese": {
-    "sample_sentences": [
-      "ich bin eine infabel und doch kann ich diese starken gefühle für dich haben",
-      "das interessiert mich nicht ich will nicht wie diese typen sein die bis",
-      "ich bin mir sicher dass wir für die die diese basis erbaut haben",
-      "aber nein ich hab mit so was gerechnet als ich meine nase in diese sache steckte"
-    ],
-    "meanings": []
+[
+  {
+    "ich": {
+      "sample_sentences": [
+        "ich ich",
+        "ich",
+        "vater ich ich",
+        "bin ich"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "sie": {
+      "sample_sentences": [
+        "ich hatte sie ich auch",
+        "ich fühle sie",
+        "ich ich mach schon hol sie",
+        "ich sandte sie"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "das": {
+      "sample_sentences": [
+        "ich will das neue ich",
+        "kennen sie das mädchen ja ich kenne sie",
+        "wenn ich das wüsste bräuchte ich sie nicht",
+        "sind sie das"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "ist": {
+      "sample_sentences": [
+        "ist das",
+        "das ist gutwarte sie",
+        "sie ist bezaubernd das ist sie",
+        "das ist das haus"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "du": {
+      "sample_sentences": [
+        "hattest du das gefühl das ist sie",
+        "sie kann das nicht allein sie ist clever du weißt das",
+        "das verstehst du nicht das ist ausgeschlossen",
+        "ist das blut blutest du"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "nicht": {
+      "sample_sentences": [
+        "das ist das ist nicht",
+        "nicht du sie",
+        "das ist nicht",
+        "sie ist nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "die": {
+      "sample_sentences": [
+        "ist das die torte ja das war sie",
+        "ist das die polizei",
+        "das ist nicht das bad das ich genieße sondern die nackte frau",
+        "das ist die katze"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "es": {
+      "sample_sentences": [
+        "das ist es nicht",
+        "sie ist es",
+        "es ist das",
+        "ist es das"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "und": {
+      "sample_sentences": [
+        "und das ist",
+        "du und ich",
+        "und ich glaub es nicht",
+        "und das ist das wohnzimmer"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "der": {
+      "sample_sentences": [
+        "ist das nicht der wahnsinn",
+        "der mann und sie",
+        "das ist der weg",
+        "das ist der orientierungspunkt"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "was": {
+      "sample_sentences": [
+        "und was ist das",
+        "was ist es",
+        "was ist das",
+        "ist es das was es war"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "wir": {
+      "sample_sentences": [
+        "und und wir taten es",
+        "es bewegt sich was und es sind nicht wir",
+        "träume ich ist das nicht das zeug das wir mitgebracht haben",
+        "die mögen wir nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "zu": {
+      "sample_sentences": [
+        "das ist zu lang ich tue es nicht",
+        "sie ist nicht zu hause",
+        "das lasse ich nicht zu",
+        "das zu fürchten was sie nicht verstehen"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "ein": {
+      "sample_sentences": [
+        "ein was das wusstest du nicht",
+        "was ist das was ist das für ein flimmern",
+        "ist das ein verbrechen verstehst du das nicht",
+        "das das ist ein unkampfjet"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "er": {
+      "sample_sentences": [
+        "und das ist es was er will",
+        "er ist witzig sie ist ein",
+        "er ist es",
+        "er ist ein"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "in": {
+      "sample_sentences": [
+        "er ist in die richtung",
+        "sie ist in der nähe",
+        "ist das nicht das auto in dem die madame gefahren ist",
+        "er ist in sicherheit"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "mir": {
+      "sample_sentences": [
+        "was ist in mir",
+        "in mir was ist in mir",
+        "nicht das es mir was ausmacht",
+        "was ist traust du mir nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "mit": {
+      "sample_sentences": [
+        "was ist mit mir",
+        "sie ist in der gießerei mit der bestie",
+        "und was ist mit dir es ist seltsam",
+        "und was ist mit kyle"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "ja": {
+      "sample_sentences": [
+        "ja das ist es",
+        "ja das ist sie",
+        "ja das ist er",
+        "ja und was ist mit der mgaktie"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "den": {
+      "sample_sentences": [
+        "und was ist mit den vögeln",
+        "was ist mit den beiden",
+        "was ist mit den anderen",
+        "es ist mir gar nicht in den sinn gekommen"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "wie": {
+      "sample_sentences": [
+        "die ist wie du",
+        "du glaubst ja nicht wie peinlich mir das ist",
+        "wie was ist",
+        "das ist ja wie ein vogelpärchen"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "mich": {
+      "sample_sentences": [
+        "ja ja ich erinnere mich",
+        "aber die beinhalten nicht sie und mich",
+        "ja das ist zu viel für mich",
+        "das ist es was mich nervös macht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "auf": {
+      "sample_sentences": [
+        "wir kriegen sie nicht auf",
+        "es kommt auf mich zu",
+        "sonst rege ich mich ja nicht auf",
+        "das ist nicht wie ein stein auf dem weg"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "eine": {
+      "sample_sentences": [
+        "ja es ist eine sie",
+        "das ist eine der schriften",
+        "eine kreuzung auf der sie",
+        "wir befürchtetendaß sie nicht kommen es ist mir eine ehre das sie hier sind"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "so": {
+      "sample_sentences": [
+        "ja so ist es",
+        "ist es nicht so",
+        "ist das so ja",
+        "wie ist das so"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "aber": {
+      "sample_sentences": [
+        "ist es aber nicht es ist mir passiert",
+        "aber es ist so",
+        "aber die beinhalten nicht sie und mich",
+        "ja das war ich aber du"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "hier": {
+      "sample_sentences": [
+        "und hier ist er",
+        "was ist das hier",
+        "es ist curtis er ist hier",
+        "nicht das hier"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "dass": {
+      "sample_sentences": [
+        "aber ich weiß dass es das nicht ist",
+        "es ist aber selten dass du so spontan zu mir kommst",
+        "was erwartest du von mir dass ich den",
+        "ich lasse nicht zu dass du mir zuvorkommst"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "hat": {
+      "sample_sentences": [
+        "zu mir ist er nett und er hat ein hobby",
+        "ja aber ich bin nicht das was er erwartet hat",
+        "es geht mir nicht in den kopf dass sie so was geträumt hat",
+        "sie hat es"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "sind": {
+      "sample_sentences": [
+        "das sind sie nicht",
+        "wir befürchtetendaß sie nicht kommen es ist mir eine ehre das sie hier sind",
+        "aber sie sind der auf den knien",
+        "sie sind nicht das was sie vorgeben"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "dich": {
+      "sample_sentences": [
+        "und du auf dich",
+        "es ist so schön dich hier zu haben",
+        "ich mag dich so nicht",
+        "und weißt du was für dich ist die tür zu"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "von": {
+      "sample_sentences": [
+        "was erwartest du von mir dass ich den",
+        "ja ich weiß der ist von mir",
+        "er ist ein freund von mir er ist schwul und",
+        "nicht von hier das ist sicher"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "haben": {
+      "sample_sentences": [
+        "es ist so schön dich hier zu haben",
+        "ja wir haben sie",
+        "aber es ist so roberta und ich und jill wir haben",
+        "aber es ist so roberta ich und jill wir haben"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "für": {
+      "sample_sentences": [
+        "wir haben was für dich",
+        "was ist das was ist das für ein flimmern",
+        "was ist das für ein lärm wie das eben so ist",
+        "und was für eine mission ist das"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "wenn": {
+      "sample_sentences": [
+        "und wenn du nicht",
+        "aber was ist wenn",
+        "sie hören von mir wenn wir sie haben",
+        "mir ist es recht wenn es für dich in ordnung ist"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "war": {
+      "sample_sentences": [
+        "ja das war ich aber du",
+        "ist es das was es war",
+        "und wie war er so",
+        "und wie war ich"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "an": {
+      "sample_sentences": [
+        "wieso ist mir das nicht und wie fang ich das an",
+        "was ist es gibt es was 'unheiratbares' an mir",
+        "so darfst du das nicht fass mich nicht an",
+        "fang nicht mit so was an"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "habe": {
+      "sample_sentences": [
+        "ich habe was für dich was ein geschenk",
+        "und ich habe",
+        "und ich nicht das recht habe es zu kaufen",
+        "ich habe den richtigen für sie"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "bin": {
+      "sample_sentences": [
+        "so ist das wie ich bin",
+        "ja aber ich bin nicht das was er erwartet hat",
+        "aber ich bin es nicht",
+        "ich bin nicht der für den die mich halten"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "nur": {
+      "sample_sentences": [
+        "es war nur was es war",
+        "es ist nur nicht das",
+        "es ist nur so",
+        "nur er ist so"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "da": {
+      "sample_sentences": [
+        "was ist sie nicht da",
+        "und da war so ein",
+        "so hier da ist sie",
+        "ich bin für dich da"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "nein": {
+      "sample_sentences": [
+        "nein die sind für dich",
+        "nein so ist das nicht",
+        "nein    das habe ich nicht",
+        "nein ich bin nicht so aber du monica"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "noch": {
+      "sample_sentences": [
+        "nein nur wir sind noch da",
+        "nein er war noch nicht hier",
+        "was was war das noch",
+        "nein wir haben noch nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "dir": {
+      "sample_sentences": [
+        "und was ist mit dir es ist seltsam",
+        "die sind von dir",
+        "von dir sie haben dich erschossen aber ich bin doch hier",
+        "so schrecklich wie du dir das vorstellst ist es nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "ihr": {
+      "sample_sentences": [
+        "sagt ihr nicht dass ich hier bin",
+        "was seht ihr mich so an ich wusste das nicht",
+        "das blut und die zellen von dir und von ihr",
+        "und mit ihr abhänge so eine ist sie weißt du"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "hast": {
+      "sample_sentences": [
+        "was ist was hast du was ist denn",
+        "ist das der für den du geschrieben hast",
+        "hast du ihr gesagt dass ich nicht nein",
+        "was hast du da"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "einen": {
+      "sample_sentences": [
+        "einen mann haben der weiß was er hat wenn er dich hat",
+        "wir haben einen job für sie",
+        "ja sie ist da einen augenblick",
+        "wir haben noch einen kaputten ich weiß nicht was mit dem ist"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "uns": {
+      "sample_sentences": [
+        "sie kommen mit uns hier ist es zu gefährlich für sie",
+        "ja auf uns trifft das zu aber was ist mit julie",
+        "ich bin ja so froh dass es mit uns geklappt hat ich liebe dich",
+        "was ist wenn es nur eine frau für jeden von uns gibt"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "sich": {
+      "sample_sentences": [
+        "es bewegt sich was und es sind nicht wir",
+        "ich glaube sie haben einen in sich",
+        "hat sie sich",
+        "ich bin julie er hat sich für mich entschieden"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "dem": {
+      "sample_sentences": [
+        "was hast du da was haltet ihr von dem hier",
+        "nein ich bin noch mit dem hier beschäftigt",
+        "nur in dem einen",
+        "wir haben noch einen kaputten ich weiß nicht was mit dem ist"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "kann": {
+      "sample_sentences": [
+        "nein ich ich kann das nicht",
+        "nein das kann es nicht",
+        "das kann ich nicht",
+        "ich kann nicht schlafen wenn es hier ist"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "auch": {
+      "sample_sentences": [
+        "ich aber nicht nein nein ich auch nicht",
+        "du hast ja auch mit ihr nein",
+        "es war mir ja mir auch",
+        "das ist es auch nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "gut": {
+      "sample_sentences": [
+        "ich war da gut wie war es",
+        "das war gut für dich",
+        "und wie gut die ist",
+        "das ist nicht so gut"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "schon": {
+      "sample_sentences": [
+        "hier hier hier ist schon gut hier",
+        "nein nein ist schon gut",
+        "da haben wir es schon",
+        "wir haben schon zu ja und was macht der da"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "sein": {
+      "sample_sentences": [
+        "kann aber nicht sein",
+        "das kann nicht sein",
+        "wie kann das sein",
+        "aber ich kann auch eine chaotin sein"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "jetzt": {
+      "sample_sentences": [
+        "und sie sind jetzt hier ja",
+        "aber so wie ich jetzt bin",
+        "aber jetzt bin ich ja da",
+        "noch nicht aber er hat jetzt eine quelle"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "aus": {
+      "sample_sentences": [
+        "ist es auch schon aus",
+        "jetzt pack das aus das ist von mir",
+        "noch sind wir aber nicht aus dem schneider",
+        "nein ist er nicht er kommt aus"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "als": {
+      "sample_sentences": [
+        "ja aber es ist mehr als das",
+        "ja aber ich bin schneller als du",
+        "was hat sie gesagt als sie mit ihr gesprochen haben",
+        "als wir aus holdrege wegzogen war ich so alt wie du und"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "ihn": {
+      "sample_sentences": [
+        "du irrst dich er ist nicht der für den du ihn hältst",
+        "ja er ist hier ich gebe ihn dir",
+        "die sind nicht für ihn sondern für mich",
+        "ich habe einen treffer wir haben ihn"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "dann": {
+      "sample_sentences": [
+        "und von dem du dann",
+        "und dann hat es sich",
+        "und dann noch das hier",
+        "nur du und ich dann"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "mal": {
+      "sample_sentences": [
+        "ich war auch mal so wie du",
+        "noch nicht mal wie",
+        "ist gut dann geh ich noch mal darüber nein nein nein nein",
+        "ich war mal gut"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "bist": {
+      "sample_sentences": [
+        "es ist so gut dass du da bist",
+        "und dass du jetzt da bist",
+        "aber wenn du sie kennst und so wie sie bist",
+        "sie ist verzweifelt und du bist für sie da"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "um": {
+      "sample_sentences": [
+        "um dich und mich",
+        "wenn er dich noch mal schlägt dann bring ich ihn um",
+        "um für uns von nutzen zu sein",
+        "wir sind nur hier um zu beobachten"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "meine": {
+      "sample_sentences": [
+        "ja das meine ich",
+        "und er ist auch nicht meine thermoskanne",
+        "ich meine ich bleibe ja auch hier",
+        "ja sie ist meine gib sie mir"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "wird": {
+      "sample_sentences": [
+        "das wird es nicht wir lieben uns aber ja",
+        "aber wenn wir uns nicht beeilen dann wird sie",
+        "das kann ich nicht ich kann ihn nicht anrufen er wird es hören",
+        "was wird aus ihr"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "im": {
+      "sample_sentences": [
+        "was ist wenn sie auf der betty sind die aktivität war im",
+        "du bist im system und so",
+        "aber im inneren bist du ein",
+        "dann wird es nicht schwer sein sie im auge zu behalten"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "doch": {
+      "sample_sentences": [
+        "du hast mich doch nein nein nur dich",
+        "aber sie sind doch noch nicht da",
+        "was aber das kann doch nicht sein",
+        "von dir sie haben dich erschossen aber ich bin doch hier"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "mein": {
+      "sample_sentences": [
+        "ja ja und um mein",
+        "da war mein name was ist das nein nein da irrst du dich",
+        "ja er ist mein",
+        "ist ja gut und das ist mein knie"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "alles": {
+      "sample_sentences": [
+        "ich bin alles was sie noch hat",
+        "und das ist noch nicht alles",
+        "dann war das alles mit uns",
+        "hast du mir noch was zu erzählen nein das war schon alles"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "keine": {
+      "sample_sentences": [
+        "ich habe keine zeit ja sie ist jetzt hier",
+        "nein sie hat keine",
+        "sie wird keine zeit für dich haben",
+        "das war keine rede es war nur"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "oder": {
+      "sample_sentences": [
+        "er ist nicht von hier oder",
+        "kann sein oder auch nicht",
+        "ok das war doch auch schon alles oder",
+        "wenn sie mit mir befreundet ist wird sie das schon verstehen oder"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "weiß": {
+      "sample_sentences": [
+        "dann weiß ich dass du so wie ich",
+        "aber ich weiß dass es das nicht ist",
+        "ja ich weiß der ist von mir",
+        "was ist das ich weiß nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "nach": {
+      "sample_sentences": [
+        "nach dem was auf dem  hochzeitstag war",
+        "ich schickte einen jungen nach dir war er nicht da",
+        "das war sie auch dann bin ich nach hause gekommen",
+        "ich sehn mich so nach dir"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "man": {
+      "sample_sentences": [
+        "gut man kann nicht oder du kannst nicht",
+        "wie kann man nur so blind sein",
+        "und dann wenn man es erreicht hat",
+        "so was macht man nicht mit mir weiß man hier nicht wer ich bin"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "werden": {
+      "sample_sentences": [
+        "das werden wir auch nicht",
+        "nein das werden wir nicht",
+        "kann ja noch werden",
+        "ist das nicht das was ich werden sollte"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "wo": {
+      "sample_sentences": [
+        "ich weiß nicht wo er ist",
+        "wo ist er er ist doch hier gib es zu",
+        "weiß er wo er ist",
+        "sie weiß wo es ist"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "nichts": {
+      "sample_sentences": [
+        "aber dann war ich da und da war nichts",
+        "ich weiß dass ich nichts weiß",
+        "hast du nichts an doch doch",
+        "ich weiß dass das alles nichts mit mir zu tun hat"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "oh": {
+      "sample_sentences": [
+        "oh doch das hast du",
+        "oh nein nein nein nein",
+        "oh ja gut jetzt ich",
+        "oh ja das ist er"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "will": {
+      "sample_sentences": [
+        "und das ist es was er will",
+        "ich weiß nur was ich nicht will",
+        "und was will er von ihr",
+        "ich weiß was ich will"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "also": {
+      "sample_sentences": [
+        "also gut wo ist er",
+        "so war das also",
+        "so ist das also",
+        "ich weiß nicht also ich ich fühle mich"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "mehr": {
+      "sample_sentences": [
+        "ja aber es ist mehr als das",
+        "auch von dir nicht jetzt nicht mehr",
+        "nein jetzt kann ich nicht mehr",
+        "wir haben doch nicht mehr  oder"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "etwas": {
+      "sample_sentences": [
+        "haben sie etwas für mich ja",
+        "ich meine war es etwas",
+        "sie haben etwas von uns",
+        "du bist für mich immer so etwas wie ein"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "hab": {
+      "sample_sentences": [
+        "mich was ich noch nicht hab",
+        "ich hab auch etwas für dich",
+        "ich hab ihr doch nur",
+        "ja das hab ich aber was ich noch nicht sagte"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "immer": {
+      "sample_sentences": [
+        "du bist für mich immer so etwas wie ein",
+        "was immer das auch war es war",
+        "immer dann wenn wir nicht hier sind",
+        "ja was auch immer hier war"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "muss": {
+      "sample_sentences": [
+        "aber es muss nicht so sein",
+        "sie muss wissen dass du alles bist was er nicht ist",
+        "ich bin nicht sicher es muss etwas sein das wir noch nicht gesehen haben",
+        "man muss sich an dem freuen was man hat"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "warum": {
+      "sample_sentences": [
+        "warum nicht sie sind ja auch hier",
+        "und warum du hier bist und das du nichts sagst",
+        "warum sind sie noch hier",
+        "warum weiß ich auch nicht"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "bei": {
+      "sample_sentences": [
+        "aber wenn du jetzt nicht bei ihr bist",
+        "aber ich glaub nicht dass es bei dir so sein wird",
+        "kann mir das bei dir nicht vorstellen ich schon",
+        "wir sind bei dir"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "bitte": {
+      "sample_sentences": [
+        "es wird alles gut werden bitte töten sie mich",
+        "ach ja und was ist dann das bitte hier",
+        "bitte ich weiß nicht was ihr von mir wollt",
+        "was war das bitte"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "wieder": {
+      "sample_sentences": [
+        "so er ist also wieder da",
+        "nein das bin auch wieder ich",
+        "und da sind sie wieder",
+        "es wird alles wieder gut"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "ihnen": {
+      "sample_sentences": [
+        "ja ich hab hier was von ihnen überarbeitet",
+        "das bin nur ich wie ich ihnen klarmache",
+        "ich will ihnen nicht noch mehr munition liefern als sie schon haben",
+        "und das ist ihnen"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "los": {
+      "sample_sentences": [
+        "was ist los ich weiß es nicht",
+        "ich kann nicht ich muss los",
+        "was ist das was ist los",
+        "was ist los mit dir"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "machen": {
+      "sample_sentences": [
+        "wenn ich alles noch mal machen muss",
+        "ich will das nicht hier machen",
+        "was machen sie mit mir",
+        "und machen sie mich nach"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "diese": {
+      "sample_sentences": [
+        "ich bin eine infabel und doch kann ich diese starken gefühle für dich haben",
+        "das interessiert mich nicht ich will nicht wie diese typen sein die bis",
+        "ich bin mir sicher dass wir für die die diese basis erbaut haben",
+        "aber nein ich hab mit so was gerechnet als ich meine nase in diese sache steckte"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "vor": {
+      "sample_sentences": [
+        "und was hast du jetzt vor",
+        "ja ich hab es vor",
+        "was hast du jetzt vor",
+        "was hast du vor von hier aus sehen wir nichts"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "können": {
+      "sample_sentences": [
+        "werden wir nicht und können wir nicht",
+        "und was machen wir jetzt da können wir nichts machen rachel",
+        "wir können jetzt nichts machen",
+        "wir können ihn nicht hier lassen sie sind hier um sie zu vernichten"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "alle": {
+      "sample_sentences": [
+        "das weiß ich auch nicht ich weiß nur dass sie es alle auf dich abgesehen haben",
+        "von mir aus werden sie alle mit ihr sterben",
+        "ich bin nicht der für den mich alle halten",
+        "wenn ich gestorben bin und nach und nach alle die mich kannten"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "sagen": {
+      "sample_sentences": [
+        "aber das kann ich dir nicht sagen",
+        "da muss ich dir noch etwas sagen",
+        "ja da kann man auch 'uns' sagen",
+        "nein haben sie mir was zu sagen"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "zum": {
+      "sample_sentences": [
+        "was zum teufel machen wir jetzt was machen wir jetzt",
+        "was zum teufel ist mit dir los nein",
+        "ich weiß nur nicht wie ich das machen soll denn ich bin ja zum  mal verliebt",
+        "und wenn wir ihn einfrieren was zum teufel ist in mir"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "sehr": {
+      "sample_sentences": [
+        "sehr gut sagen sie ihr bitte dass ihr mann da war",
+        "oh mein gott ich kann es dir gar nicht sagen wie sehr es mir auf die",
+        "alles hier ist sehr interessant und das ist alles hier",
+        "ich weiß nicht dass er etwas zu sehr alan ist"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "gehen": {
+      "sample_sentences": [
+        "und wie gehen wir also vor",
+        "ja es ist aber sehr wichtig dass ich jetzt gehen kann",
+        "es wird schon gut gehen",
+        "nein aber er muss gehen"
+      ],
+      "meanings": []
+    }
+  },
+  {
+    "denn": {
+      "sample_sentences": [
+        "was ist was hast du was ist denn",
+        "was ist denn mit dir los",
+        "was ist denn los mit dir",
+        "ja wo ist er denn nur er müsste doch hier sein"
+      ],
+      "meanings": []
+    }
   }
-}
+]
