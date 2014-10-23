@@ -37,7 +37,8 @@ module Sentence
 
   def Sentence.writeHashToJsonFile(hash, filename)
     File.open(filename,"w") do |f|
-      f.write(hash.to_json)
+      list = Sentence.convertHashToList(hash)
+      f.write(list.to_json)
       f.close
     end
   end
@@ -52,7 +53,7 @@ module Sentence
     result
   end
 
-  def Sentence.loadJsonFileAsHash(filename)
+  def Sentence.loadJsonFile(filename)
     File.open( filename, "r" ) do |f|
       JSON.load( f )
     end

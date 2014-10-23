@@ -13,10 +13,12 @@ counter = 0
 
 # Load the raw learning Pack
 filename = ARGV[0]
-learningPackHash = Sentence.loadJsonFileAsHash(filename)
+learningPackList = Sentence.loadJsonFile(filename)
 
 # Translate the learning pack
-learningPackHash.each do |key, hash|
+learningPackList.each do |item|
+	key = item.keys[0]
+	hash = item[key]
 	list_to_be_translated = []
 	list_to_be_translated << key << hash[:sample_sentences.to_s]
 	list_to_be_translated = list_to_be_translated.flatten
