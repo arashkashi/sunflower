@@ -8,14 +8,10 @@
 
 import Foundation
 
-var TestLearningPackIDI: String = "TestLearningPackI"
-var TestLearningPackIDII: String = "TestLearningPackII"
-
-
 
 class LearningPackPersController {
     
-    var listOfAvialablePackIDs: [String] = [TestLearningPackIDI, TestLearningPackIDII]
+    var listOfAvialablePackIDs: [String] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map{String($0)}
     var query: NSMetadataQuery?
     
     class var sharedInstance : LearningPackPersController {

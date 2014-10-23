@@ -26,7 +26,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     override func viewDidLoad() {
-        self.initLeanerController()
+        self.initLeanerController("1")
         self.hideAllButtons()
     }
     
@@ -34,9 +34,9 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     // #MARK: Initiation
-    func initLeanerController() {
+    func initLeanerController(id: String) {
         self.showLoadingOverlay()
-        LearningPackPersController.sharedInstance.loadLearningPackWithID(TestLearningPackIDI, completionHandler: { (lpm: LearningPackModel?) -> () in
+        LearningPackPersController.sharedInstance.loadLearningPackWithID(id, completionHandler: { (lpm: LearningPackModel?) -> () in
             if (lpm != nil) {
                 self.learnerController = LearnerController(learningPack: lpm!)
                 self.hideLoadingOverlay()

@@ -11,7 +11,7 @@ let kTranslatedSentence = "kTranslatedSentence"
 
 import Foundation
 
-class Sentence : NSCoding {
+class Sentence : NSObject, NSCoding {
     var original: String
     var translated: String
     
