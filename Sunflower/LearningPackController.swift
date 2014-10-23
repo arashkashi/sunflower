@@ -29,7 +29,7 @@ class LearningPackPersController {
         if self.hasCashedPackForID(id) {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
-            var words = RawPackage.packWithID(id)
+            var words = RawPackage.packWithID(id)!
             LearningPackModel.create(id, words: words, completionHandlerForPersistance: { (success: Bool, model: LearningPackModel?) -> () in
                 if (success) {
                     completionHandler?(model)

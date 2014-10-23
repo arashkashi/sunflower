@@ -13,14 +13,25 @@ class JSONHelper {
     class func hashFromJSONFile(filename: String) -> NSDictionary? {
         if let data = JSONHelper.dataFromJSONFile(filename) {
             return NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? NSDictionary
+        } else {
+            return nil
         }
-        return nil
+    }
+    
+    class func listFromJSONFile(filename: String) -> NSArray? {
+        if let data = JSONHelper.dataFromJSONFile(filename) {
+            return NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? NSArray
+        } else {
+            return nil
+        }
     }
     
     class func dataFromJSONFile(filename: String) -> NSData? {
         if let filePath = NSBundle.mainBundle().pathForResource(filename, ofType: "json")? {
-            return NSData.dataWithContentsOfFile(filePath, options: NSDataReadingOptions.allZeros, error: nil)
+            var temp =  NSData(contentsOfFile: filePath, options: NSDataReadingOptions.allZeros, error: nil)// (contentsOfFile: filePath)
+            return temp
+        } else {
+            return nil
         }
-        return nil
     }
 }

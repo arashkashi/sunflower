@@ -36,15 +36,16 @@ func < (lhs: Word, rhs: Word) -> Bool {
     return lhs.relearningDueDate!.compare(rhs.relearningDueDate!) == NSComparisonResult.OrderedAscending
 }
 
+let kName = "kName"
+let kMeaning = "kMeaning"
+let kLearningStage = "kLeaningStage"
+let kPrevLEarningStage = "kPrevLearningStage"
+let kLearningDueDate = "kLearningDueDate"
+let kShouldShowPresentation = "kShouldShowPresentation"
+let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
+let kSentences = "kSentences"
+
 class Word : NSObject, Equatable, NSCoding {
-    let kName = "kName"
-    let kMeaning = "kMeaning"
-    let kLearningStage = "kLeaningStage"
-    let kPrevLEarningStage = "kPrevLearningStage"
-    let kLearningDueDate = "kLearningDueDate"
-    let kShouldShowPresentation = "kShouldShowPresentation"
-    let kTestsSuccessfullyDone = "kTestsSuccessfulllyDone"
-    let kSentences = "kSentences"
     
     var name: String
     var meaning: String

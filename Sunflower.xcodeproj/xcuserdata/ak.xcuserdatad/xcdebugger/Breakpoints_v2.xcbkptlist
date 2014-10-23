@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SunflowerTests/LeanerControllerTests.swift"
-            timestampString = "433028161.114642"
+            timestampString = "435642566.81128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295">
+            startingLineNumber = "306"
+            endingLineNumber = "306">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,94 +25,6 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sunflower/DocumentHelper.swift"
-            timestampString = "432711815.243609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "DocumentHelper"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sunflower.DocumentHelper.deinit"
-                  moduleName = "Sunflower"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "435576676.158893"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sunflower.DocumentHelper.__deallocating_deinit"
-                  moduleName = "Sunflower"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "435576676.159074"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SunflowerTests.DocumentHelper.deinit"
-                  moduleName = "SunflowerTests"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "435576677.224606"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "10">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SunflowerTests.DocumentHelper.__deallocating_deinit"
-                  moduleName = "SunflowerTests"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "435576677.22491"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SunflowerTests.DocumentHelper.init (SunflowerTests.DocumentHelper.Type)() -&gt; SunflowerTests.DocumentHelper"
-                  moduleName = "SunflowerTests"
-                  urlString = "file:///Users/ak/Desktop/Sunflower/Sunflower/DocumentHelper.swift"
-                  timestampString = "435576677.225315"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "10">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -25,7 +25,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     init (id: String, words: [Word]) {
         self.id = id
         self.words = words
-        super.init(fileURL: self.fileURL)
+        super.init(fileURL: DocumentHelper.cashURLForID(id))
     }
     
     // #MARK: Document Facade
@@ -78,6 +78,6 @@ class LearningPackModel : UIDocument, NSCoding  {
     required init(coder aDecoder: NSCoder) {
         self.words = aDecoder.decodeObjectForKey(kWordsKey) as Array
         self.id = aDecoder.decodeObjectForKey(kIDKey) as String
-        super.init(fileURL: self.fileURL)
+        super.init(fileURL: DocumentHelper.cashURLForID(self.id))
     }
 }

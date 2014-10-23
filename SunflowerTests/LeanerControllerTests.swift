@@ -12,11 +12,22 @@ import Foundation
 
 class LeanerControllerTests: XCTestCase {
     
-    var learnerController: LearnerController = LearnerController(learningPack: LearningPackModel(id: "1", words: RawPackage.packWithID("1")))
+    var learnerController: LearnerController = LearnerController(learningPack: LearningPackModel(id: "test", words: RawPackage.packWithID("test")!))
+    
+    var hasCleanedUpCash: Bool = false
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        if !hasCleanedUpCash {
+            var error: NSErrorPointer = NSErrorPointer()
+             NSFileManager.defaultManager().removeItemAtURL(self.learnerController.learningPackModel.fileURL, error: error)
+            if error != nil{
+                println()
+            }
+            hasCleanedUpCash = true
+        }
     }
     
     override func tearDown() {
@@ -30,10 +41,10 @@ class LeanerControllerTests: XCTestCase {
 
         XCTAssert(firstWordToLearn!.relearningDueDate == nil, "the first word due date is nil")
         XCTAssert(firstWordToLearn!.currentLearningStage == LearningStage.Cram, "learning Stage is cram")
-        XCTAssert(firstWordToLearn!.name == "schwangerschaft", "learning Stage is cram")
+        XCTAssert(firstWordToLearn!.name == "ich", "learning Stage is cram")
         XCTAssert(contains(self.learnerController.currentLearningQueue, firstWordToLearn!) , "the next word should bein the current queue")
         XCTAssert(firstWordToLearn!.shouldShowWordPresentation, "the first word should show the word presentation")
-        XCTAssert(self.learnerController.wordsDueNow.count == 9, "the word should be removed from dueNow list ")
+        self.checkDataConsistency()
         XCTAssert(self.learnerController.currentLearningQueue.count == 1, "and added to the current learning queue")
     }
     
@@ -80,11 +91,11 @@ class LeanerControllerTests: XCTestCase {
         
         XCTAssert(nextWord!.relearningDueDate == nil, "the first word due date is nil")
         XCTAssert(nextWord!.currentLearningStage == LearningStage.Cram, "learning Stage is cram")
-        XCTAssert(nextWord!.name == "verhütung", "the second word in the test words list")
+        XCTAssert(nextWord!.name == "sie", "the second word in the test words list")
         XCTAssert(contains(self.learnerController.currentLearningQueue, nextWord!) , "the next word should bein the current queue")
         XCTAssert(nextWord!.shouldShowWordPresentation, "the first word should show the word presentation")
         XCTAssert(self.learnerController.currentLearningQueue.count == 2, "the learning queue now has two items in it")
-        XCTAssert(self.learnerController.wordsDueNow.count == 8, "the words have been removed from the learning queue")
+        self.checkDataConsistency()
     }
     
     func testWordPassingAllTests() {

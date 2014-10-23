@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4117D28F19F7620600516518 /* pack_id_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 41468A3319F6CCB200351A84 /* pack_id_test.json */; };
+		41468A3419F6CCB200351A84 /* pack_id_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 41468A3319F6CCB200351A84 /* pack_id_test.json */; };
 		414F93EB19E267CB002BFDE0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414F93E919E267CB002BFDE0 /* ResultViewController.swift */; };
 		414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 414F93EA19E267CB002BFDE0 /* ResultViewController.xib */; };
 		41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1819AE76150020EF58 /* MainTestViewController.swift */; };
@@ -62,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41468A3319F6CCB200351A84 /* pack_id_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_test.json; sourceTree = "<group>"; };
 		414F93E919E267CB002BFDE0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		414F93EA19E267CB002BFDE0 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		41614D1819AE76150020EF58 /* MainTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTestViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 		41A0635419A90E7100E400D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				41468A3319F6CCB200351A84 /* pack_id_test.json */,
 				41A0635519A90E7100E400D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -355,6 +359,7 @@
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
 				D97E88EB19F5422400B7FE4E /* pack_id_1.json in Resources */,
+				4117D28F19F7620600516518 /* pack_id_test.json in Resources */,
 				41614D2419AE77E60020EF58 /* Test2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D97E88F619F5530300B7FE4E /* pack_id_1.json in Resources */,
+				41468A3419F6CCB200351A84 /* pack_id_test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

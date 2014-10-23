@@ -21,12 +21,14 @@ class jsonHelperTests: XCTestCase {
         super.tearDown()
     }
 
-    func testReadJson() {
-        var result = JSONHelper.hashFromJSONFile("pack_1")
+    func testReadListFromJson() {
+        var result = JSONHelper.listFromJSONFile("pack_id_test")
         XCTAssert(result != nil , "Pass")
-        
-        var PackModel = RawPackage.packWithID("1")
-        
+    }
+    
+    func testReadHashFromJson() {
+        // TODO
+        XCTAssert(true, "TODO")
     }
 
     func testPerformanceExample() {
