@@ -13,5 +13,12 @@ extension Array {
         let filtered = self.filter {$0 as? T == obj}
         return filtered.count > 0
     }
+    
+    mutating func shuffle()
+    {
+        for _ in 0..<10 {
+            sort { (_,_) in arc4random() < arc4random() }
+        }
+    }
 }
 
