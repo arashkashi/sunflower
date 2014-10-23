@@ -1,0 +1,137 @@
+[
+  "ich": {
+    "meaning": "I",
+    "sample_sentences": [
+      "ich ich",
+      "ich",
+      "vater ich ich",
+      "bin ich"
+    ],
+    "translated_sample_sentence": [
+      "I I",
+      "I",
+      "I father I",
+      "I am"
+    ]
+  },
+  "sie": {
+    "meaning": "they",
+    "sample_sentences": [
+      "ich hatte sie ich auch",
+      "ich fühle sie",
+      "ich ich mach schon hol sie",
+      "ich sandte sie"
+    ],
+    "translated_sample_sentence": [
+      "I had I also",
+      "I feel they",
+      "I&#39;ll do it I&#39;ll get it",
+      "I sent them"
+    ]
+  },
+  "ist": {
+    "meaning": "is",
+    "sample_sentences": [
+      "sie ist alarmgesichert ziehen sie sie raus",
+      "sie ist gut ich weiß",
+      "sie ist sexy sie ist",
+      "wer ist sie"
+    ],
+    "translated_sample_sentence": [
+      "it is secured by an alarm they pull them out",
+      "it is good I know",
+      "she is sexy she is",
+      "who is she"
+    ]
+  },
+  "das": {
+    "meaning": "the",
+    "sample_sentences": [
+      "sie ist bezaubernd das ist sie",
+      "das ist gutwarte sie",
+      "das ist",
+      "ja das ist sie"
+    ],
+    "translated_sample_sentence": [
+      "she is adorable she is",
+      "that is they gutwarte",
+      "this is",
+      "yes that&#39;s it"
+    ]
+  },
+  "die": {
+    "meaning": "the",
+    "sample_sentences": [
+      "das ist die katze",
+      "das ist die regel",
+      "ist das die torte ja das war sie",
+      "das ist die wahrheit"
+    ],
+    "translated_sample_sentence": [
+      "this is the cat",
+      "This is the rule",
+      "is that the pie so that she was",
+      "that&#39;s the truth"
+    ]
+  },
+  "nicht": {
+    "meaning": "not",
+    "sample_sentences": [
+      "das ist das ist nicht",
+      "sie ist nicht",
+      "das ist nicht",
+      "ist das nicht unglaublich"
+    ],
+    "translated_sample_sentence": [
+      "that is it is not",
+      "is not",
+      "is not",
+      "is not the incredibly"
+    ]
+  },
+  "du": {
+    "meaning": "you",
+    "sample_sentences": [
+      "nicht du sie",
+      "das verstehst du nicht das ist ausgeschlossen",
+      "hattest du das gefühl das ist sie",
+      "sie kann das nicht allein sie ist clever du weißt das"
+    ],
+    "translated_sample_sentence": [
+      "not thou",
+      "you do not understand is excluded",
+      "did you have the feeling that it is",
+      "they can not do this alone it is clever you know"
+    ]
+  },
+  "es": {
+    "meaning": "it",
+    "sample_sentences": [
+      "das ist es nicht",
+      "sie ist es",
+      "es ist das",
+      "ist es das"
+    ],
+    "translated_sample_sentence": [
+      "it is not",
+      "it is",
+      "It is the",
+      "it is the"
+    ]
+  },
+ "und": {
+    "meaning": "and",
+    "sample_sentences": [
+      "und das ist",
+      "du und ich",
+      "und ich glaub es nicht",
+      "und das ist das wohnzimmer"
+    ],
+    "translated_sample_sentence": [
+      "and that",
+      "you and me",
+      "and I do not believe it",
+      "and this is the living room"
+    ]
+  }
+]
