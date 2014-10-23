@@ -181,8 +181,12 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         testViewController.test = test
         testViewController.completionHandler = completionHandler
         
-        var wordChoices = self.learnerController!.someRandomWords(5, excludeList: [word])
-        if wordChoices.count == 0 {
+        let nomberOfWordChoicesNeeded = 4
+        var wordChoices = self.learnerController!.someRandomWords(nomberOfWordChoicesNeeded - 1, excludeList: [word])
+        wordChoices = wordChoices + [word]
+        wordChoices.shuffle()
+        
+        if wordChoices.count < nomberOfWordChoicesNeeded {
             assert(false, "it should not be it")
         }
         
