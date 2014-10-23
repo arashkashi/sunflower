@@ -14,8 +14,7 @@ extension Array {
         return filtered.count > 0
     }
     
-    mutating func shuffle()
-    {
+    mutating func shuffle() {
         for _ in 0..<10 {
             sort { (_,_) in arc4random() < arc4random() }
         }
