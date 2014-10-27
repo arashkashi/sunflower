@@ -19,6 +19,8 @@
 		41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2519AE77F60020EF58 /* Test2ViewController.swift */; };
 		41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D2719AFCD6A0020EF58 /* PresentationView.xib */; };
 		41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */; };
+		4170CE3619FECB0100BD99A4 /* SampleSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */; };
+		4170CE3719FECB0100BD99A4 /* SampleSentenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */; };
 		419E510619F998CD0067D31D /* pack_id_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E619F998CD0067D31D /* pack_id_1.json */; };
 		419E510719F998CD0067D31D /* pack_id_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E719F998CD0067D31D /* pack_id_2.json */; };
 		419E510819F998CD0067D31D /* pack_id_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E819F998CD0067D31D /* pack_id_3.json */; };
@@ -104,6 +106,8 @@
 		41614D2519AE77F60020EF58 /* Test2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
 		41614D2719AFCD6A0020EF58 /* PresentationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentationView.xib; sourceTree = "<group>"; };
 		41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
+		4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSentenceViewController.swift; sourceTree = "<group>"; };
+		4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleSentenceViewController.xib; sourceTree = "<group>"; };
 		419E50E619F998CD0067D31D /* pack_id_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_1.json; sourceTree = "<group>"; };
 		419E50E719F998CD0067D31D /* pack_id_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_2.json; sourceTree = "<group>"; };
 		419E50E819F998CD0067D31D /* pack_id_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_3.json; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				41614D2519AE77F60020EF58 /* Test2ViewController.swift */,
 				41614D2719AFCD6A0020EF58 /* PresentationView.xib */,
 				41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */,
+				4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */,
+				4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				419E511E19F998CD0067D31D /* Package-9.json in Resources */,
 				419E510719F998CD0067D31D /* pack_id_2.json in Resources */,
 				419E512219F998CD0067D31D /* Package-13.json in Resources */,
+				4170CE3719FECB0100BD99A4 /* SampleSentenceViewController.xib in Resources */,
 				41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */,
 				419E512519F998CD0067D31D /* Package-16.json in Resources */,
 				419E510619F998CD0067D31D /* pack_id_1.json in Resources */,
@@ -499,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */,
+				4170CE3619FECB0100BD99A4 /* SampleSentenceViewController.swift in Sources */,
 				D9D43F3219B8647C00E420B0 /* LearningStage.swift in Sources */,
 				41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */,
 				41D415F119AA6E490038EFE6 /* RawPackage.swift in Sources */,
