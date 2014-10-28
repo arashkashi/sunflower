@@ -185,6 +185,10 @@ class LearnerController {
         word.onWordFinihsedPresentation()
     }
     
+    func onWordSkipped(word: Word) {
+         word.onWordSkipped()
+    }
+    
     // MARK: Helper
     func someWordsFromQueue(number_of_words: Int, excludeList: [Word], queue: [Word]) -> [Word] {
         var result: [Word] = []

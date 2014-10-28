@@ -91,6 +91,13 @@ class Word : NSObject, Equatable, NSCoding {
         self.shouldShowWordPresentation = false
     }
     
+    func onWordSkipped() {
+        self.shouldShowWordPresentation = false
+        self.currentLearningStage = LearningStage.Mature
+        self.relearningDueDate = Word.relearnDueDateForWordInALearningStage(self.currentLearningStage)
+        self.testsSuccessfulyDoneForCurrentStage.removeAll(keepCapacity: false)
+    }
+    
     class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
         switch learningStage {
         case LearningStage.Cram:

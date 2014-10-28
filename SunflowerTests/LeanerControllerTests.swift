@@ -35,6 +35,17 @@ class LeanerControllerTests: XCTestCase {
         super.tearDown()
     }
     
+    // when skip the first word we should proceed with the nest words
+    func testSkipTheFirstWord() {
+        var firstWordToLearn = self.giveMeNextWord()
+        
+        self.learnerController.onWordSkipped(firstWordToLearn!)
+        
+        var secondWordToLearn = self.giveMeNextWord()
+        
+        XCTAssert(secondWordToLearn!.name != firstWordToLearn!.name, "should not return the first word")
+    }
+    
     // Pick up the first word and put it into the current queue (ROOT)
     func testFirstWordPickup() {
         var firstWordToLearn = self.giveMeNextWord()

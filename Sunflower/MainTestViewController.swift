@@ -12,6 +12,7 @@ import Foundation
 class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     var learnerController : LearnerController?
+    var currentWord: Word?
     
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
@@ -22,6 +23,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     @IBOutlet var buttonCheck: UIButton!
     @IBOutlet var buttonContinue: UIButton!
     @IBOutlet var labelCounter: UILabel!
+    @IBOutlet var buttonSkip: UIButton!
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
@@ -32,6 +34,16 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.hideAllButtons()
         self.labelCounter.text = "0"
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
+    }
+    
+    func onAppBecomeActive() {
+        self.labelCounter.text = "0"
+    }
+    
+    func onAppResignActive() {
+        ..
     }
     
     func updateTimer() {
@@ -43,6 +55,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.labelCounter.text = "0"
     }
     
     // #MARK: Initiation
@@ -64,6 +77,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     func learnNextWord() {
         var next = self.learnerController!.nextWordToLearn()
         self.hideAllButtons()
+        self.currentWord = next.word
         
         next.word?.printToSTD()
         
@@ -82,6 +96,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
                 self.learnNextWord()
             })
         } else {
+            self.hideItem(self.buttonSkip)
             if var nextTest = word.nextTest()? {
                 self.doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
@@ -119,6 +134,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.presentationViewController?.onGotItTapped()
     }
     
+    @IBAction func onSkipTapped(sender: AnyObject) {
+        if  self.currentWord != nil{
+            self.learnerController?.onWordSkipped(self.currentWord!)
+            self.learnNextWord()
+        }
+    }
+    
     // #MARK: View manipulation
     func showNoMoreWordToLearn() {
         
@@ -127,6 +149,10 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     func showGotIt() {
         self.hideAllButtons()
         self.showItemWithAnimation(self.buttonGotIt)
+    }
+    
+    func showSkip() {
+        self.showItemWithAnimation(self.buttonSkip)
     }
     
     func showCheckButton() {
@@ -151,6 +177,10 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         })
     }
     
+    func hideItem(view: UIView) {
+        view.hidden = true
+    }
+    
     func showPresentationView(word: Word, completionHandler: ()-> ()) {
         self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
         self.presentationViewController!.word = word
@@ -159,6 +189,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
         
         self.showGotIt()
+        
+        // Allow user to skip the word when first shown
+        if word.currentLearningStage == .Cram {
+            self.showSkip()
+        }
     }
     
     func animateViewContainerWithNewView(newView: UIView, viewContainer: UIView, completionHandler: (()-> ())?) {
