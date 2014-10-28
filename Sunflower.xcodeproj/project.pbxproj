@@ -21,6 +21,8 @@
 		41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */; };
 		4170CE3619FECB0100BD99A4 /* SampleSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */; };
 		4170CE3719FECB0100BD99A4 /* SampleSentenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */; };
+		4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170CE3819FED03F00BD99A4 /* WordPresentationViewController.swift */; };
+		4170CE3B19FED03F00BD99A4 /* WordPresentationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4170CE3919FED03F00BD99A4 /* WordPresentationViewController.xib */; };
 		419E510619F998CD0067D31D /* pack_id_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E619F998CD0067D31D /* pack_id_1.json */; };
 		419E510719F998CD0067D31D /* pack_id_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E719F998CD0067D31D /* pack_id_2.json */; };
 		419E510819F998CD0067D31D /* pack_id_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E819F998CD0067D31D /* pack_id_3.json */; };
@@ -108,6 +110,8 @@
 		41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
 		4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSentenceViewController.swift; sourceTree = "<group>"; };
 		4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleSentenceViewController.xib; sourceTree = "<group>"; };
+		4170CE3819FED03F00BD99A4 /* WordPresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPresentationViewController.swift; sourceTree = "<group>"; };
+		4170CE3919FED03F00BD99A4 /* WordPresentationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordPresentationViewController.xib; sourceTree = "<group>"; };
 		419E50E619F998CD0067D31D /* pack_id_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_1.json; sourceTree = "<group>"; };
 		419E50E719F998CD0067D31D /* pack_id_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_2.json; sourceTree = "<group>"; };
 		419E50E819F998CD0067D31D /* pack_id_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_3.json; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */,
 				4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */,
 				4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */,
+				4170CE3819FED03F00BD99A4 /* WordPresentationViewController.swift */,
+				4170CE3919FED03F00BD99A4 /* WordPresentationViewController.xib */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				419E510619F998CD0067D31D /* pack_id_1.json in Resources */,
 				414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
+				4170CE3B19FED03F00BD99A4 /* WordPresentationViewController.xib in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
 				419E511019F998CD0067D31D /* pack_id_11.json in Resources */,
@@ -523,6 +530,7 @@
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
 				D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */,
+				4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */,
 				41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
