@@ -62,7 +62,7 @@ class LearnerController {
         
         // If current queue has a word for presentation on top, present it.
         if var learntWord = self.currentLearningQueue.first? {
-            if true /*learntWord.shouldShowWordPresentation */{
+            if learntWord.shouldShowWordPresentation {
                 return (learntWord, NextWordNilStatus.MORE_WORDS_TO_GO)
             }
         }
