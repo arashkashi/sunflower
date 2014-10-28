@@ -8,9 +8,12 @@
 
 import UIKit
 
-class PresentationViewController : UIPageViewController, UIPageViewControllerDataSource {
+class PresentationViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate  {
     
     var word : Word?
+    
+    @IBOutlet var pageControl: UIPageControl!
+    var pageViewController: UIPageViewController!
     
     var completionHandler: (() -> ())?
 
@@ -19,11 +22,27 @@ class PresentationViewController : UIPageViewController, UIPageViewControllerDat
     }
     
     override func viewDidLoad() {
-        self.dataSource = self
+        super.viewDidLoad()
+        self.pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         
-        self.setViewControllers([self.wordViewcontroller(word!)], direction: .Forward, animated: false) { (success: Bool) -> Void in
-            //
+        self.pageViewController.dataSource = self
+        self.pageViewController.view.frame = self.view.bounds
+        
+        
+        var vcs = [self.wordViewcontroller(word!)]//, self.sentenceViewController(word!, sentenceIndex: 0)!, self.sentenceViewController(word!, sentenceIndex: 1)!, self.sentenceViewController(word!, sentenceIndex: 2)!]
+        
+        
+        self.pageViewController.setViewControllers(vcs, direction: UIPageViewControllerNavigationDirection.Forward, animated: false) { (success: Bool) -> Void in
+            self.pageControl.numberOfPages = 1 + self.word!.sentences.count
         }
+        
+        self.addChildViewController(self.pageViewController)
+        self.view.addSubview(self.pageViewController.view)
+        self.view.bringSubviewToFront(self.pageControl)
+   }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        return true;
     }
     
     func wordViewcontroller(word: Word) -> WordPresentationViewController {
@@ -43,37 +62,51 @@ class PresentationViewController : UIPageViewController, UIPageViewControllerDat
         return sentenceVC
     }
     
+    
     // MARK: DataSource
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        var result: UIViewController!
+        var index: Int
+        
         if viewController.isMemberOfClass(WordPresentationViewController) {
-            return self.sentenceViewController(self.word!, sentenceIndex: 0)
+            result = self.sentenceViewController(self.word!, sentenceIndex: 0)
+            index = 0
         } else {
             var vc = viewController as SampleSentenceViewController
-            var index = vc.index! + 1
-            return self.sentenceViewController(vc.word!, sentenceIndex: index)
+            index = vc.index! + 1
+            result = self.sentenceViewController(vc.word!, sentenceIndex: index)
         }
+        
+        self.pageControl.currentPage = index
+        return result
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        var result: UIViewController!
+        var index: Int
+        
         if viewController.isMemberOfClass(WordPresentationViewController) {
+            self.pageControl.currentPage = 0
             return nil
         } else {
             var vc = viewController as SampleSentenceViewController
-            var index = vc.index! - 1
+            index = vc.index! - 1
             
             if index < 0 {
-                return self.wordViewcontroller(self.word!) }
+                result =  self.wordViewcontroller(self.word!) }
             else {
-                return self.sentenceViewController(vc.word!, sentenceIndex: index)
+                result =  self.sentenceViewController(vc.word!, sentenceIndex: index)
             }
         }
+        
+        if index < 0 { index = 0 }
+        self.pageControl.currentPage = index
+        return result
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 4
+    func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
+        return UIPageViewControllerSpineLocation.Max
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 3
-    }
+    
 }

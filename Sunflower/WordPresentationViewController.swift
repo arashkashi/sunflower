@@ -22,4 +22,5 @@ class WordPresentationViewController: UIViewController {
         self.labelWord.text = self.word!.name
         self.labelMeaning.text = self.word!.meaning
     }
+    
 }

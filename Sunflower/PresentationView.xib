@@ -2,13 +2,11 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PresentationViewController" customModule="Sunflower" customModuleProvider="target">
             <connections>
-                <outlet property="labelMeaning" destination="Q1z-iS-Kpg" id="rKN-jK-RRe"/>
-                <outlet property="labelWord" destination="zI7-A1-vsr" id="3DF-xz-zUs"/>
+                <outlet property="pageControl" destination="ROu-le-FX3" id="jPB-KQ-cN5"/>
                 <outlet property="view" destination="iN0-l3-epB" id="7OJ-CB-sZd"/>
             </connections>
         </placeholder>
@@ -17,42 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="274" height="461"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zI7-A1-vsr" userLabel="Label - Name">
-                    <rect key="frame" x="0.0" y="15" width="274" height="84"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="zI7-A1-vsr" secondAttribute="height" multiplier="49:15" id="wsI-2G-Di4"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="45" y="43" width="230" height="34"/>
-                    </variation>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meaning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q1z-iS-Kpg" userLabel="Label - Meaning">
-                    <rect key="frame" x="0.0" y="159" width="274" height="31"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
-                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="45" y="168" width="230" height="34"/>
-                    </variation>
-                </label>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ROu-le-FX3">
+                    <rect key="frame" x="5" y="414" width="264" height="37"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Q1z-iS-Kpg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Efe-GQ-yip"/>
-                <constraint firstAttribute="centerX" secondItem="zI7-A1-vsr" secondAttribute="centerX" id="FPw-TB-MaA"/>
-                <constraint firstItem="zI7-A1-vsr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="TQw-dP-PcX"/>
-                <constraint firstItem="zI7-A1-vsr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cjK-ED-LWb"/>
-                <constraint firstItem="Q1z-iS-Kpg" firstAttribute="top" secondItem="zI7-A1-vsr" secondAttribute="bottom" constant="60" id="dYv-lg-oca"/>
-                <constraint firstAttribute="trailing" secondItem="Q1z-iS-Kpg" secondAttribute="trailing" id="eyt-4f-igu"/>
-                <constraint firstAttribute="centerX" secondItem="Q1z-iS-Kpg" secondAttribute="centerX" id="k6f-wJ-jeU"/>
-                <constraint firstAttribute="trailing" secondItem="zI7-A1-vsr" secondAttribute="trailing" id="yhd-xr-iHd"/>
+                <constraint firstAttribute="trailing" secondItem="ROu-le-FX3" secondAttribute="trailing" constant="5" id="HKD-cT-Km9"/>
+                <constraint firstAttribute="bottom" secondItem="ROu-le-FX3" secondAttribute="bottom" constant="10" id="XTi-IP-Jno"/>
+                <constraint firstItem="ROu-le-FX3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="doz-zJ-egt"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-315" y="-59.5"/>
+            <point key="canvasLocation" x="-341" y="-49.5"/>
         </view>
     </objects>
 </document>
