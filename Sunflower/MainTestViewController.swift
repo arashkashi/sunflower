@@ -21,6 +21,8 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     @IBOutlet var viewLoadingOverlay: UIView!
     @IBOutlet var buttonCheck: UIButton!
     @IBOutlet var buttonContinue: UIButton!
+    @IBOutlet var labelCounter: UILabel!
+    
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
     }
@@ -28,6 +30,16 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     override func viewDidLoad() {
         self.initLeanerController("1")
         self.hideAllButtons()
+        self.labelCounter.text = "0"
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer() {
+        var newTime = self.labelCounter.text?.toInt()
+        if let currentTime = newTime {
+            var timeInString = "\(currentTime + 1)"
+            self.labelCounter.text = timeInString
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

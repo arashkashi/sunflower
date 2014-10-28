@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main Test View Controller-->
@@ -94,6 +95,16 @@
                                     <rect key="frame" x="16" y="126" width="368" height="674"/>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWk-uT-fkt">
+                                <rect key="frame" x="535" y="553" width="50" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="1ri-RC-OMP"/>
+                                    <constraint firstAttribute="width" constant="50" id="Jks-Bv-jQX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -107,11 +118,15 @@
                             <constraint firstAttribute="centerX" secondItem="JFW-NR-EoJ" secondAttribute="centerX" id="LTb-Fh-RXO"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="z4k-3X-hI1" secondAttribute="bottom" constant="12" id="RaP-9g-Smv"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="7wE-W2-5wb" secondAttribute="bottom" constant="12" id="U3k-ps-owU"/>
+                            <constraint firstItem="JFW-NR-EoJ" firstAttribute="centerY" secondItem="tWk-uT-fkt" secondAttribute="centerY" id="Wss-Uq-ghM"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="left" secondItem="BYi-3n-KZ0" secondAttribute="left" id="XuX-6c-c5H"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="YCI-y7-ZT7"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="70" id="b1G-tR-GTN"/>
                             <constraint firstItem="7wE-W2-5wb" firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="130:35" id="ehg-oh-8wl"/>
+                            <constraint firstItem="tWk-uT-fkt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z4k-3X-hI1" secondAttribute="trailing" constant="150" id="mee-CF-d3n"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="n02-JC-dTT"/>
+                            <constraint firstItem="tWk-uT-fkt" firstAttribute="trailing" secondItem="BYi-3n-KZ0" secondAttribute="trailingMargin" id="nOs-Wf-xgm"/>
+                            <constraint firstItem="tWk-uT-fkt" firstAttribute="trailing" secondItem="BYi-3n-KZ0" secondAttribute="trailingMargin" constant="1" id="yvz-Fq-YbH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -119,6 +134,8 @@
                                 <exclude reference="YCI-y7-ZT7"/>
                                 <exclude reference="n02-JC-dTT"/>
                                 <exclude reference="EE1-ja-Fgo"/>
+                                <exclude reference="mee-CF-d3n"/>
+                                <exclude reference="nOs-Wf-xgm"/>
                             </mask>
                         </variation>
                     </view>
@@ -126,13 +143,14 @@
                         <outlet property="buttonCheck" destination="7wE-W2-5wb" id="ohv-Wz-Jgp"/>
                         <outlet property="buttonContinue" destination="JFW-NR-EoJ" id="SWd-Wx-4FG"/>
                         <outlet property="buttonGotIt" destination="z4k-3X-hI1" id="Tnf-bq-LAT"/>
+                        <outlet property="labelCounter" destination="tWk-uT-fkt" id="Xy5-ky-E4u"/>
                         <outlet property="testContentView" destination="vFO-0N-GnU" id="GFh-zP-VQ5"/>
                         <outlet property="viewLoadingOverlay" destination="NLm-jS-3Fh" id="tId-sg-ErT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YA-24-k59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="-87"/>
+            <point key="canvasLocation" x="1015" y="-115"/>
         </scene>
     </scenes>
 </document>
