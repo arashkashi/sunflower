@@ -33,19 +33,47 @@ class PresentationViewController : UIPageViewController, UIPageViewControllerDat
         return wordVC
     }
     
-    func sentenceViewController(word: Word, sentenceIndex: Int) -> SampleSentenceViewController {
+    func sentenceViewController(word: Word, sentenceIndex: Int) -> SampleSentenceViewController? {
+        if sentenceIndex >=  word.sentences.count { return nil }
+        
         var sentenceVC = SampleSentenceViewController(nibName: "SampleSentenceViewController", bundle: NSBundle.mainBundle())
-        sentenceVC.sentence = word.sentences[sentenceIndex]
+        sentenceVC.word = word
+        sentenceVC.index = sentenceIndex
         
         return sentenceVC
     }
     
     // MARK: DataSource
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        return self.sentenceViewController(self.word!, sentenceIndex: 0)
+        if viewController.isMemberOfClass(WordPresentationViewController) {
+            return self.sentenceViewController(self.word!, sentenceIndex: 0)
+        } else {
+            var vc = viewController as SampleSentenceViewController
+            var index = vc.index! + 1
+            return self.sentenceViewController(vc.word!, sentenceIndex: index)
+        }
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        return self.sentenceViewController(self.word!, sentenceIndex: 0)
+        if viewController.isMemberOfClass(WordPresentationViewController) {
+            return nil
+        } else {
+            var vc = viewController as SampleSentenceViewController
+            var index = vc.index! - 1
+            
+            if index < 0 {
+                return self.wordViewcontroller(self.word!) }
+            else {
+                return self.sentenceViewController(vc.word!, sentenceIndex: index)
+            }
+        }
+    }
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 4
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 3
     }
 }

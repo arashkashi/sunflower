@@ -10,14 +10,15 @@ import UIKit
 
 class SampleSentenceViewController: UIViewController {
     
-    var sentence: Sentence?
+    var word: Word?
+    var index: Int?
 
     @IBOutlet var labelOriginalLanguage: UILabel!
     @IBOutlet var labelTranslated: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.labelOriginalLanguage.text = sentence?.original
-        self.labelTranslated.text = sentence?.translated
+        self.labelOriginalLanguage.text = word?.sentences[index!].original
+        self.labelTranslated.text = word?.sentences[index!].translated
     }
 }
