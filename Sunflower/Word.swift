@@ -98,18 +98,19 @@ class Word : NSObject, Equatable, NSCoding {
         self.testsSuccessfulyDoneForCurrentStage.removeAll(keepCapacity: false)
     }
     
+    // This is based on the assumption that if you remember a word after 42 hours you'll remember it for the rest of your life.
     class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
         switch learningStage {
         case LearningStage.Cram:
-            return NSDate().dateByAddingTimeInterval(15)            // 1 minute
+            return NSDate().dateByAddingTimeInterval(5 * 60)            // 5 minute
         case LearningStage.Learn:
-            return NSDate().dateByAddingTimeInterval(16)       // 20 minute
+            return NSDate().dateByAddingTimeInterval(60 * 60)           // 60 minute
         case LearningStage.Relearn:
-            return NSDate().dateByAddingTimeInterval(18)       // 60 minute
+            return NSDate().dateByAddingTimeInterval(60 * 60 * 9)       // 9 hours
         case LearningStage.Young:
-            return NSDate().dateByAddingTimeInterval(20)   // 9 hours
+            return NSDate().dateByAddingTimeInterval(60 * 60 * 42)      // 42 hours
         case LearningStage.Mature:
-            return nil
+            return (NSDate.distantFuture() as NSDate);
         }
     }
     
