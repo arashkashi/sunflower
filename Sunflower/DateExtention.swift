@@ -15,4 +15,8 @@ extension NSDate {
         
         return todayComponents.day == dateComponents.day && todayComponents.month == dateComponents.month && todayComponents.year == todayComponents.year
     }
+    
+    func isFuture() -> Bool {
+        return self.compare(NSDate()) == NSComparisonResult.OrderedDescending
+    }
 }

@@ -25,14 +25,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
     var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
+        cellOptional.showLoadingContent()
         
         var packID = LearningPackPersController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
         
         LearningPackPersController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
-            //
+            if let lpm = learningPackModel {
+                cellOptional.updateWithLearningPackModel(lpm)
+            }
         })
 
-        cellOptional.textLabel.text = "1"
         return cellOptional
     }
 

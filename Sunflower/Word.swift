@@ -115,7 +115,7 @@ class Word : NSObject, Equatable, NSCoding {
     }
     
     func isDueInFuture() -> Bool {
-        if self.relearningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+        if (self.relearningDueDate?.isFuture() != nil) {
             return true
         } else {
             return false

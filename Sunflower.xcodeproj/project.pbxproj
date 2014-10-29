@@ -19,6 +19,7 @@
 		41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2519AE77F60020EF58 /* Test2ViewController.swift */; };
 		41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D2719AFCD6A0020EF58 /* PresentationView.xib */; };
 		41614D2A19AFCD7E0020EF58 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D2919AFCD7E0020EF58 /* PresentationViewController.swift */; };
+		416B90061A01A980008CDE4A /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */; };
 		4170CE3619FECB0100BD99A4 /* SampleSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170CE3419FECB0100BD99A4 /* SampleSentenceViewController.swift */; };
 		4170CE3719FECB0100BD99A4 /* SampleSentenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4170CE3519FECB0100BD99A4 /* SampleSentenceViewController.xib */; };
 		4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170CE3819FED03F00BD99A4 /* WordPresentationViewController.swift */; };
@@ -39,22 +40,6 @@
 		419E511319F998CD0067D31D /* pack_id_14.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F319F998CD0067D31D /* pack_id_14.json */; };
 		419E511419F998CD0067D31D /* pack_id_15.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F419F998CD0067D31D /* pack_id_15.json */; };
 		419E511519F998CD0067D31D /* pack_id_16.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F519F998CD0067D31D /* pack_id_16.json */; };
-		419E511619F998CD0067D31D /* Package-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F619F998CD0067D31D /* Package-1.json */; };
-		419E511719F998CD0067D31D /* Package-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F719F998CD0067D31D /* Package-2.json */; };
-		419E511819F998CD0067D31D /* Package-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F819F998CD0067D31D /* Package-3.json */; };
-		419E511919F998CD0067D31D /* Package-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50F919F998CD0067D31D /* Package-4.json */; };
-		419E511A19F998CD0067D31D /* Package-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50FA19F998CD0067D31D /* Package-5.json */; };
-		419E511B19F998CD0067D31D /* Package-6.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50FB19F998CD0067D31D /* Package-6.json */; };
-		419E511C19F998CD0067D31D /* Package-7.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50FC19F998CD0067D31D /* Package-7.json */; };
-		419E511D19F998CD0067D31D /* Package-8.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50FD19F998CD0067D31D /* Package-8.json */; };
-		419E511E19F998CD0067D31D /* Package-9.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50FE19F998CD0067D31D /* Package-9.json */; };
-		419E511F19F998CD0067D31D /* Package-10.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50FF19F998CD0067D31D /* Package-10.json */; };
-		419E512019F998CD0067D31D /* Package-11.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E510019F998CD0067D31D /* Package-11.json */; };
-		419E512119F998CD0067D31D /* Package-12.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E510119F998CD0067D31D /* Package-12.json */; };
-		419E512219F998CD0067D31D /* Package-13.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E510219F998CD0067D31D /* Package-13.json */; };
-		419E512319F998CD0067D31D /* Package-14.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E510319F998CD0067D31D /* Package-14.json */; };
-		419E512419F998CD0067D31D /* Package-15.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E510419F998CD0067D31D /* Package-15.json */; };
-		419E512519F998CD0067D31D /* Package-16.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E510519F998CD0067D31D /* Package-16.json */; };
 		41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0634119A90E7100E400D1 /* AppDelegate.swift */; };
 		41A0634919A90E7100E400D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634719A90E7100E400D1 /* Main.storyboard */; };
 		41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634A19A90E7100E400D1 /* Images.xcassets */; };
@@ -131,22 +116,6 @@
 		419E50F319F998CD0067D31D /* pack_id_14.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_14.json; sourceTree = "<group>"; };
 		419E50F419F998CD0067D31D /* pack_id_15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_15.json; sourceTree = "<group>"; };
 		419E50F519F998CD0067D31D /* pack_id_16.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_16.json; sourceTree = "<group>"; };
-		419E50F619F998CD0067D31D /* Package-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-1.json"; sourceTree = "<group>"; };
-		419E50F719F998CD0067D31D /* Package-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-2.json"; sourceTree = "<group>"; };
-		419E50F819F998CD0067D31D /* Package-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-3.json"; sourceTree = "<group>"; };
-		419E50F919F998CD0067D31D /* Package-4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-4.json"; sourceTree = "<group>"; };
-		419E50FA19F998CD0067D31D /* Package-5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-5.json"; sourceTree = "<group>"; };
-		419E50FB19F998CD0067D31D /* Package-6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-6.json"; sourceTree = "<group>"; };
-		419E50FC19F998CD0067D31D /* Package-7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-7.json"; sourceTree = "<group>"; };
-		419E50FD19F998CD0067D31D /* Package-8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-8.json"; sourceTree = "<group>"; };
-		419E50FE19F998CD0067D31D /* Package-9.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-9.json"; sourceTree = "<group>"; };
-		419E50FF19F998CD0067D31D /* Package-10.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-10.json"; sourceTree = "<group>"; };
-		419E510019F998CD0067D31D /* Package-11.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-11.json"; sourceTree = "<group>"; };
-		419E510119F998CD0067D31D /* Package-12.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-12.json"; sourceTree = "<group>"; };
-		419E510219F998CD0067D31D /* Package-13.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-13.json"; sourceTree = "<group>"; };
-		419E510319F998CD0067D31D /* Package-14.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-14.json"; sourceTree = "<group>"; };
-		419E510419F998CD0067D31D /* Package-15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-15.json"; sourceTree = "<group>"; };
-		419E510519F998CD0067D31D /* Package-16.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Package-16.json"; sourceTree = "<group>"; };
 		41A0633C19A90E7000E400D1 /* Sunflower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunflower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0634019A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0634119A90E7100E400D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -362,22 +331,6 @@
 				419E50F319F998CD0067D31D /* pack_id_14.json */,
 				419E50F419F998CD0067D31D /* pack_id_15.json */,
 				419E50F519F998CD0067D31D /* pack_id_16.json */,
-				419E50F619F998CD0067D31D /* Package-1.json */,
-				419E50F719F998CD0067D31D /* Package-2.json */,
-				419E50F819F998CD0067D31D /* Package-3.json */,
-				419E50F919F998CD0067D31D /* Package-4.json */,
-				419E50FA19F998CD0067D31D /* Package-5.json */,
-				419E50FB19F998CD0067D31D /* Package-6.json */,
-				419E50FC19F998CD0067D31D /* Package-7.json */,
-				419E50FD19F998CD0067D31D /* Package-8.json */,
-				419E50FE19F998CD0067D31D /* Package-9.json */,
-				419E50FF19F998CD0067D31D /* Package-10.json */,
-				419E510019F998CD0067D31D /* Package-11.json */,
-				419E510119F998CD0067D31D /* Package-12.json */,
-				419E510219F998CD0067D31D /* Package-13.json */,
-				419E510319F998CD0067D31D /* Package-14.json */,
-				419E510419F998CD0067D31D /* Package-15.json */,
-				419E510519F998CD0067D31D /* Package-16.json */,
 			);
 			name = "JSON Packs";
 			sourceTree = "<group>";
@@ -462,23 +415,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419E512419F998CD0067D31D /* Package-15.json in Resources */,
-				419E511919F998CD0067D31D /* Package-4.json in Resources */,
-				419E511819F998CD0067D31D /* Package-3.json in Resources */,
-				419E511619F998CD0067D31D /* Package-1.json in Resources */,
-				419E511F19F998CD0067D31D /* Package-10.json in Resources */,
 				419E511319F998CD0067D31D /* pack_id_14.json in Resources */,
 				419E510919F998CD0067D31D /* pack_id_4.json in Resources */,
 				419E511219F998CD0067D31D /* pack_id_13.json in Resources */,
-				419E512119F998CD0067D31D /* Package-12.json in Resources */,
-				419E511C19F998CD0067D31D /* Package-7.json in Resources */,
 				419E510C19F998CD0067D31D /* pack_id_7.json in Resources */,
-				419E511E19F998CD0067D31D /* Package-9.json in Resources */,
 				419E510719F998CD0067D31D /* pack_id_2.json in Resources */,
-				419E512219F998CD0067D31D /* Package-13.json in Resources */,
 				4170CE3719FECB0100BD99A4 /* SampleSentenceViewController.xib in Resources */,
 				41614D2819AFCD6A0020EF58 /* PresentationView.xib in Resources */,
-				419E512519F998CD0067D31D /* Package-16.json in Resources */,
 				419E510619F998CD0067D31D /* pack_id_1.json in Resources */,
 				414F93EC19E267CB002BFDE0 /* ResultViewController.xib in Resources */,
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
@@ -486,18 +429,12 @@
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
 				419E511019F998CD0067D31D /* pack_id_11.json in Resources */,
-				419E512319F998CD0067D31D /* Package-14.json in Resources */,
 				419E510E19F998CD0067D31D /* pack_id_9.json in Resources */,
-				419E511A19F998CD0067D31D /* Package-5.json in Resources */,
 				419E510D19F998CD0067D31D /* pack_id_8.json in Resources */,
 				4117D28F19F7620600516518 /* pack_id_test.json in Resources */,
-				419E511D19F998CD0067D31D /* Package-8.json in Resources */,
-				419E511719F998CD0067D31D /* Package-2.json in Resources */,
 				419E511119F998CD0067D31D /* pack_id_12.json in Resources */,
-				419E511B19F998CD0067D31D /* Package-6.json in Resources */,
 				419E510A19F998CD0067D31D /* pack_id_5.json in Resources */,
 				41614D2419AE77E60020EF58 /* Test2View.xib in Resources */,
-				419E512019F998CD0067D31D /* Package-11.json in Resources */,
 				419E510B19F998CD0067D31D /* pack_id_6.json in Resources */,
 				419E511419F998CD0067D31D /* pack_id_15.json in Resources */,
 				419E510F19F998CD0067D31D /* pack_id_10.json in Resources */,
@@ -561,6 +498,7 @@
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
+				416B90061A01A980008CDE4A /* DateExtention.swift in Sources */,
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
