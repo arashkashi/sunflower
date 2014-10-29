@@ -9,10 +9,28 @@
 import UIKit
 import Foundation
 
+let kTimeSpent: String = "kTimeSpent"
+let kDateBackup: String = "kDateBackup"
+
 class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     var learnerController : LearnerController?
     var currentWord: Word?
+    
+    var secondsSpentToday: Int  {
+        get {
+            var lastBackupDate: NSDate! = NSUserDefaults.standardUserDefaults().objectForKey(kDateBackup) as? NSDate
+            if !lastBackupDate.isToday() {
+                self.secondsSpentToday = 0
+            }
+            return NSUserDefaults.standardUserDefaults().integerForKey(kTimeSpent)
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: kTimeSpent)
+            NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: kDateBackup)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
     
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
@@ -39,11 +57,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func onAppBecomeActive() {
-        self.labelCounter.text = "0"
+        self.labelCounter.text = "\(self.secondsSpentToday)"
     }
     
     func onAppResignActive() {
-        ..
+        self.secondsSpentToday = self.labelCounter.text!.toInt()!
     }
     
     func updateTimer() {
