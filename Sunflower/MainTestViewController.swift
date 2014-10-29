@@ -19,9 +19,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     var secondsSpentToday: Int  {
         get {
-            var lastBackupDate: NSDate! = NSUserDefaults.standardUserDefaults().objectForKey(kDateBackup) as? NSDate
-            if !lastBackupDate.isToday() {
+            var lastBackupDate: NSDate? = NSUserDefaults.standardUserDefaults().objectForKey(kDateBackup) as? NSDate
+            if lastBackupDate == nil {
                 self.secondsSpentToday = 0
+            } else {
+                if !lastBackupDate!.isToday() {
+                    self.secondsSpentToday = 0
+                }
             }
             return NSUserDefaults.standardUserDefaults().integerForKey(kTimeSpent)
         }
@@ -153,9 +157,24 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     @IBAction func onSkipTapped(sender: AnyObject) {
-        if  self.currentWord != nil{
-            self.learnerController?.onWordSkipped(self.currentWord!)
-            self.learnNextWord()
+        var alertController =  UIAlertController(title: "You Already know \"\(self.currentWord!.name)\"?", message: "Want to skip?", preferredStyle: .ActionSheet )
+        
+        var skipAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            if  self.currentWord != nil{
+                self.learnerController?.onWordSkipped(self.currentWord!)
+                self.learnNextWord()
+            }
+        }
+        
+        var cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
+            //
+        }
+        
+        alertController.addAction(skipAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) { () -> Void in
+            //
         }
     }
     
