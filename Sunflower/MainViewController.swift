@@ -19,13 +19,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4;
+        return LearningPackPersController.sharedInstance.listOfAvialablePackIDs.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        cell.textLabel.text = "1"
-        return cell;
+        
+    var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
+        
+        var packID = LearningPackPersController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
+        
+        LearningPackPersController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
+            //
+        })
+
+        cellOptional.textLabel.text = "1"
+        return cellOptional
     }
 
 }

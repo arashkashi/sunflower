@@ -61,6 +61,7 @@
 		41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0635619A90E7100E400D1 /* SunflowerTests.swift */; };
 		41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */; };
 		41BAB3001A018FD300800249 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB2FF1A018FD300800249 /* MainViewController.swift */; };
+		41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */; };
 		41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D1E3C919BF8FFB001E86F3 /* WordTests.swift */; };
 		41D415E219A9D84F0038EFE6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
@@ -156,6 +157,7 @@
 		41A0635619A90E7100E400D1 /* SunflowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunflowerTests.swift; sourceTree = "<group>"; };
 		41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		41BAB2FF1A018FD300800249 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		41D1E3C919BF8FFB001E86F3 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		41D415E119A9D84F0038EFE6 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				41614D2219AE77C00020EF58 /* Tests */,
 				414F93E819E267A3002BFDE0 /* Test Result */,
 				41BAB2FF1A018FD300800249 /* MainViewController.swift */,
+				41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
+				41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */,
 				41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */,
 				D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */,
 				4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */,
