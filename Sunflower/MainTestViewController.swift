@@ -16,6 +16,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     var learnerController : LearnerController?
     var currentWord: Word?
+    var leaningPackID: String!
     
     var secondsSpentToday: Int  {
         get {
@@ -52,12 +53,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     override func viewDidLoad() {
-        self.initLeanerController("1")
         self.hideAllButtons()
         self.labelCounter.text = "0"
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
+        
+        self.initLeanerController(self.leaningPackID)
     }
     
     func onAppBecomeActive() {

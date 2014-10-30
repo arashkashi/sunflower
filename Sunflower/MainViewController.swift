@@ -20,6 +20,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.backgroundColor = UIColor.blackColor()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var testViewController = segue.destinationViewController as MainTestViewController
+        testViewController.leaningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LearningPackPersController.sharedInstance.listOfAvialablePackIDs.count;
     }
