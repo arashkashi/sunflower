@@ -179,8 +179,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7xq-lA-hsT">
-                                <rect key="frame" x="16" y="164" width="568" height="436"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7xq-lA-hsT">
+                                <rect key="frame" x="16" y="100" width="568" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_type_one" rowHeight="62" id="TAB-2d-Kbl" customClass="MainTableCellView" customModule="Sunflower" customModuleProvider="target">
@@ -248,7 +248,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="7xq-lA-hsT" firstAttribute="top" secondItem="bAs-xc-f2Q" secondAttribute="bottom" constant="100" id="Ylv-xN-8dl"/>
                             <constraint firstItem="7xq-lA-hsT" firstAttribute="leading" secondItem="suL-7I-zdW" secondAttribute="leadingMargin" id="shZ-zC-F7e"/>
@@ -265,12 +265,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTZ-1k-Gjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="610"/>
+            <point key="canvasLocation" x="900" y="551"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="07V-Qr-x2g">
             <objects>
-                <navigationController id="jEl-6I-WA3" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="jEl-6I-WA3" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dpv-rb-KzD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

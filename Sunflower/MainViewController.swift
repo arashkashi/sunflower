@@ -14,8 +14,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // For removing the white space from the top of the table
+        self.tableView.contentInset = UIEdgeInsetsMake(-70, 0, 0, 0);
+        self.tableView.backgroundColor = UIColor.blackColor()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +38,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
 
         return cellOptional
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.4
     }
 
 }
