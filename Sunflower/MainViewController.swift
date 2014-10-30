@@ -25,6 +25,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         testViewController.leaningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
     }
     
+    @IBAction func done(segue: UIStoryboardSegue) {
+        NSLog("Popping back to this view controller!")
+        // reset UI elements etc here
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LearningPackPersController.sharedInstance.listOfAvialablePackIDs.count;
     }
@@ -43,6 +48,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
 
         return cellOptional
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
