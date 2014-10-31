@@ -14,6 +14,7 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
     
     @IBOutlet var pageControl: UIPageControl!
     var pageViewController: UIPageViewController!
+    var currentlyShownViewcontroller: UIViewController!
     
     var completionHandler: (() -> ())?
 
@@ -26,13 +27,12 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         self.pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         
         self.pageViewController.dataSource = self
+        self.pageViewController.delegate = self
         self.pageViewController.view.frame = self.view.bounds
         
+        self.currentlyShownViewcontroller = self.wordViewcontroller(word!)
         
-        var vcs = [self.wordViewcontroller(word!)]//, self.sentenceViewController(word!, sentenceIndex: 0)!, self.sentenceViewController(word!, sentenceIndex: 1)!, self.sentenceViewController(word!, sentenceIndex: 2)!]
-        
-        
-        self.pageViewController.setViewControllers(vcs, direction: UIPageViewControllerNavigationDirection.Forward, animated: false) { (success: Bool) -> Void in
+        self.pageViewController.setViewControllers([self.currentlyShownViewcontroller], direction: UIPageViewControllerNavigationDirection.Forward, animated: false) { (success: Bool) -> Void in
             self.pageControl.numberOfPages = 1 + self.word!.sentences.count
         }
         
@@ -65,48 +65,40 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
     
     // MARK: DataSource
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        var result: UIViewController!
-        var index: Int
+        var result: UIViewController?
         
         if viewController.isMemberOfClass(WordPresentationViewController) {
             result = self.sentenceViewController(self.word!, sentenceIndex: 0)
-            index = 0
         } else {
             var vc = viewController as SampleSentenceViewController
-            index = vc.index! + 1
-            result = self.sentenceViewController(vc.word!, sentenceIndex: index)
+            result = self.sentenceViewController(vc.word!, sentenceIndex: vc.index! + 1)
         }
-        
-        self.pageControl.currentPage = index
         return result
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var result: UIViewController!
-        var index: Int
+        var result: UIViewController?
         
         if viewController.isMemberOfClass(WordPresentationViewController) {
-            self.pageControl.currentPage = 0
-            return nil
+            result = nil
         } else {
             var vc = viewController as SampleSentenceViewController
-            index = vc.index! - 1
-            
-            if index < 0 {
+            if vc.index! - 1 < 0 {
                 result =  self.wordViewcontroller(self.word!) }
             else {
-                result =  self.sentenceViewController(vc.word!, sentenceIndex: index)
+                result =  self.sentenceViewController(vc.word!, sentenceIndex: vc.index! - 1)
             }
         }
-        
-        if index < 0 { index = 0 }
-        self.pageControl.currentPage = index
         return result
     }
     
-    func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
-        return UIPageViewControllerSpineLocation.Max
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+        self.currentlyShownViewcontroller = pendingViewControllers[0] as UIViewController
+        
+        if self.currentlyShownViewcontroller.isMemberOfClass(WordPresentationViewController) {
+            self.pageControl.currentPage = 0
+        } else {
+            self.pageControl.currentPage = (self.currentlyShownViewcontroller as SampleSentenceViewController).index! + 1
+        }
     }
-    
-    
 }
