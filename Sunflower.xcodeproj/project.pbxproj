@@ -384,9 +384,11 @@
 				TargetAttributes = {
 					41A0633B19A90E7000E400D1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z46627LUPQ;
 					};
 					41A0634F19A90E7100E400D1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z46627LUPQ;
 						TestTargetID = 41A0633B19A90E7000E400D1;
 					};
 				};
@@ -632,6 +634,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -643,6 +647,7 @@
 				INFOPLIST_FILE = SunflowerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunflower.app/Sunflower";
 			};
 			name = Debug;
@@ -651,6 +656,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -658,6 +665,7 @@
 				INFOPLIST_FILE = SunflowerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunflower.app/Sunflower";
 			};
 			name = Release;
