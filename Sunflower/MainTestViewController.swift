@@ -54,7 +54,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     override func viewDidLoad() {
         self.hideAllButtons()
-        self.labelCounter.text = "0"
+        self.labelCounter.text = ""
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
@@ -62,20 +62,29 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.initLeanerController(self.leaningPackID)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        backuptimerValue()
+    }
+    
     func onAppBecomeActive() {
         self.labelCounter.text = "\(self.secondsSpentToday)"
     }
     
     func onAppResignActive() {
-        self.secondsSpentToday = self.labelCounter.text!.toInt()!
+        backuptimerValue()
     }
     
     func updateTimer() {
-        var newTime = self.labelCounter.text?.toInt()
-        if let currentTime = newTime {
-            var timeInString = "\(currentTime + 1)"
-            self.labelCounter.text = timeInString
+        if self.labelCounter.text == "" {
+            self.labelCo unter.text = "\(secondsSpentToday)"
         }
+        
+        var prevTime = self.labelCounter.text!.toInt()!
+        self.labelCounter.text = "\(prevTime + 1)"
+    }
+    
+    func backuptimerValue() {
+        self.secondsSpentToday = self.labelCounter.text!.toInt()!
     }
     
     override func viewWillAppear(animated: Bool) {
