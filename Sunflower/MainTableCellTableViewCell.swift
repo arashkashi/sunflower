@@ -22,7 +22,7 @@ class MainTableCellView: UITableViewCell {
     
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {
         labelID.text = learningPackModel.id
-        labelProgress.text = "\(learningPackModel.progress)%"
+        labelProgress.text = "\(Int(learningPackModel.progress)) %"
         
         activityIndicator.hidden = true
         labelrightIndicator.hidden = false
