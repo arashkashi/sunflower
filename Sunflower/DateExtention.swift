@@ -19,4 +19,8 @@ extension NSDate {
     func isFuture() -> Bool {
         return self.compare(NSDate()) == NSComparisonResult.OrderedDescending
     }
+    
+    func isPast() -> Bool {
+        return self.compare(NSDate()) == NSComparisonResult.OrderedAscending
+    }
 }
