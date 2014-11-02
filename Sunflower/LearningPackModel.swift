@@ -19,7 +19,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     var progress: Double {
         get {
             var wordsInFuture = words.filter{($0 as Word).isDueInFuture()}
-            return Double(wordsInFuture.count)/Double(words.count)
+            return Double(wordsInFuture.count)/Double(words.count) * 100
         }
     }
     
