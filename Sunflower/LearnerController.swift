@@ -120,7 +120,7 @@ class LearnerController {
         var wordsWereInFutureDueNow: [Word] = []
         
         for word in self.wordsDueInFuture as [Word] {
-            if word.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+            if word.relearningDueDate!.isPast() {
                 wordsWereInFutureDueNow.append(word)
             } else {
                 break
@@ -186,7 +186,11 @@ class LearnerController {
     }
     
     func onWordSkipped(word: Word) {
-         word.onWordSkipped()
+        word.onWordSkipped()
+        
+        self.currentLearningQueue = self.currentLearningQueue.filter {$0 != word}
+        self.wordsDueNow = self.wordsDueNow.filter {$0 != word}
+        self.wordsDueInFuture.append(word)
     }
     
     // MARK: Helper

@@ -46,6 +46,16 @@ class LeanerControllerTests: XCTestCase {
         }
     }
     
+    // When skip a word it should be aitomatically added to the future list
+    func testAddSkippedWordToFuturelist() {
+        var skippedWords: [Word] = []
+        for i in 1...3 {
+            var word = self.giveMeNextWord()
+            self.learnerController.onWordSkipped(word!)
+            XCTAssert(self.learnerController.wordsDueInFuture.count == i, "the words should be added to the future list instantly after being skiped \(self.learnerController.wordsDueInFuture.count)")
+        }
+    }
+    
     // Pick up the first word and put it into the current queue (ROOT)
     func testFirstWordPickup() {
         var firstWordToLearn = self.giveMeNextWord()
