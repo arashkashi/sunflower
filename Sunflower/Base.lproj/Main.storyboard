@@ -213,7 +213,7 @@
         <!--Main View Controller-->
         <scene sceneID="0Ak-Cj-VNv">
             <objects>
-                <viewController id="EwS-sk-4Sg" customClass="MainViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EwS-sk-4Sg" customClass="MainViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bAs-xc-f2Q"/>
                         <viewControllerLayoutGuide type="bottom" id="B1y-ef-haH"/>
@@ -286,6 +286,7 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="EwS-sk-4Sg" id="sfL-Kz-qvn"/>
                                     <outlet property="delegate" destination="EwS-sk-4Sg" id="uhV-DX-ssJ"/>
