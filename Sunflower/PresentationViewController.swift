@@ -94,7 +94,10 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         self.currentlyShownViewcontroller = pendingViewControllers[0] as UIViewController
-        
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+        if !completed { return } 
         if self.currentlyShownViewcontroller.isMemberOfClass(WordPresentationViewController) {
             self.pageControl.currentPage = 0
         } else {
