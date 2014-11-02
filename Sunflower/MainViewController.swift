@@ -27,7 +27,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func done(segue: UIStoryboardSegue) {
         NSLog("Popping back to this view controller!")
-        // reset UI elements etc here
+        self.tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
