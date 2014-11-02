@@ -166,6 +166,10 @@ class LearnerController {
         sort(&self.wordsDueNow, {$0 < $1})
     }
     
+    func updateLearningPackDocument() {
+        self.learningPackModel.updateChangeCount(UIDocumentChangeKind.Done)
+    }
+    
     //MARK: Events
     func onWordFinishedTestType(word: Word, test: Test, testResult: TestResult) {
         word.onWordFinishedTest(test, testResult: testResult)
@@ -173,16 +177,17 @@ class LearnerController {
         if word.isFinishedAllTestsForCurrentStage() {
             self.onWordSuccesssfullyFinishedAllTestsInLearningStage(word)
         }
-        
-        self.learningPackModel.updateChangeCount(UIDocumentChangeKind.Done)
+        self.updateLearningPackDocument()
     }
     
     func onWordSuccesssfullyFinishedAllTestsInLearningStage(word: Word) {
         word.onWordSuccessfullyFinishedAllTests()
+        self.updateLearningPackDocument()
     }
     
     func onWordFinishedPresentation(word: Word) {
         word.onWordFinihsedPresentation()
+        self.updateLearningPackDocument()
     }
     
     func onWordSkipped(word: Word) {
@@ -191,6 +196,7 @@ class LearnerController {
         self.currentLearningQueue = self.currentLearningQueue.filter {$0 != word}
         self.wordsDueNow = self.wordsDueNow.filter {$0 != word}
         self.wordsDueInFuture.append(word)
+        self.updateLearningPackDocument()
     }
     
     // MARK: Helper
