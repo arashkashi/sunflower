@@ -14,10 +14,14 @@ let kDateBackup: String = "kDateBackup"
 
 class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
+    var testViewController: TestBaseViewController?
+    var presentationViewController: PresentationViewController?
+    
     var learnerController : LearnerController?
     var currentWord: Word?
     var leaningPackID: String!
     
+    var timer: NSTimer?
     var secondsSpentToday: Int  {
         get {
             var lastBackupDate: NSDate? = NSUserDefaults.standardUserDefaults().objectForKey(kDateBackup) as? NSDate
@@ -37,9 +41,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         }
     }
     
-    var testViewController: TestBaseViewController?
-    var presentationViewController: PresentationViewController?
-    
     @IBOutlet var buttonGotIt: UIButton!
     @IBOutlet var testContentView: UIView!
     @IBOutlet var viewLoadingOverlay: UIView!
@@ -50,12 +51,12 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
     }
     
     override func viewDidLoad() {
         self.hideAllButtons()
         self.labelCounter.text = ""
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
         
@@ -63,7 +64,9 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        backuptimerValue()
+        backuptimerValueOnExitingView()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func onAppBecomeActive() {
@@ -71,20 +74,25 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func onAppResignActive() {
-        backuptimerValue()
+        backuptimerValueOnExitingView()
     }
     
     func updateTimer() {
         if self.labelCounter.text == "" {
-            self.labelCo unter.text = "\(secondsSpentToday)"
+            self.labelCounter.text = "\(secondsSpentToday)"
         }
         
         var prevTime = self.labelCounter.text!.toInt()!
         self.labelCounter.text = "\(prevTime + 1)"
     }
     
-    func backuptimerValue() {
+    func backuptimerValueOnExitingView() {
         self.secondsSpentToday = self.labelCounter.text!.toInt()!
+        self.labelCounter.text = ""
+        timer?.invalidate()
+        
+        self.presentationViewController = nil
+        self.testViewController = nil
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -312,5 +320,9 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         default:
             return Test1ViewController(nibName: "Test1View", bundle: NSBundle.mainBundle())
         }
+    }
+    
+    deinit {
+        println()
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TestViewControllerDelegate {
+protocol TestViewControllerDelegate: class {
     func onAsnwerSelected()
 }
 
@@ -19,7 +19,7 @@ class TestBaseViewController : UIViewController {
     var resultViewController: ResultViewController = ResultViewController(nibName: "ResultViewController", bundle: NSBundle.mainBundle())
     
     var completionHandler: ((Test, TestResult, Word) -> ())?
-    var delegate: TestViewControllerDelegate?
+    weak var delegate: TestViewControllerDelegate?
     
     @IBOutlet var wordLabel: UILabel!
     
