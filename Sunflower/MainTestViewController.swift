@@ -53,6 +53,12 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         self.labelCounter.text = "\(self.secondsSpentToday)"
+
+    }
+    
+    func navigationController() -> UINavigationController {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        return appDelegate.rootNavigationController!
     }
     
     override func viewDidLoad() {

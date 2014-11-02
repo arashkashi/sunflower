@@ -13,10 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
     var learnerController: LearnerController?
+    var rootNavigationController: UINavigationController?
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        self.rootNavigationController = self.window!.rootViewController as? UINavigationController
         return true
     }
 

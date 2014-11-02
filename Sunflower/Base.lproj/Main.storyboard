@@ -299,7 +299,7 @@
                 <navigationController navigationBarHidden="YES" id="jEl-6I-WA3" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dpv-rb-KzD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Dpv-rb-KzD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
