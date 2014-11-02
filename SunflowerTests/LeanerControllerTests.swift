@@ -52,6 +52,7 @@ class LeanerControllerTests: XCTestCase {
         for i in 1...3 {
             var word = self.giveMeNextWord()
             self.learnerController.onWordSkipped(word!)
+            self.checkDataConsistency()
             XCTAssert(self.learnerController.wordsDueInFuture.count == i, "the words should be added to the future list instantly after being skiped \(self.learnerController.wordsDueInFuture.count)")
         }
     }
