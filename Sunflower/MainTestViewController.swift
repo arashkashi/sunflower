@@ -53,7 +53,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         self.labelCounter.text = "\(self.secondsSpentToday)"
-
     }
     
     func navigationController() -> UINavigationController {
@@ -68,12 +67,14 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
         
         self.initLeanerController(self.leaningPackID)
+        navigationController().navigationBarHidden = true
     }
     
     override func viewWillDisappear(animated: Bool) {
         backuptimerValueOnExitingView()
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        navigationController().navigationBarHidden = false
     }
     
     func onAppBecomeActive() {

@@ -47,10 +47,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var testViewController = segue.destinationViewController as MainTestViewController
-        var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
-        testViewController.leaningPackID = learningPackID
-        invalidateCashedLearningPack(learningPackID)
+        if segue.identifier == "to_main_test" {
+            var testViewController = segue.destinationViewController as MainTestViewController
+            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
+            testViewController.leaningPackID = learningPackID
+            invalidateCashedLearningPack(learningPackID)
+        }
     }
     
     @IBAction func done(segue: UIStoryboardSegue) {

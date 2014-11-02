@@ -181,6 +181,35 @@
             </objects>
             <point key="canvasLocation" x="1690" y="551"/>
         </scene>
+        <!--Add View Controller-->
+        <scene sceneID="ve1-aB-8hC">
+            <objects>
+                <viewController id="0BR-Zb-Xl4" userLabel="Add View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jf3-gm-vnd"/>
+                        <viewControllerLayoutGuide type="bottom" id="KP4-Nm-OYO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eBK-7n-Ery">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAA-RL-KeV">
+                                <rect key="frame" x="56" y="60" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="eBK-7n-Ery" id="BR1-33-t2U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vTY-P3-GNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="-214"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="0Ak-Cj-VNv">
             <objects>
@@ -194,7 +223,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7xq-lA-hsT">
-                                <rect key="frame" x="16" y="100" width="568" height="500"/>
+                                <rect key="frame" x="16" y="144" width="568" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_type_one" rowHeight="62" id="TAB-2d-Kbl" customClass="MainTableCellView" customModule="Sunflower" customModuleProvider="target">
@@ -253,7 +282,7 @@
                                             <outlet property="labelID" destination="4CO-hy-i61" id="4ij-Eg-ThI"/>
                                             <outlet property="labelProgress" destination="fFQ-Z6-YJH" id="6FA-AU-9LR"/>
                                             <outlet property="labelrightIndicator" destination="5wG-ko-cLZ" id="bfF-uT-Yex"/>
-                                            <segue destination="ToX-di-gUg" kind="show" id="X2b-hw-Skd"/>
+                                            <segue destination="ToX-di-gUg" kind="show" identifier="to_main_test" id="X2b-hw-Skd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -263,7 +292,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyq-RO-JKz">
-                                <rect key="frame" x="21" y="5" width="558" height="90"/>
+                                <rect key="frame" x="21" y="49" width="558" height="90"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="42"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -281,9 +310,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="7xq-lA-hsT" secondAttribute="trailing" id="xt4-jw-6xc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3xy-3J-bQy"/>
+                    <navigationItem key="navigationItem" id="3xy-3J-bQy">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="LzJ-fg-SWM">
+                            <connections>
+                                <segue destination="0BR-Zb-Xl4" kind="show" id="ipq-hc-LYZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="labelTopCounter" destination="lyq-RO-JKz" id="kxu-VZ-2dM"/>
                         <outlet property="tableView" destination="7xq-lA-hsT" id="qmg-q6-DwW"/>
@@ -296,10 +330,10 @@
         <!--Navigation Controller-->
         <scene sceneID="07V-Qr-x2g">
             <objects>
-                <navigationController navigationBarHidden="YES" id="jEl-6I-WA3" sceneMemberID="viewController">
+                <navigationController id="jEl-6I-WA3" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Dpv-rb-KzD">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Dpv-rb-KzD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
