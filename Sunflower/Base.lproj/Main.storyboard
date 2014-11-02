@@ -262,12 +262,22 @@
                                     <outlet property="delegate" destination="EwS-sk-4Sg" id="uhV-DX-ssJ"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyq-RO-JKz">
+                                <rect key="frame" x="21" y="5" width="558" height="90"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="42"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="7xq-lA-hsT" firstAttribute="top" secondItem="lyq-RO-JKz" secondAttribute="bottom" constant="5" id="2d3-oj-ViL"/>
+                            <constraint firstItem="lyq-RO-JKz" firstAttribute="top" secondItem="bAs-xc-f2Q" secondAttribute="bottom" constant="5" id="5Ct-OF-S2f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lyq-RO-JKz" secondAttribute="trailing" constant="5" id="Xsu-4D-uDu"/>
                             <constraint firstItem="7xq-lA-hsT" firstAttribute="top" secondItem="bAs-xc-f2Q" secondAttribute="bottom" constant="100" id="Ylv-xN-8dl"/>
                             <constraint firstItem="7xq-lA-hsT" firstAttribute="leading" secondItem="suL-7I-zdW" secondAttribute="leadingMargin" id="shZ-zC-F7e"/>
                             <constraint firstItem="B1y-ef-haH" firstAttribute="top" secondItem="7xq-lA-hsT" secondAttribute="bottom" id="wl6-XN-HR1"/>
+                            <constraint firstItem="lyq-RO-JKz" firstAttribute="leading" secondItem="suL-7I-zdW" secondAttribute="leadingMargin" constant="5" id="xIr-sx-IT1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7xq-lA-hsT" secondAttribute="trailing" id="xt4-jw-6xc"/>
                         </constraints>
                     </view>
@@ -275,6 +285,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="labelTopCounter" destination="lyq-RO-JKz" id="kxu-VZ-2dM"/>
                         <outlet property="tableView" destination="7xq-lA-hsT" id="qmg-q6-DwW"/>
                     </connections>
                 </viewController>

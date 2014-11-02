@@ -35,6 +35,18 @@ class LearningPackModel : UIDocument, NSCoding  {
         super.init(fileURL: DocumentHelper.cashURLForID(id))
     }
     
+    func wordsDueInFuture() -> [Word] {
+        var result: [Word] = []
+        for word in self.words {
+            if let relearnDate = word.relearningDueDate {
+                if relearnDate.isFuture() {
+                    result.append(word)
+                }
+            }
+        }
+        return result
+    }
+    
     // #MARK: Document Facade
     class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
         var learningPackModel = LearningPackModel(id: id, words: words)

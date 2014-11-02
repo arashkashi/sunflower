@@ -9,13 +9,27 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var labelTopCounter: UILabel!
     
     var cashedLearningPacks = Dictionary<String, LearningPackModel>()
     
     func updateCashedLearningPack(learningPack: LearningPackModel) {
         cashedLearningPacks[learningPack.id] = learningPack
+        updateCounter()
+    }
+    
+    func invalidateCashedLearningPack(id:String) {
+        cashedLearningPacks.removeValueForKey(id)
+    }
+    
+    func updateCounter() {
+        var counter: Int = 0
+        for (id, packModel) in self.cashedLearningPacks {
+            counter += packModel.wordsDueInFuture().count
+        }
+        self.labelTopCounter.text = "\(counter)"
     }
     
     override func viewDidLoad() {
@@ -24,11 +38,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // For removing the white space from the top of the table
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.tableView.backgroundColor = UIColor.blackColor()
+        
+        self.labelTopCounter.text = "0"
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        updateCounter()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var testViewController = segue.destinationViewController as MainTestViewController
-        testViewController.leaningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
+        var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
+        testViewController.leaningPackID = learningPackID
+        invalidateCashedLearningPack(learningPackID)
     }
     
     @IBAction func done(segue: UIStoryboardSegue) {
@@ -42,7 +64,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-    var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
+        var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
         cellOptional.showLoadingContent()
         
         var packID = LearningPackPersController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
@@ -57,7 +79,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             })
         }
-
+        
         return cellOptional
     }
     
@@ -72,5 +94,5 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.4
     }
-
+    
 }
