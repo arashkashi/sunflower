@@ -12,6 +12,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var tableView: UITableView!
     
+    var cashedLearningPacks = Dictionary<String, LearningPackModel>()
+    
+    func updateCashedLearningPack(learningPack: LearningPackModel) {
+        cashedLearningPacks[learningPack.id] = learningPack
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,11 +47,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var packID = LearningPackPersController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
         
-        LearningPackPersController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
-            if let lpm = learningPackModel {
-                cellOptional.updateWithLearningPackModel(lpm)
-            }
-        })
+        if let cashedLearningPack = cashedLearningPacks[packID] {
+            cellOptional.updateWithLearningPackModel(cashedLearningPack)
+        } else {
+            LearningPackPersController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
+                if let lpm = learningPackModel {
+                    self.updateCashedLearningPack(lpm)
+                    cellOptional.updateWithLearningPackModel(lpm)
+                }
+            })
+        }
 
         return cellOptional
     }
