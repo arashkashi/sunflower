@@ -52,6 +52,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+        self.labelCounter.text = "\(self.secondsSpentToday)"
     }
     
     override func viewDidLoad() {
