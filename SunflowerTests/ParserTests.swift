@@ -28,6 +28,11 @@ class ParserTests: XCTestCase {
         XCTAssert(tokens.count > 0, "Pass")
     }
     
+    func testUniqueTokens() {
+        var uniqueTokens = Parser.sortedUniqueTokensFor(self.inputText)
+        XCTAssert(uniqueTokens.count > 0, "pass")
+    }
+    
     func testDictionarySort() {
         var dict = ["a":1, "b":600, "c":2, "d": 800]
         var sortedKeys = Parser.sortedKeysByValueFor(dict)

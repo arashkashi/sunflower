@@ -18,6 +18,12 @@ class Parser {
         return Static.instance
     }
     
+    class func sortedUniqueTokensFor(text: String) -> [String] {
+        var tokens = Parser.tokenize(text)
+        var tokenDict = Parser.distDictFor(tokens)
+        return Parser.sortedKeysByValueFor(tokenDict)
+    }
+    
     class func tokenize(inputText: String) -> [String]{
         var tokens = inputText.componentsSeparatedByString(" ")
         return tokens
@@ -39,7 +45,7 @@ class Parser {
     class func sortedKeysByValueFor(dict: Dictionary<String, Int>)  -> [String]{
         
         var tuples: [(String, Int)] = map(dict) {(key, value) in (key, value)}
-        tuples.sort { $0.1 < $1.1 }
+        tuples.sort { $0.1 > $1.1 }
         
         var result: [String] = []
         for (word, count) in tuples {
