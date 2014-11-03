@@ -70,20 +70,20 @@ class WordTests: XCTestCase {
     }
     
     func testWordDueDateHelpers() {
-        var word1 = Word(name: "word future", meaning: "Meaning1", sentences: [])
-        var word2 = Word(name: "word past", meaning: "Meaning2", sentences: [])
-        var word3 = Word(name: "word past", meaning: "Meaning2", sentences: [])
+        var wordInFuture = Word(name: "word future", meaning: "Meaning1", sentences: [])
+        var wordInPast = Word(name: "word past", meaning: "Meaning2", sentences: [])
+        var wordWithNil = Word(name: "word past", meaning: "Meaning2", sentences: [])
         
-        word1.relearningDueDate = NSDate().dateByAddingTimeInterval(1000)
-        word2.relearningDueDate = NSDate().dateByAddingTimeInterval(-1000)
+        wordInFuture.relearningDueDate = NSDate().dateByAddingTimeInterval(1000)
+        wordInPast.relearningDueDate = NSDate().dateByAddingTimeInterval(-1000)
         
-        XCTAssert(word1.isDueInFuture() == true, "word is due in future")
-        XCTAssert(word2.isDueInFuture() == false, "word is due is past")
-        XCTAssert(word3.isDueInFuture() == false, "nil due date is not future")
+        XCTAssert(wordInFuture.isDueInFuture() == true, "word is due in future")
+        XCTAssert(wordInPast.isDueInFuture() == false, "word is due is past")
+        XCTAssert(wordWithNil.isDueInFuture() == false, "nil due date is not future")
         
-        XCTAssert(word1.isDueInPast() == false, "word is due in future")
-        XCTAssert(word2.isDueInPast() == true, "word is due is past")
-        XCTAssert(word3.isDueInPast() == false, "nil due date is not past")
+        XCTAssert(wordInFuture.isDueInPast() == false, "word is due in future")
+        XCTAssert(wordInPast.isDueInPast() == true, "word is due is past")
+        XCTAssert(wordWithNil.isDueInPast() == true, "nil due date is  past")
         
     }
 

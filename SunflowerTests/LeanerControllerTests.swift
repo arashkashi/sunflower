@@ -38,7 +38,7 @@ class LeanerControllerTests: XCTestCase {
     // when skip the first word we should proceed with the nest words
     func testSkipTheFirstWord() {
         var skippedWords: [Word] = []
-        for _ in 1...20 {
+        for _ in 1...10 {
             var word = self.giveMeNextWord()
             XCTAssert(!skippedWords.includes(word!), "skipped words should not reaccure")
             self.learnerController.onWordSkipped(word!)

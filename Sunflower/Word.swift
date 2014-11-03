@@ -115,7 +115,9 @@ class Word : NSObject, Equatable, NSCoding {
     }
     
     func isDueInFuture() -> Bool {
-        if (self.relearningDueDate?.isFuture() != nil) {
+        if self.relearningDueDate == nil { return false }
+        
+        if self.relearningDueDate!.isFuture() {
             return true
         } else {
             return false
@@ -123,7 +125,9 @@ class Word : NSObject, Equatable, NSCoding {
     }
     
     func isDueInPast() -> Bool {
-        if self.relearningDueDate?.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+        if self.relearningDueDate == nil { return true }
+        
+        if self.relearningDueDate!.isPast() {
             return true
         } else {
             return false
