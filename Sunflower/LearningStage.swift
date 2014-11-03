@@ -23,6 +23,10 @@ enum LearningStage: Int32, Comparable {
     case Young
     case Mature
     
+    static func allStages() -> [LearningStage] {
+        return [.Cram, .Learn, .Relearn, .Young, .Mature]
+    }
+    
     mutating func increment() {
         switch self {
         case .Cram:
