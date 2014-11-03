@@ -19,10 +19,8 @@ class Parser {
     }
     
     class func tokenize(inputText: String) -> [String]{
-        // parse into word
-        var cleanedupText: String
-        cleanedupText  = " ".join((inputText.componentsSeparatedByCharactersInSet(NSCharacterSet.alphanumericCharacterSet())))
-        return cleanedupText.componentsSeparatedByString(" ")
+        var tokens = inputText.componentsSeparatedByString(" ")
+        return tokens
     }
     
     class func distDictFor(tokens: [String]) -> [String: Int] {

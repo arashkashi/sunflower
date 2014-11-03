@@ -24,8 +24,8 @@ class ParserTests: XCTestCase {
     }
 
     func testTokenise() {
-//        var tokens = Parser.sharedInstance.tokenize(self.inputText)
-//        XCTAssert(tokens.count > 0, "Pass")
+        var tokens = Parser.tokenize(self.inputText)
+        XCTAssert(tokens.count > 0, "Pass")
     }
     
     func testDictionarySort() {
