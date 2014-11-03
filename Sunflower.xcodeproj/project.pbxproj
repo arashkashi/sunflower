@@ -52,6 +52,9 @@
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */; };
 		41D415F119AA6E490038EFE6 /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
+		41DD5BFF1A073F670001A9DA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD5BFE1A073F670001A9DA /* Parser.swift */; };
+		41DD5C011A073FAD0001A9DA /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD5C001A073FAD0001A9DA /* ParserTests.swift */; };
+		41DD5C021A073FFC0001A9DA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD5BFE1A073F670001A9DA /* Parser.swift */; };
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
@@ -132,6 +135,8 @@
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
 		41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanerControllerTests.swift; sourceTree = "<group>"; };
 		41D415F019AA6E490038EFE6 /* RawPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPackage.swift; sourceTree = "<group>"; };
+		41DD5BFE1A073F670001A9DA /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		41DD5C001A073FAD0001A9DA /* ParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		D92B013419D99E9400CE11A8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D958A80D19C9A27000964C3D /* DocumentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentHelper.swift; sourceTree = "<group>"; };
 		D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBaseViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +254,7 @@
 				41D415E619A9DF140038EFE6 /* LeanerControllerTests.swift */,
 				41D1E3C919BF8FFB001E86F3 /* WordTests.swift */,
 				D97E88F319F5526300B7FE4E /* jsonHelperTests.swift */,
+				41DD5C001A073FAD0001A9DA /* ParserTests.swift */,
 				41A0635419A90E7100E400D1 /* Supporting Files */,
 			);
 			path = SunflowerTests;
@@ -271,6 +277,7 @@
 				D92B013419D99E9400CE11A8 /* ArrayExtension.swift */,
 				D97E88ED19F5438D00B7FE4E /* JSONHelper.swift */,
 				41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */,
+				41DD5BFE1A073F670001A9DA /* Parser.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -478,6 +485,7 @@
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
 				41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */,
 				41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */,
+				41DD5BFF1A073F670001A9DA /* Parser.swift in Sources */,
 				D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */,
 				4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */,
 				41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */,
@@ -502,7 +510,9 @@
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
+				41DD5C021A073FFC0001A9DA /* Parser.swift in Sources */,
 				D97E88E719F5410400B7FE4E /* Sentence.swift in Sources */,
+				41DD5C011A073FAD0001A9DA /* ParserTests.swift in Sources */,
 				D92B013719D9A0BF00CE11A8 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
