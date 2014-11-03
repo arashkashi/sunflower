@@ -70,14 +70,6 @@ class LeanerControllerTests: XCTestCase {
         XCTAssert(self.learnerController.currentLearningQueue.count == 1, "and added to the current learning queue")
     }
     
-    // First word passes the first test 1 (ROOT)-(o)
-    func testWordFirstTestPass() {
-        var result = self.firstWordDoneWithFirstTestAndResult(TestResult.Pass)
-        
-        XCTAssert(result.word.testsSuccessfulyDoneForCurrentStage.count == 1, "word has passed one test and knows about it")
-        XCTAssert(result.word.testsSuccessfulyDoneForCurrentStage[0] == result.testType, "it should be correct test type")
-    }
-    
     // First word fails the first test 1 (o)-(ROOT)
     func testWordFirstTestFail() {
         var result = self.firstWordDoneWithFirstTestAndResult(TestResult.Fail)

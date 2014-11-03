@@ -21,22 +21,17 @@ class WordTests: XCTestCase {
         super.tearDown()
     }
     
-    func testNextTestAtCram() {
-        var word = Word(name: "kann", meaning: "can", sentences: [])
-        word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test1)]
-        
-        XCTAssert(word.nextTest()! == Test(testType: .Test2), " the next test should be test 1")
-    }
-    
-    func testNextTestAtYoung() {
-        var word = Word(name: "kann", meaning: "can", sentences: [])
-        word.currentLearningStage = LearningStage.Young
-        word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test2)]
-        
-        XCTAssert(word.nextTest()! == Test(testType: .Test3), " the next test should be test 3")
-        
-        word.testsSuccessfulyDoneForCurrentStage = [Test(testType: .Test2), Test(testType: .Test3)]
-        XCTAssert(word.nextTest() == nil, "there is no test left")
+    func testNextTest() {
+        var allStages = LearningStage.allStages()
+        for learningStage in allStages {
+            var word = Word(name: "kann", meaning: "can", sentences: [])
+            var testsDone: [Test] = []
+            while word.nextTest() != nil {
+                testsDone.append(word.nextTest()!)
+                word.onWordFinishedTest(word.nextTest()!, testResult: .Pass)
+            }
+            XCTAssert(testsDone == Test.testSetForLearningStage(word.currentLearningStage), "pass")
+        }
     }
     
     func testSortWords() {
