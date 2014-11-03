@@ -311,11 +311,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
             (testViewController as Test2ViewController).delegate = self
         }
         
-        if test.type == TestType.Test3 {
-            (testViewController as Test1ViewController).wordChoices = wordChoices
-            (testViewController as Test1ViewController).delegate = self
-        }
-        
         return testViewController
     }
     

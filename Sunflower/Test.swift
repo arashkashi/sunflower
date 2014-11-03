@@ -11,9 +11,7 @@ import Foundation
 enum TestType: Int32 {
     case Test1 = 1
     case Test2 = 2
-    case Test3 = 3
-    case Test4 = 4
-    case TestTypeNil = 5
+    case TestTypeNil = 3
     
     func toInt() -> Int32 {
         switch self {
@@ -21,10 +19,6 @@ enum TestType: Int32 {
             return 1
         case .Test2:
             return 2
-        case .Test3:
-            return 3
-        case .Test4:
-            return 4
         default:
             assert(false, "not supperted")
             return 0
@@ -37,10 +31,6 @@ enum TestType: Int32 {
             return "Test1"
         case .Test2:
             return "Test2"
-        case .Test3:
-            return "Test3"
-        case .Test4:
-            return "Test4"
         default:
             assert(false, "not supperted")
             return "Test0"
@@ -53,10 +43,6 @@ enum TestType: Int32 {
             return .Test1
         case 2:
             return .Test2
-        case 3:
-            return .Test3
-        case 4:
-            return .Test4
         default:
             assert(false, "type not supported")
             return .TestTypeNil
@@ -85,15 +71,15 @@ class Test: NSObject, Equatable, NSCoding {
     class func testSetForLearningStage(learningStage: LearningStage) -> [Test] {
         switch learningStage {
         case LearningStage.Cram:
-            return [Test(testType: .Test1), Test(testType: .Test2)]
+            return [Test(testType: .Test1)]
         case LearningStage.Learn:
-            return [Test(testType: .Test1), Test(testType: .Test2)]
+            return [Test(testType: .Test1)]
         case LearningStage.Relearn:
-            return [Test(testType: .Test2), Test(testType: .Test3)]
+            return [Test(testType: .Test2)]
         case LearningStage.Young:
-            return [Test(testType: .Test2), Test(testType: .Test3)]
+            return [Test(testType: .Test2), Test(testType: .Test1)]
         case LearningStage.Mature:
-            return [Test(testType: .Test2), Test(testType: .Test3)]
+            return [Test(testType: .Test2)]
         }
     }
     
