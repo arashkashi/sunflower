@@ -40,6 +40,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.backgroundColor = UIColor.blackColor()
         
         self.labelTopCounter.text = "0"
+        
+        
+        var manager = AFHTTPRequestOperationManager()
+        manager.GET("http://ip.jsontest.com/", parameters: nil, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            var tesmp = responseObject as NSDictionary
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                NSLog("Error: %@", error)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
