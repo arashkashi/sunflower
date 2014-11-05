@@ -11,7 +11,7 @@ import XCTest
 
 class ParserTests: XCTestCase {
     
-    var inputText: String = "Die geringen Höhenunterschiede innerhalb der Stadt bewirken an sich ein eher homogenes Stadtklima, allerdings führt die dichte Bebauung in der City und den Bezirkszentren zu teilweise deutlichen Temperaturunterschieden im Vergleich zu großen innerstädtischen Freiflächen, insbesondere aber zu den ausgedehnten Landwirtschaftsflächen im Umland. Vor allem in Sommernächten werden Temperaturunterschiede von bis zu 10 °C gemessen. Insgesamt jedoch profitiert Berlin auch in diesem Zusammenhang von seinem großen Grünflächenanteil, mehr als 40 Prozent des Stadtgebietes sind Grünbestand; 2012 „säumten 439.971 Bäume die Straßen“. Die große Anzahl kleinerer Freiflächen, besonders aber auch die großen innerstädtischen Grünflächen wie der Große Tiergarten, der Grunewald und der ehemalige Flughafen Tempelhof mit der Hasenheide, die von Klimatologen auch als „Kälteinseln“ bezeichnet werden, bewirken zumindest in ihrer Umgebung ein zumeist als weitgehend angenehm empfundenes Klima."
+    var inputText: String = "Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
 
     override func setUp() {
         super.setUp()
@@ -25,7 +25,7 @@ class ParserTests: XCTestCase {
 
     func testTokenise() {
         var tokens = Parser.tokenize(self.inputText)
-        XCTAssert(tokens.count > 0, "Pass")
+        XCTAssert(tokens.count > 10, "Pass")
     }
     
     func testUniqueTokens() {

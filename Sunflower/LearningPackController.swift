@@ -8,10 +8,30 @@
 
 import Foundation
 
+let kAvaialblePackageIDs = "kAvaialblePackageIDs"
+
 
 class LearningPackPersController {
     
-    var listOfAvialablePackIDs: [String] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map{String($0)}
+    var listOfAvialablePackIDs: [String] {
+        get {
+            var ids = NSUserDefaults.standardUserDefaults().objectForKey(kAvaialblePackageIDs) as? [String]
+            if ids == nil {
+                var initialIDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map{String($0)}
+                NSUserDefaults.standardUserDefaults().setObject(initialIDs, forKey: kAvaialblePackageIDs)
+                NSUserDefaults.standardUserDefaults().synchronize()
+                return initialIDs
+            } else {
+                return ids!
+            }
+        }
+        
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: kAvaialblePackageIDs)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
     var query: NSMetadataQuery?
     
     class var sharedInstance : LearningPackPersController {
@@ -19,6 +39,14 @@ class LearningPackPersController {
         static let instance : LearningPackPersController = LearningPackPersController()
         }
         return Static.instance
+    }
+    
+    func addNewPackage(id: String, words: [Word]) {
+        LearningPackModel.create(id, words: words, completionHandlerForPersistance: nil)
+        
+        var currentIDs = self.listOfAvialablePackIDs
+        currentIDs.append(id)
+        self.listOfAvialablePackIDs = currentIDs
     }
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel?)->())?) {

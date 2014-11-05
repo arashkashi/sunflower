@@ -35,9 +35,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GoogleTranslate.sharedInstance.translate("gud", completionHandler: { (translation) -> () in
-            print(translation)
-        })
         // For removing the white space from the top of the table
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.tableView.backgroundColor = UIColor.blackColor()
@@ -52,9 +49,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "to_main_test" {
             var testViewController = segue.destinationViewController as MainTestViewController
-            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
-            testViewController.leaningPackID = learningPackID
-            invalidateCashedLearningPack(learningPackID)
+//            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
+            
+            var cell = sender as MainTableCellView
+            var selectedID = cell.labelID.text
+            testViewController.leaningPackID = selectedID!
+            invalidateCashedLearningPack(selectedID!)
         }
     }
     

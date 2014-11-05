@@ -184,7 +184,7 @@
         <!--Add View Controller-->
         <scene sceneID="ve1-aB-8hC">
             <objects>
-                <viewController id="0BR-Zb-Xl4" userLabel="Add View Controller" sceneMemberID="viewController">
+                <viewController id="0BR-Zb-Xl4" userLabel="Add View Controller" customClass="MakePackageViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jf3-gm-vnd"/>
                         <viewControllerLayoutGuide type="bottom" id="KP4-Nm-OYO"/>
@@ -193,56 +193,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXX-pv-w9s" userLabel="Button - Make Package">
-                                <rect key="frame" x="202" y="511" width="197" height="45"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="OXX-pv-w9s" secondAttribute="height" multiplier="130:35" constant="30" id="64I-R4-xcC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
-                                <state key="normal" title="Make Package">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onContinueTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="ufM-bX-gLO"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOP-lK-sLU">
-                                <rect key="frame" x="96" y="68" width="408" height="300"/>
+                                <rect key="frame" x="26" y="125" width="548" height="421"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCA-Vx-8Vv">
+                                <rect key="frame" x="26" y="54" width="548" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="OXX-pv-w9s" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="186" id="Cwp-ki-bAN"/>
-                            <constraint firstItem="IOP-lK-sLU" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="24" id="JZy-f0-JCQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IOP-lK-sLU" secondAttribute="trailing" constant="80" id="On4-lV-rZ1"/>
-                            <constraint firstItem="KP4-Nm-OYO" firstAttribute="top" secondItem="IOP-lK-sLU" secondAttribute="bottom" constant="232" id="Owv-Sh-8aR"/>
+                            <constraint firstItem="uCA-Vx-8Vv" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="10" id="2x6-NQ-Pzd"/>
+                            <constraint firstItem="IOP-lK-sLU" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="10" id="Kvd-w7-FLS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uCA-Vx-8Vv" secondAttribute="trailing" constant="10" id="LbP-Sp-QHh"/>
+                            <constraint firstItem="IOP-lK-sLU" firstAttribute="top" secondItem="uCA-Vx-8Vv" secondAttribute="bottom" constant="41" id="MYA-Sh-tZ7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IOP-lK-sLU" secondAttribute="trailing" constant="10" id="On4-lV-rZ1"/>
+                            <constraint firstItem="KP4-Nm-OYO" firstAttribute="top" secondItem="IOP-lK-sLU" secondAttribute="bottom" constant="10" id="Owv-Sh-8aR"/>
                             <constraint firstAttribute="centerX" secondItem="IOP-lK-sLU" secondAttribute="centerX" id="bCT-WI-NLU"/>
                             <constraint firstAttribute="centerX" secondItem="IOP-lK-sLU" secondAttribute="centerX" constant="-9" id="bSp-em-SaX"/>
-                            <constraint firstItem="OXX-pv-w9s" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="467" id="oa8-sH-1cs"/>
-                            <constraint firstItem="OXX-pv-w9s" firstAttribute="width" secondItem="OXX-pv-w9s" secondAttribute="height" multiplier="130:35" constant="30" id="qeY-Cb-89F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OXX-pv-w9s" secondAttribute="trailing" constant="185" id="u0W-Pc-4A7"/>
+                            <constraint firstItem="uCA-Vx-8Vv" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="10" id="lNK-lj-CVG"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="bCT-WI-NLU"/>
                                 <exclude reference="bSp-em-SaX"/>
-                                <exclude reference="qeY-Cb-89F"/>
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="LuK-Gi-mip">
+                        <barButtonItem key="rightBarButtonItem" title="Do" id="msq-Kn-TP9">
+                            <connections>
+                                <action selector="onDoTapped:" destination="0BR-Zb-Xl4" id="sUt-fw-kXN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonDo" destination="msq-Kn-TP9" id="fc1-aY-4Fl"/>
+                        <outlet property="textFieldBundleID" destination="uCA-Vx-8Vv" id="GGW-Nq-Wel"/>
+                        <outlet property="textViewCorpus" destination="IOP-lK-sLU" id="XqN-sM-b0V"/>
                         <outlet property="view" destination="eBK-7n-Ery" id="BR1-33-t2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTY-P3-GNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="-170"/>
+            <point key="canvasLocation" x="900" y="-171"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="0Ak-Cj-VNv">

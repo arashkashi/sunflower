@@ -70,6 +70,7 @@
 		D97E88F419F5526300B7FE4E /* jsonHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88F319F5526300B7FE4E /* jsonHelperTests.swift */; };
 		D97E88F519F5528100B7FE4E /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E88ED19F5438D00B7FE4E /* JSONHelper.swift */; };
 		D9922DAA1A0A92F10069872C /* GoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9922DA91A0A92F10069872C /* GoogleTranslate.swift */; };
+		D9922DAE1A0AA6B30069872C /* MakePackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9922DAD1A0AA6B30069872C /* MakePackageViewController.swift */; };
 		D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246BF19C583FA00E4737C /* LearningPackController.swift */; };
 		D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
 		D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B246C119C5841200E4737C /* LearningPackModel.swift */; };
@@ -149,6 +150,7 @@
 		D97E88ED19F5438D00B7FE4E /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
 		D97E88F319F5526300B7FE4E /* jsonHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jsonHelperTests.swift; sourceTree = "<group>"; };
 		D9922DA91A0A92F10069872C /* GoogleTranslate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleTranslate.swift; sourceTree = "<group>"; };
+		D9922DAD1A0AA6B30069872C /* MakePackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePackageViewController.swift; sourceTree = "<group>"; };
 		D9B246BF19C583FA00E4737C /* LearningPackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackController.swift; sourceTree = "<group>"; };
 		D9B246C119C5841200E4737C /* LearningPackModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackModel.swift; sourceTree = "<group>"; };
 		D9D01ED31A08BAE900035E63 /* Sunflower-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sunflower-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				414F93E819E267A3002BFDE0 /* Test Result */,
 				41BAB2FF1A018FD300800249 /* MainViewController.swift */,
 				41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */,
+				D9922DAD1A0AA6B30069872C /* MakePackageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				D9D43F3219B8647C00E420B0 /* LearningStage.swift in Sources */,
 				41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */,
 				41D415F119AA6E490038EFE6 /* RawPackage.swift in Sources */,
+				D9922DAE1A0AA6B30069872C /* MakePackageViewController.swift in Sources */,
 				41614D1D19AE77340020EF58 /* Test.swift in Sources */,
 				D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
