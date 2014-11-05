@@ -35,19 +35,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GoogleTranslate.sharedInstance.translate("gud", completionHandler: { (translation) -> () in
+            print(translation)
+        })
         // For removing the white space from the top of the table
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.tableView.backgroundColor = UIColor.blackColor()
         
         self.labelTopCounter.text = "0"
-        
-        
-        var manager = AFHTTPRequestOperationManager()
-        manager.GET("http://ip.jsontest.com/", parameters: nil, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-            var tesmp = responseObject as NSDictionary
-            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                NSLog("Error: %@", error)
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
