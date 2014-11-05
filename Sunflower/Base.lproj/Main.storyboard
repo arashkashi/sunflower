@@ -209,6 +209,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fWJ-Fb-zZf">
                                 <rect key="frame" x="26" y="316" width="548" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="0BR-Zb-Xl4" id="612-Bq-yuv"/>
+                                    <outlet property="delegate" destination="0BR-Zb-Xl4" id="YYt-49-QAE"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -245,6 +249,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonDo" destination="msq-Kn-TP9" id="fc1-aY-4Fl"/>
+                        <outlet property="tableView" destination="fWJ-Fb-zZf" id="6k8-bU-6dp"/>
                         <outlet property="textFieldBundleID" destination="uCA-Vx-8Vv" id="GGW-Nq-Wel"/>
                         <outlet property="textViewCorpus" destination="IOP-lK-sLU" id="XqN-sM-b0V"/>
                         <outlet property="view" destination="eBK-7n-Ery" id="BR1-33-t2U"/>

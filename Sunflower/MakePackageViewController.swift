@@ -8,11 +8,12 @@
 
 import Foundation
 
-class MakePackageViewController: UIViewController {
+class MakePackageViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet var buttonDo: UIBarButtonItem!
     @IBOutlet var textFieldBundleID: UITextField!
     @IBOutlet var textViewCorpus: UITextView!
+    @IBOutlet var tableView: UITableView!
     
     @IBAction func onDoTapped(sender: UIBarButtonItem) {
         // Return if info is not there
@@ -48,5 +49,13 @@ class MakePackageViewController: UIViewController {
     func navigationController() -> UINavigationController {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         return appDelegate.rootNavigationController!
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
