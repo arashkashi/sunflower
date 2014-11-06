@@ -9,6 +9,8 @@
 import Foundation
 
 class MakePackageViewController: UIViewController, UITableViewDataSource {
+    
+    var alertViewShown: Bool = false
 
     @IBOutlet var buttonDo: UIBarButtonItem!
     @IBOutlet var textFieldBundleID: UITextField!
@@ -26,7 +28,12 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
         // Translate each token and make words
         var words: [Word] = []
         for token in tokens {
-            GoogleTranslate.sharedInstance.translate(token, completionHandler: { (translation) -> () in
+            GoogleTranslate.sharedInstance.translate(token, completionHandler: { (translation, err) -> () in
+                if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
+                    self.showAlertWhenNetworkNotAvaialble()
+                    return
+                }
+                
                 var word = Word(name: token, meaning: translation!, sentences: [])
                 words.append(word)
                 
@@ -34,6 +41,20 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
                     self.onTranslationFinished(words)
                 }
             })
+        }
+    }
+    
+    func showAlertWhenNetworkNotAvaialble() {
+        if alertViewShown { return }
+        
+        let alertController = UIAlertController(title: "Error", message: "ERR_GOOGLE_API_NETWORD_CONNECTION!", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
+            self.alertViewShown = false
+        }
+        
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) {
+            self.alertViewShown = true
         }
     }
     
