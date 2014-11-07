@@ -47,11 +47,8 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
                         }
                     })
                 }
-                
             }
         })
-        
-
     }
     
     func showErrorAlertWithMesssage(message: String) {
