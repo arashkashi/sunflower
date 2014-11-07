@@ -39,9 +39,11 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
                             return
                         }
                         
-                        var word = Word(name: token, meaning: translation!, sentences: [])
-                        words.append(word)
-                        
+                        if translation != nil && translation != "" {
+                            var word = Word(name: token, meaning: translation!, sentences: [])
+                            words.append(word)
+                        }
+
                         if words.count == tokens.count {
                             self.onTranslationFinished(words)
                         }
