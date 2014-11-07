@@ -21,29 +21,37 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func onDoTapped(sender: UIBarButtonItem) {
         // Return if info is not there
-        if textViewCorpus.text == "" || textFieldBundleID.text == "" { return }
+        if textViewCorpus.text == "" || textFieldBundleID.text == "" || self.targetLanaguage == nil  { return }
         
-        // Tokenize the corpus
-        var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
-        tokens = tokens.filter{$0 != ""}
+        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+            if detectedLanguage != nil && err != nil {
+                // Tokenize the corpus
+                var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
+                tokens = tokens.filter{$0 != ""}
+                
+                // Translate each token and make words
+                var words: [Word] = []
+                
+                for token in tokens {
+                    GoogleTranslate.sharedInstance.translate(token, targetLanguage: self.targetLanaguage!, sourceLanaguage: detectedLanguage!, completionHandler: { (translation, err) -> () in
+                        if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
+                            self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
+                            return
+                        }
+                        
+                        var word = Word(name: token, meaning: translation!, sentences: [])
+                        words.append(word)
+                        
+                        if words.count == tokens.count {
+                            self.onTranslationFinished(words)
+                        }
+                    })
+                }
+                
+            }
+        })
         
-        // Translate each token and make words
-        var words: [Word] = []
-//        for token in tokens {
-//            GoogleTranslate.sharedInstance.translate(token, completionHandler: { (translation, err) -> () in
-//                if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
-//                    self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
-//                    return
-//                }
-//                
-//                var word = Word(name: token, meaning: translation!, sentences: [])
-//                words.append(word)
-//                
-//                if words.count == tokens.count {
-//                    self.onTranslationFinished(words)
-//                }
-//            })
-//        }
+
     }
     
     func showErrorAlertWithMesssage(message: String) {
@@ -71,10 +79,6 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
                 self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
             }
         }
-        
-        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage, err) -> () in
-            print(detectedLanguage)
-        })
     }
     
     func onTranslationFinished(words: [Word]) {

@@ -67,8 +67,15 @@ class GoogleTranslate {
         var detections = data?.objectForKey("detections") as? NSArray
         
         if detections != nil && detections?.count > 0 {
-            var detectionDict = detections!.objectAtIndex(0) as NSDictionary
-//            completionHandler?(detectedLanguage: detectionDict["language"], err: nil)
+            var temp = detections!.objectAtIndex(0) as? NSArray
+            var detectionDict = temp!.objectAtIndex(0) as? NSDictionary
+            var detectedLanguage = detectionDict?.objectForKey("language") as? String
+            
+            if detectedLanguage != nil {
+                completionHandler?(detectedLanguage: detectedLanguage!, err: nil)
+            } else {
+                completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_LANGUAGE_NOT_DETECTED)
+            }
         } else {
             completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_LANGUAGE_NOT_DETECTED)
         }
