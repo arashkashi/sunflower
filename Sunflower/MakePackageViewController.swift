@@ -24,7 +24,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
         if textViewCorpus.text == "" || textFieldBundleID.text == "" || self.targetLanaguage == nil  { return }
         
         GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-            if detectedLanguage != nil && err != nil {
+            if detectedLanguage != nil && err == nil {
                 // Tokenize the corpus
                 var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
                 tokens = tokens.filter{$0 != ""}
