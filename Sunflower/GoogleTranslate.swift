@@ -91,6 +91,7 @@ class GoogleTranslate {
         var languages = data?.objectForKey("languages") as? NSArray
         
         if languages != nil {
+            self.updateCashedListSupportedLanguages(languages as [Dictionary<String, String>])
             completionHandler?(languages: languages! as? [Dictionary<String, String>], err: nil)
         } else {
             completionHandler?(languages: nil, err: ERR_GOOGLE_API_SUPPORTED_LNG_FAILED)
@@ -119,7 +120,7 @@ class GoogleTranslate {
     
     func supportedLanguages(completionHandler:(([Dictionary<String, String>]?, err: String?)->())?) {
         if let cashed = self.cashedListSupportedLanguages() {
-    completionHandler?(cashed, err: nil)
+            completionHandler?(cashed, err: nil)
         } else {
             self.serverListSupportedLanaguages({ (suppoertedLanaguages: [Dictionary<String, String>]?, err: String?) -> () in
                 if let languages = suppoertedLanaguages {

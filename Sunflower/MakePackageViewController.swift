@@ -11,6 +11,7 @@ import Foundation
 class MakePackageViewController: UIViewController, UITableViewDataSource {
     
     var alertViewShown: Bool = false
+    var supportedLanagages: [Dictionary<String,String>] = []
 
     @IBOutlet var buttonDo: UIBarButtonItem!
     @IBOutlet var textFieldBundleID: UITextField!
@@ -30,7 +31,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
         for token in tokens {
             GoogleTranslate.sharedInstance.translate(token, completionHandler: { (translation, err) -> () in
                 if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
-                    self.showAlertWhenNetworkNotAvaialble()
+                    self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
                     return
                 }
                 
@@ -44,10 +45,10 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    func showAlertWhenNetworkNotAvaialble() {
+    func showErrorAlertWithMesssage(message: String) {
         if alertViewShown { return }
         
-        let alertController = UIAlertController(title: "Error", message: "ERR_GOOGLE_API_NETWORD_CONNECTION!", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
             self.alertViewShown = false
         }
@@ -60,6 +61,15 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
+        
+        GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in
+            if err == nil && languages != nil {
+                self.supportedLanagages = languages!
+                self.tableView.reloadData()
+            } else {
+                self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
+            }
+        }
     }
     
     func onTranslationFinished(words: [Word]) {
@@ -73,10 +83,15 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return supportedLanagages.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as UITableViewCell?
+        
+        cell?.detailTextLabel!.text = supportedLanagages[indexPath.row]["language"]
+        cell?.textLabel.text = supportedLanagages[indexPath.row]["name"]
+        
+        return cell!
     }
 }
