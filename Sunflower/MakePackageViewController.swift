@@ -8,10 +8,11 @@
 
 import Foundation
 
-class MakePackageViewController: UIViewController, UITableViewDataSource {
+class MakePackageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var alertViewShown: Bool = false
     var supportedLanagages: [Dictionary<String,String>] = []
+    var targetLanaguage: String?
 
     @IBOutlet var buttonDo: UIBarButtonItem!
     @IBOutlet var textFieldBundleID: UITextField!
@@ -28,21 +29,21 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
         
         // Translate each token and make words
         var words: [Word] = []
-        for token in tokens {
-            GoogleTranslate.sharedInstance.translate(token, completionHandler: { (translation, err) -> () in
-                if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
-                    self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
-                    return
-                }
-                
-                var word = Word(name: token, meaning: translation!, sentences: [])
-                words.append(word)
-                
-                if words.count == tokens.count {
-                    self.onTranslationFinished(words)
-                }
-            })
-        }
+//        for token in tokens {
+//            GoogleTranslate.sharedInstance.translate(token, completionHandler: { (translation, err) -> () in
+//                if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
+//                    self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
+//                    return
+//                }
+//                
+//                var word = Word(name: token, meaning: translation!, sentences: [])
+//                words.append(word)
+//                
+//                if words.count == tokens.count {
+//                    self.onTranslationFinished(words)
+//                }
+//            })
+//        }
     }
     
     func showErrorAlertWithMesssage(message: String) {
@@ -70,6 +71,10 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
                 self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
             }
         }
+        
+        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage, err) -> () in
+            print(detectedLanguage)
+        })
     }
     
     func onTranslationFinished(words: [Word]) {
@@ -93,5 +98,11 @@ class MakePackageViewController: UIViewController, UITableViewDataSource {
         cell?.textLabel.text = supportedLanagages[indexPath.row]["name"]
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)!
+        
+        targetLanaguage = cell.detailTextLabel!.text
     }
 }

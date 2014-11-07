@@ -11,16 +11,16 @@ let kGoogleTranslateSupportedLanaguages = "kGoogleTranslateSupportedLanaguages"
 let ERR_GOOGLE_API_NOT_TRASLATABLE = "ERR_GOOGLE_API_NOT_TRASLATABLE"
 let ERR_GOOGLE_API_SUPPORTED_LNG_FAILED = "ERR_GOOGLE_API_SUPPORTED_LNG_FAILED"
 let ERR_GOOGLE_API_NETWORD_CONNECTION = "ERR_GOOGLE_API_NETWORD_CONNECTION"
+let ERR_GOOGLE_API_LANGUAGE_NOT_DETECTED = "ERR_GOOGLE_API_LANGUAGE_NOT_DETECTED"
 
 import Foundation
 
 class GoogleTranslate {
     
     let googleAPIKey = "AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8"
-    
-    let baseTranslationURI = "https://www.googleapis.com/language/translate/v2?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8&source=de&target=en"
-    
+    let baseTranslationURI = "https://www.googleapis.com/language/translate/v2?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8"
     let baseSupoprtedLanguagesURL = "https://www.googleapis.com/language/translate/v2/languages?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8&target=en"
+    let baseDetectLanguageURI = "https://www.googleapis.com/language/translate/v2/detect?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8"
     
     class var sharedInstance : GoogleTranslate {
         struct Static {
@@ -29,9 +29,17 @@ class GoogleTranslate {
         return Static.instance
     }
     
-    func translate(text: String, completionHandler:((translation: String?, err: String?)->())?) {
-        var manager = AFHTTPRequestOperationManager()
-        manager.GET(self.baseTranslationURI, parameters: ["q" : text], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+    func detectLanaguage(text: String, completionHandler:((detectedLanguage: String?, err: String?)->())?) {
+        AFHTTPRequestOperationManager().GET(self.baseDetectLanguageURI, parameters: ["q" : text], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            self.handleGoogleDetectLanagugeReposne(responseObject as NSDictionary, completionHandler: completionHandler)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                NSLog("Error: %@", error)
+                completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION)
+        }
+    }
+    
+    func translate(text: String, targetLanguage: String, sourceLanaguage: String, completionHandler:((translation: String?, err: String?)->())?) {
+        AFHTTPRequestOperationManager().GET(self.baseTranslationURI, parameters: ["q" : text, "target": targetLanguage, "source": sourceLanaguage], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             self.handleGoogleTranslateResponse(responseObject as NSDictionary, completionHandler: completionHandler)
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 NSLog("Error: %@", error)
@@ -40,6 +48,33 @@ class GoogleTranslate {
     }
     
     // MARK: Handle Google JSON Response
+
+//    {
+//        "data": {
+//            "detections": [
+//                [
+//                    {
+//                        "language": "en",
+//                        "isReliable": false,
+//                        "confidence": 0.18397073
+//                    }
+//                ]
+//            ]
+//        }
+//    }
+    func handleGoogleDetectLanagugeReposne(response: NSDictionary, completionHandler:((detectedLanguage: String?, err: String?)->())?) {
+        var data = response.objectForKey("data") as? NSDictionary
+        var detections = data?.objectForKey("detections") as? NSArray
+        
+        if detections != nil && detections?.count > 0 {
+            var detectionDict = detections!.objectAtIndex(0) as NSDictionary
+//            completionHandler?(detectedLanguage: detectionDict["language"], err: nil)
+        } else {
+            completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_LANGUAGE_NOT_DETECTED)
+        }
+    }
+    
+    
     //    # Sample json output
     //    # {
     //    #   "data": {
