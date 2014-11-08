@@ -39,6 +39,14 @@ class GoogleTranslate {
         return counter * costPerCharacter
     }
     
+    func costToTranslate(tokens: [String]) -> Double {
+        var cost = 0.0
+        for token in tokens {
+            cost = cost + self.costToTranslate(token)
+        }
+        return cost
+    }
+    
     func detectLanaguage(text: String, completionHandler:((detectedLanguage: String?, err: String?)->())?) {
         AFHTTPRequestOperationManager().GET(self.baseDetectLanguageURI, parameters: ["q" : text], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             self.handleGoogleDetectLanagugeReposne(responseObject as NSDictionary, completionHandler: completionHandler)

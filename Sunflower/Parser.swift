@@ -22,7 +22,8 @@ class Parser {
     class func sortedUniqueTokensFor(text: String) -> [String] {
         var tokens = Parser.tokenize(text)
         var tokenDict = Parser.distDictFor(tokens)
-        return Parser.sortedKeysByValueFor(tokenDict)
+        var sortedTokens = Parser.sortedKeysByValueFor(tokenDict)
+        return sortedTokens.filter{$0 != ""}
     }
     
     // MARK: Helper
