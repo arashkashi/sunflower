@@ -26,7 +26,20 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     @IBAction func onDoTapped(sender: UIBarButtonItem) {
         // Return if info is not there
-        if textViewCorpus.text == "" || textFieldBundleID.text == "" || self.targetLanaguage == nil  { return }
+        if textFieldBundleID.text == "" {
+            self.showAllertForMissingInfo("unique bundle id on top white textbox is missing", view: textFieldBundleID)
+            return
+        }
+        
+        if textViewCorpus.text == "" {
+            self.showAllertForMissingInfo("some text to learn is missing in the middle box", view: textFieldBundleID)
+            return
+        }
+        
+        if targetLanaguage == nil {
+            self.showAllertForMissingInfo("select target language from the lower table", view: textFieldBundleID)
+            return
+        }
         
         GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
             if detectedLanguage != nil && err == nil {
@@ -72,6 +85,20 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true) {
             self.alertViewShown = true
+        }
+    }
+    
+    func showAllertForMissingInfo(message: String, view: UIView) {
+        var alertController =  UIAlertController(title: "Missing Info", message: message, preferredStyle: .ActionSheet )
+        
+        var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true) { () -> Void in
+            //
         }
     }
     
