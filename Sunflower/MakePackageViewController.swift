@@ -45,7 +45,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
             if detectedLanguage != nil && err == nil {
                 // Tokenize the corpus
                 var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
-                tokens = tokens.filter{$0 != ""}
+                
                 
                 // Translate each token and make words
                 var words: [Word] = []
