@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MakePackageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MakePackageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UITextFieldDelegate {
     
     var alertViewShown: Bool = false
     var supportedLanagages: [Dictionary<String,String>] = []
@@ -18,7 +18,12 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet var textFieldBundleID: UITextField!
     @IBOutlet var textViewCorpus: UITextView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var buttonDoneEditing: UIButton!
     
+    @IBAction func onDoneEditingTapped(sender: UIButton) {
+        textViewCorpus.resignFirstResponder()
+        sender.hidden = true
+    }
     @IBAction func onDoTapped(sender: UIBarButtonItem) {
         // Return if info is not there
         if textViewCorpus.text == "" || textFieldBundleID.text == "" || self.targetLanaguage == nil  { return }
@@ -111,4 +116,14 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
         
         targetLanaguage = cell.detailTextLabel!.text
     }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        buttonDoneEditing.hidden = false
+    }
+
 }
