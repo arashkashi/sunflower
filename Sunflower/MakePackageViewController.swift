@@ -31,6 +31,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 // Translate each token and make words
                 var words: [Word] = []
+                var countBadTranslations: Int = 0
                 
                 for token in tokens {
                     GoogleTranslate.sharedInstance.translate(token, targetLanguage: self.targetLanaguage!, sourceLanaguage: detectedLanguage!, completionHandler: { (translation, err) -> () in
@@ -42,9 +43,11 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
                         if translation != nil && translation != "" {
                             var word = Word(name: token, meaning: translation!, sentences: [])
                             words.append(word)
+                        } else {
+                            countBadTranslations++
                         }
 
-                        if words.count == tokens.count {
+                        if words.count == tokens.count - countBadTranslations {
                             self.onTranslationFinished(words)
                         }
                     })
