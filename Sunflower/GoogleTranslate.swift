@@ -22,11 +22,21 @@ class GoogleTranslate {
     let baseSupoprtedLanguagesURL = "https://www.googleapis.com/language/translate/v2/languages?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8&target=en"
     let baseDetectLanguageURI = "https://www.googleapis.com/language/translate/v2/detect?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8"
     
+    let costPerCharacter = 0.0002
+    
     class var sharedInstance : GoogleTranslate {
         struct Static {
             static let instance : GoogleTranslate = GoogleTranslate()
         }
         return Static.instance
+    }
+    
+    func costToTranslate(text: String) -> Double {
+        var counter = 0.0
+        for character in text {
+            counter++
+        }
+        return counter * costPerCharacter
     }
     
     func detectLanaguage(text: String, completionHandler:((detectedLanguage: String?, err: String?)->())?) {
