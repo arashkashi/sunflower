@@ -15,7 +15,17 @@ import Foundation
 
 class CreditManager {
     
-    var balance: Lafru
+    var balance: Lafru {
+        get {
+            return NSUserDefaults.standardUserDefaults().integerForKey(kCreditManagerBalance)
+        }
+        
+        set {
+            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: kCreditManagerBalance)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
     let initialBalance: Lafru = 5000
     
     let costPerCharacter = 0.0002
@@ -36,7 +46,9 @@ class CreditManager {
     }
     
     init() {
-        self.balance = self.initialBalance
+        if !self.isBalanceValueLocalyCashed() {
+            self.balance = self.initialBalance
+        }
     }
     
     func spend(amount: Lafru) {
@@ -49,5 +61,9 @@ class CreditManager {
     
     func hasCreditFor(amount: Lafru) -> Bool {
         return amount < balance
+    }
+    
+    func isBalanceValueLocalyCashed() -> Bool {
+        return NSUserDefaults.standardUserDefaults().objectForKey(kCreditManagerBalance) != nil
     }
 }
