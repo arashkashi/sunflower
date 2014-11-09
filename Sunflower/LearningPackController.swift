@@ -41,6 +41,24 @@ class LearningPackPersController {
         return Static.instance
     }
     
+    func allWords(allWordsRetried:(([Word])->())?) {
+        var counter = 0
+        var words: [Word] = []
+        for id in self.listOfAvialablePackIDs {
+            self.loadLearningPackWithID(id, completionHandler: { (learningPack: LearningPackModel?) -> () in
+            
+                if learningPack != nil {
+                    words += learningPack!.words
+                }
+                
+                counter++
+                if counter == self.listOfAvialablePackIDs.count {
+                    allWordsRetried?(words)
+                }
+            })
+        }
+    }
+    
     func addNewPackage(id: String, words: [Word], corpus: String?) {
         LearningPackModel.create(id, words: words, corpus: corpus, completionHandlerForPersistance: nil)
         
