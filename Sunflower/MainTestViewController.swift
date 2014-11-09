@@ -76,6 +76,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         navigationController().navigationBarHidden = true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "corpus" {
+            var vc = segue.destinationViewController as CorpusViewController
+            vc.corpus = self.learnerController?.learningPackModel.corpus
+        }
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         backuptimerValueOnExitingView()
         

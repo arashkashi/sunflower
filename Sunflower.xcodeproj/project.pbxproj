@@ -51,6 +51,7 @@
 		41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */; };
 		41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */; };
 		41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5791A0E329100580EFB /* CreditManager.swift */; };
+		41C62E1E1A100F1600F5811A /* CorpusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1D1A100F1600F5811A /* CorpusViewController.swift */; };
 		41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D1E3C919BF8FFB001E86F3 /* WordTests.swift */; };
 		41D415E219A9D84F0038EFE6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
@@ -143,6 +144,7 @@
 		41BAB2FF1A018FD300800249 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = creditManagerTests.swift; sourceTree = "<group>"; };
+		41C62E1D1A100F1600F5811A /* CorpusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorpusViewController.swift; sourceTree = "<group>"; };
 		41D1E3C919BF8FFB001E86F3 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		41D415E119A9D84F0038EFE6 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				41BAB2FF1A018FD300800249 /* MainViewController.swift */,
 				41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */,
 				D9922DAD1A0AA6B30069872C /* MakePackageViewController.swift */,
+				41C62E1D1A100F1600F5811A /* CorpusViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				41DD5BFF1A073F670001A9DA /* Parser.swift in Sources */,
 				D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */,
 				4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */,
+				41C62E1E1A100F1600F5811A /* CorpusViewController.swift in Sources */,
 				41614D2119AE77A40020EF58 /* Test1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
