@@ -19,6 +19,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet var textViewCorpus: UITextView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var buttonDoneEditing: UIButton!
+    @IBOutlet var buttonCredit: UIButton!
     
     @IBAction func onDoneEditingTapped(sender: UIButton) {
         textViewCorpus.resignFirstResponder()
@@ -103,6 +104,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewDidLoad() {
+        self.buttonCredit.setTitle(String(CreditManager.sharedInstance.balance), forState: UIControlState.Normal)
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
         
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in

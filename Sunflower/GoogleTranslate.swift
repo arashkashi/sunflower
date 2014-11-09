@@ -22,7 +22,7 @@ class GoogleTranslate {
     let baseSupoprtedLanguagesURL = "https://www.googleapis.com/language/translate/v2/languages?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8&target=en"
     let baseDetectLanguageURI = "https://www.googleapis.com/language/translate/v2/detect?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8"
     
-    let costPerCharacter = 0.0002
+    let costPerCharacter = 0.0002 // in dollars
     
     class var sharedInstance : GoogleTranslate {
         struct Static {
