@@ -44,9 +44,7 @@ class LearningPackPersController {
     func addNewPackage(id: String, words: [Word]) {
         LearningPackModel.create(id, words: words, completionHandlerForPersistance: nil)
         
-        var currentIDs = self.listOfAvialablePackIDs
-        currentIDs.append(id)
-        self.listOfAvialablePackIDs = currentIDs
+        self.listOfAvialablePackIDs = self.listOfAvialablePackIDs.append(id)
     }
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel?)->())?) {
