@@ -8,12 +8,17 @@
 
 let kCreditManagerBalance = "kCreditManagerBalance"
 
+typealias Lafru = Int
+typealias Dollar = Double
+
 import Foundation
 
 class CreditManager {
     
-    var balance: Int
-    let initialBalance = 5000
+    var balance: Lafru
+    let initialBalance: Lafru = 5000
+    
+    let costPerCharacter = 0.0002
     
     class var sharedInstance : CreditManager {
         struct Static {
@@ -22,19 +27,27 @@ class CreditManager {
         return Static.instance
     }
     
+    func lafruToDollar(amount: Lafru) -> Dollar {
+        return  Double(amount) * self.costPerCharacter
+    }
+    
+    func dollarToLafru(dollar: Dollar) -> Lafru {
+        return (Lafru)(Double(dollar) / self.costPerCharacter)
+    }
+    
     init() {
         self.balance = self.initialBalance
     }
     
-    func spend(amount: Int) {
+    func spend(amount: Lafru) {
         balance = balance - amount
     }
     
-    func charge(amount: Int) {
+    func charge(amount: Lafru) {
         balance = balance + amount
     }
     
-    func hasCreditFor(amount: Int) -> Bool {
+    func hasCreditFor(amount: Lafru) -> Bool {
         return amount < balance
     }
 }

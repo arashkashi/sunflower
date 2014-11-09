@@ -8,13 +8,15 @@
 
 import UIKit
 
-let kWordsKey: String = "kWords"
-let kIDKey: String = "kID"
+let kLearingPackModelWords: String = "kkLearingPackModelWords"
+let kLearingPackModelID: String = "kLearingPackModelID"
+let kLearingPackModelCorpus: String = "kLearingPackModelCorpus"
 
 
 class LearningPackModel : UIDocument, NSCoding  {
     var id: String
     var words: [Word]
+    var corpus: String?
     
     var progress: Double {
         get {
@@ -29,9 +31,10 @@ class LearningPackModel : UIDocument, NSCoding  {
         }
     }
     
-    init (id: String, words: [Word]) {
+    init (id: String, words: [Word], corpus: String?) {
         self.id = id
         self.words = words
+        self.corpus = corpus
         super.init(fileURL: DocumentHelper.cashURLForID(id))
     }
     
@@ -48,8 +51,8 @@ class LearningPackModel : UIDocument, NSCoding  {
     }
     
     // #MARK: Document Facade
-    class func create(id: String, words: [Word], completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
-        var learningPackModel = LearningPackModel(id: id, words: words)
+    class func create(id: String, words: [Word], corpus: String?, completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
+        var learningPackModel = LearningPackModel(id: id, words: words, corpus: corpus)
         learningPackModel.saveToURL(learningPackModel.fileURL, forSaveOperation: .ForCreating) { (success: Bool) -> Void in
             if (success) {
                 completionHandlerForPersistance?(true, learningPackModel)
@@ -60,7 +63,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     }
     
     class func open(id: String, completionHandler: ((LearningPackModel) -> ())? ) {
-        var document = LearningPackModel(id: id, words: [])
+        var document = LearningPackModel(id: id, words: [], corpus: nil)
         document.openWithCompletionHandler { (finished: Bool) -> Void in
             if finished {
                 completionHandler?(document)
@@ -69,7 +72,7 @@ class LearningPackModel : UIDocument, NSCoding  {
     }
     
     class func close(id: String,  completionHandler: ((Bool) -> Void)?) {
-        var document = LearningPackModel(id: id, words: [])
+        var document = LearningPackModel(id: id, words: [], corpus: nil)
         document.closeWithCompletionHandler(completionHandler)
     }
     
@@ -90,13 +93,15 @@ class LearningPackModel : UIDocument, NSCoding  {
 
     // #MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.words, forKey: kWordsKey)
-        aCoder.encodeObject(self.id, forKey: kIDKey)
+        aCoder.encodeObject(self.words, forKey: kLearingPackModelWords)
+        aCoder.encodeObject(self.id, forKey: kLearingPackModelID)
+        aCoder.encodeObject(self.corpus, forKey: kLearingPackModelCorpus)
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.words = aDecoder.decodeObjectForKey(kWordsKey) as Array
-        self.id = aDecoder.decodeObjectForKey(kIDKey) as String
+        self.words = aDecoder.decodeObjectForKey(kLearingPackModelWords) as Array
+        self.id = aDecoder.decodeObjectForKey(kLearingPackModelID) as String
+        self.corpus = aDecoder.decodeObjectForKey(kLearingPackModelCorpus) as? String
         super.init(fileURL: DocumentHelper.cashURLForID(self.id))
     }
 }

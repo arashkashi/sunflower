@@ -28,49 +28,38 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func onDoTapped(sender: UIBarButtonItem) {
         // Return if info is not there
         if textFieldBundleID.text == "" {
-            self.showAllertForMissingInfo("unique bundle id on top white textbox is missing", view: textFieldBundleID)
+            self.showAllertForMissingInfo("unique bundle id on top white textbox is missing")
             return
         }
         
         if textViewCorpus.text == "" {
-            self.showAllertForMissingInfo("some text to learn is missing in the middle box", view: textFieldBundleID)
+            self.showAllertForMissingInfo("some text to learn is missing in the middle box")
             return
         }
         
         if targetLanaguage == nil {
-            self.showAllertForMissingInfo("select target language from the lower table", view: textFieldBundleID)
+            self.showAllertForMissingInfo("select target language from the lower table")
             return
         }
         
         GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+
             if detectedLanguage != nil && err == nil {
-                // Tokenize the corpus
+                
                 var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
                 
+                ParserHelper.translatedWordsFromStringTokens(tokens, sourceLanaguage: detectedLanguage!, targetLanguage: self.targetLanaguage!, completionHandler: { (words, err, cost) -> () in
+                    
+                    if err == nil && words?.count > 0 {
+                        CreditManager.sharedInstance.spend(cost)
+                        self.onTranslationFinished(words!, corpus: self.textViewCorpus.text)
+                    } else {
+                        self.showErrorAlertWithMesssage("Translating to tokens failed")
+                    }
+                })
                 
-                // Translate each token and make words
-                var words: [Word] = []
-                var countBadTranslations: Int = 0
-                
-                for token in tokens {
-                    GoogleTranslate.sharedInstance.translate(token, targetLanguage: self.targetLanaguage!, sourceLanaguage: detectedLanguage!, completionHandler: { (translation, err) -> () in
-                        if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
-                            self.showErrorAlertWithMesssage("ERR_GOOGLE_API_NETWORD_CONNECTION!")
-                            return
-                        }
-                        
-                        if translation != nil && translation != "" {
-                            var word = Word(name: token, meaning: translation!, sentences: [])
-                            words.append(word)
-                        } else {
-                            countBadTranslations++
-                        }
-
-                        if words.count == tokens.count - countBadTranslations {
-                            self.onTranslationFinished(words)
-                        }
-                    })
-                }
+            } else {
+                self.showErrorAlertWithMesssage("Could not detect the source language")
             }
         })
     }
@@ -89,7 +78,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func showAllertForMissingInfo(message: String, view: UIView) {
+    func showAllertForMissingInfo(message: String) {
         var alertController =  UIAlertController(title: "Missing Info", message: message, preferredStyle: .ActionSheet )
         
         var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
@@ -117,8 +106,8 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func onTranslationFinished(words: [Word]) {
-        LearningPackPersController.sharedInstance.addNewPackage(textFieldBundleID.text, words: words)
+    func onTranslationFinished(words: [Word], corpus: String?) {
+        LearningPackPersController.sharedInstance.addNewPackage(textFieldBundleID.text, words: words, corpus: corpus)
         self.navigationController?.popViewControllerAnimated(true)
     }
     

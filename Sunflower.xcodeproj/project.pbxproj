@@ -25,6 +25,7 @@
 		4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170CE3819FED03F00BD99A4 /* WordPresentationViewController.swift */; };
 		4170CE3B19FED03F00BD99A4 /* WordPresentationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4170CE3919FED03F00BD99A4 /* WordPresentationViewController.xib */; };
 		418EA57A1A0E329100580EFB /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5791A0E329100580EFB /* CreditManager.swift */; };
+		418EA5AA1A0F6F4400580EFB /* ParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5A91A0F6F4400580EFB /* ParserHelper.swift */; };
 		419E510619F998CD0067D31D /* pack_id_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E619F998CD0067D31D /* pack_id_1.json */; };
 		419E510719F998CD0067D31D /* pack_id_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E719F998CD0067D31D /* pack_id_2.json */; };
 		419E510819F998CD0067D31D /* pack_id_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 419E50E819F998CD0067D31D /* pack_id_3.json */; };
@@ -48,6 +49,8 @@
 		41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */; };
 		41BAB3001A018FD300800249 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB2FF1A018FD300800249 /* MainViewController.swift */; };
 		41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */; };
+		41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */; };
+		41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5791A0E329100580EFB /* CreditManager.swift */; };
 		41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D1E3C919BF8FFB001E86F3 /* WordTests.swift */; };
 		41D415E219A9D84F0038EFE6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
@@ -110,6 +113,7 @@
 		4170CE3819FED03F00BD99A4 /* WordPresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPresentationViewController.swift; sourceTree = "<group>"; };
 		4170CE3919FED03F00BD99A4 /* WordPresentationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordPresentationViewController.xib; sourceTree = "<group>"; };
 		418EA5791A0E329100580EFB /* CreditManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditManager.swift; sourceTree = "<group>"; };
+		418EA5A91A0F6F4400580EFB /* ParserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserHelper.swift; sourceTree = "<group>"; };
 		41901520BE1A97A4812B3718 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		419E50E619F998CD0067D31D /* pack_id_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_1.json; sourceTree = "<group>"; };
 		419E50E719F998CD0067D31D /* pack_id_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_2.json; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 		41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		41BAB2FF1A018FD300800249 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = creditManagerTests.swift; sourceTree = "<group>"; };
 		41D1E3C919BF8FFB001E86F3 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		41D415E119A9D84F0038EFE6 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		41D415E419A9D8CE0038EFE6 /* LearnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnerController.swift; sourceTree = "<group>"; };
@@ -272,6 +277,7 @@
 				D97E88F319F5526300B7FE4E /* jsonHelperTests.swift */,
 				41DD5C001A073FAD0001A9DA /* ParserTests.swift */,
 				41A0635419A90E7100E400D1 /* Supporting Files */,
+				41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */,
 			);
 			path = SunflowerTests;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 				41DD5BFE1A073F670001A9DA /* Parser.swift */,
 				D9922DA91A0A92F10069872C /* GoogleTranslate.swift */,
 				418EA5791A0E329100580EFB /* CreditManager.swift */,
+				418EA5A91A0F6F4400580EFB /* ParserHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -553,6 +560,7 @@
 				41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */,
 				D92B013519D99E9400CE11A8 /* ArrayExtension.swift in Sources */,
 				D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */,
+				418EA5AA1A0F6F4400580EFB /* ParserHelper.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				418EA57A1A0E329100580EFB /* CreditManager.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
@@ -581,6 +589,8 @@
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
 				416B90061A01A980008CDE4A /* DateExtention.swift in Sources */,
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
+				41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */,
+				41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */,
 				D9B246C419C5E8B500E4737C /* LearningPackController.swift in Sources */,
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
 				41DD5C021A073FFC0001A9DA /* Parser.swift in Sources */,

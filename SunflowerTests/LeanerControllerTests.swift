@@ -12,7 +12,7 @@ import Foundation
 
 class LeanerControllerTests: XCTestCase {
     
-    var learnerController: LearnerController = LearnerController(learningPack: LearningPackModel(id: "test", words: RawPackage.packWithID("test")!))
+    var learnerController: LearnerController = LearnerController(learningPack: LearningPackModel(id: "test", words: RawPackage.packWithID("test")!, corpus: nil))
     
     var hasCleanedUpCash: Bool = false
 

@@ -41,10 +41,12 @@ class LearningPackPersController {
         return Static.instance
     }
     
-    func addNewPackage(id: String, words: [Word]) {
-        LearningPackModel.create(id, words: words, completionHandlerForPersistance: nil)
+    func addNewPackage(id: String, words: [Word], corpus: String?) {
+        LearningPackModel.create(id, words: words, corpus: corpus, completionHandlerForPersistance: nil)
         
-        self.listOfAvialablePackIDs = self.listOfAvialablePackIDs.append(id)
+        var currentIDs = self.listOfAvialablePackIDs
+        currentIDs.append(id)
+        self.listOfAvialablePackIDs = currentIDs
     }
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel?)->())?) {
@@ -52,7 +54,7 @@ class LearningPackPersController {
             self.loadLocalCachWithID(id, completionHandler: completionHandler)
         } else {
             var words = RawPackage.packWithID(id)!
-            LearningPackModel.create(id, words: words, completionHandlerForPersistance: { (success: Bool, model: LearningPackModel?) -> () in
+            LearningPackModel.create(id, words: words, corpus: nil, completionHandlerForPersistance: { (success: Bool, model: LearningPackModel?) -> () in
                 if (success) {
                     completionHandler?(model)
                 } else {
