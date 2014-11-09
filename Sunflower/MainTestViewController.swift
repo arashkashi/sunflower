@@ -48,6 +48,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     @IBOutlet var buttonContinue: UIButton!
     @IBOutlet var labelCounter: UILabel!
     @IBOutlet var buttonSkip: UIButton!
+    @IBOutlet var buttonCorpus: UIButton!
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
@@ -66,7 +67,12 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
         
-        self.initLeanerController(self.leaningPackID)
+        self.initLeanerController(self.leaningPackID, completionHandler: { () -> () in
+            if self.learnerController?.learningPackModel.corpus == nil {
+                self.buttonCorpus.hidden = true
+            }
+        })
+        
         navigationController().navigationBarHidden = true
     }
     
@@ -108,13 +114,14 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     // #MARK: Initiation
-    func initLeanerController(id: String) {
+    func initLeanerController(id: String, completionHandler:(()->())?) {
         self.showLoadingOverlay()
         LearningPackPersController.sharedInstance.loadLearningPackWithID(id, completionHandler: { (lpm: LearningPackModel?) -> () in
             if (lpm != nil) {
                 self.learnerController = LearnerController(learningPack: lpm!)
                 self.hideLoadingOverlay()
                 self.learnNextWord()
+                completionHandler?()
             } else {
                 // TODO: Handle the error
             }
@@ -205,6 +212,9 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         }
     }
     
+    @IBAction func onCorpusTapped(sender: AnyObject) {
+        
+    }
     // #MARK: View manipulation
     func showNoMoreWordToLearn() {
         

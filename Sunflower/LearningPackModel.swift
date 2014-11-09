@@ -83,6 +83,7 @@ class LearningPackModel : UIDocument, NSCoding  {
         
         self.id = loadedModel.id
         self.words = loadedModel.words
+        self.corpus = loadedModel.corpus
         
         return true
     }
