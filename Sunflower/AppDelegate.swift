@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var learnerController: LearnerController?
     var rootNavigationController: UINavigationController?
+    var cloudKitManager = CloudKitManager.sharedInstance
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
