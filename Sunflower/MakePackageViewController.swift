@@ -93,7 +93,7 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewDidLoad() {
-        self.buttonCredit.setTitle(String(CreditManager.sharedInstance.balance), forState: UIControlState.Normal)
+        self.buttonCredit.setTitle(String(CreditManager.sharedInstance.localBalance), forState: UIControlState.Normal)
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
         
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in

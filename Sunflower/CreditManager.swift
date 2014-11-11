@@ -15,7 +15,7 @@ import Foundation
 
 class CreditManager {
     
-    var balance: Lafru {
+    var localBalance: Lafru {
         get {
             return NSUserDefaults.standardUserDefaults().integerForKey(kCreditManagerBalance)
         }
@@ -27,16 +27,30 @@ class CreditManager {
     }
     
     let initialBalance: Lafru = 5000
-    
     let costPerCharacter = 0.0002
     
-    class var sharedInstance : CreditManager {
-        struct Static {
-            static let instance : CreditManager = CreditManager()
-        }
-        return Static.instance
+    func spend(amount: Lafru) {
+        localBalance = localBalance - amount
     }
     
+    func charge(amount: Lafru) {
+        localBalance = localBalance + amount
+    }
+    
+    func hasCreditFor(amount: Lafru) -> Bool {
+        return amount < localBalance
+    }
+    
+    // MARK: Server Calls
+    func askServerIfInitialCreditGranted( handler: (Bool)->() ) {
+        
+    }
+    
+    func grantInitialCreditToServer(initialCredit: Int, handler: ()->() ) {
+        
+    }
+    
+    //  MARK: Helper
     func lafruToDollar(amount: Lafru) -> Dollar {
         return  Double(amount) * self.costPerCharacter
     }
@@ -45,25 +59,15 @@ class CreditManager {
         return (Lafru)(Double(dollar) / self.costPerCharacter)
     }
     
-    init() {
-        if !self.isBalanceValueLocalyCashed() {
-            self.balance = self.initialBalance
+    // MARK: Initiation
+    class var sharedInstance : CreditManager {
+        struct Static {
+            static let instance : CreditManager = CreditManager()
         }
+        return Static.instance
     }
     
-    func spend(amount: Lafru) {
-        balance = balance - amount
-    }
-    
-    func charge(amount: Lafru) {
-        balance = balance + amount
-    }
-    
-    func hasCreditFor(amount: Lafru) -> Bool {
-        return amount < balance
-    }
-    
-    func isBalanceValueLocalyCashed() -> Bool {
-        return NSUserDefaults.standardUserDefaults().objectForKey(kCreditManagerBalance) != nil
+    init() {
+        localBalance = self.initialBalance
     }
 }
