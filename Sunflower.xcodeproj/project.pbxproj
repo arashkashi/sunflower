@@ -47,6 +47,8 @@
 		41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A0634A19A90E7100E400D1 /* Images.xcassets */; };
 		41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0635619A90E7100E400D1 /* SunflowerTests.swift */; };
 		41A98A951A133B63000BE2D3 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A98A941A133B63000BE2D3 /* ComponentManager.swift */; };
+		41A98A971A133EBE000BE2D3 /* CloudKitManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A98A961A133EBE000BE2D3 /* CloudKitManagerTests.swift */; };
+		41A98A981A133EFC000BE2D3 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */; };
 		41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */; };
 		41BAB3001A018FD300800249 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB2FF1A018FD300800249 /* MainViewController.swift */; };
 		41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */; };
@@ -144,6 +146,7 @@
 		41A0635519A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0635619A90E7100E400D1 /* SunflowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunflowerTests.swift; sourceTree = "<group>"; };
 		41A98A941A133B63000BE2D3 /* ComponentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
+		41A98A961A133EBE000BE2D3 /* CloudKitManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManagerTests.swift; sourceTree = "<group>"; };
 		41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		41BAB2FF1A018FD300800249 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 				41DD5C001A073FAD0001A9DA /* ParserTests.swift */,
 				41A0635419A90E7100E400D1 /* Supporting Files */,
 				41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */,
+				41A98A961A133EBE000BE2D3 /* CloudKitManagerTests.swift */,
 			);
 			path = SunflowerTests;
 			sourceTree = "<group>";
@@ -619,7 +623,9 @@
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
+				41A98A971A133EBE000BE2D3 /* CloudKitManagerTests.swift in Sources */,
 				416B90061A01A980008CDE4A /* DateExtention.swift in Sources */,
+				41A98A981A133EFC000BE2D3 /* CloudKitManager.swift in Sources */,
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */,
 				41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */,

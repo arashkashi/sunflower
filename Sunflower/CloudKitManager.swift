@@ -18,7 +18,7 @@ class CloudKitManager {
             if recordDict != nil {
                 return self.userRecordIDFromDict(recordDict!)
             } else {
-                self.updateUserRecordID()
+                self.fetchUserRecordID(nil)
                 return nil
             }
         }
@@ -44,8 +44,9 @@ class CloudKitManager {
         CKContainer.defaultContainer().publicCloudDatabase.saveRecord(userRecord, completionHandler: handler)
     }
     
-    func updateUserRecordID () {
+    func fetchUserRecordID(handler:((recordID: CKRecordID!, err: NSError!) -> Void)?) {
         CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler({ (recordID: CKRecordID!, err: NSError!) -> Void in
+            handler?(recordID: recordID, err: err)
             if recordID != nil && err == nil {
                 self.userRecordID = recordID
             } else {
@@ -84,15 +85,5 @@ class CloudKitManager {
         result["zoneName"] = record.zoneID.zoneName
         result["ownerName"] = record.zoneID.ownerName
         return result
-    }
-}
-
-let kUserRecord = "kUserRecord"
-
-class UserRecord {
-    var balance: Int
-    
-    init (balance: Int) {
-        self.balance = balance
     }
 }
