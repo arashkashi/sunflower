@@ -22,9 +22,16 @@ class CloudKitManagerTests: XCTestCase {
 
     func writeUserReecordExample() {
         // This is an example of a functional test case.
-        var manager = CloudKitManager.sharedInstance
+        let expectation = expectationWithDescription("Wait for CloukitResponse")
         
-//        XCTAssert(true, "Pass")
+        var manager = CloudKitManager.sharedInstance
+        manager.fetchUserRecordID { (recordID, err) -> Void in
+            //
+        }
+        
+        waitForExpectationsWithTimeout(1, handler: { error in
+            //
+        })
     }
 
     func testPerformanceExample() {
