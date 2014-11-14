@@ -16,31 +16,25 @@ class CloudKitManager {
     func fetchUserRecord(handler: (record: CKRecord?, err: NSError!)->() ) {
         self.fetchUserRecordID { (recordID, err) -> Void in
             
-            if recordID == nil { handler(record: nil, err: nil) }
+            if recordID == nil { handler(record: nil, err: nil); return }
             
             CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(recordID, completionHandler: { (record: CKRecord!, error: NSError!) -> Void in
-                    handler(record: record, err: nil)
+                    handler(record: record, err: nil); return
             })
         }
     }
     
-    func fetchUserRecordID(handler:((recordID: CKRecordID!, err: NSError!) -> Void)?) {
-        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler({ (recordID: CKRecordID!, err: NSError!) -> Void in
-            handler?(recordID: recordID, err: err)
-            if recordID != nil && err == nil {
-            } else {
-                // User not authenticated to iCloud
-                if (err.code == 9) {
-                    print(err.localizedDescription)
-                }
-            }
+    func fetchUserRecordID(handler:(recdID: CKRecordID!, err: NSError!) -> Void) {
+        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler({ (recordID: CKRecordID!, error: NSError!) -> Void in
+            handler(recdID: recordID, err: error)
+            // Error code 9: user not authenticated to iCloud
         })
     }
     
     func saveRecord(record: CKRecord, handler: ((success: Bool)->())? ) {
         CKContainer.defaultContainer().publicCloudDatabase.saveRecord(record) { (savedRecord: CKRecord!, error: NSError!) -> Void in
             if error == nil {
-                handler?(success: true)
+                handler?(success: true); return
             }
         }
     }
