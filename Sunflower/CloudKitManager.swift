@@ -31,12 +31,8 @@ class CloudKitManager {
         })
     }
     
-    func saveRecord(record: CKRecord, handler: ((success: Bool)->())? ) {
-        CKContainer.defaultContainer().publicCloudDatabase.saveRecord(record) { (savedRecord: CKRecord!, error: NSError!) -> Void in
-            if error == nil {
-                handler?(success: true); return
-            }
-        }
+    func saveRecord(updatedRecord: CKRecord, handler: (CKRecord!, NSError!) -> Void ) {
+        CKContainer.defaultContainer().publicCloudDatabase.saveRecord(updatedRecord, completionHandler: handler)
     }
     
     // MARK: Initiation

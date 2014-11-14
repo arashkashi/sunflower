@@ -8,10 +8,14 @@
 
 let kCreditManagerBalance = "kCreditManagerBalance"
 
+let KCreditManagerErrCodeCreditAlreadyGranted = 96
+
+
 typealias Lafru = Int
 typealias Dollar = Double
 
 import Foundation
+import CloudKit
 
 class CreditManager {
     
@@ -42,13 +46,37 @@ class CreditManager {
     }
     
     // MARK: Server Calls
-    func askServerIfInitialCreditGranted( handler: (Bool)->() ) {
-        
+    func askServerIfInitialCreditGranted( handler: (Bool, CKRecord?)->() ) {
+        CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
+            if record == nil || err != nil { handler(false, nil) }
+            if record!.allKeys().includes(kCreditManagerBalance)
+            { handler(true, record!) } else {
+                handler(false, record!)
+            }
+        }
     }
-    
-    func grantInitialCreditToServer(initialCredit: Int, handler: ()->() ) {
-        
+
+    func grantInitialCreditToServer(initialCredit: Int, handler: (Bool, NSError?)->() ) {
+        CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
+            
+            if record == nil || err != nil {
+                handler(false, err); return
+            }
+            
+            if record!.allKeys().includes(kCreditManagerBalance) {
+                handler(false, NSError(domain: "CreditManager", code: KCreditManagerErrCodeCreditAlreadyGranted, userInfo: nil))
+                return
+            } else {
+                record!.setObject(initialCredit, forKey: kCreditManagerBalance)
+                
+                CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
+                    if lastError == nil { handler(true, nil); return }
+                    else { handler(false, lastError); return }
+                })
+            }
+        }
     }
+
     
     //  MARK: Helper
     func lafruToDollar(amount: Lafru) -> Dollar {
@@ -68,6 +96,8 @@ class CreditManager {
     }
     
     init() {
-        localBalance = self.initialBalance
+        self.grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
+            if success && err == nil { self.localBalance = self.initialBalance }
+        })
     }
 }
