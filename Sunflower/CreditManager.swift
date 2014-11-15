@@ -33,12 +33,12 @@ class CreditManager {
     let initialBalance: Lafru = 5000
     let costPerCharacter = 0.0002
     
-    func spend(amount: Lafru) {
-        localBalance = localBalance - amount
+    func commitLocalTransaction(transaction: Transaction) {
+        localBalance = localBalance + transaction.amount
     }
     
-    func charge(amount: Lafru) {
-        localBalance = localBalance + amount
+    func undoLocalTransaction(transaction: Transaction) {
+        localBalance = localBalance - transaction.amount
     }
     
     func hasCreditFor(amount: Lafru) -> Bool {
