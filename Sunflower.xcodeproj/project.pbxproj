@@ -52,6 +52,9 @@
 		41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */; };
 		41BAB3001A018FD300800249 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB2FF1A018FD300800249 /* MainViewController.swift */; };
 		41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */; };
+		41BF6B2E1A17619200BE01B6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2D1A17619200BE01B6 /* Transaction.swift */; };
+		41BF6B301A1761A200BE01B6 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */; };
+		41BF6B321A1761C400BE01B6 /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */; };
 		41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */; };
 		41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5791A0E329100580EFB /* CreditManager.swift */; };
 		41C62E1E1A100F1600F5811A /* CorpusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1D1A100F1600F5811A /* CorpusViewController.swift */; };
@@ -150,6 +153,9 @@
 		41B2D0EB1A00CDF000D46EFE /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		41BAB2FF1A018FD300800249 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		41BF6B2D1A17619200BE01B6 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
+		41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHelper.swift; sourceTree = "<group>"; };
 		41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = creditManagerTests.swift; sourceTree = "<group>"; };
 		41C62E1D1A100F1600F5811A /* CorpusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorpusViewController.swift; sourceTree = "<group>"; };
 		41D1E3C919BF8FFB001E86F3 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
@@ -338,6 +344,16 @@
 			name = "Pack Manager";
 			sourceTree = "<group>";
 		};
+		41BF6B2C1A17617F00BE01B6 /* TransactionManager */ = {
+			isa = PBXGroup;
+			children = (
+				41BF6B2D1A17619200BE01B6 /* Transaction.swift */,
+				41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */,
+				41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */,
+			);
+			name = TransactionManager;
+			sourceTree = "<group>";
+		};
 		41D415E019A9D83C0038EFE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +386,7 @@
 		B2D950A21A128EBB00D8DA90 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				41BF6B2C1A17617F00BE01B6 /* TransactionManager */,
 				41DD5BFE1A073F670001A9DA /* Parser.swift */,
 				418EA5791A0E329100580EFB /* CreditManager.swift */,
 				D9922DA91A0A92F10069872C /* GoogleTranslate.swift */,
@@ -593,12 +610,15 @@
 				41A0634219A90E7100E400D1 /* AppDelegate.swift in Sources */,
 				41614D2619AE77F60020EF58 /* Test2ViewController.swift in Sources */,
 				D92B013519D99E9400CE11A8 /* ArrayExtension.swift in Sources */,
+				41BF6B2E1A17619200BE01B6 /* Transaction.swift in Sources */,
 				D961BE2F19AF3E3A009EDE25 /* TestBaseViewController.swift in Sources */,
 				418EA5AA1A0F6F4400580EFB /* ParserHelper.swift in Sources */,
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				418EA57A1A0E329100580EFB /* CreditManager.swift in Sources */,
+				41BF6B301A1761A200BE01B6 /* TransactionManager.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
 				41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */,
+				41BF6B321A1761C400BE01B6 /* TransactionHelper.swift in Sources */,
 				41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */,
 				41DD5BFF1A073F670001A9DA /* Parser.swift in Sources */,
 				41A98A951A133B63000BE2D3 /* ComponentManager.swift in Sources */,
