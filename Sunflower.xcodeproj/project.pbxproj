@@ -55,6 +55,10 @@
 		41BF6B2E1A17619200BE01B6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2D1A17619200BE01B6 /* Transaction.swift */; };
 		41BF6B301A1761A200BE01B6 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */; };
 		41BF6B321A1761C400BE01B6 /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */; };
+		41BF6B341A188F3700BE01B6 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B331A188F3700BE01B6 /* TransactionTests.swift */; };
+		41BF6B351A18944700BE01B6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2D1A17619200BE01B6 /* Transaction.swift */; };
+		41BF6B361A18946D00BE01B6 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */; };
+		41BF6B371A18947800BE01B6 /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */; };
 		41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */; };
 		41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5791A0E329100580EFB /* CreditManager.swift */; };
 		41C62E1E1A100F1600F5811A /* CorpusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1D1A100F1600F5811A /* CorpusViewController.swift */; };
@@ -156,6 +160,7 @@
 		41BF6B2D1A17619200BE01B6 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHelper.swift; sourceTree = "<group>"; };
+		41BF6B331A188F3700BE01B6 /* TransactionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = creditManagerTests.swift; sourceTree = "<group>"; };
 		41C62E1D1A100F1600F5811A /* CorpusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorpusViewController.swift; sourceTree = "<group>"; };
 		41D1E3C919BF8FFB001E86F3 /* WordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
@@ -301,6 +306,7 @@
 				41A0635419A90E7100E400D1 /* Supporting Files */,
 				41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */,
 				41A98A961A133EBE000BE2D3 /* CloudKitManagerTests.swift */,
+				41BF6B331A188F3700BE01B6 /* TransactionTests.swift */,
 			);
 			path = SunflowerTests;
 			sourceTree = "<group>";
@@ -635,9 +641,11 @@
 			files = (
 				41D415E719A9DF140038EFE6 /* LeanerControllerTests.swift in Sources */,
 				41D1E3CA19BF8FFB001E86F3 /* WordTests.swift in Sources */,
+				41BF6B351A18944700BE01B6 /* Transaction.swift in Sources */,
 				41EA254E19AA877B0045402E /* RawPackage.swift in Sources */,
 				D97E88F419F5526300B7FE4E /* jsonHelperTests.swift in Sources */,
 				41EA254F19AB05EC0045402E /* Word.swift in Sources */,
+				41BF6B371A18947800BE01B6 /* TransactionHelper.swift in Sources */,
 				D97E88F519F5528100B7FE4E /* JSONHelper.swift in Sources */,
 				D9B246C319C5E7FF00E4737C /* LearningPackModel.swift in Sources */,
 				41A0635719A90E7100E400D1 /* SunflowerTests.swift in Sources */,
@@ -646,6 +654,7 @@
 				41A98A971A133EBE000BE2D3 /* CloudKitManagerTests.swift in Sources */,
 				416B90061A01A980008CDE4A /* DateExtention.swift in Sources */,
 				41A98A981A133EFC000BE2D3 /* CloudKitManager.swift in Sources */,
+				41BF6B361A18946D00BE01B6 /* TransactionManager.swift in Sources */,
 				D958A80F19C9A44B00964C3D /* DocumentHelper.swift in Sources */,
 				41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */,
 				41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */,
@@ -653,6 +662,7 @@
 				D9D43F3319B8655C00E420B0 /* LearningStage.swift in Sources */,
 				41DD5C021A073FFC0001A9DA /* Parser.swift in Sources */,
 				D97E88E719F5410400B7FE4E /* Sentence.swift in Sources */,
+				41BF6B341A188F3700BE01B6 /* TransactionTests.swift in Sources */,
 				41DD5C011A073FAD0001A9DA /* ParserTests.swift in Sources */,
 				D92B013719D9A0BF00CE11A8 /* ArrayExtension.swift in Sources */,
 			);

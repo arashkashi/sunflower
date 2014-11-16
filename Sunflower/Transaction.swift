@@ -14,56 +14,54 @@ import Foundation
 class Transaction:  NSCoding {
     
     var amount: Int32
+    var type: TransactionType
     var manager: TransactionManager
     
-    func commit(type: TransactionType, handler: ((Bool)->())) {
+    func commit(handler: ((Bool)->())) {
         
         // Grant locally
-        if type.shouldGrantLocally()
-        {
+        if type.shouldGrantLocallyNow() {
             CreditManager.sharedInstance.commitLocalTransaction(self)
         }
         
         // Grant Backend
-        if type.shouldGrantServer() {
+        if type.shouldGrantServerNowOrLater() {
             self.commitBETransation { (success: Bool) -> () in
                 if success {
                     handler(true); return
                 } else {
-                    if type.shouldGrantServer() && type.shouldGrantLocally() {
+                    if self.type.shouldGrantLocallyNow() {
                         CreditManager.sharedInstance.undoLocalTransaction(self)
-                        handler(false); return
                     }
-                    
-                    if type.shouldGrantServer() {
-                        CreditManager.sharedInstance.undoLocalTransaction(self)
-                        handler(false); return
-                    }
+                    handler(false); return
                 }
             }
         }
     }
     
-    func commitBETransation(transaction: Transaction, beHandler: ((Bool)->()) ) {
+    func commitBETransation( beHandler: ((Bool)->()) ) {
         var success = true
         
         if success { beHandler(true) }
     }
     
     // MARK: Initiation
-    init(amount: Int32) {
+    init(amount: Int32, type: TransactionType) {
         self.amount = amount
         self.manager = TransactionManager.sharedInstance
+        self.type = type
     }
     
     // MARK: NSCoding
     required init(coder aDecoder: NSCoder) {
         self.amount = aDecoder.decodeInt32ForKey(kTransactionAmount)
+        self.type = TransactionType.initWithInt(aDecoder.decodeInt32ForKey(kTransactionType))
         self.manager = TransactionManager.sharedInstance
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeInt32(self.amount, forKey: kTransactionAmount)
+        aCoder.encodeInt32(self.type.toInt32(), forKey: kTransactionType)
     }
     
 

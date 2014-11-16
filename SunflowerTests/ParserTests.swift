@@ -36,7 +36,7 @@ class ParserTests: XCTestCase {
     func testDictionarySort() {
         var dict = ["a":1, "b":600, "c":2, "d": 800]
         var sortedKeys = Parser.sortedKeysByValueFor(dict)
-        XCTAssert(sortedKeys == ["a", "c", "b", "d"], "pass")
+        XCTAssert(sortedKeys == ["d", "b", "c", "a"], "pass")
     }
 
     func testPerformanceExample() {

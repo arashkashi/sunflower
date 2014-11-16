@@ -17,9 +17,6 @@ class TransactionManager {
     }
     
     func emptyQueu() {
-        for transaction in queue {
-            transaction.commit(.at, handler: <#((Bool) -> ())##(Bool) -> ()#>)
-        }
         
     }
     

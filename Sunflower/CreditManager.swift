@@ -11,7 +11,7 @@ let kCreditManagerBalance = "kCreditManagerBalance"
 let KCreditManagerErrCodeCreditAlreadyGranted = 96
 
 
-typealias Lafru = Int
+typealias Lafru = Int32
 typealias Dollar = Double
 
 import Foundation
@@ -21,11 +21,13 @@ class CreditManager {
     
     var localBalance: Lafru {
         get {
-            return NSUserDefaults.standardUserDefaults().integerForKey(kCreditManagerBalance)
+            var intVar = NSUserDefaults.standardUserDefaults().integerForKey(kCreditManagerBalance)
+            return Int32(intVar);
         }
         
         set {
-            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: kCreditManagerBalance)
+            var castedNewValue = Int(newValue)
+            NSUserDefaults.standardUserDefaults().setInteger(castedNewValue, forKey: kCreditManagerBalance)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -56,7 +58,7 @@ class CreditManager {
         }
     }
 
-    func grantInitialCreditToServer(initialCredit: Int, handler: (Bool, NSError?)->() ) {
+    func grantInitialCreditToServer(initialCredit: Lafru, handler: (Bool, NSError?)->() ) {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             
             if record == nil || err != nil {
@@ -67,7 +69,7 @@ class CreditManager {
                 handler(false, NSError(domain: "CreditManager", code: KCreditManagerErrCodeCreditAlreadyGranted, userInfo: nil))
                 return
             } else {
-                record!.setObject(initialCredit, forKey: kCreditManagerBalance)
+                record!.setObject(Int(initialCredit), forKey: kCreditManagerBalance)
                 
                 CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
                     if lastError == nil { handler(true, nil); return }

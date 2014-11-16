@@ -26,42 +26,42 @@ class MakePackageViewController: UIViewController, UITableViewDataSource, UITabl
         sender.hidden = true
     }
     @IBAction func onDoTapped(sender: UIBarButtonItem) {
-        // Return if info is not there
-        if textFieldBundleID.text == "" {
-            self.showAllertForMissingInfo("unique bundle id on top white textbox is missing")
-            return
-        }
-        
-        if textViewCorpus.text == "" {
-            self.showAllertForMissingInfo("some text to learn is missing in the middle box")
-            return
-        }
-        
-        if targetLanaguage == nil {
-            self.showAllertForMissingInfo("select target language from the lower table")
-            return
-        }
-        
-        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-
-            if detectedLanguage != nil && err == nil {
-                
-                var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
-                
-                ParserHelper.translatedWordsFromStringTokens(tokens, sourceLanaguage: detectedLanguage!, targetLanguage: self.targetLanaguage!, completionHandler: { (words, err, cost) -> () in
-                    
-                    if err == nil && words?.count > 0 {
-                        CreditManager.sharedInstance.spend(cost)
-                        self.onTranslationFinished(words!, corpus: self.textViewCorpus.text)
-                    } else {
-                        self.showErrorAlertWithMesssage("Translating to tokens failed")
-                    }
-                })
-                
-            } else {
-                self.showErrorAlertWithMesssage("Could not detect the source language")
-            }
-        })
+//        // Return if info is not there
+//        if textFieldBundleID.text == "" {
+//            self.showAllertForMissingInfo("unique bundle id on top white textbox is missing")
+//            return
+//        }
+//        
+//        if textViewCorpus.text == "" {
+//            self.showAllertForMissingInfo("some text to learn is missing in the middle box")
+//            return
+//        }
+//        
+//        if targetLanaguage == nil {
+//            self.showAllertForMissingInfo("select target language from the lower table")
+//            return
+//        }
+//        
+//        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+//
+//            if detectedLanguage != nil && err == nil {
+//                
+//                var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
+//                
+//                ParserHelper.translatedWordsFromStringTokens(tokens, sourceLanaguage: detectedLanguage!, targetLanguage: self.targetLanaguage!, completionHandler: { (words, err, cost) -> () in
+//                    
+//                    if err == nil && words?.count > 0 {
+//                        CreditManager.sharedInstance.spend(cost)
+//                        self.onTranslationFinished(words!, corpus: self.textViewCorpus.text)
+//                    } else {
+//                        self.showErrorAlertWithMesssage("Translating to tokens failed")
+//                    }
+//                })
+//                
+//            } else {
+//                self.showErrorAlertWithMesssage("Could not detect the source language")
+//            }
+//        })
     }
     
     func showErrorAlertWithMesssage(message: String) {

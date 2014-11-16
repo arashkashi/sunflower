@@ -10,42 +10,41 @@ import Foundation
 
 
 enum TransactionType: Int32 {
-    case grant_only_locally
-    case grant_only_server
-    case grant_both
+    case grant_locallyNow_serverNowOrLater
+    case grant_locallyNow_serverNow
     
-    func toInt () -> Int32 {
+    func toInt32 () -> Int32 {
         switch self {
-        case .grant_only_locally:
+        case .grant_locallyNow_serverNowOrLater:
             return 1
-        case .grant_only_server:
+        case .grant_locallyNow_serverNow:
             return 2
-        case .grant_both:
-            return 3
         }
     }
     
     static func initWithInt(intInput: Int32) -> TransactionType {
         switch intInput {
         case 1:
-            return .grant_only_locally
+            return .grant_locallyNow_serverNowOrLater
         case 2:
-            return .grant_only_server
-        case 3:
-            return .grant_both
+            return .grant_locallyNow_serverNow
         default:
             assert(false, "type is not supported")
-            return .grant_only_locally
+            return .grant_locallyNow_serverNow
         }
     }
     
-    func shouldGrantLocally() -> Bool {
-        if self == .grant_only_locally || self == .grant_both { return true }
+    func shouldGrantLocallyNow() -> Bool {
+        return true
+    }
+    
+    func shouldGrantServerNowOrLater() -> Bool {
+        if self == .grant_locallyNow_serverNowOrLater { return true }
         return false
     }
     
-    func shouldGrantServer() -> Bool {
-        if self == .grant_only_server || self == .grant_both { return true }
+    func couldGrantServerNowOrLater() -> Bool {
+        if self == .grant_locallyNow_serverNowOrLater { return true }
         return false
     }
 }

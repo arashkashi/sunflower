@@ -27,10 +27,11 @@ class CloudKitManagerTests: XCTestCase {
         var manager = CloudKitManager.sharedInstance
         manager.fetchUserRecordID { (recordID, err) -> Void in
             //
+            
+            expectation.fulfill()
         }
         
         waitForExpectationsWithTimeout(1, handler: { error in
-            //
         })
     }
 
