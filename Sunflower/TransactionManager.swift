@@ -14,6 +14,7 @@ class TransactionManager {
     
     func enqueue(transation: Transaction) {
         self.queue.append(transation)
+        DiskCache
     }
     
     func emptyQueu() {
