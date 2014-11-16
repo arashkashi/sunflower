@@ -124,7 +124,58 @@ class TransactionTests: XCTestCase {
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
+    }
+    
+    // Case 5
+    // Requirements: commit to server now or later (Lazy), dont commit locally
+    // Condition: commit to server failed
+    func testCaseFive() {
+        var transactionAmount: Int32 = 1000
+        var expectation = expectationWithDescription("BE commit fails")
         
+        class MockedTransaction: Transaction {
+            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+                beHandler(false)
+            }
+        }
+        
+        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNo_serverLazy)
+        
+        mockedTransaction.commit { (success: Bool) -> () in
+            XCTAssertFalse(success, "Transaction fails")
+            XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local credit is not affected")
+            XCTAssertTrue(self.transactionManager.queue.includes(mockedTransaction), "transaction is not removed from the queue")
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
+        })
+    }
+    
+    // Case 6
+    // Requirements: commit to server now or later (Lazy), dont commit locally
+    // Condition: commit to server successed
+    func testCaseSix() {
+        var transactionAmount: Int32 = 1000
+        var expectation = expectationWithDescription("BE commit successeds")
+        
+        class MockedTransaction: Transaction {
+            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+                beHandler(true)
+            }
+        }
+        
+        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNo_serverLazy)
+        
+        mockedTransaction.commit { (success: Bool) -> () in
+            XCTAssertTrue(success, "Transaction succeeds")
+            XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local credit is not affected")
+            XCTAssertFalse(self.transactionManager.queue.includes(mockedTransaction), "transaction is  removed from the queue")
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
+        })
     }
 
     func testPerformanceExample() {

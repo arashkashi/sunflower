@@ -20,7 +20,6 @@ class Transaction:  NSCoding, Equatable {
     var createDate: NSDate
     
     func commit(handler: ((Bool)->())) {
-        
         // Grant locally
         if type.shouldGrantLocallyNow() {
             CreditManager.sharedInstance.commitLocalTransaction(self)
@@ -39,7 +38,12 @@ class Transaction:  NSCoding, Equatable {
                     
                     if self.type.shouldGrantServerLazy() {
                         TransactionManager.sharedInstance.enqueue(self)
-                        handler(true); return
+                        if self.type == .grant_locallyNo_serverLazy {
+                            handler(false); return
+                        } else {
+                            self.type = .grant_locallyNo_serverLazy
+                            handler(true); return
+                        }
                     }
                     
                     handler(false); return

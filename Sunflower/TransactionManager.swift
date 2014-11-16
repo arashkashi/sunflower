@@ -10,21 +10,15 @@ import Foundation
 
 class TransactionManager {
     
-    var queue: [Transaction] = []
+    var queue: [Transaction]
     
-    func enqueue(transation: Transaction) {
-        self.queue.append(transation)
-        DiskCache
+    func enqueue(transaction: Transaction) {
+        if !queue.includes(transaction) { queue.append(transaction) }
+        saveQueueToDisk()
     }
     
-    func emptyQueu() {
+    func sendItemsInQueue(queue: [Transaction]) {
         
-    }
-    
-    init () {
-        if queue.count > 0 {
-            self.emptyQueu()
-        }
     }
     
     // MARK: Initiation
@@ -33,6 +27,29 @@ class TransactionManager {
             static let instance : TransactionManager = TransactionManager()
         }
         return Static.instance
+    }
+    
+    init () {
+        queue = []
+        
+        if let cachedQueue = loadQueueFromDisk() { queue = cachedQueue } else { queue = [] }
+        
+        if queue.count > 0 { sendItemsInQueue(queue) }
+    }
+    
+    // MARK: Caching
+    class func transactionManagerFileURL() -> NSURL {
+        var filename = "transactionManager.archive"
+        var url: NSURL? = DiskCache.libraryDirectoryURL()?.URLByAppendingPathComponent(filename)
+        return url!
+    }
+    
+    func saveQueueToDisk() {
+        DiskCache.saveObjectToURL(self.queue, url: TransactionManager.transactionManagerFileURL())
+    }
+    
+    func loadQueueFromDisk() -> [Transaction]? {
+        return DiskCache.loadObjectFromURL(TransactionManager.transactionManagerFileURL()) as? [Transaction]
     }
     
 }

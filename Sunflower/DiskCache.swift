@@ -12,15 +12,18 @@ import Foundation
 class DiskCache {
     
     class func saveObjectToURL(obj: AnyObject, url: NSURL) {
-        NSKeyedArchiver.archiveRootObject(obj, toFile: url.absoluteString)
+        NSKeyedArchiver.archiveRootObject(obj, toFile: url.absoluteString!)
     }
     
     class func loadObjectFromURL(url: NSURL) -> AnyObject? {
-        NSKeyedUnarchiver.unarchiveObjectWithFile(url.absoluteString)
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(url.absoluteString!)
     }
     
     class func deleteCacheAtUrl(url: NSURL) {
-        NSFileManager.removeItemAtURL(url)
+        NSFileManager().removeItemAtURL(url, error: nil)
     }
     
+    class func libraryDirectoryURL() -> NSURL? {
+        return NSFileManager().URLForDirectory(.LibraryDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)
+    }
 }

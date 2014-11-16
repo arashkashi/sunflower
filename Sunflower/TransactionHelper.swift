@@ -15,6 +15,7 @@ func == (lhs: Transaction, rhs: Transaction) -> Bool {
 enum TransactionType: Int32 {
     case grant_locallyNow_serverLazy
     case grant_locallyNow_serverNow
+    case grant_locallyNo_serverLazy
     
     func toInt32 () -> Int32 {
         switch self {
@@ -22,6 +23,8 @@ enum TransactionType: Int32 {
             return 1
         case .grant_locallyNow_serverNow:
             return 2
+        case .grant_locallyNo_serverLazy:
+            return 3
         }
     }
     
@@ -31,6 +34,8 @@ enum TransactionType: Int32 {
             return .grant_locallyNow_serverLazy
         case 2:
             return .grant_locallyNow_serverNow
+        case 3:
+            return .grant_locallyNo_serverLazy
         default:
             assert(false, "type is not supported")
             return .grant_locallyNow_serverNow
@@ -38,11 +43,11 @@ enum TransactionType: Int32 {
     }
     
     func shouldGrantLocallyNow() -> Bool {
-        return true
+        return !(self == .grant_locallyNo_serverLazy)
     }
     
     func shouldGrantServerLazy() -> Bool {
-        if self == .grant_locallyNow_serverLazy { return true }
+        if self == .grant_locallyNow_serverLazy || self == .grant_locallyNo_serverLazy { return true }
         return false
     }
     

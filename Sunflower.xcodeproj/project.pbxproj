@@ -60,6 +60,7 @@
 		41BF6B361A18946D00BE01B6 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B2F1A1761A200BE01B6 /* TransactionManager.swift */; };
 		41BF6B371A18947800BE01B6 /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B311A1761C400BE01B6 /* TransactionHelper.swift */; };
 		41BF6B3C1A18B6AC00BE01B6 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B3B1A18B6AC00BE01B6 /* DiskCache.swift */; };
+		41BF6B3D1A18ECC500BE01B6 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BF6B3B1A18B6AC00BE01B6 /* DiskCache.swift */; };
 		41C62E1B1A0FA42900F5811A /* creditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1A1A0FA42900F5811A /* creditManagerTests.swift */; };
 		41C62E1C1A0FA44300F5811A /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418EA5791A0E329100580EFB /* CreditManager.swift */; };
 		41C62E1E1A100F1600F5811A /* CorpusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C62E1D1A100F1600F5811A /* CorpusViewController.swift */; };
@@ -648,6 +649,7 @@
 				41BF6B351A18944700BE01B6 /* Transaction.swift in Sources */,
 				41EA254E19AA877B0045402E /* RawPackage.swift in Sources */,
 				D97E88F419F5526300B7FE4E /* jsonHelperTests.swift in Sources */,
+				41BF6B3D1A18ECC500BE01B6 /* DiskCache.swift in Sources */,
 				41EA254F19AB05EC0045402E /* Word.swift in Sources */,
 				41BF6B371A18947800BE01B6 /* TransactionHelper.swift in Sources */,
 				D97E88F519F5528100B7FE4E /* JSONHelper.swift in Sources */,
