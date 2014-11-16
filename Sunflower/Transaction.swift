@@ -8,14 +8,16 @@
 
 let kTransactionAmount = "kTransactionAmount"
 let kTransactionType = "kTransactionType"
+let kTransactionCreationDate = "kTransactionCreationDate"
 
 import Foundation
 
-class Transaction:  NSCoding {
+class Transaction:  NSCoding, Equatable {
     
     var amount: Int32
     var type: TransactionType
     var manager: TransactionManager
+    var createDate: NSDate
     
     func commit(handler: ((Bool)->())) {
         
@@ -36,7 +38,7 @@ class Transaction:  NSCoding {
                     }
                     
                     if self.type.shouldGrantServerLazy() {
-                        // TODO: queue the transaction here
+                        TransactionManager.sharedInstance.enqueue(self)
                         handler(true); return
                     }
                     
@@ -57,18 +59,21 @@ class Transaction:  NSCoding {
         self.amount = amount
         self.manager = TransactionManager.sharedInstance
         self.type = type
+        self.createDate = NSDate()
     }
     
     // MARK: NSCoding
     required init(coder aDecoder: NSCoder) {
         self.amount = aDecoder.decodeInt32ForKey(kTransactionAmount)
         self.type = TransactionType.initWithInt(aDecoder.decodeInt32ForKey(kTransactionType))
+        self.createDate = aDecoder.decodeObjectForKey(kTransactionCreationDate) as NSDate
         self.manager = TransactionManager.sharedInstance
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeInt32(self.amount, forKey: kTransactionAmount)
         aCoder.encodeInt32(self.type.toInt32(), forKey: kTransactionType)
+        aCoder.encodeObject(self.createDate, forKey: kTransactionCreationDate)
     }
     
 

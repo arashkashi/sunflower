@@ -13,6 +13,7 @@ import Foundation
 class TransactionTests: XCTestCase {
     
     var creditManager: CreditManager = CreditManager.sharedInstance
+    var transactionManager: TransactionManager = TransactionManager.sharedInstance
 
     override func setUp() {
         super.setUp()
@@ -117,6 +118,7 @@ class TransactionTests: XCTestCase {
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "local balance check")
+            XCTAssertTrue(self.transactionManager.queue.includes(mockedTransaction), "should be queued")
             expectation.fulfill()
         }
         

@@ -8,6 +8,9 @@
 
 import Foundation
 
+func == (lhs: Transaction, rhs: Transaction) -> Bool {
+    return lhs.createDate.isEqualToDate(rhs.createDate)
+}
 
 enum TransactionType: Int32 {
     case grant_locallyNow_serverLazy

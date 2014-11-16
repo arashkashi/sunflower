@@ -12,8 +12,8 @@ class TransactionManager {
     
     var queue: [Transaction] = []
     
-    func queueTransaction(transation: Transaction) {
-        
+    func enqueue(transation: Transaction) {
+        self.queue.append(transation)
     }
     
     func emptyQueu() {
