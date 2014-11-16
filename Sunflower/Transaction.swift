@@ -9,6 +9,7 @@
 let kTransactionAmount = "kTransactionAmount"
 let kTransactionType = "kTransactionType"
 let kTransactionCreationDate = "kTransactionCreationDate"
+let kTransactionStatus = "kTransactionStatus"
 
 import Foundation
 
@@ -16,6 +17,7 @@ class Transaction:  NSCoding, Equatable {
     
     var amount: Int32
     var type: TransactionType
+    var status: TransactionStatus
     var manager: TransactionManager
     var createDate: NSDate
     
@@ -23,14 +25,18 @@ class Transaction:  NSCoding, Equatable {
         // Grant locally
         if type.shouldGrantLocallyNow() {
             CreditManager.sharedInstance.commitLocalTransaction(self)
+            self.status.onSuccessfulLocalWrite()
         }
         
         // Grant Backend
         if type.shouldGrantServerLazy() || type.shouldGrantLocallyNow() {
             self.commitBETransation { (success: Bool) -> () in
                 if success {
+                    self.status.onSuccessfulServerWrite()
                     handler(true); return
                 } else {
+                    
+                    // Should've written to server now, FAIL
                     if self.type.shouldGrantServerNow() {
                         CreditManager.sharedInstance.undoLocalTransaction(self)
                         handler(false); return
@@ -38,14 +44,16 @@ class Transaction:  NSCoding, Equatable {
                     
                     if self.type.shouldGrantServerLazy() {
                         TransactionManager.sharedInstance.enqueue(self)
+                        // Should've written only to server, FAIL
                         if self.type == .grant_locallyNo_serverLazy {
                             handler(false); return
-                        } else {
+                        }
+                        else //Save locally and can write Server later, Success
+                        {
                             self.type = .grant_locallyNo_serverLazy
                             handler(true); return
                         }
                     }
-                    
                     handler(false); return
                 }
             }
@@ -63,6 +71,7 @@ class Transaction:  NSCoding, Equatable {
         self.amount = amount
         self.manager = TransactionManager.sharedInstance
         self.type = type
+        self.status = TransactionStatus.initialStatus()
         self.createDate = NSDate()
     }
     
@@ -71,6 +80,7 @@ class Transaction:  NSCoding, Equatable {
         self.amount = aDecoder.decodeInt32ForKey(kTransactionAmount)
         self.type = TransactionType.initWithInt(aDecoder.decodeInt32ForKey(kTransactionType))
         self.createDate = aDecoder.decodeObjectForKey(kTransactionCreationDate) as NSDate
+        self.status = TransactionStatus.initWithInt(aDecoder.decodeInt32ForKey(kTransactionStatus))
         self.manager = TransactionManager.sharedInstance
     }
     
@@ -78,6 +88,7 @@ class Transaction:  NSCoding, Equatable {
         aCoder.encodeInt32(self.amount, forKey: kTransactionAmount)
         aCoder.encodeInt32(self.type.toInt32(), forKey: kTransactionType)
         aCoder.encodeObject(self.createDate, forKey: kTransactionCreationDate)
+        aCoder.encodeInt32(self.status.toInt32(), forKey: kTransactionStatus)
     }
     
 

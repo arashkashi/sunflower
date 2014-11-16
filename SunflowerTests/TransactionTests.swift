@@ -24,6 +24,14 @@ class TransactionTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    func testTransactionCreation() {
+        var transaction = Transaction(amount: 1000, type: TransactionType.grant_locallyNo_serverLazy)
+        XCTAssertEqual(transaction.status, TransactionStatus.pending_server_write, "status is server write")
+        
+        transaction = Transaction(amount: 1000, type: TransactionType.grant_locallyNow_serverLazy)
+        XCTAssertEqual(transaction.status, TransactionStatus.pending_server_local_write, "status is server AND local write")
+    }
 
     // Case 1
     // Requirements: commit to server now, commit locally now
@@ -43,6 +51,7 @@ class TransactionTests: XCTestCase {
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "Credit Manager should be loaded")
+            XCTAssertEqual(mockedTransaction.status, TransactionStatus.commited, "status: commited")
             expectation.fulfill()
         }
         
@@ -68,6 +77,7 @@ class TransactionTests: XCTestCase {
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertFalse(success, "Transaction fails")
             XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local balance should not change")
+            XCTAssertEqual(mockedTransaction.status, TransactionStatus.pending_server_write, "status: pending")
             expectation.fulfill()
         }
         
@@ -93,6 +103,7 @@ class TransactionTests: XCTestCase {
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "Transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "local balance check")
+            XCTAssertEqual(mockedTransaction.status, TransactionStatus.commited, "status: commited")
             expectation.fulfill()
         }
         
@@ -119,6 +130,7 @@ class TransactionTests: XCTestCase {
             XCTAssertTrue(success, "transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "local balance check")
             XCTAssertTrue(self.transactionManager.queue.includes(mockedTransaction), "should be queued")
+            XCTAssertEqual(mockedTransaction.status, TransactionStatus.pending_server_write, "status: pending")
             expectation.fulfill()
         }
         
@@ -145,6 +157,7 @@ class TransactionTests: XCTestCase {
             XCTAssertFalse(success, "Transaction fails")
             XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local credit is not affected")
             XCTAssertTrue(self.transactionManager.queue.includes(mockedTransaction), "transaction is not removed from the queue")
+            XCTAssertEqual(mockedTransaction.status, TransactionStatus.pending_server_write, "status: pending")
             expectation.fulfill()
         }
         
@@ -171,6 +184,7 @@ class TransactionTests: XCTestCase {
             XCTAssertTrue(success, "Transaction succeeds")
             XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local credit is not affected")
             XCTAssertFalse(self.transactionManager.queue.includes(mockedTransaction), "transaction is  removed from the queue")
+            XCTAssertEqual(mockedTransaction.status, TransactionStatus.commited, "status: commited")
             expectation.fulfill()
         }
         

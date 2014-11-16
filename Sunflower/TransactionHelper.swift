@@ -12,6 +12,71 @@ func == (lhs: Transaction, rhs: Transaction) -> Bool {
     return lhs.createDate.isEqualToDate(rhs.createDate)
 }
 
+enum TransactionStatus: Int32 {
+    case pending_local_write
+    case pending_server_write
+    case pending_server_local_write
+    case commited
+    
+    func isPending() -> Bool {
+        return self != .commited
+    }
+    
+    mutating func onSuccessfulLocalWrite() {
+        switch self {
+        case .pending_local_write:
+            self = .commited
+        case .pending_server_local_write:
+            self = .pending_server_write
+        default:
+            return
+        }
+    }
+    
+    mutating func onSuccessfulServerWrite() {
+        switch self {
+        case .pending_server_write:
+            self = .commited
+        case .pending_server_local_write:
+            self = .pending_local_write
+        default:
+            return
+        }
+        
+    }
+    
+    static func initialStatus() ->  TransactionStatus{
+        return .pending_server_local_write
+    }
+    
+    func toInt32 () -> Int32 {
+        switch self {
+        case .pending_local_write:
+            return 1
+        case .pending_server_write:
+            return 2
+        case .pending_server_local_write:
+            return 3
+        default:
+            return 0
+        }
+    }
+    
+    static func initWithInt(intInput: Int32) -> TransactionStatus {
+        switch intInput {
+        case 1:
+            return .pending_local_write
+        case 2:
+            return .pending_server_write
+        case 3:
+            return .pending_server_local_write
+        default:
+            assert(false, "type is not supported")
+            return .pending_server_local_write
+        }
+    }
+}
+
 enum TransactionType: Int32 {
     case grant_locallyNow_serverLazy
     case grant_locallyNow_serverNow
