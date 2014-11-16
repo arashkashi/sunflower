@@ -87,7 +87,7 @@ class TransactionTests: XCTestCase {
             }
         }
         
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverNowOrLater)
+        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverLazy)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "Transaction successes")
@@ -112,7 +112,7 @@ class TransactionTests: XCTestCase {
             }
         }
         
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverNowOrLater)
+        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverLazy)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "transaction successes")

@@ -25,14 +25,21 @@ class Transaction:  NSCoding {
         }
         
         // Grant Backend
-        if type.shouldGrantServerNowOrLater() {
+        if type.shouldGrantServerLazy() || type.shouldGrantLocallyNow() {
             self.commitBETransation { (success: Bool) -> () in
                 if success {
                     handler(true); return
                 } else {
-                    if self.type.shouldGrantLocallyNow() {
+                    if self.type.shouldGrantServerNow() {
                         CreditManager.sharedInstance.undoLocalTransaction(self)
+                        handler(false); return
                     }
+                    
+                    if self.type.shouldGrantServerLazy() {
+                        // TODO: queue the transaction here
+                        handler(true); return
+                    }
+                    
                     handler(false); return
                 }
             }
