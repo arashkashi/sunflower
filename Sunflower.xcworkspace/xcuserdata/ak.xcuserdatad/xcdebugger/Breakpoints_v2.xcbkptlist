@@ -2,4 +2,98 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SunflowerTests/TransactionTests.swift"
+            timestampString = "437880409.285109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "testQueueing()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SunflowerTests.TransactionTests.testQueueing (SunflowerTests.TransactionTests)() -&gt; ()"
+                  moduleName = "SunflowerTests"
+                  urlString = "file:///Users/ak/Desktop/sunflower/SunflowerTests/TransactionTests.swift"
+                  timestampString = "437880547.878435"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "658">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SunflowerTests.TransactionTests.(testQueueing (SunflowerTests.TransactionTests) -&gt; () -&gt; ()).(implicit closure #1) with unmangled suffix &quot;_promote0&quot;"
+                  moduleName = "SunflowerTests"
+                  urlString = "file:///Users/ak/Desktop/sunflower/SunflowerTests/TransactionTests.swift"
+                  timestampString = "437880547.878866"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sunflower/DiskCache.swift"
+            timestampString = "437880538.737761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "loadObjectFromURL(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sunflower.DiskCache.loadObjectFromURL (Sunflower.DiskCache.Type)(ObjectiveC.NSURL) -&gt; Swift.Optional&lt;Swift.AnyObject&gt;"
+                  moduleName = "Sunflower"
+                  urlString = "file:///Users/ak/Desktop/sunflower/Sunflower/DiskCache.swift"
+                  timestampString = "437880546.299821"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SunflowerTests.DiskCache.loadObjectFromURL (SunflowerTests.DiskCache.Type)(ObjectiveC.NSURL) -&gt; Swift.Optional&lt;Swift.AnyObject&gt;"
+                  moduleName = "SunflowerTests"
+                  urlString = "file:///Users/ak/Desktop/sunflower/Sunflower/DiskCache.swift"
+                  timestampString = "437880547.879398"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

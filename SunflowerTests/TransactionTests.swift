@@ -13,7 +13,7 @@ import Foundation
 class TransactionTests: XCTestCase {
     
     var creditManager: CreditManager = CreditManager.sharedInstance
-    var transactionManager: TransactionManager = TransactionManager.sharedInstance
+    var transactionManager: TransactionManager! = TransactionManager.sharedInstance
 
     override func setUp() {
         super.setUp()
@@ -190,6 +190,15 @@ class TransactionTests: XCTestCase {
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
+    }
+    
+    // When enqueued should be also cached to disk
+    func testQueueing() {
+        var transaction = Transaction(amount: 1000, type: .grant_locallyNow_serverLazy)
+        self.transactionManager.enqueue(transaction)
+        var temp = self.transactionManager.loadQueueFromDisk()
+        
+        XCTAssertTrue(self.transactionManager.loadQueueFromDisk()!.includes(transaction), "manager holds the transaction after de-init")
     }
 
     func testPerformanceExample() {
