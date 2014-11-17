@@ -71,7 +71,7 @@ class Transaction:  NSCoding, Equatable {
         self.amount = amount
         self.manager = TransactionManager.sharedInstance
         self.type = type
-        self.status = TransactionStatus.initialStatus()
+        self.status = TransactionStatus.initialStatus(type)
         self.createDate = NSDate()
     }
     

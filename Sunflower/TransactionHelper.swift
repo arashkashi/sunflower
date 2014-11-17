@@ -45,8 +45,12 @@ enum TransactionStatus: Int32 {
         
     }
     
-    static func initialStatus() ->  TransactionStatus{
-        return .pending_server_local_write
+    static func initialStatus(type: TransactionType) ->  TransactionStatus{
+        if type == .grant_locallyNo_serverLazy {
+            return .pending_server_write
+        } else {
+            return .pending_server_local_write
+        }
     }
     
     func toInt32 () -> Int32 {
