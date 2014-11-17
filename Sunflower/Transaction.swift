@@ -30,7 +30,7 @@ class Transaction:  NSCoding, Equatable {
         
         // Grant Backend
         if type.shouldGrantServerLazy() || type.shouldGrantLocallyNow() {
-            self.commitBETransation { (success: Bool) -> () in
+            self.commitServerTransation { (success: Bool) -> () in
                 if success {
                     self.status.onSuccessfulServerWrite()
                     handler(true); return
@@ -60,7 +60,11 @@ class Transaction:  NSCoding, Equatable {
         }
     }
     
-    func commitBETransation( beHandler: ((Bool)->()) ) {
+    func commitServerTransation( beHandler: ((Bool)->()) ) {
+        
+        // Get user record
+        
+        // If initial credit is granted add it to transaction
         var success = true
         
         if success { beHandler(true) }

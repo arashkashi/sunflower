@@ -7,8 +7,10 @@
 //
 
 let kCreditManagerBalance = "kCreditManagerBalance"
+let kCreditManagerInitialCreditGranted = "kCreditManagerInitialCreditGranted"
 
 let KCreditManagerErrCodeCreditAlreadyGranted = 96
+
 
 
 typealias Lafru = Int32
@@ -51,7 +53,7 @@ class CreditManager {
     func askServerIfInitialCreditGranted( handler: (Bool, CKRecord?)->() ) {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             if record == nil || err != nil { handler(false, nil) }
-            if record!.allKeys().includes(kCreditManagerBalance)
+            if record!.allKeys().includes(kCreditManagerInitialCreditGranted)
             { handler(true, record!) } else {
                 handler(false, record!)
             }
@@ -65,11 +67,17 @@ class CreditManager {
                 handler(false, err); return
             }
             
-            if record!.allKeys().includes(kCreditManagerBalance) {
+            if record!.allKeys().includes(kCreditManagerInitialCreditGranted) {
                 handler(false, NSError(domain: "CreditManager", code: KCreditManagerErrCodeCreditAlreadyGranted, userInfo: nil))
                 return
             } else {
-                record!.setObject(Int(initialCredit), forKey: kCreditManagerBalance)
+                record!.setObject(true, forKey: kCreditManagerInitialCreditGranted)
+                
+                if let currentServerBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
+                    record!.setObject(Int(initialCredit + currentServerBalance.intValue), forKey: kCreditManagerBalance)
+                } else {
+                    record!.setObject(Int(initialCredit), forKey: kCreditManagerBalance)
+                }
                 
                 CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
                     if lastError == nil { handler(true, nil); return }
@@ -78,7 +86,6 @@ class CreditManager {
             }
         }
     }
-
     
     //  MARK: Helper
     func lafruToDollar(amount: Lafru) -> Dollar {

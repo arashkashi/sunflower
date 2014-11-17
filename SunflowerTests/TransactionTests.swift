@@ -41,7 +41,7 @@ class TransactionTests: XCTestCase {
         var expectation = expectationWithDescription("BE commit success")
         
         class MockedTransaction: Transaction {
-            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
                 beHandler(true)
             }
         }
@@ -67,7 +67,7 @@ class TransactionTests: XCTestCase {
         var expectation = expectationWithDescription("BE commit fails")
         
         class MockedTransaction: Transaction {
-            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
                 beHandler(false)
             }
         }
@@ -93,7 +93,7 @@ class TransactionTests: XCTestCase {
         var expectation = expectationWithDescription("BE commit success")
         
         class MockedTransaction: Transaction {
-            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
                 beHandler(true)
             }
         }
@@ -119,7 +119,7 @@ class TransactionTests: XCTestCase {
         var expectation = expectationWithDescription("BE commit fails")
         
         class MockedTransaction: Transaction {
-            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
                 beHandler(false)
             }
         }
@@ -146,7 +146,7 @@ class TransactionTests: XCTestCase {
         var expectation = expectationWithDescription("BE commit fails")
         
         class MockedTransaction: Transaction {
-            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
                 beHandler(false)
             }
         }
@@ -173,7 +173,7 @@ class TransactionTests: XCTestCase {
         var expectation = expectationWithDescription("BE commit successeds")
         
         class MockedTransaction: Transaction {
-            private override func commitBETransation(beHandler: ((Bool) -> ())) {
+            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
                 beHandler(true)
             }
         }
