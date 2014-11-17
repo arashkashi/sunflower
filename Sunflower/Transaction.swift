@@ -12,6 +12,7 @@ let kTransactionCreationDate = "kTransactionCreationDate"
 let kTransactionStatus = "kTransactionStatus"
 
 import Foundation
+import CloudKit
 
 class Transaction:  NSCoding, Equatable {
     
@@ -24,7 +25,7 @@ class Transaction:  NSCoding, Equatable {
     func commit(handler: ((Bool)->())) {
         // Grant locally
         if type.shouldGrantLocallyNow() {
-            CreditManager.sharedInstance.commitLocalTransaction(self)
+            self.commitLocalTransaction()
             self.status.onSuccessfulLocalWrite()
         }
         
@@ -38,7 +39,7 @@ class Transaction:  NSCoding, Equatable {
                     
                     // Should've written to server now, FAIL
                     if self.type.shouldGrantServerNow() {
-                        CreditManager.sharedInstance.undoLocalTransaction(self)
+                        self.undoLocalTransaction()
                         handler(false); return
                     }
                     
@@ -60,9 +61,37 @@ class Transaction:  NSCoding, Equatable {
         }
     }
     
+    func commitLocalTransaction() {
+        CreditManager.sharedInstance.commitLocalTransaction(self)
+    }
+    
+    func undoLocalTransaction() {
+        CreditManager.sharedInstance.undoLocalTransaction(self)
+    }
+    
     func commitServerTransation( beHandler: ((Bool)->()) ) {
         
         // Get user record
+        CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
+            if record == nil || err != nil { beHandler(false); return }
+            
+            var newBalance: Int32 = 0
+            if let currentBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
+                newBalance = currentBalance.intValue + self.amount
+            } else {
+                newBalance = self.amount
+            }
+            
+            record!.setObject(NSNumber(int: newBalance), forKey: kCreditManagerBalance)
+            
+            CloudKitManager.sharedInstance.saveRecord(record!, handler: { (updatedRecord: CKRecord!, updatingError: NSError!) -> Void in
+                if updatedRecord == nil || updatingError != nil {
+                    beHandler(false)
+                } else {
+                    beHandler(true)
+                }
+            })
+        }
         
         // If initial credit is granted add it to transaction
         var success = true
