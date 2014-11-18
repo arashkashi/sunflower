@@ -10,6 +10,7 @@ let kTransactionAmount = "kTransactionAmount"
 let kTransactionType = "kTransactionType"
 let kTransactionCreationDate = "kTransactionCreationDate"
 let kTransactionStatus = "kTransactionStatus"
+let KTransactionID = "KTransactionID"
 
 import Foundation
 import CloudKit
@@ -24,6 +25,7 @@ class Transaction: NSObject, NSCoding, Equatable {
     var type: TransactionType
     var status: TransactionStatus
     var createDate: NSDate
+    var id: Int64
     
     func commit(handler: ((Bool)->())) {
         // Grant locally
@@ -95,19 +97,15 @@ class Transaction: NSObject, NSCoding, Equatable {
                 }
             })
         }
-        
-        // If initial credit is granted add it to transaction
-        var success = true
-        
-        if success { beHandler(true) }
     }
     
     // MARK: Initiation
-    init(amount: Int32, type: TransactionType) {
+    init(id: Int64, amount: Int32, type: TransactionType) {
         self.amount = amount
         self.type = type
         self.status = TransactionStatus.initialStatus(type)
         self.createDate = NSDate()
+        self.id = id
     }
     
     // MARK: NSCoding
@@ -116,6 +114,7 @@ class Transaction: NSObject, NSCoding, Equatable {
         self.type = TransactionType.initWithInt(aDecoder.decodeInt32ForKey(kTransactionType))
         self.createDate = aDecoder.decodeObjectForKey(kTransactionCreationDate) as NSDate
         self.status = TransactionStatus.initWithInt(aDecoder.decodeInt32ForKey(kTransactionStatus))
+        self.id = aDecoder.decodeInt64ForKey(KTransactionID)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -123,6 +122,7 @@ class Transaction: NSObject, NSCoding, Equatable {
         aCoder.encodeInt32(self.type.toInt32(), forKey: kTransactionType)
         aCoder.encodeObject(self.createDate, forKey: kTransactionCreationDate)
         aCoder.encodeInt32(self.status.toInt32(), forKey: kTransactionStatus)
+        aCoder.encodeInt64(self.id, forKey: KTransactionID)
     }
     
 
