@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Arash K. All rights reserved.
 //
 
+let kTransactionManagercachedQueue = "kTransactionManagercachedQueue"
+
 import Foundation
 
 class TransactionManager {
@@ -38,18 +40,21 @@ class TransactionManager {
     }
     
     // MARK: Caching
-    class func transactionManagerFileURL() -> NSURL {
-        var filename = "transactionManager.archive"
-        var url: NSURL? = DiskCache.libraryDirectoryURL()?.URLByAppendingPathComponent(filename)
-        return url!
-    }
-    
     func saveQueueToDisk() {
-        DiskCache.saveObjectToURL(self.queue, url: TransactionManager.transactionManagerFileURL())
+        var data = NSKeyedArchiver.archivedDataWithRootObject(self.queue)
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: kTransactionManagercachedQueue)
     }
     
     func loadQueueFromDisk() -> [Transaction]? {
-        return DiskCache.loadObjectFromURL(TransactionManager.transactionManagerFileURL()) as? [Transaction]
+        var dataOptional: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(kTransactionManagercachedQueue)
+        if let data = dataOptional as? NSData {
+            var queue: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(data as NSData)
+            if let transactions = queue as? [Transaction] {
+                return transactions
+            }
+        }
+
+        return nil
     }
     
 }
