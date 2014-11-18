@@ -10,7 +10,20 @@ import UIKit
 import XCTest
 import Foundation
 
+class MockedTransactionWithSucessfulServerTransaction: Transaction {
+     override func commitServerTransation(beHandler: ((Bool) -> ())) {
+        beHandler(true)
+    }
+}
+
+class MockedTransactionWithFailedServerTransaction: Transaction {
+     override func commitServerTransation(beHandler: ((Bool) -> ())) {
+        beHandler(false)
+    }
+}
+
 class TransactionTests: XCTestCase {
+    
     
     var creditManager: CreditManager = CreditManager.sharedInstance
     var transactionManager: TransactionManager! = TransactionManager.sharedInstance
@@ -18,6 +31,7 @@ class TransactionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.creditManager.localBalance = 0
+        TransactionManager.sharedInstance.clearCache()
     }
     
     override func tearDown() {
@@ -26,27 +40,21 @@ class TransactionTests: XCTestCase {
     }
     
     func testTransactionCreation() {
-        var transaction = Transaction(amount: 1000, type: TransactionType.grant_locallyNo_serverLazy)
+        var transaction = Transaction(id: 1, amount: 1000, type: TransactionType.grant_locallyNo_serverLazy)
         XCTAssertEqual(transaction.status, TransactionStatus.pending_server_write, "status is server write")
         
-        transaction = Transaction(amount: 1000, type: TransactionType.grant_locallyNow_serverLazy)
+        transaction = Transaction(id: 1, amount: 1000, type: TransactionType.grant_locallyNow_serverLazy)
         XCTAssertEqual(transaction.status, TransactionStatus.pending_server_local_write, "status is server AND local write")
     }
 
     // Case 1
     // Requirements: commit to server now, commit locally now
     // Condition: Both successful
-    func testcaseOne() {
+    func testCaseOne() {
         var transactionAmount: Int32 = 1000
         var expectation = expectationWithDescription("BE commit success")
         
-        class MockedTransaction: Transaction {
-            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
-                beHandler(true)
-            }
-        }
-        
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverNow)
+        var mockedTransaction = MockedTransactionWithSucessfulServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverNow)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "transaction successes")
@@ -66,13 +74,7 @@ class TransactionTests: XCTestCase {
         var transactionAmount: Int32 = 1000
         var expectation = expectationWithDescription("BE commit fails")
         
-        class MockedTransaction: Transaction {
-            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
-                beHandler(false)
-            }
-        }
-        
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverNow)
+        var mockedTransaction = MockedTransactionWithFailedServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverNow)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertFalse(success, "Transaction fails")
@@ -92,13 +94,7 @@ class TransactionTests: XCTestCase {
         var transactionAmount: Int32 = 1000
         var expectation = expectationWithDescription("BE commit success")
         
-        class MockedTransaction: Transaction {
-            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
-                beHandler(true)
-            }
-        }
-        
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverLazy)
+        var mockedTransaction = MockedTransactionWithSucessfulServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverLazy)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "Transaction successes")
@@ -118,13 +114,7 @@ class TransactionTests: XCTestCase {
         var transactionAmount: Int32 = 1000
         var expectation = expectationWithDescription("BE commit fails")
         
-        class MockedTransaction: Transaction {
-            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
-                beHandler(false)
-            }
-        }
-        
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNow_serverLazy)
+        var mockedTransaction = MockedTransactionWithFailedServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverLazy)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "transaction successes")
@@ -145,13 +135,7 @@ class TransactionTests: XCTestCase {
         var transactionAmount: Int32 = 1000
         var expectation = expectationWithDescription("BE commit fails")
         
-        class MockedTransaction: Transaction {
-            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
-                beHandler(false)
-            }
-        }
-        
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNo_serverLazy)
+        var mockedTransaction = MockedTransactionWithFailedServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNo_serverLazy)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertFalse(success, "Transaction fails")
@@ -172,13 +156,7 @@ class TransactionTests: XCTestCase {
         var transactionAmount: Int32 = 1000
         var expectation = expectationWithDescription("BE commit successeds")
         
-        class MockedTransaction: Transaction {
-            private override func commitServerTransation(beHandler: ((Bool) -> ())) {
-                beHandler(true)
-            }
-        }
-        
-        var mockedTransaction = MockedTransaction(amount: transactionAmount, type: .grant_locallyNo_serverLazy)
+        var mockedTransaction = MockedTransactionWithSucessfulServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNo_serverLazy)
         
         mockedTransaction.commit { (success: Bool) -> () in
             XCTAssertTrue(success, "Transaction succeeds")
@@ -194,11 +172,30 @@ class TransactionTests: XCTestCase {
     
     // When enqueued should be also cached to disk
     func testQueueing() {
-        var transaction = Transaction(amount: 1000, type: .grant_locallyNow_serverLazy)
+        TransactionManager.sharedInstance.clearCache()
+        var transaction = Transaction(id: 1, amount: 1000, type: .grant_locallyNow_serverLazy)
         self.transactionManager.enqueue(transaction)
-        var temp = self.transactionManager.loadQueueFromDisk()
+        var loadedTransaction = self.transactionManager.loadQueueFromDisk()![0]
         
+        XCTAssertEqual(loadedTransaction.amount, transaction.amount, "the amounts are equal")
+        XCTAssertEqual(loadedTransaction.id, transaction.id, "have same id")
         XCTAssertTrue(self.transactionManager.loadQueueFromDisk()!.includes(transaction), "manager holds the transaction after de-init")
+    }
+    
+    // when get the first transaction, the id should be 1
+    func testFirstTransactionID() {
+        TransactionManager.sharedInstance.clearCache()
+        var id = TransactionManager.sharedInstance.getNewTransactionID()
+        XCTAssertEqual(id, Int64(1), "first id should be 1")
+    }
+    
+    // when there is a transaction in the queue, the second transaction should have +1 id
+    func testSecondTransaction() {
+        var t1 = Transaction(id: 10, amount: 10000, type: TransactionType.grant_locallyNo_serverLazy)
+        TransactionManager.sharedInstance.enqueue(t1)
+        
+        var id = TransactionManager.sharedInstance.getNewTransactionID()
+        XCTAssertEqual(id, Int64(11), "new transaction id is one higher than max id")
     }
 
     func testPerformanceExample() {
