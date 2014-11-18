@@ -14,7 +14,11 @@ let kTransactionStatus = "kTransactionStatus"
 import Foundation
 import CloudKit
 
-class Transaction:  NSCoding, Equatable {
+func == (lhs: Transaction, rhs: Transaction) -> Bool {
+    return lhs.createDate.isEqualToDate(rhs.createDate)
+}
+
+class Transaction: NSObject, NSCoding, Equatable {
     
     var amount: Int32
     var type: TransactionType

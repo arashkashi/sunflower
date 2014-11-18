@@ -8,9 +8,7 @@
 
 import Foundation
 
-func == (lhs: Transaction, rhs: Transaction) -> Bool {
-    return lhs.createDate.isEqualToDate(rhs.createDate)
-}
+
 
 enum TransactionStatus: Int32 {
     case pending_local_write
