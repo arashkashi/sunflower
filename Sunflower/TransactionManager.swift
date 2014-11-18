@@ -48,7 +48,7 @@ class TransactionManager {
     func loadQueueFromDisk() -> [Transaction]? {
         var dataOptional: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(kTransactionManagercachedQueue)
         if let data = dataOptional as? NSData {
-            var queue: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(data as NSData)
+            var queue: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(data)
             if let transactions = queue as? [Transaction] {
                 return transactions
             }

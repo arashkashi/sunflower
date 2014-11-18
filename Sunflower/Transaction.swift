@@ -23,7 +23,6 @@ class Transaction: NSObject, NSCoding, Equatable {
     var amount: Int32
     var type: TransactionType
     var status: TransactionStatus
-    var manager: TransactionManager
     var createDate: NSDate
     
     func commit(handler: ((Bool)->())) {
@@ -106,7 +105,6 @@ class Transaction: NSObject, NSCoding, Equatable {
     // MARK: Initiation
     init(amount: Int32, type: TransactionType) {
         self.amount = amount
-        self.manager = TransactionManager.sharedInstance
         self.type = type
         self.status = TransactionStatus.initialStatus(type)
         self.createDate = NSDate()
@@ -118,7 +116,6 @@ class Transaction: NSObject, NSCoding, Equatable {
         self.type = TransactionType.initWithInt(aDecoder.decodeInt32ForKey(kTransactionType))
         self.createDate = aDecoder.decodeObjectForKey(kTransactionCreationDate) as NSDate
         self.status = TransactionStatus.initWithInt(aDecoder.decodeInt32ForKey(kTransactionStatus))
-        self.manager = TransactionManager.sharedInstance
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
