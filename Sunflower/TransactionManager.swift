@@ -21,14 +21,15 @@ class TransactionManager {
     
     func sendItemsInQueue(queue: [Transaction], completionHandler: (()->())?) {
         var counter = 0
-        for transaction in queue {
-            counter++
-            transaction.commit({ (success: Bool) -> () in
-                if counter == queue.count {
-                    self.cleanQueueFromCommitedTransactions()
-                    completionHandler?()
-                }
-            })
+        var localQueue = queue
+        for transaction in localQueue {
+//            transaction.commit({ (success: Bool) -> () in
+//                counter++
+//                if counter == localQueue.count {
+//                    self.cleanQueueFromCommitedTransactions()
+//                    completionHandler?()
+//                }
+//            })
         }
     }
     
