@@ -197,6 +197,17 @@ class TransactionTests: XCTestCase {
         var id = TransactionManager.sharedInstance.getNewTransactionID()
         XCTAssertEqual(id, Int64(11), "new transaction id is one higher than max id")
     }
+    
+    // test sending the queued transactions
+    func testQueuedTransactions() {
+        var manager = TransactionManager.sharedInstance
+        var t1Success = MockedTransactionWithSucessfulServerTransaction(id: 10, amount: 1000, type: .grant_locallyNow_serverLazy)
+        var t2Fail = MockedTransactionWithFailedServerTransaction(id: 12, amount: 2000, type: .grant_locallyNow_serverLazy)
+        manager.enqueue(t1Success)
+        manager.enqueue(t2Fail)
+        
+        manager.sendItemsInQueue(manager.queue)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

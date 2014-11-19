@@ -478,7 +478,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Bundle ID &amp; language U know" id="w7Q-XS-afY">
+                    <navigationItem key="navigationItem" title="ID &amp; Language" id="w7Q-XS-afY">
                         <barButtonItem key="rightBarButtonItem" title="Make" id="OGw-XR-xO1"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

@@ -20,7 +20,16 @@ class TransactionManager {
     }
     
     func sendItemsInQueue(queue: [Transaction]) {
-        
+        for transaction in queue {
+            transaction.commit({ (success: Bool) -> () in
+                //
+            }
+        }
+    }
+    
+    func cleanQueueFromCommitedTransactions() {
+        queue = queue.filter{$0.status == .commited}
+        saveQueueToDisk()
     }
     
     // MARK: Initiation
