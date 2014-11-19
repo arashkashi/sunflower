@@ -200,13 +200,22 @@ class TransactionTests: XCTestCase {
     
     // test sending the queued transactions
     func testQueuedTransactions() {
+        var expectation = expectationWithDescription("BE commit successeds")
         var manager = TransactionManager.sharedInstance
         var t1Success = MockedTransactionWithSucessfulServerTransaction(id: 10, amount: 1000, type: .grant_locallyNow_serverLazy)
         var t2Fail = MockedTransactionWithFailedServerTransaction(id: 12, amount: 2000, type: .grant_locallyNow_serverLazy)
         manager.enqueue(t1Success)
         manager.enqueue(t2Fail)
         
-        manager.sendItemsInQueue(manager.queue)
+        manager.sendItemsInQueue(manager.queue, completionHandler: { () -> () in
+            XCTAssertFalse(manager.queue.includes(t1Success), "should not include the successfully done transaction")
+            expectation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
+        })
+
+        
     }
 
     func testPerformanceExample() {

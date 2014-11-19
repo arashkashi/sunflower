@@ -19,16 +19,21 @@ class TransactionManager {
         saveQueueToDisk()
     }
     
-    func sendItemsInQueue(queue: [Transaction]) {
+    func sendItemsInQueue(queue: [Transaction], completionHandler: (()->())?) {
+        var counter = 0
         for transaction in queue {
+            counter++
             transaction.commit({ (success: Bool) -> () in
-                //
-            }
+                if counter == queue.count {
+                    self.cleanQueueFromCommitedTransactions()
+                    completionHandler?()
+                }
+            })
         }
     }
     
     func cleanQueueFromCommitedTransactions() {
-        queue = queue.filter{$0.status == .commited}
+        queue = queue.filter{ $0.status ==  TransactionStatus.commited}
         saveQueueToDisk()
     }
     
@@ -57,7 +62,7 @@ class TransactionManager {
         
         if let cachedQueue = loadQueueFromDisk() { queue = cachedQueue } else { queue = [] }
         
-        if queue.count > 0 { sendItemsInQueue(queue) }
+        if queue.count > 0 { sendItemsInQueue(queue, completionHandler: nil) }
     }
     
     func printqueue() {
