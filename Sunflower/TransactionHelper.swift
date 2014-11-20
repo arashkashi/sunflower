@@ -73,10 +73,15 @@ enum TransactionStatus: Int32 {
         case 3:
             return .pending_server_local_write
         default:
-            assert(false, "type is not supported")
             return .pending_server_local_write
         }
     }
+}
+
+enum CommitResult: Int {
+    case Succeeded = 0
+    case Failed = 1
+    case Queued = 2
 }
 
 enum TransactionType: Int32 {

@@ -16,7 +16,7 @@ import Foundation
 import CloudKit
 
 func == (lhs: Transaction, rhs: Transaction) -> Bool {
-    return lhs.createDate.isEqualToDate(rhs.createDate)
+    return lhs.id == rhs.id
 }
 
 class Transaction: NSObject, NSCoding, Equatable {
@@ -27,10 +27,10 @@ class Transaction: NSObject, NSCoding, Equatable {
     var createDate: NSDate
     var id: Int64
     
-    func commit( handler: ((Bool)->())?) {
+    func commit( handler: ((CommitResult)->())?) {
         // Grant locally
         if type.shouldGrantLocallyNow() {
-            self.commitLocalTransaction()
+            self.commitLocal()
             self.status.onSuccessfulLocalWrite()
         }
         
@@ -39,38 +39,37 @@ class Transaction: NSObject, NSCoding, Equatable {
             self.commitServerTransation { (success: Bool) -> () in
                 if success {
                     self.status.onSuccessfulServerWrite()
-                    handler?(true); return
+                    handler?(CommitResult.Succeeded); return
                 } else {
                     
                     // Should've written to server now, FAIL
                     if self.type.shouldGrantServerNow() {
-                        self.undoLocalTransaction()
-                        handler?(false); return
+                        self.undoLocalCommit()
+                        handler?(.Failed); return
                     }
                     
                     if self.type.shouldGrantServerLazy() {
-                        TransactionManager.sharedInstance.enqueue(self)
                         // Should've written only to server, FAIL
                         if self.type == .grant_locallyNo_serverLazy {
-                            handler?(false); return
+                            handler?(.Queued); return
                         }
                         else //Save locally and can write Server later, Success
                         {
                             self.type = .grant_locallyNo_serverLazy
-                            handler?(true); return
+                            handler?(.Queued); return
                         }
                     }
-                    handler?(false); return
+                    handler?(.Failed); return
                 }
             }
         }
     }
     
-    func commitLocalTransaction() {
+    func commitLocal() {
         CreditManager.sharedInstance.commitLocalTransaction(self)
     }
     
-    func undoLocalTransaction() {
+    func undoLocalCommit() {
         CreditManager.sharedInstance.undoLocalTransaction(self)
     }
     

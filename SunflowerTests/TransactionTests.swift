@@ -56,12 +56,12 @@ class TransactionTests: XCTestCase {
         
         var mockedTransaction = MockedTransactionWithSucessfulServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverNow)
         
-        mockedTransaction.commit { (success: Bool) -> () in
-            XCTAssertTrue(success, "transaction successes")
+        transactionManager.commit(mockedTransaction, handler: { (success: CommitResult) -> () in
+            XCTAssertTrue(success == .Succeeded, "transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "Credit Manager should be loaded")
             XCTAssertEqual(mockedTransaction.status, TransactionStatus.commited, "status: commited")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
@@ -76,12 +76,12 @@ class TransactionTests: XCTestCase {
         
         var mockedTransaction = MockedTransactionWithFailedServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverNow)
         
-        mockedTransaction.commit { (success: Bool) -> () in
-            XCTAssertFalse(success, "Transaction fails")
+        transactionManager.commit(mockedTransaction, handler: { (success: CommitResult) -> () in
+            XCTAssertTrue(success == .Failed, "Transaction fails")
             XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local balance should not change")
             XCTAssertEqual(mockedTransaction.status, TransactionStatus.pending_server_write, "status: pending")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
@@ -96,12 +96,12 @@ class TransactionTests: XCTestCase {
         
         var mockedTransaction = MockedTransactionWithSucessfulServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverLazy)
         
-        mockedTransaction.commit { (success: Bool) -> () in
-            XCTAssertTrue(success, "Transaction successes")
+        transactionManager.commit(mockedTransaction, handler: { (success: CommitResult) -> () in
+            XCTAssertTrue(success == .Succeeded, "Transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "local balance check")
             XCTAssertEqual(mockedTransaction.status, TransactionStatus.commited, "status: commited")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
@@ -116,13 +116,13 @@ class TransactionTests: XCTestCase {
         
         var mockedTransaction = MockedTransactionWithFailedServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNow_serverLazy)
         
-        mockedTransaction.commit { (success: Bool) -> () in
-            XCTAssertTrue(success, "transaction successes")
+        transactionManager.commit(mockedTransaction, handler: { (success: CommitResult) -> () in
+            XCTAssertTrue(success == .Queued, "transaction successes")
             XCTAssertEqual(self.creditManager.localBalance, transactionAmount, "local balance check")
             XCTAssertTrue(self.transactionManager.queue.includes(mockedTransaction), "should be queued")
             XCTAssertEqual(mockedTransaction.status, TransactionStatus.pending_server_write, "status: pending")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
@@ -137,13 +137,13 @@ class TransactionTests: XCTestCase {
         
         var mockedTransaction = MockedTransactionWithFailedServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNo_serverLazy)
         
-        mockedTransaction.commit { (success: Bool) -> () in
-            XCTAssertFalse(success, "Transaction fails")
+        transactionManager.commit(mockedTransaction, handler: { (success: CommitResult) -> () in
+            XCTAssertTrue(success == .Queued, "Transaction fails")
             XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local credit is not affected")
             XCTAssertTrue(self.transactionManager.queue.includes(mockedTransaction), "transaction is not removed from the queue")
             XCTAssertEqual(mockedTransaction.status, TransactionStatus.pending_server_write, "status: pending")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
@@ -158,13 +158,13 @@ class TransactionTests: XCTestCase {
         
         var mockedTransaction = MockedTransactionWithSucessfulServerTransaction(id: 1, amount: transactionAmount, type: .grant_locallyNo_serverLazy)
         
-        mockedTransaction.commit { (success: Bool) -> () in
-            XCTAssertTrue(success, "Transaction succeeds")
+        transactionManager.commit(mockedTransaction, handler: { (success: CommitResult) -> () in
+            XCTAssertTrue(success == .Succeeded, "Transaction succeeds")
             XCTAssertEqual(self.creditManager.localBalance, Int32(0), "local credit is not affected")
             XCTAssertFalse(self.transactionManager.queue.includes(mockedTransaction), "transaction is  removed from the queue")
             XCTAssertEqual(mockedTransaction.status, TransactionStatus.commited, "status: commited")
             expectation.fulfill()
-        }
+        })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
@@ -208,8 +208,14 @@ class TransactionTests: XCTestCase {
         manager.enqueue(t2Fail)
         
         manager.sendItemsInQueue(manager.queue, completionHandler: { () -> () in
-            XCTAssertFalse(manager.queue.includes(t1Success), "should not include the successfully done transaction")
-            expectation.fulfill()
+            manager.printQueue()
+            XCTAssertTrue(t1Success.status == .commited, "Should be marked as commited")
+            
+            manager.sendItemsInQueue(manager.queue, completionHandler: { () -> () in
+                manager.printQueue()
+                XCTAssertFalse(manager.queue.includes(t1Success), "Should not exist in the queue next time")
+                expectation.fulfill()
+            })
         })
         
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in

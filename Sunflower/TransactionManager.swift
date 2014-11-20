@@ -19,22 +19,34 @@ class TransactionManager {
         saveQueueToDisk()
     }
     
+    func commit(transaction: Transaction, handler: ((CommitResult)->())?) {
+        transaction.commit { (result: CommitResult) -> () in
+            if result == .Queued { self.enqueue(transaction) }
+            handler?(result)
+        }
+    }
+    
     func sendItemsInQueue(queue: [Transaction], completionHandler: (()->())?) {
         var counter = 0
-        var localQueue = queue
-        for transaction in localQueue {
-//            transaction.commit({ (success: Bool) -> () in
-//                counter++
-//                if counter == localQueue.count {
-//                    self.cleanQueueFromCommitedTransactions()
-//                    completionHandler?()
-//                }
-//            })
+        self.cleanQueueFromCommitedTransactions()
+        for transaction in queue {
+            self.commit(transaction, handler: { (CommitResult) -> () in
+                counter = counter + 1
+                if counter == queue.count {
+                    completionHandler?()
+                }
+            })
+        }
+    }
+    
+    func printQueue() {
+        for item in queue {
+            println("id: \(item.id)")
         }
     }
     
     func cleanQueueFromCommitedTransactions() {
-        queue = queue.filter{ $0.status ==  TransactionStatus.commited}
+        queue = queue.filter{ $0.status !=  TransactionStatus.commited}
         saveQueueToDisk()
     }
     
@@ -53,7 +65,6 @@ class TransactionManager {
     
     func getNewTransactionID() -> Int64 {
         var idsInQueue: [Int64] = queue.map{$0.id}
-        printqueue()
         var maxExistingId = idsInQueue.reduce(Int64(0), { max($0, $1) })
         return maxExistingId + 1
     }
@@ -64,12 +75,6 @@ class TransactionManager {
         if let cachedQueue = loadQueueFromDisk() { queue = cachedQueue } else { queue = [] }
         
         if queue.count > 0 { sendItemsInQueue(queue, completionHandler: nil) }
-    }
-    
-    func printqueue() {
-        for item in queue {
-            println("id: \(item.id), amount: \(item.amount)")
-        }
     }
     
     // MARK: Caching
@@ -89,7 +94,6 @@ class TransactionManager {
         }
         return nil
     }
-    
     
     func clearCache() {
         var dummy : [Transaction] = []
