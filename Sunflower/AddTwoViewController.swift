@@ -9,6 +9,7 @@
 import UIKit
 
 class AddTwoViewController: UIViewController {
+    var corpus: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()

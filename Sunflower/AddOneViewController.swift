@@ -59,12 +59,20 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         if textIsCorrect() {
             self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
         } else {
-            showErrorAlertWithMesssage("Some thing is not correct")
+            showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
         }
     }
     
     func textIsCorrect() -> Bool {
-        return true
+        var text = self.textViewCorpus.text
+        if let enteredText = text {
+            var length =  enteredText.length()
+            println(length)
+            if length < 1000 && length > 20 {
+                return true
+            }
+        }
+        return false
     }
     func showErrorAlertWithMesssage(message: String) {
         if alertViewShown { return }
@@ -96,6 +104,13 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromaddonetoaddtwo" {
+            var vc = segue.destinationViewController as AddTwoViewController
+            vc.corpus = self.textViewCorpus.text
+        }
     }
     
     func navigationController() -> UINavigationController {
