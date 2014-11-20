@@ -9,7 +9,10 @@
 import UIKit
 
 class AddTwoViewController: UIViewController {
+    var tokens: [String]?
     var corpus: String?
+    var sourceLanguage: String?
+    var alertViewShown: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,20 @@ class AddTwoViewController: UIViewController {
     
     func userHasEnoughCredit() -> Bool{
         return true
+    }
+    
+    func showErrorAlertWithMesssage(message: String) {
+        if alertViewShown { return }
+        
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
+            self.alertViewShown = false
+        }
+        
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) {
+            self.alertViewShown = true
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

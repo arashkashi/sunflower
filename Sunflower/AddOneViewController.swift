@@ -10,9 +10,9 @@ import Foundation
 
 class AddOneViewController: UIViewController, UITextViewDelegate {
     
+    var tokens: [String]?
     var alertViewShown: Bool = false
-    var supportedLanagages: [Dictionary<String,String>] = []
-    var targetLanaguage: String?
+    var waitingVC: WaitingViewController?
     @IBOutlet var textViewCorpus: UITextView!
 
 
@@ -56,14 +56,27 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 //    }
     
     @IBAction func onNextTapped(sender: AnyObject) {
-        if textIsCorrect() {
+        
+//        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+//            
+//            
+//        })
+        
+        
+        if textLengthCorrect() && tokens != nil {
+            // when there is not enought tokens there generate error and do nothing
+            if tokens!.count < 5 {
+                showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(tokens!.count) tokens")
+                return
+            }
+            
             self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
         } else {
             showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
         }
     }
     
-    func textIsCorrect() -> Bool {
+    func textLengthCorrect() -> Bool {
         var text = self.textViewCorpus.text
         if let enteredText = text {
             var length =  enteredText.length()
@@ -74,6 +87,12 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         }
         return false
     }
+    
+    
+    func updateTokens() {
+        self.tokens = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
+    }
+    
     func showErrorAlertWithMesssage(message: String) {
         if alertViewShown { return }
         
@@ -106,9 +125,25 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
     }
     
+    override func viewWillAppear(animated: Bool) {
+        showWaitingOverlay()
+    }
+    
+    func showWaitingOverlay() {
+        if self.waitingVC == nil {
+            self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
+        }
+        self.view.addSubview(self.waitingVC!.view)
+    }
+    
+    func hideWaitingOverlay() {
+        self.waitingVC!.view.removeFromSuperview()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fromaddonetoaddtwo" {
             var vc = segue.destinationViewController as AddTwoViewController
+            vc.tokens = self.tokens!
             vc.corpus = self.textViewCorpus.text
         }
     }

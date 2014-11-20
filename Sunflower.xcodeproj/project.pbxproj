@@ -16,6 +16,8 @@
 		4157DFAB1A1DB8BD00CF829D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157DFAA1A1DB8BD00CF829D /* StringExtension.swift */; };
 		4157DFAC1A1DB8CC00CF829D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157DFAA1A1DB8BD00CF829D /* StringExtension.swift */; };
 		4157DFAE1A1DB94000CF829D /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157DFAD1A1DB94000CF829D /* StringExtensionTests.swift */; };
+		4157DFB31A1DC43900CF829D /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157DFB11A1DC43900CF829D /* WaitingViewController.swift */; };
+		4157DFB41A1DC43900CF829D /* WaitingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4157DFB21A1DC43900CF829D /* WaitingViewController.xib */; };
 		41614D1919AE76150020EF58 /* MainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1819AE76150020EF58 /* MainTestViewController.swift */; };
 		41614D1D19AE77340020EF58 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41614D1C19AE77340020EF58 /* Test.swift */; };
 		41614D1F19AE77920020EF58 /* Test1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41614D1E19AE77920020EF58 /* Test1View.xib */; };
@@ -124,6 +126,8 @@
 		414F93EA19E267CB002BFDE0 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		4157DFAA1A1DB8BD00CF829D /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4157DFAD1A1DB94000CF829D /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		4157DFB11A1DC43900CF829D /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
+		4157DFB21A1DC43900CF829D /* WaitingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitingViewController.xib; sourceTree = "<group>"; };
 		41614D1819AE76150020EF58 /* MainTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTestViewController.swift; sourceTree = "<group>"; };
 		41614D1C19AE77340020EF58 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		41614D1E19AE77920020EF58 /* Test1View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1View.xib; sourceTree = "<group>"; };
@@ -228,9 +232,19 @@
 			name = "Test Result";
 			sourceTree = "<group>";
 		};
+		4157DFB01A1DC41600CF829D /* Waiting */ = {
+			isa = PBXGroup;
+			children = (
+				4157DFB11A1DC43900CF829D /* WaitingViewController.swift */,
+				4157DFB21A1DC43900CF829D /* WaitingViewController.xib */,
+			);
+			name = Waiting;
+			sourceTree = "<group>";
+		};
 		41614D1719AE76040020EF58 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4157DFB01A1DC41600CF829D /* Waiting */,
 				41614D1819AE76150020EF58 /* MainTestViewController.swift */,
 				41614D2219AE77C00020EF58 /* Tests */,
 				414F93E819E267A3002BFDE0 /* Test Result */,
@@ -551,6 +565,7 @@
 				41A0634919A90E7100E400D1 /* Main.storyboard in Resources */,
 				4170CE3B19FED03F00BD99A4 /* WordPresentationViewController.xib in Resources */,
 				41A0634B19A90E7100E400D1 /* Images.xcassets in Resources */,
+				4157DFB41A1DC43900CF829D /* WaitingViewController.xib in Resources */,
 				41614D1F19AE77920020EF58 /* Test1View.xib in Resources */,
 				419E511019F998CD0067D31D /* pack_id_11.json in Resources */,
 				419E510E19F998CD0067D31D /* pack_id_9.json in Resources */,
@@ -647,6 +662,7 @@
 				41B2D0EC1A00CDF000D46EFE /* DateExtention.swift in Sources */,
 				4139AD7F1A1C76EF00197355 /* AddTwoViewController.swift in Sources */,
 				41DD5BFF1A073F670001A9DA /* Parser.swift in Sources */,
+				4157DFB31A1DC43900CF829D /* WaitingViewController.swift in Sources */,
 				41A98A951A133B63000BE2D3 /* ComponentManager.swift in Sources */,
 				D97E88EE19F5438D00B7FE4E /* JSONHelper.swift in Sources */,
 				4170CE3A19FED03F00BD99A4 /* WordPresentationViewController.swift in Sources */,
