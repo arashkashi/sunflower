@@ -11,6 +11,7 @@ import Foundation
 class AddOneViewController: UIViewController, UITextViewDelegate {
     
     var tokens: [String]?
+    var sourceLanguage: String?
     var alertViewShown: Bool = false
     var waitingVC: WaitingViewController?
     @IBOutlet var textViewCorpus: UITextView!
@@ -56,27 +57,33 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 //    }
     
     @IBAction func onNextTapped(sender: AnyObject) {
-        showWaitingOverlay()
+        // Generate the raw tokens
         updateTokens()
         
-        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-            if err != nil { showErrorAlertWithMesssage("Could not detect the source language"); return }
-            
-            if textLengthCorrect() && tokens != nil {
-                // when there is not enought tokens there generate error and do nothing
-                if tokens!.count < 5 {
-                    showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(tokens!.count) tokens")
-                    return
-                }
-                
-                self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
-            } else {
-                showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
+        // Check if the tokens and text are valid, if not valid, return
+        if textLengthCorrect() && tokens != nil {
+            if self.tokens!.count < 5 {
+                self.showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(self.tokens!.count) tokens")
+                return
             }
+        } else {
+            self.showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
+            return
+        }
+        
+        // Show waiting overlay
+        showWaitingOverlay()
+        
+        // Detect the source language, if error inform user and stay
+        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+            if err != nil || detectedLanguage == nil { self.showErrorAlertWithMesssage("Could not detect the source language"); return }
             
+            self.sourceLanguage = detectedLanguage!
+            
+            self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
         })
         
-
+        hideWaitingOverlay()
     }
     
     func textLengthCorrect() -> Bool {
@@ -137,8 +144,6 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(self.waitingVC!.view)
     }
     
-
-    
     func hideWaitingOverlay() {
         self.waitingVC!.view.removeFromSuperview()
     }
@@ -148,6 +153,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
             var vc = segue.destinationViewController as AddTwoViewController
             vc.tokens = self.tokens!
             vc.corpus = self.textViewCorpus.text
+            vc.sourceLanguage = self.sourceLanguage!
         }
     }
     
