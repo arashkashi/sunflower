@@ -39,7 +39,6 @@ class MainTableCellView: UITableViewCell {
             labelID.alpha = 1
             labelProgress.alpha = 1
         }
-        
     }
     
     func showLoadingContent() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTwoViewController: UIViewController {
+class AddTwoViewController: UIViewController, UITableViewDataSource {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
@@ -21,12 +21,19 @@ class AddTwoViewController: UIViewController {
     @IBOutlet weak var labelTotalTokens: UILabel!
     @IBOutlet weak var labelSelectedTokens: UILabel!
     
+    // MARK : override uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.selectedTokens = self.tokens
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    
+    // MARK: MAinulate/update the view
     func updateBalanceLabel() {
         self.labelBalance.text = "Balance: \(CreditManager.sharedInstance.localBalance)"
     }
@@ -47,21 +54,7 @@ class AddTwoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    @IBAction func onNextTapped(sender: AnyObject) {
-        if userHasEnoughCredit()
-        {
-            self.performSegueWithIdentifier("fromaddtwotoaddthree", sender: nil)
-        } else {
-            self.performSegueWithIdentifier("fromaddtwotobuycredit", sender: nil)
-        }
-    }
-    
-    func userHasEnoughCredit() -> Bool{
-        return true
-    }
-    
     func showErrorAlertWithMesssage(message: String) {
         if alertViewShown { return }
         
@@ -76,10 +69,30 @@ class AddTwoViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: IBAction
+    @IBAction func onNextTapped(sender: AnyObject) {
+        if userHasEnoughCredit()
+        {
+            self.performSegueWithIdentifier("fromaddtwotoaddthree", sender: nil)
+        } else {
+            self.performSegueWithIdentifier("fromaddtwotobuycredit", sender: nil)
+        }
     }
-
-
+    
+    // MARK: Logic
+    func userHasEnoughCredit() -> Bool{
+        return true
+    }
+    
+    // MARK: Table view Datasource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tokens.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cellOptional: TokensViewCell! = tableView.dequeueReusableCellWithIdentifier("cell_tokens") as? TokensViewCell
+        cellOptional.updateCellWith(self.tokens[indexPath.row])
+        return cellOptional
+    }
+    
 }

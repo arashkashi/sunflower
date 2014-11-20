@@ -305,7 +305,7 @@
                                 <rect key="frame" x="26" y="125" width="548" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_supported_languages" textLabel="nOr-TT-duQ" detailTextLabel="wcI-ce-jM0" style="IBUITableViewCellStyleValue1" id="nMC-fx-vrp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_tokens" textLabel="nOr-TT-duQ" detailTextLabel="wcI-ce-jM0" style="IBUITableViewCellStyleValue1" id="nMC-fx-vrp" customClass="TokensViewCell" customModule="Sunflower" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="548" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nMC-fx-vrp" id="MKi-vm-C9l">
@@ -327,6 +327,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="URC-fD-kjv" id="bkP-Ay-XYh"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance: 2432" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vju-ST-AxM" userLabel="Label Balance">
                                 <rect key="frame" x="26" y="54" width="110" height="21"/>

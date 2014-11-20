@@ -84,6 +84,7 @@
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
 		B2D950A11A1288FA00D8DA90 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D950A01A1288FA00D8DA90 /* CloudKit.framework */; };
 		B2D950A41A128EF400D8DA90 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */; };
+		B2E643971A1E616500CC01BA /* TokensViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E643961A1E616500CC01BA /* TokensViewCell.swift */; };
 		D8309A1A9A64C97434D49C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35579851DFAED960FE1306F0 /* libPods.a */; };
 		D92B013519D99E9400CE11A8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B013419D99E9400CE11A8 /* ArrayExtension.swift */; };
 		D92B013719D9A0BF00CE11A8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B013419D99E9400CE11A8 /* ArrayExtension.swift */; };
@@ -189,6 +190,7 @@
 		B2D9509F1A1288F100D8DA90 /* Sunflower.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sunflower.entitlements; sourceTree = "<group>"; };
 		B2D950A01A1288FA00D8DA90 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		B2E643961A1E616500CC01BA /* TokensViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokensViewCell.swift; sourceTree = "<group>"; };
 		D92B013419D99E9400CE11A8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D958A80D19C9A27000964C3D /* DocumentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentHelper.swift; sourceTree = "<group>"; };
 		D961BE2E19AF3E3A009EDE25 /* TestBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBaseViewController.swift; sourceTree = "<group>"; };
@@ -244,12 +246,12 @@
 		41614D1719AE76040020EF58 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2E643951A1E611800CC01BA /* Table Cells */,
 				4157DFB01A1DC41600CF829D /* Waiting */,
 				41614D1819AE76150020EF58 /* MainTestViewController.swift */,
 				41614D2219AE77C00020EF58 /* Tests */,
 				414F93E819E267A3002BFDE0 /* Test Result */,
 				41BAB2FF1A018FD300800249 /* MainViewController.swift */,
-				41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */,
 				D9922DAD1A0AA6B30069872C /* AddOneViewController.swift */,
 				41C62E1D1A100F1600F5811A /* CorpusViewController.swift */,
 				4139AD4E1A1C026900197355 /* AddThreeViewController.swift */,
@@ -431,6 +433,15 @@
 				41BF6B3B1A18B6AC00BE01B6 /* DiskCache.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		B2E643951A1E611800CC01BA /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				41BAB3011A01926A00800249 /* MainTableCellTableViewCell.swift */,
+				B2E643961A1E616500CC01BA /* TokensViewCell.swift */,
+			);
+			name = "Table Cells";
 			sourceTree = "<group>";
 		};
 		D97E88E819F5420C00B7FE4E /* JSON Packs */ = {
@@ -656,6 +667,7 @@
 				41D415E519A9D8CE0038EFE6 /* LearnerController.swift in Sources */,
 				418EA57A1A0E329100580EFB /* CreditManager.swift in Sources */,
 				41BF6B301A1761A200BE01B6 /* TransactionManager.swift in Sources */,
+				B2E643971A1E616500CC01BA /* TokensViewCell.swift in Sources */,
 				D958A80E19C9A27000964C3D /* DocumentHelper.swift in Sources */,
 				41BAB3021A01926A00800249 /* MainTableCellTableViewCell.swift in Sources */,
 				41BF6B321A1761C400BE01B6 /* TransactionHelper.swift in Sources */,
