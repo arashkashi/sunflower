@@ -10,10 +10,13 @@ import UIKit
 
 class WaitingViewController: UIViewController {
 
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        activityIndicator.startAnimating()
     }
 
     override func didReceiveMemoryWarning() {

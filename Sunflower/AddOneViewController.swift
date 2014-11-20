@@ -62,7 +62,6 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 //            
 //        })
         
-        
         if textLengthCorrect() && tokens != nil {
             // when there is not enought tokens there generate error and do nothing
             if tokens!.count < 5 {
@@ -125,16 +124,16 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
     }
     
-    override func viewWillAppear(animated: Bool) {
-        showWaitingOverlay()
-    }
-    
     func showWaitingOverlay() {
         if self.waitingVC == nil {
             self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
         }
+        self.waitingVC!.view.frame = self.view.bounds
+        
         self.view.addSubview(self.waitingVC!.view)
     }
+    
+
     
     func hideWaitingOverlay() {
         self.waitingVC!.view.removeFromSuperview()
