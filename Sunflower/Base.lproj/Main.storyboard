@@ -329,6 +329,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="URC-fD-kjv" id="bkP-Ay-XYh"/>
+                                    <outlet property="delegate" destination="URC-fD-kjv" id="MYY-SR-jlZ"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance: 2432" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vju-ST-AxM" userLabel="Label Balance">

@@ -9,6 +9,8 @@
 import UIKit
 
 class TokensViewCell: UITableViewCell {
+    var token: String!
+    var isSelected: Bool!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,8 +18,21 @@ class TokensViewCell: UITableViewCell {
     }
     
     func updateCellWith(token: String) {
+        self.token = token
         self.textLabel.text = token
         self.detailTextLabel!.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(token))"
+        isSelected = false
+    }
+    
+    func onSelected() {
+        isSelected = true
+        self.textLabel.text = "\(token) (√)"
+        
+    }
+    
+    func onDeslected() {
+        isSelected = false
+        self.textLabel.text = "\(token) (x)"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AddTwoViewController: UIViewController, UITableViewDataSource {
+class AddTwoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
     var alertViewShown: Bool = false
     
     var selectedTokens: [String]!
+    var deselectedtokens: [String]!
 
     @IBOutlet weak var labelBalance: UILabel!
     @IBOutlet weak var labelCost: UILabel!
@@ -26,6 +27,9 @@ class AddTwoViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         self.selectedTokens = self.tokens
+        self.deselectedtokens = []
+        
+        updateTopTexts()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -39,7 +43,7 @@ class AddTwoViewController: UIViewController, UITableViewDataSource {
     }
     
     func updateCostLabel() {
-        self.labelCost.text = "Cost for selected tokens: \(GoogleTranslate.sharedInstance.costToTranslate(self.selectedTokens))"
+        self.labelCost.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(self.selectedTokens))"
     }
     
     func updateTotalTokensLabel() {
@@ -48,6 +52,13 @@ class AddTwoViewController: UIViewController, UITableViewDataSource {
     
     func updateSelectedTokensLabel() {
         self.labelSelectedTokens.text = "Selected tokens: \(self.selectedTokens.count)"
+    }
+    
+    func updateTopTexts() {
+        updateBalanceLabel()
+        updateCostLabel()
+        updateTotalTokensLabel()
+        updateSelectedTokensLabel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,6 +95,30 @@ class AddTwoViewController: UIViewController, UITableViewDataSource {
         return true
     }
     
+    func isTokenSelected(token: String) -> Bool {
+        return self.selectedTokens.includes(token)
+    }
+    
+    func isTokenDesecleted(token: String) -> Bool {
+        return self.deselectedtokens.includes(token)
+    }
+    
+    func selectToken(token: String) {
+        assert(!selectedTokens.includes(token), "already selected")
+        assert(deselectedtokens.includes(token), "should be currently deselected")
+        
+        selectedTokens.append(token)
+        deselectedtokens = deselectedtokens.filter {$0 != token}
+    }
+    
+    func deselectToken(token: String) {
+        assert(!deselectedtokens.includes(token), "already deselected")
+        assert(selectedTokens.includes(token), "should be currently selected")
+        
+        deselectedtokens.append(token)
+        selectedTokens = selectedTokens.filter {$0 != token}
+    }
+    
     // MARK: Table view Datasource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tokens.count
@@ -91,8 +126,28 @@ class AddTwoViewController: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellOptional: TokensViewCell! = tableView.dequeueReusableCellWithIdentifier("cell_tokens") as? TokensViewCell
-        cellOptional.updateCellWith(self.tokens[indexPath.row])
+        var cellToken = self.tokens[indexPath.row]
+        cellOptional.updateCellWith(cellToken)
+        
+        if isTokenSelected(cellToken) { cellOptional.onSelected() } else { cellOptional.onDeslected() }
+        
         return cellOptional
+    }
+    
+    // MARK: Table view delegates
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as TokensViewCell
+
+        if self.isTokenSelected(cell.token) {
+            self.deselectToken(cell.token)
+            cell.onDeslected()
+        } else {
+            self.selectToken(cell.token)
+            cell.onSelected()
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        updateTopTexts()
     }
     
 }
