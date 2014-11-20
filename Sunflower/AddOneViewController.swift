@@ -56,23 +56,27 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 //    }
     
     @IBAction func onNextTapped(sender: AnyObject) {
+        showWaitingOverlay()
+        updateTokens()
         
-//        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-//            
-//            
-//        })
-        
-        if textLengthCorrect() && tokens != nil {
-            // when there is not enought tokens there generate error and do nothing
-            if tokens!.count < 5 {
-                showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(tokens!.count) tokens")
-                return
+        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+            if err != nil { showErrorAlertWithMesssage("Could not detect the source language"); return }
+            
+            if textLengthCorrect() && tokens != nil {
+                // when there is not enought tokens there generate error and do nothing
+                if tokens!.count < 5 {
+                    showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(tokens!.count) tokens")
+                    return
+                }
+                
+                self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
+            } else {
+                showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
             }
             
-            self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
-        } else {
-            showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
-        }
+        })
+        
+
     }
     
     func textLengthCorrect() -> Bool {
