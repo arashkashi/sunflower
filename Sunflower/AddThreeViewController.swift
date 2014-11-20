@@ -9,6 +9,9 @@
 import UIKit
 
 class AddThreeViewController: UIViewController {
+    var tokens: [String]!
+    var corpus: String!
+    var sourceLanguage: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()

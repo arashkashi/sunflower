@@ -33,8 +33,12 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "fromaddtowtoaddthree" {
+            var vc = segue.destinationViewController as AddThreeViewController
+            vc.tokens = finaltokens(self.selectedTokens, allTokens: self.tokens)
+            vc.corpus = self.corpus
+            vc.sourceLanguage = self.sourceLanguage
+        }
     }
     
     // MARK: MAinulate/update the view
@@ -82,9 +86,12 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: IBAction
     @IBAction func onNextTapped(sender: AnyObject) {
-        if userHasEnoughCredit()
-        {
-            self.performSegueWithIdentifier("fromaddtwotoaddthree", sender: nil)
+        if userHasEnoughCredit() {
+            if validateSelectedtokens() {
+                self.performSegueWithIdentifier("fromaddtwotoaddthree", sender: nil)
+            } else {
+                showErrorAlertWithMesssage("there are too few tokens selected. Select at least 5 tokens!")
+            }
         } else {
             self.performSegueWithIdentifier("fromaddtwotobuycredit", sender: nil)
         }
@@ -92,6 +99,10 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: Logic
     func userHasEnoughCredit() -> Bool{
+        return true
+    }
+    
+    func validateSelectedtokens() -> Bool {
         return true
     }
     
@@ -117,6 +128,14 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
         
         deselectedtokens.append(token)
         selectedTokens = selectedTokens.filter {$0 != token}
+    }
+    
+    func finaltokens(finalSelectedTokens: [String], allTokens: [String] ) -> [String] {
+        var result: [String] = []
+        for item in allTokens {
+            if finalSelectedTokens.includes(item) {result.append(item) }
+        }
+        return result
     }
     
     // MARK: Table view Datasource
