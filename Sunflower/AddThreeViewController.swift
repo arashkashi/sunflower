@@ -13,6 +13,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     var corpus: String!
     var sourceLanguage: String!
     var supportedLanagages: [Dictionary<String, String>]!
+    var selectedLanguage: String?
     
     var alertViewShown: Bool = false
     var waitingVC: WaitingViewController?
@@ -39,12 +40,12 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
 
 
 //    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var cell = tableView.cellForRowAtIndexPath(indexPath)!
-//        
-//        targetLanaguage = cell.detailTextLabel!.text
-//    }
     // MARK: Logic
+    func makeThePackage(id: Srting, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, completionHandler: (Bool->())) {
+        LearningPackPersController.sharedInstance.addNewPackage(<#id: String#>, words: <#[Word]#>, corpus: <#String?#>)
+        
+    }
+    
     func updateSupportedLanguages() {
         showWaitingOverlay()
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in
@@ -105,7 +106,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
         self.waitingVC!.view.removeFromSuperview()
     }
     
-    // MARK: Table view data source
+    // MARK: Table view data source / delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if supportedLanagages != nil { return supportedLanagages.count } else {
             return 0
@@ -120,7 +121,10 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
         
         return cell!
     }
-
-
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)!
+        
+        selectedLanguage = cell.detailTextLabel!.text
+    }
 }
