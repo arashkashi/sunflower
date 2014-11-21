@@ -472,6 +472,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="u6S-ZK-iQ6" id="Ol5-Lr-KAu"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -490,6 +493,9 @@
                         <barButtonItem key="rightBarButtonItem" title="Make" id="OGw-XR-xO1"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="f9s-Q3-HvQ" id="WyV-w2-gNf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lcq-iu-asj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

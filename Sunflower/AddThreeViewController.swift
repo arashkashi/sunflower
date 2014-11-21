@@ -15,11 +15,13 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     var supportedLanagages: [Dictionary<String, String>]!
     
     var alertViewShown: Bool = false
+    var waitingVC: WaitingViewController?
     
     @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateSupportedLanguages()
 
 
 
@@ -44,7 +46,9 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
 //    }
     // MARK: Logic
     func updateSupportedLanguages() {
+        showWaitingOverlay()
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in
+            self.hideWaitingOverlay()
             if err == nil && languages != nil {
                 self.supportedLanagages = languages!
                 self.tableView.reloadData()
@@ -53,7 +57,6 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
             }
         }
     }
-    
     
     // MARK: View manipulation
     func showErrorAlertWithMesssage(message: String) {
@@ -88,9 +91,24 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    func showWaitingOverlay() {
+        if self.waitingVC == nil {
+            self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
+        }
+        self.waitingVC!.view.frame = self.view.bounds
+        
+        self.view.addSubview(self.waitingVC!.view)
+    }
+    
+    func hideWaitingOverlay() {
+        self.waitingVC!.view.removeFromSuperview()
+    }
+    
     // MARK: Table view data source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supportedLanagages.count
+        if supportedLanagages != nil { return supportedLanagages.count } else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
