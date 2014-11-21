@@ -12,7 +12,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
-    var supportedLanagages: [String]
+    var supportedLanagages: [Dictionary<String, String>]!
     
     var alertViewShown: Bool = false
     
@@ -35,18 +35,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
 //        self.navigationController?.popViewControllerAnimated(true)
     }
 
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return supportedLanagages.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as UITableViewCell?
-//        
-//        cell?.detailTextLabel!.text = supportedLanagages[indexPath.row]["language"]
-//        cell?.textLabel.text = supportedLanagages[indexPath.row]["name"]
-//        
-//        return cell!
-//    }
+
 //    
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        var cell = tableView.cellForRowAtIndexPath(indexPath)!
@@ -101,11 +90,16 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     
     // MARK: Table view data source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return supportedLanagages.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as UITableViewCell?
         
+        cell?.detailTextLabel!.text = supportedLanagages[indexPath.row]["language"]
+        cell?.textLabel.text = supportedLanagages[indexPath.row]["name"]
+        
+        return cell!
     }
 
 
