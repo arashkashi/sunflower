@@ -53,6 +53,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
                 self.supportedLanagages = languages!
                 self.tableView.reloadData()
             } else {
+                // TODO: Handle error more elegantly
                 self.showErrorAlertWithMesssage("Could not load the supported languages!")
             }
         }
