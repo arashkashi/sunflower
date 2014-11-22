@@ -16,7 +16,7 @@ class ParserHelper {
         var countBadTranslations: Int = 0
         
         for token in tokens {
-            googleTranslater.translate(token, targetLanguage: targetLanguage, sourceLanaguage: sourceLanaguage, translateEndHandler: { (translation: String?, err: String?, cost: Lafru) -> () in
+            googleTranslater.translate(token, targetLanguage: targetLanguage, sourceLanaguage: sourceLanaguage, translateEndHandler: { (translation: String?, err: String?) -> () in
                 
                 // TODO: Never goes to this loop, fix the google translate class
                 if err == ERR_GOOGLE_API_NETWORD_CONNECTION {

@@ -41,7 +41,7 @@ class LearningPackControllerHelper  {
         
         // To the translation for all the tokens and create the resulting words
         for token in tokens {
-            googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, translateEndHandler: { (translation, err, cost) -> () in
+            googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, translateEndHandler: { (translation, err) -> () in
                 
                 // TODO: Network call fail, Never goes to this loop, fix the google translate class
                 if translation == nil {

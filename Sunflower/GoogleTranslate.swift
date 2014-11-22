@@ -65,16 +65,15 @@ class GoogleTranslate {
         }
     }
     
-    func translate(text: String, targetLanguage: String, sourceLanaguage: String, translateEndHandler:((translation: String?, err: String?, cost: Lafru)->())?) {
+    func translate(text: String, targetLanguage: String, sourceLanaguage: String, translateEndHandler:((translation: String?, err: String?)->())?) {
         AFHTTPRequestOperationManager().GET(self.baseTranslationURI, parameters: ["q" : text, "target": targetLanguage, "source": sourceLanaguage], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             
-            var cost = self.costToTranslate(text)
             var result = self.handleGoogleTranslateResponse(responseObject as NSDictionary)
             
             if result.translation != nil {
-                translateEndHandler?(translation:result.translation!, err: nil, cost: cost)
+                translateEndHandler?(translation:result.translation!, err: nil)
             } else {
-                translateEndHandler?(translation: nil, err: ERR_GOOGLE_API_NOT_TRASLATABLE, cost: cost)
+                translateEndHandler?(translation: nil, err: ERR_GOOGLE_API_NOT_TRASLATABLE)
             }
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
