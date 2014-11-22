@@ -64,7 +64,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return LearningPackPersController.sharedInstance.listOfAvialablePackIDs.count;
+        return LearningPackController.sharedInstance.listOfAvialablePackIDs.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -72,12 +72,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
         cellOptional.showLoadingContent()
         
-        var packID = LearningPackPersController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
+        var packID = LearningPackController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
         
         if let cashedLearningPack = cashedLearningPacks[packID] {
             cellOptional.updateWithLearningPackModel(cashedLearningPack)
         } else {
-            LearningPackPersController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
+            LearningPackController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
                 if let lpm = learningPackModel {
                     self.updateCashedLearningPack(lpm)
                     cellOptional.updateWithLearningPackModel(lpm)

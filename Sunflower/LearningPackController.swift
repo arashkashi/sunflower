@@ -11,7 +11,7 @@ import Foundation
 let kAvaialblePackageIDs = "kAvaialblePackageIDs"
 
 
-class LearningPackPersController {
+class LearningPackController {
     
     var listOfAvialablePackIDs: [String] {
         get {
@@ -34,9 +34,9 @@ class LearningPackPersController {
     
     var query: NSMetadataQuery?
     
-    class var sharedInstance : LearningPackPersController {
+    class var sharedInstance : LearningPackController {
     struct Static {
-        static let instance : LearningPackPersController = LearningPackPersController()
+        static let instance : LearningPackController = LearningPackController()
         }
         return Static.instance
     }
