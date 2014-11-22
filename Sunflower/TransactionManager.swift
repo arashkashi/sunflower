@@ -50,6 +50,12 @@ class TransactionManager {
         saveQueueToDisk()
     }
     
+    // MARK: Helper
+    func createAndCommitTransaction(amount: Int32, type: TransactionType, handler: ((CommitResult)->())?) {
+        var newTransaction = getNewTransaction(amount, type: type)
+        newTransaction.commit(handler)
+    }
+    
     // MARK: Initiation
     class var sharedInstance : TransactionManager {
         struct Static {
