@@ -3,5 +3,5 @@ source 'git@github.com:wooga/cocoapods-specs.git'
 
 platform :ios, '7.0'
 
-link_with 'Sunflower', 'SunflowerTests'
+link_with 'Sunflower', 'Sunflower Tests'
 pod "AFNetworking", "~> 2.0"
