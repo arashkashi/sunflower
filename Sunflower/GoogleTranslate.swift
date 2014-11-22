@@ -78,8 +78,8 @@ class GoogleTranslate {
             }
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-              // TODO: Why when remove this comment, does not compile
-//                translateEndHandler?(translation: nil, err: "Asdf", cost: Int32(0))
+                
+//                translateEndHandler?(translation: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION, cost: 0)
         }
     }
     
