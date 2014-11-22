@@ -41,24 +41,6 @@ class LearningPackPersController {
         return Static.instance
     }
     
-    func allWords(allWordsRetried:(([Word])->())?) {
-        var counter = 0
-        var words: [Word] = []
-        for id in self.listOfAvialablePackIDs {
-            self.loadLearningPackWithID(id, completionHandler: { (learningPack: LearningPackModel?) -> () in
-            
-                if learningPack != nil {
-                    words += learningPack!.words
-                }
-                
-                counter++
-                if counter == self.listOfAvialablePackIDs.count {
-                    allWordsRetried?(words)
-                }
-            })
-        }
-    }
-    
     func addNewPackage(id: String, words: [Word], corpus: String?) {
         LearningPackModel.create(id, words: words, corpus: corpus, completionHandlerForPersistance: nil)
         
@@ -82,6 +64,7 @@ class LearningPackPersController {
         }
     }
     
+    // MARK: Caching
     func hasCashedPackForID(id: String) -> Bool {
         var listOfLocalDocs = self.queryListOfDocsInLocal()
         for docName in listOfLocalDocs {
@@ -97,7 +80,7 @@ class LearningPackPersController {
         LearningPackModel.open(id, completionHandler: completionHandler)
     }
     
-    // #MARK : Query local and cloud documents
+    // MARK: Query local and cloud documents
     func queryListOfDocsInLocal() -> [NSString]  {
         var result: [NSString] = []
         if let docURL = DocumentHelper.localDocumentDirectoryURL() {
@@ -111,18 +94,5 @@ class LearningPackPersController {
         }
         
         return result
-    }
-    
-    func cloudFileListReceived(notification: NSNotification) {
-//        var queryResults = self.query!.results
-//        assert(false, "pending implementation")
-    }
-    
-    func queryListOfDocsInCloud() {
-//        self.query = NSMetadataQuery()
-//        self.query!.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("cloudFileListReceived:"), name:NSMetadataQueryDidFinishGatheringNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("cloudFileListReceived:"), name:NSMetadataQueryDidUpdateNotification, object: nil)
-//        self.query!.startQuery()
     }
 }

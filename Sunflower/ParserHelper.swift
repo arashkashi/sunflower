@@ -11,12 +11,12 @@ import Foundation
 
 class ParserHelper {
     
-    class func translatedWordsFromStringTokens(tokens: [String], sourceLanaguage: String, targetLanguage: String, completionHandler: ((words: [Word]?, err: String?)->())?) {
+    class func translatedWordsFromStringTokens(tokens: [String], sourceLanaguage: String, targetLanguage: String, googleTranslater: GoogleTranslate, completionHandler: ((words: [Word]?, err: String?)->())?) {
         var words: [Word] = []
         var countBadTranslations: Int = 0
         
         for token in tokens {
-            GoogleTranslate.sharedInstance.translate(token, targetLanguage: targetLanguage, sourceLanaguage: sourceLanaguage, translateEndHandler: { (translation: String?, err: String?, cost: Lafru) -> () in
+            googleTranslater.translate(token, targetLanguage: targetLanguage, sourceLanaguage: sourceLanaguage, translateEndHandler: { (translation: String?, err: String?, cost: Lafru) -> () in
                 
                 if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
                     completionHandler?( words: words, err: "ERR_GOOGLE_API_NETWORD_CONNECTION!")

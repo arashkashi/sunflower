@@ -41,10 +41,10 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
 
 //    
     // MARK: Logic
-//    func makeThePackage(id: Srting, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, completionHandler: (Bool->())) {
-////        LearningPackPersController.sharedInstance.addNewPackage(<#id: String#>, words: <#[Word]#>, corpus: <#String?#>)
-//        
-//    }
+    func makeThePackage(id: Srting, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, completionHandler: (Bool->())) {
+//        LearningPackPersController.sharedInstance.addNewPackage(<#id: String#>, words: <#[Word]#>, corpus: <#String?#>)
+        
+    }
     
     func updateSupportedLanguages() {
         showWaitingOverlay()
