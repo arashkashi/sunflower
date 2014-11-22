@@ -15,6 +15,8 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     var alertViewShown: Bool = false
     var waitingVC: WaitingViewController?
     @IBOutlet var textViewCorpus: UITextView!
+    @IBOutlet var labelTotalTokens: UILabel!
+    @IBOutlet var labelTotalCost: UILabel!
 
 
 //    @IBAction func onNextTapped(sender: UIBarButtonItem) {
@@ -56,6 +58,25 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 //        })
 //    }
     
+    // MARK: UIViewController Override
+    override func viewDidLoad() {
+        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
+        if textViewCorpus.text != "" {
+            self.updateTokens()
+            self.updateLabels()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromaddonetoaddtwo" {
+            var vc = segue.destinationViewController as AddTwoViewController
+            vc.tokens = self.tokens!
+            vc.corpus = self.textViewCorpus.text
+            vc.sourceLanguage = self.sourceLanguage!
+        }
+    }
+
+    // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {
         // Generate the raw tokens
         updateTokens()
@@ -86,6 +107,14 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         hideWaitingOverlay()
     }
     
+    // MARK: Delegates
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        updateLabels()
+        return true
+    }
+    
+    // MARK: Logic
     func textLengthCorrect() -> Bool {
         var text = self.textViewCorpus.text
         if let enteredText = text {
@@ -98,11 +127,11 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         return false
     }
     
-    
     func updateTokens() {
         self.tokens = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
     }
     
+    // MARK: View manipulation
     func showErrorAlertWithMesssage(message: String) {
         if alertViewShown { return }
         
@@ -115,6 +144,28 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         self.presentViewController(alertController, animated: true) {
             self.alertViewShown = true
         }
+    }
+    
+    func updateTotalToken() {
+        if let extractedTokens = self.tokens {
+            self.labelTotalTokens.text = "Tokens: \(extractedTokens.count)"
+        } else {
+           self.labelTotalTokens.text = "Tokens: 0"
+        }
+    }
+    
+    func updateCost() {
+        updateTokens()
+        if let enteredTokens = self.tokens {
+            self.labelTotalCost.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(enteredTokens))"
+        } else {
+            self.labelTotalCost.text = "Cost: 0"
+        }
+    }
+    
+    func updateLabels() {
+        updateCost()
+        updateTotalToken()
     }
     
     func showAllertForMissingInfo(message: String) {
@@ -131,10 +182,6 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
-    }
-    
     func showWaitingOverlay() {
         if self.waitingVC == nil {
             self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
@@ -148,23 +195,9 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         self.waitingVC!.view.removeFromSuperview()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "fromaddonetoaddtwo" {
-            var vc = segue.destinationViewController as AddTwoViewController
-            vc.tokens = self.tokens!
-            vc.corpus = self.textViewCorpus.text
-            vc.sourceLanguage = self.sourceLanguage!
-        }
-    }
-    
+    // MARK: Helper
     func navigationController() -> UINavigationController {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         return appDelegate.rootNavigationController!
     }
-
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-
 }
