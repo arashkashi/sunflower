@@ -83,6 +83,7 @@
 		41DF55401A20DC01007A3729 /* LearningPackControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */; };
 		41DF554C1A20EDB9007A3729 /* GoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9922DA91A0A92F10069872C /* GoogleTranslate.swift */; };
 		41DF554E1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF554D1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift */; };
+		41DF554F1A20F1AE007A3729 /* LearningPackControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */; };
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
@@ -748,6 +749,7 @@
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
 				41A98A971A133EBE000BE2D3 /* CloudKitManagerTests.swift in Sources */,
+				41DF554F1A20F1AE007A3729 /* LearningPackControllerHelper.swift in Sources */,
 				4157DFAE1A1DB94000CF829D /* StringExtensionTests.swift in Sources */,
 				416B90061A01A980008CDE4A /* DateExtention.swift in Sources */,
 				41A98A981A133EFC000BE2D3 /* CloudKitManager.swift in Sources */,
