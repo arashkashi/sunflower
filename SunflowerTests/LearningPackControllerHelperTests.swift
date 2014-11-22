@@ -54,6 +54,24 @@ class LearningPackControllerHelperTests: XCTestCase {
         XCTAssertTrue(result.includes("token3"), "PASS")
         XCTAssertTrue(result.includes("token4"), "PASS")
     }
+    
+    func testMakeWordsFromTokens() {
+        var expectation = expectationWithDescription("should finish translation")
+
+        var selectedLanaguge = "selectedlanguage"
+        var sourceLanguage = "sourceLangague"
+        var manager: MockedGoogleTranslate =  MockedGoogleTranslate()
+        var tokens = ["fail", "fail", "success_kiarash", "fail", "success_arsah"]
+        
+        LearningPackControllerHelper.makeWordsFromTokens(tokens, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanaguge, googleTransaltor: manager, handler: { (words: [Word]?, error: NSError?) -> () in
+            XCTAssertTrue(words!.count == 2, "")
+
+            expectation.fulfill()
+        })
+
+        waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
+        })
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

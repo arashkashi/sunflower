@@ -8,13 +8,15 @@
 
 import Foundation
 
+
+
 class LearningPackControllerHelper  {
     class func makeWordsFromTokensWithTransation(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, transactionManager: TransactionManager, googleTranslator: GoogleTranslate, completionHandler: ((Bool, [Word]?, NSError?)->())) {
         // Calcalte the cost of all tokens successully translated
         var totalCost = GoogleTranslate.sharedInstance.costToTranslate(tokens)
         
         // Make the transaction for all the token,
-        transactionManager.createAndCommitTransaction(totalCost, type: .grant_locallyNow_serverNow) { (commitResult) -> () in
+        transactionManager.createAndCommitTransaction(-1 * totalCost, type: .grant_locallyNow_serverNow) { (commitResult) -> () in
             // Failed?, fail the entire operation
             if commitResult == .Failed { completionHandler(false, [], NSError(domain: "Cloudkit", code: 1001, userInfo: nil)) }
             else
@@ -22,12 +24,12 @@ class LearningPackControllerHelper  {
                 LearningPackControllerHelper.makeWordsFromTokens(tokens, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage, googleTransaltor: googleTranslator, handler: { (wordsResult: [Word]?, errors: NSError?) -> () in
                     if wordsResult == nil {
                         // if there is no word, refund the user
-                        TransactionManager.sharedInstance.createAndCommitTransaction(-1 * totalCost, type: .grant_locallyNow_serverLazy, handler: nil)
+                        TransactionManager.sharedInstance.createAndCommitTransaction(totalCost, type: .grant_locallyNow_serverLazy, handler: nil)
                         completionHandler(false, nil, NSError(domain: "make words from tokens", code: 1002, userInfo: nil))
                     } else {
                         var failedTokens = LearningPackControllerHelper.tokensFailedConvertedToWords(tokens, words: wordsResult!)
                         var costToBeRefunded = GoogleTranslate.sharedInstance.costToTranslate(failedTokens)
-                        TransactionManager.sharedInstance.createAndCommitTransaction(-1 * costToBeRefunded, type: .grant_locallyNow_serverLazy, handler: nil)
+                        TransactionManager.sharedInstance.createAndCommitTransaction(costToBeRefunded, type: .grant_locallyNow_serverLazy, handler: nil)
                         completionHandler(true, wordsResult, NSError(domain: "make words from tokens", code: 1002, userInfo: nil))
                     }
                 })
@@ -42,14 +44,8 @@ class LearningPackControllerHelper  {
         // To the translation for all the tokens and create the resulting words
         for token in tokens {
             googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, successHandler: { (translation, err) -> () in
-                
-                // TODO: Network call fail, Never goes to this loop, fix the google translate class
-                if translation == nil {
-                    handler(nil, NSError(domain: "GoogleTransate translating service", code: 1001, userInfo: nil))
-                    return
-                }
-                
-                if translation! != "" {
+            
+                if translation != nil {
                     words.append(Word(name: token, meaning: translation!, sentences: []))
                 } else {
                     countBadTranslations++
@@ -59,7 +55,7 @@ class LearningPackControllerHelper  {
                     handler(words, nil)
                 }
             })
-        }
+        }        
     }
     
     class func tokensSuccessfullyConvertedToWords(tokens: [String], words: [Word]) -> [String] {
