@@ -10,7 +10,7 @@ import UIKit
 import XCTest
 
 class MockedGoogleTranslate: GoogleTranslate {
-    override func translate(text: String, targetLanguage: String, sourceLanaguage: String, translateEndHandler: ((translation: String?, err: String?) -> ())?) {
+    override func translate(text: String, targetLanguage: String, sourceLanaguage: String, successHandler translateEndHandler: ((translation: String?, err: String?) -> ())?) {
         if text == "fail" {translateEndHandler!(translation: nil, err: "Force ERror")}
         else {
             translateEndHandler!(translation: "translation", err: nil)

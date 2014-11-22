@@ -22,7 +22,7 @@ class GoogleTranslate {
     let baseSupoprtedLanguagesURL = "https://www.googleapis.com/language/translate/v2/languages?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8&target=en"
     let baseDetectLanguageURI = "https://www.googleapis.com/language/translate/v2/detect?key=AIzaSyAI21c0KYKv4dMZPQeVy3R9ZA17AfOQNy8"
     
-     // in dollars
+    // in dollars
     
     class var sharedInstance : GoogleTranslate {
         struct Static {
@@ -61,42 +61,47 @@ class GoogleTranslate {
             }
             
             }) { (operaion: AFHTTPRequestOperation!, error: NSError!) -> Void in
-//                completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION)
+                //                completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION)
         }
     }
     
-    func translate(text: String, targetLanguage: String, sourceLanaguage: String, translateEndHandler:((translation: String?, err: String?)->())?) {
+    func translate(text: String, targetLanguage: String, sourceLanaguage: String, successHandler:((translation: String?, err: String?)->())?) {
+        var recievedResponse = false
         AFHTTPRequestOperationManager().GET(self.baseTranslationURI, parameters: ["q" : text, "target": targetLanguage, "source": sourceLanaguage], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            if recievedResponse { successHandler?(translation: nil, err: "Already failed"); return }
+            recievedResponse = true
             
             var result = self.handleGoogleTranslateResponse(responseObject as NSDictionary)
             
             if result.translation != nil {
-                translateEndHandler?(translation:result.translation!, err: nil)
+                successHandler?(translation:result.translation!, err: nil)
             } else {
-                translateEndHandler?(translation: nil, err: ERR_GOOGLE_API_NOT_TRASLATABLE)
+                successHandler?(translation: nil, err: ERR_GOOGLE_API_NOT_TRASLATABLE)
             }
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                
-//                translateEndHandler?(translation: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION, cost: 0)
+                if !recievedResponse {
+                    successHandler?(translation: nil, err: "Already failed");
+                    recievedResponse = true
+                }
         }
     }
     
     // MARK: Handle Google JSON Response
-
-//    {
-//        "data": {
-//            "detections": [
-//                [
-//                    {
-//                        "language": "en",
-//                        "isReliable": false,
-//                        "confidence": 0.18397073
-//                    }
-//                ]
-//            ]
-//        }
-//    }
+    
+    //    {
+    //        "data": {
+    //            "detections": [
+    //                [
+    //                    {
+    //                        "language": "en",
+    //                        "isReliable": false,
+    //                        "confidence": 0.18397073
+    //                    }
+    //                ]
+    //            ]
+    //        }
+    //    }
     func handleGoogleDetectLanagugeReposne(response: NSDictionary) -> (detectedLanguage: String?, err: String?) {
         var data = response.objectForKey("data") as? NSDictionary
         var detections = data?.objectForKey("detections") as? NSArray
@@ -214,5 +219,5 @@ class GoogleTranslate {
             })
         }
     }
-
+    
 }
