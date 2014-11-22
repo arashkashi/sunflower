@@ -18,6 +18,7 @@ class ParserHelper {
         for token in tokens {
             googleTranslater.translate(token, targetLanguage: targetLanguage, sourceLanaguage: sourceLanaguage, translateEndHandler: { (translation: String?, err: String?, cost: Lafru) -> () in
                 
+                // TODO: Never goes to this loop, fix the google translate class
                 if err == ERR_GOOGLE_API_NETWORD_CONNECTION {
                     completionHandler?( words: words, err: "ERR_GOOGLE_API_NETWORD_CONNECTION!")
                     return

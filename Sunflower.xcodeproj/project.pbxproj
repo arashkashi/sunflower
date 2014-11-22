@@ -79,6 +79,7 @@
 		41DD5BFF1A073F670001A9DA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD5BFE1A073F670001A9DA /* Parser.swift */; };
 		41DD5C011A073FAD0001A9DA /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD5C001A073FAD0001A9DA /* ParserTests.swift */; };
 		41DD5C021A073FFC0001A9DA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD5BFE1A073F670001A9DA /* Parser.swift */; };
+		41DF55401A20DC01007A3729 /* LearningPackControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */; };
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
@@ -187,6 +188,7 @@
 		41D415F019AA6E490038EFE6 /* RawPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPackage.swift; sourceTree = "<group>"; };
 		41DD5BFE1A073F670001A9DA /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		41DD5C001A073FAD0001A9DA /* ParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
+		41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerHelper.swift; sourceTree = "<group>"; };
 		B2D9509F1A1288F100D8DA90 /* Sunflower.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sunflower.entitlements; sourceTree = "<group>"; };
 		B2D950A01A1288FA00D8DA90 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			children = (
 				41D415E419A9D8CE0038EFE6 /* LearnerController.swift */,
 				D9B246BF19C583FA00E4737C /* LearningPackController.swift */,
+				41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				D9922DAE1A0AA6B30069872C /* AddOneViewController.swift in Sources */,
 				41614D1D19AE77340020EF58 /* Test.swift in Sources */,
 				D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */,
+				41DF55401A20DC01007A3729 /* LearningPackControllerHelper.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
 				414F93EB19E267CB002BFDE0 /* ResultViewController.swift in Sources */,
 				D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */,
