@@ -84,6 +84,7 @@
 		41DF554C1A20EDB9007A3729 /* GoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9922DA91A0A92F10069872C /* GoogleTranslate.swift */; };
 		41DF554E1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF554D1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift */; };
 		41DF554F1A20F1AE007A3729 /* LearningPackControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */; };
+		41DF55511A215380007A3729 /* LearningPackControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF55501A215380007A3729 /* LearningPackControllerTests.swift */; };
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
@@ -195,6 +196,7 @@
 		41DF553F1A20DC01007A3729 /* LearningPackControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerHelper.swift; sourceTree = "<group>"; };
 		41DF55491A20ED2C007A3729 /* SunflowerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SunflowerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		41DF554D1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerHelperTests.swift; sourceTree = "<group>"; };
+		41DF55501A215380007A3729 /* LearningPackControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerTests.swift; sourceTree = "<group>"; };
 		B2D9509F1A1288F100D8DA90 /* Sunflower.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sunflower.entitlements; sourceTree = "<group>"; };
 		B2D950A01A1288FA00D8DA90 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				4157DFAD1A1DB94000CF829D /* StringExtensionTests.swift */,
 				41DF55491A20ED2C007A3729 /* SunflowerTests-Bridging-Header.h */,
 				41DF554D1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift */,
+				41DF55501A215380007A3729 /* LearningPackControllerTests.swift */,
 			);
 			path = SunflowerTests;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				41EA254D19AA876B0045402E /* LearnerController.swift in Sources */,
 				D9FD437919B0CDB900984399 /* Test.swift in Sources */,
 				41A98A971A133EBE000BE2D3 /* CloudKitManagerTests.swift in Sources */,
+				41DF55511A215380007A3729 /* LearningPackControllerTests.swift in Sources */,
 				41DF554F1A20F1AE007A3729 /* LearningPackControllerHelper.swift in Sources */,
 				4157DFAE1A1DB94000CF829D /* StringExtensionTests.swift in Sources */,
 				416B90061A01A980008CDE4A /* DateExtention.swift in Sources */,

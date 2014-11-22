@@ -41,12 +41,23 @@ class LearningPackController {
         return Static.instance
     }
     
-    func addNewPackage(id: String, words: [Word], corpus: String?) {
-        LearningPackModel.create(id, words: words, corpus: corpus, completionHandlerForPersistance: nil)
-        
-        var currentIDs = self.listOfAvialablePackIDs
-        currentIDs.append(id)
-        self.listOfAvialablePackIDs = currentIDs
+    func addNewPackage(id: String, words: [Word], corpus: String?, completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
+        LearningPackModel.create(id, words: words, corpus: corpus) { (success: Bool, model: LearningPackModel?) -> () in
+            if success {
+                completionHandlerForPersistance?(true, model)
+                var currentIDs = self.listOfAvialablePackIDs
+                currentIDs.append(id)
+                self.listOfAvialablePackIDs = currentIDs
+            } else {
+                completionHandlerForPersistance?(false, nil)
+            }
+        }
+    }
+    
+    func validateID(id: String, existingIDs: [String]) -> String {
+        if !existingIDs.includes(id) { return id } else {
+            return self.validateID("\(id)I", existingIDs: existingIDs)
+        }
     }
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel?)->())?) {

@@ -11,7 +11,24 @@ import Foundation
 
 
 class LearningPackControllerHelper  {
-    class func makeWordsFromTokensWithTransation(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, transactionManager: TransactionManager, googleTranslator: GoogleTranslate, completionHandler: ((Bool, [Word]?, NSError?)->())) {
+    class func makeLearningPackModel(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, finishHandler: ((LearningPackModel?)->())? ) {
+        LearningPackControllerHelper.makeWordsFromTokensWithTransation(tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage, transactionManager: TransactionManager.sharedInstance, googleTranslator: GoogleTranslate.sharedInstance) { (success: Bool, words: [Word]?, error: NSError?) -> () in
+            if success && words != nil {
+                var packController = LearningPackController.sharedInstance
+                var existingIDS = packController.listOfAvialablePackIDs
+                var validatedID = LearningPackController.sharedInstance.validateID(id, existingIDs: existingIDS)
+                LearningPackController.sharedInstance.addNewPackage(validatedID, words: words!, corpus: corpus, completionHandlerForPersistance: { (success: Bool, model: LearningPackModel?) -> () in
+                    if success && model != nil {
+                        finishHandler?(model!)
+                    } else {
+                        finishHandler?(nil)
+                    }
+                })
+            }
+        }
+    }
+    
+    class func makeWordsFromTokensWithTransation(tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, transactionManager: TransactionManager, googleTranslator: GoogleTranslate, completionHandler: ((Bool, [Word]?, NSError?)->())) {
         // Calcalte the cost of all tokens successully translated
         var totalCost = GoogleTranslate.sharedInstance.costToTranslate(tokens)
         
