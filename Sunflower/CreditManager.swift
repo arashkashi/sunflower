@@ -50,16 +50,6 @@ class CreditManager {
     }
     
     // MARK: Server Calls
-    func askServerIfInitialCreditGranted( handler: (Bool, CKRecord?)->() ) {
-        CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
-            if record == nil || err != nil { handler(false, nil) }
-            if record!.allKeys().includes(kCreditManagerInitialCreditGranted)
-            { handler(true, record!) } else {
-                handler(false, record!)
-            }
-        }
-    }
-
     func grantInitialCreditToServer(initialCredit: Lafru, handler: (Bool, NSError?)->() ) {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             
