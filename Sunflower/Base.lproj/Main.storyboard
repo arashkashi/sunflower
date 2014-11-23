@@ -59,6 +59,8 @@
                                 <rect key="frame" x="217" y="543" width="167" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4vJ-ac-5FB"/>
+                                    <constraint firstAttribute="width" constant="167" id="IT5-wQ-7DI"/>
                                     <constraint firstAttribute="width" secondItem="z4k-3X-hI1" secondAttribute="height" multiplier="130:35" id="oUT-df-Njx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
@@ -66,6 +68,11 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="oUT-df-Njx"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="onGotItTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="rUU-j3-Ibk"/>
                                 </connections>
@@ -105,16 +112,6 @@
                                     <action selector="onSkipTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="O2J-d5-aNz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tWk-uT-fkt" userLabel="Label - timer">
-                                <rect key="frame" x="535" y="553" width="50" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="1ri-RC-OMP"/>
-                                    <constraint firstAttribute="width" constant="50" id="Jks-Bv-jQX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-B2-xMI">
                                 <rect key="frame" x="21" y="541" width="30" height="49"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="31"/>
@@ -138,6 +135,16 @@
                                     <segue destination="frw-hx-dvF" kind="show" identifier="corpus" id="vL9-F4-kxO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tWk-uT-fkt" userLabel="Label - timer">
+                                <rect key="frame" x="540" y="553" width="40" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="1ri-RC-OMP"/>
+                                    <constraint firstAttribute="width" constant="40" id="Jks-Bv-jQX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -157,11 +164,11 @@
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="z4k-3X-hI1" secondAttribute="bottom" constant="12" id="RaP-9g-Smv"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="7wE-W2-5wb" secondAttribute="bottom" constant="12" id="U3k-ps-owU"/>
                             <constraint firstItem="QnA-9b-FTu" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" id="WA4-At-e7k"/>
-                            <constraint firstItem="JFW-NR-EoJ" firstAttribute="centerY" secondItem="tWk-uT-fkt" secondAttribute="centerY" id="Wss-Uq-ghM"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="left" secondItem="BYi-3n-KZ0" secondAttribute="left" id="XuX-6c-c5H"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="YCI-y7-ZT7"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="Rdd-gJ-gKU" secondAttribute="bottom" constant="44" id="b0t-4f-uSQ"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="70" id="b1G-tR-GTN"/>
+                            <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="tWk-uT-fkt" secondAttribute="bottom" constant="22" id="cAK-dS-uYk"/>
                             <constraint firstItem="7wE-W2-5wb" firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="130:35" id="ehg-oh-8wl"/>
                             <constraint firstItem="tWk-uT-fkt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z4k-3X-hI1" secondAttribute="trailing" constant="150" id="mee-CF-d3n"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="n02-JC-dTT"/>
@@ -169,7 +176,7 @@
                             <constraint firstItem="QnA-9b-FTu" firstAttribute="centerX" secondItem="vFO-0N-GnU" secondAttribute="centerX" id="r6k-NQ-fEV"/>
                             <constraint firstItem="hW4-B2-xMI" firstAttribute="leading" secondItem="BYi-3n-KZ0" secondAttribute="leadingMargin" constant="5" id="uEG-5M-DWg"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="centerY" secondItem="hW4-B2-xMI" secondAttribute="centerY" constant="0.5" id="wWG-md-dPv"/>
-                            <constraint firstItem="tWk-uT-fkt" firstAttribute="trailing" secondItem="BYi-3n-KZ0" secondAttribute="trailingMargin" constant="1" id="yvz-Fq-YbH"/>
+                            <constraint firstAttribute="right" secondItem="tWk-uT-fkt" secondAttribute="right" constant="20" id="yvz-Fq-YbH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

@@ -227,6 +227,8 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     func showGotIt() {
         self.hideAllButtons()
         self.showItemWithAnimation(self.buttonGotIt)
+        self.buttonGotIt.highlighted = false
+        self.buttonGotIt.selected = false
     }
     
     func showSkip() {
@@ -236,23 +238,29 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     func showCheckButton() {
         self.hideAllButtons()
         self.showItemWithAnimation(self.buttonCheck)
+        self.buttonCheck.highlighted = false
+        self.buttonCheck.selected = false
     }
     
     func showContinueButton() {
         self.hideAllButtons()
         self.showItemWithAnimation(self.buttonContinue)
+        self.buttonContinue.selected = false
+        self.buttonContinue.highlighted = false
     }
     
     func hideAllButtons() {
         self.buttonGotIt.hidden = true
         self.buttonContinue.hidden = true
         self.buttonCheck.hidden = true
+        
+        self.buttonGotIt.highlighted = false
+        self.buttonContinue.highlighted = false
+        self.buttonCheck.highlighted = false
     }
     
     func showItemWithAnimation(view: UIView) {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            view.hidden = false
-        })
+        view.hidden = false
     }
     
     func hideItem(view: UIView) {
@@ -264,10 +272,10 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.presentationViewController!.word = word
         self.presentationViewController!.completionHandler = completionHandler
         
-        self.animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
-        
-        self.showGotIt()
-        
+        self.animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: { ()->() in
+            self.showGotIt()
+        })
+
         // Allow user to skip the word when first shown
         if word.currentLearningStage == .Cram {
             self.showSkip()
@@ -280,7 +288,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
             newView.frame = viewContainer.bounds
             viewContainer.addSubview(newView)
             }) { (isFinished: Bool) -> Void in
-            // Handle completion here
+                if isFinished { completionHandler?()}
         }
     }
     
