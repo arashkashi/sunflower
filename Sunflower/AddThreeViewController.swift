@@ -19,33 +19,19 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     var waitingVC: WaitingViewController?
     
     @IBOutlet var tableView: UITableView!
+    
+    // MARK: Actions
+    @IBAction func onMakeTapped(sender: UIBarButtonItem) {
+        
+    }
 
+    // MARK: UIViewController override
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSupportedLanguages()
 
-
-
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func onTranslationFinished(words: [Word], corpus: String?) {
-//        LearningPackPersController.sharedInstance.addNewPackage(textFieldBundleID.text, words: words, corpus: corpus)
-//        self.navigationController?.popViewControllerAnimated(true)
-    }
-
-
-//    
-    // MARK: Logic
-//    func makeThePackage(id: Srting, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, completionHandler: (Bool->())) {
-////        LearningPackPersController.sharedInstance.addNewPackage(<#id: String#>, words: <#[Word]#>, corpus: <#String?#>)
-//        
-//    }
-    
     func updateSupportedLanguages() {
         showWaitingOverlay()
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in
@@ -104,6 +90,10 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     
     func hideWaitingOverlay() {
         self.waitingVC!.view.removeFromSuperview()
+    }
+    
+    func gobackToMainView() {
+        performSegueWithIdentifier("fromthreetomain", sender: nil)
     }
     
     // MARK: Table view data source / delegate

@@ -18,46 +18,6 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var labelTotalTokens: UILabel!
     @IBOutlet var labelTotalCost: UILabel!
 
-
-//    @IBAction func onNextTapped(sender: UIBarButtonItem) {
-//        // Return if info is not there
-//        if textFieldBundleID.text == "" {
-//            self.showAllertForMissingInfo("unique bundle id on top white textbox is missing")
-//            return
-//        }
-//        
-//        if textViewCorpus.text == "" {
-//            self.showAllertForMissingInfo("some text to learn is missing in the middle box")
-//            return
-//        }
-//        
-//        if targetLanaguage == nil {
-//            self.showAllertForMissingInfo("select target language from the lower table")
-//            return
-//        }
-//        
-//        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-//
-//            if detectedLanguage != nil && err == nil {
-//                
-//                var tokens: [String] = Parser.sortedUniqueTokensFor(self.textViewCorpus.text)
-//                
-//                ParserHelper.translatedWordsFromStringTokens(tokens, sourceLanaguage: detectedLanguage!, targetLanguage: self.targetLanaguage!, completionHandler: { (words, err, cost) -> () in
-//                    
-//                    if err == nil && words?.count > 0 {
-//                        CreditManager.sharedInstance.spend(cost)
-//                        self.onTranslationFinished(words!, corpus: self.textViewCorpus.text)
-//                    } else {
-//                        self.showErrorAlertWithMesssage("Translating to tokens failed")
-//                    }
-//                })
-//                
-//            } else {
-//                self.showErrorAlertWithMesssage("Could not detect the source language")
-//            }
-//        })
-//    }
-    
     // MARK: UIViewController Override
     override func viewDidLoad() {
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
