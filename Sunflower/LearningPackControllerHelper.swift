@@ -24,6 +24,8 @@ class LearningPackControllerHelper  {
                         finishHandler?(nil)
                     }
                 })
+            } else {
+                finishHandler?(nil)
             }
         }
     }
@@ -31,6 +33,11 @@ class LearningPackControllerHelper  {
     class func makeWordsFromTokensWithTransation(tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, transactionManager: TransactionManager, googleTranslator: GoogleTranslate, completionHandler: ((Bool, [Word]?, NSError?)->())) {
         // Calcalte the cost of all tokens successully translated
         var totalCost = GoogleTranslate.sharedInstance.costToTranslate(tokens)
+        
+        // Check if the user has enought credit
+        if !CreditManager.sharedInstance.hasCreditFor(totalCost) {
+            completionHandler(false, nil, NSError(domain: "credit issue", code: 1001, userInfo: nil))
+        }
         
         // Make the transaction for all the token,
         transactionManager.createAndCommitTransaction(-1 * totalCost, type: .grant_locallyNow_serverNow) { (commitResult) -> () in
