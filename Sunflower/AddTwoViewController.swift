@@ -33,7 +33,7 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "fromaddtowtoaddthree" {
+        if segue.identifier == "fromaddtwotoaddthree" {
             var vc = segue.destinationViewController as AddThreeViewController
             vc.tokens = finaltokens(self.selectedTokens, allTokens: self.tokens)
             vc.corpus = self.corpus
