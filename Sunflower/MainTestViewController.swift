@@ -111,9 +111,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.secondsSpentToday = self.labelCounter.text!.toInt()!
         self.labelCounter.text = ""
         timer?.invalidate()
-        
-        self.presentationViewController = nil
-        self.testViewController = nil
     }
     
     override func viewWillAppear(animated: Bool) {
