@@ -22,7 +22,7 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var labelTotalTokens: UILabel!
     @IBOutlet weak var labelSelectedTokens: UILabel!
     
-    // MARK : override uiviewcontroller
+    // MARK: Override uiviewcontroller
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +39,9 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
             vc.corpus = self.corpus
             vc.sourceLanguage = self.sourceLanguage
         }
+    }
+    
+    @IBAction func unwindToAddTwo(segue: UIStoryboardSegue) {
     }
     
     // MARK: MAinulate/update the view

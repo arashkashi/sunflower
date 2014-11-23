@@ -75,6 +75,9 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
             vc.sourceLanguage = self.sourceLanguage!
         }
     }
+    
+    @IBAction func unwindToAddOne(segue: UIStoryboardSegue) {
+    }
 
     // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {
