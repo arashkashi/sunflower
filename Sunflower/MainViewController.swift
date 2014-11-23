@@ -62,6 +62,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
+        return false
+    }
+    
     @IBAction func done(segue: UIStoryboardSegue) {
         NSLog("Popping back to this view controller!")
         self.tableView.reloadData()
