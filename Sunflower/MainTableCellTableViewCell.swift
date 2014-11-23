@@ -18,6 +18,16 @@ class MainTableCellView: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.showLoadingContent()
+        addGestureRecognizer()
+    }
+    
+    func addGestureRecognizer() {
+        let recognizer = UITapGestureRecognizer(target: self, action:Selector("handleTap:"))
+        self.addGestureRecognizer(recognizer)
+    }
+    
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        println()
     }
     
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {
