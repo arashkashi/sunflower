@@ -18,6 +18,14 @@ class MockedGoogleTranslate: GoogleTranslate {
     }
 }
 
+class MockedTransactionManagerWithFailedServerNowLocalNow: TransactionManager {
+    override func createAndCommitTransaction(amount: Int32, type: TransactionType, handler: ((CommitResult)->())?) {
+        if type == .grant_locallyNow_serverNow { handler?(.Failed) } else {
+            handler?(.Succeeded)
+        }
+    }
+}
+
 class LearningPackControllerHelperTests: XCTestCase {
 
     override func setUp() {
@@ -72,6 +80,31 @@ class LearningPackControllerHelperTests: XCTestCase {
         waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
         })
     }
+    
+    // When the transaction of total cost fails
+    func testMakeWordsFromTokensWithTransationCaseOne() {
+        var expectation = expectationWithDescription("")
+        
+        var selectedLanaguge = "selectedlanguage"
+        var sourceLanguage = "sourceLangague"
+        var manager: MockedGoogleTranslate =  MockedGoogleTranslate()
+        var transactionManager = MockedTransactionManagerWithFailedServerNowLocalNow()
+        var initialCredit = CreditManager.sharedInstance.localBalance
+        var tokens = ["fail", "fail", "success_kiarash", "fail", "success_arsah"]
+        
+        
+        LearningPackControllerHelper.makeWordsFromTokensWithTransation(tokens, corpus: "corpus", sourceLanguage: sourceLanguage, selectedLanguage: selectedLanaguge, transactionManager: transactionManager, googleTranslator: manager, completionHandler: { (success: Bool, words: [Word]?, error: NSError?) -> () in
+            
+            XCTAssertFalse(success, "PASS")
+            XCTAssertTrue(words == nil, "PASS")
+            XCTAssertTrue(error != nil, "PASS")
+            
+            expectation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
+        })
+}
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
