@@ -71,7 +71,7 @@ class Test: NSObject, Equatable, NSCoding {
     class func testSetForLearningStage(learningStage: LearningStage) -> [Test] {
         switch learningStage {
         case LearningStage.Cram:
-            return [Test(testType: .Test1)]
+            return [Test(testType: .Test1), Test(testType: .Test2)]
         case LearningStage.Learn:
             return [Test(testType: .Test1)]
         case LearningStage.Relearn:

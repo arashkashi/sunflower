@@ -16,6 +16,8 @@ class Test2ViewController : Test1ViewController {
         
         // Back up the background color
         self.buttonsBGColor = self.buttonsChoices![0].backgroundColor!
+        
+        self.wordLabel!.text = self.word!.meaning
     }
     
     override func updateButtonChoicesWith(words: [Word]) {
