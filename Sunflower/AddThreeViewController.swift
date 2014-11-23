@@ -26,8 +26,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: Actions
     @IBAction func onMakeTapped(sender: UIBarButtonItem) {
-//        LearningPackControllerHelper.makeLearningPackModelWithTransaction(<#id: String#>, tokens: <#[String]#>, corpus: <#String#>, sourceLanguage: <#String#>, selectedLanguage: <#String#>, finishHandler: <#((LearningPackModel?) -> ())?##(LearningPackModel?) -> ()#>)
-        
+        self.makePackageWithUIpdate()
     }
 
     // MARK: UIViewController override
@@ -35,13 +34,11 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         updateSupportedLanguages()
         hideMakeButton()
-
     }
 
     func updateSupportedLanguages() {
         showWaitingOverlay()
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in
-            self.hideWaitingOverlay()
             if err == nil && languages != nil {
                 self.supportedLanagages = languages!
                 self.tableView.reloadData()
@@ -65,12 +62,33 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         if alertViewShown { return }
         
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
+        let okAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
             self.alertViewShown = false
         }
         
-        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true) {
+            self.alertViewShown = true
+        }
+    }
+    
+    func showErrorAlertWhenFailed() {
+        if alertViewShown { return }
+        let alertController = UIAlertController(title: "Error", message: "Something went wrong making the package", preferredStyle: .Alert)
+        let retryAction = UIAlertAction(title: "Re-try", style: .Default) { (action: UIAlertAction!) -> Void in
+            self.alertViewShown = false
+            self.makePackageWithUIpdate()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction!) -> Void in
+            self.alertViewShown = false
+            self.gobackToMainView()
+        }
+        
+        alertController.addAction(retryAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) { () -> Void in
             self.alertViewShown = true
         }
     }
@@ -89,7 +107,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         alertController.addAction(retryAction)
         
         self.presentViewController(alertController, animated: true) { () -> Void in
-            //
+            self.alertViewShown = true
         }
     }
     
@@ -108,6 +126,29 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func gobackToMainView() {
         performSegueWithIdentifier("fromthreetomain", sender: nil)
+    }
+    
+    // MARK: Logic
+    func makePackage( completionHandler: (Bool)->() ) {
+        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID!, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?) -> () in
+            if model != nil {
+                completionHandler(true)
+            } else {
+                completionHandler(false)
+            }
+        }
+    }
+    
+    func makePackageWithUIpdate() {
+        showWaitingOverlay()
+        makePackage { (success: Bool) -> () in
+            self.hideWaitingOverlay()
+            if success {
+                self.gobackToMainView()
+            } else {
+                self.showErrorAlertWhenFailed()
+            }
+        }
     }
     
     // MARK: Events
