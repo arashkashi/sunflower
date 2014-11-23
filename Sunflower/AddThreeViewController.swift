@@ -8,20 +8,25 @@
 
 import UIKit
 
-class AddThreeViewController: UIViewController, UITableViewDataSource {
+class AddThreeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
     var supportedLanagages: [Dictionary<String, String>]!
     var selectedLanguage: String?
+    var selectedID: String?
     
     var alertViewShown: Bool = false
     var waitingVC: WaitingViewController?
     
+    
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var textFieldID: UITextField!
+    @IBOutlet var barButtonItemMake: UIBarButtonItem!
     
     // MARK: Actions
     @IBAction func onMakeTapped(sender: UIBarButtonItem) {
+//        LearningPackControllerHelper.makeLearningPackModelWithTransaction(<#id: String#>, tokens: <#[String]#>, corpus: <#String#>, sourceLanguage: <#String#>, selectedLanguage: <#String#>, finishHandler: <#((LearningPackModel?) -> ())?##(LearningPackModel?) -> ()#>)
         
     }
 
@@ -29,6 +34,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSupportedLanguages()
+        hideMakeButton()
 
     }
 
@@ -47,6 +53,14 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
     }
     
     // MARK: View manipulation
+    func hideMakeButton() {
+        self.navigationItem.rightBarButtonItem = nil
+    }
+    
+    func showMakeButton() {
+        self.navigationItem.setRightBarButtonItem(barButtonItemMake, animated: true)
+    }
+    
     func showErrorAlertWithMesssage(message: String) {
         if alertViewShown { return }
         
@@ -96,6 +110,13 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
         performSegueWithIdentifier("fromthreetomain", sender: nil)
     }
     
+    // MARK: Events
+    func onInputsUpdated() {
+        if selectedID != nil && selectedLanguage != nil{
+            showMakeButton()
+        }
+    }
+    
     // MARK: Table view data source / delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if supportedLanagages != nil { return supportedLanagages.count } else {
@@ -116,5 +137,21 @@ class AddThreeViewController: UIViewController, UITableViewDataSource {
         var cell = tableView.cellForRowAtIndexPath(indexPath)!
         
         selectedLanguage = cell.detailTextLabel!.text
+        onInputsUpdated()
+    }
+    
+    // MARK: textField delegate
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.text != nil {
+            if textField.text!.length() > 0 {
+                selectedID = textField.text!
+                onInputsUpdated()
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

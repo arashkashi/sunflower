@@ -468,18 +468,21 @@
                                     <segue destination="fBQ-vW-yP6" kind="unwind" identifier="fromthreetomain" unwindAction="unwindToMain:" id="BFr-1p-QgP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ksl-bF-axs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choone a name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ksl-bF-axs">
                                 <rect key="frame" x="26" y="54" width="548" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZKT-2k-S1j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="ZKT-2k-S1j"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="u6S-ZK-iQ6" id="glg-TE-6tb"/>
+                                </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f9s-Q3-HvQ">
                                 <rect key="frame" x="26" y="94" width="548" height="452"/>
@@ -509,6 +512,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="u6S-ZK-iQ6" id="Ol5-Lr-KAu"/>
+                                    <outlet property="delegate" destination="u6S-ZK-iQ6" id="cqg-Qe-T3A"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -524,7 +528,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="ID &amp; Language" id="w7Q-XS-afY">
+                    <navigationItem key="navigationItem" title="Name &amp; Language" id="w7Q-XS-afY">
                         <barButtonItem key="rightBarButtonItem" title="Make" id="OGw-XR-xO1">
                             <connections>
                                 <action selector="onMakeTapped:" destination="u6S-ZK-iQ6" id="CyL-dg-Cmn"/>
@@ -533,6 +537,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barButtonItemMake" destination="OGw-XR-xO1" id="MAf-S5-W7j"/>
                         <outlet property="tableView" destination="f9s-Q3-HvQ" id="WyV-w2-gNf"/>
                     </connections>
                 </viewController>
