@@ -45,6 +45,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(animated: Bool) {
         updateCounter()
     }
+
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
+
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "to_main_test" {
