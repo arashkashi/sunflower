@@ -20,7 +20,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 
     // MARK: UIViewController Override
     override func viewDidLoad() {
-        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"
+        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama" /* bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"*/
         if textViewCorpus.text != "" {
             self.updateTokens()
             self.updateLabels()
