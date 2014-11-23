@@ -39,6 +39,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     func updateSupportedLanguages() {
         showWaitingOverlay()
         GoogleTranslate.sharedInstance.supportedLanguages { (languages: [Dictionary<String, String>]?, err) -> () in
+            self.hideWaitingOverlay()
             if err == nil && languages != nil {
                 self.supportedLanagages = languages!
                 self.tableView.reloadData()
