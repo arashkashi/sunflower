@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MainViewCellDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var labelTopCounter: UILabel!
@@ -71,6 +71,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.reloadData()
     }
     
+    // MARK: Cell Delegate
+    func onCellTapped(id: String) {
+        println()
+    }
+    
+    // MARK: Table View datasource delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LearningPackController.sharedInstance.listOfAvialablePackIDs.count;
     }
@@ -79,6 +85,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
         cellOptional.showLoadingContent()
+        
+        cellOptional.delegate = self
         
         var packID = LearningPackController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
         

@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol MainViewCellDelegate {
+    func onCellTapped(id: String)
+}
+
 class MainTableCellView: UITableViewCell {
+    
+    var delegate: MainViewCellDelegate?
 
     @IBOutlet var labelID: UILabel!
     @IBOutlet var labelProgress: UILabel!
@@ -27,7 +33,7 @@ class MainTableCellView: UITableViewCell {
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {
-        println()
+        self.delegate?.onCellTapped(self.labelID.text!)
     }
     
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {
