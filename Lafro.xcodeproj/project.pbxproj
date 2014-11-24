@@ -88,7 +88,7 @@
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
-		B2D950A11A1288FA00D8DA90 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D950A01A1288FA00D8DA90 /* CloudKit.framework */; };
+		B279BDFD1A23C8BE0017F302 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B279BDFC1A23C8BE0017F302 /* CloudKit.framework */; };
 		B2D950A41A128EF400D8DA90 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */; };
 		B2E643971A1E616500CC01BA /* TokensViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E643961A1E616500CC01BA /* TokensViewCell.swift */; };
 		D8309A1A9A64C97434D49C97 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35579851DFAED960FE1306F0 /* libPods.a */; };
@@ -197,8 +197,8 @@
 		41DF55491A20ED2C007A3729 /* SunflowerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SunflowerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		41DF554D1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerHelperTests.swift; sourceTree = "<group>"; };
 		41DF55501A215380007A3729 /* LearningPackControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerTests.swift; sourceTree = "<group>"; };
+		B279BDFC1A23C8BE0017F302 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2D9509F1A1288F100D8DA90 /* Sunflower.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sunflower.entitlements; sourceTree = "<group>"; };
-		B2D950A01A1288FA00D8DA90 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		B2E643961A1E616500CC01BA /* TokensViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokensViewCell.swift; sourceTree = "<group>"; };
 		D92B013419D99E9400CE11A8 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8309A1A9A64C97434D49C97 /* libPods.a in Frameworks */,
-				B2D950A11A1288FA00D8DA90 /* CloudKit.framework in Frameworks */,
+				B279BDFD1A23C8BE0017F302 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +485,7 @@
 		EFCCBA4E2E7C26287D1BBFE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B2D950A01A1288FA00D8DA90 /* CloudKit.framework */,
+				B279BDFC1A23C8BE0017F302 /* CloudKit.framework */,
 				35579851DFAED960FE1306F0 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -882,6 +882,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunflower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Lafro;
 				PROVISIONING_PROFILE = "";
@@ -902,6 +903,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunflower/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Lafro;
 				PROVISIONING_PROFILE = "";
