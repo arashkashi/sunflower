@@ -88,6 +88,7 @@
 		41EA254D19AA876B0045402E /* LearnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E419A9D8CE0038EFE6 /* LearnerController.swift */; };
 		41EA254E19AA877B0045402E /* RawPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415F019AA6E490038EFE6 /* RawPackage.swift */; };
 		41EA254F19AB05EC0045402E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D415E119A9D84F0038EFE6 /* Word.swift */; };
+		B21626831A23CD8A00B7D1CC /* TKDHighlightingTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B21626821A23CD8A00B7D1CC /* TKDHighlightingTextStorage.m */; };
 		B279BDFD1A23C8BE0017F302 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B279BDFC1A23C8BE0017F302 /* CloudKit.framework */; };
 		B2D950A41A128EF400D8DA90 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */; };
 		B2E643971A1E616500CC01BA /* TokensViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E643961A1E616500CC01BA /* TokensViewCell.swift */; };
@@ -197,6 +198,8 @@
 		41DF55491A20ED2C007A3729 /* SunflowerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SunflowerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		41DF554D1A20EE7E007A3729 /* LearningPackControllerHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerHelperTests.swift; sourceTree = "<group>"; };
 		41DF55501A215380007A3729 /* LearningPackControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerTests.swift; sourceTree = "<group>"; };
+		B21626811A23CD8A00B7D1CC /* TKDHighlightingTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDHighlightingTextStorage.h; sourceTree = "<group>"; };
+		B21626821A23CD8A00B7D1CC /* TKDHighlightingTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDHighlightingTextStorage.m; sourceTree = "<group>"; };
 		B279BDFC1A23C8BE0017F302 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2D9509F1A1288F100D8DA90 /* Sunflower.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sunflower.entitlements; sourceTree = "<group>"; };
 		B2D950A31A128EF400D8DA90 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -368,6 +371,7 @@
 		41A0636019A9510800E400D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B21626801A23CD7A00B7D1CC /* Objective-C */,
 				D9D43F3119B8647C00E420B0 /* LearningStage.swift */,
 				D958A80D19C9A27000964C3D /* DocumentHelper.swift */,
 				D92B013419D99E9400CE11A8 /* ArrayExtension.swift */,
@@ -434,6 +438,15 @@
 				41901520BE1A97A4812B3718 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B21626801A23CD7A00B7D1CC /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				B21626811A23CD8A00B7D1CC /* TKDHighlightingTextStorage.h */,
+				B21626821A23CD8A00B7D1CC /* TKDHighlightingTextStorage.m */,
+			);
+			name = "Objective-C";
 			sourceTree = "<group>";
 		};
 		B2D950A21A128EBB00D8DA90 /* Services */ = {
@@ -700,6 +713,7 @@
 				D9B246C219C5841200E4737C /* LearningPackModel.swift in Sources */,
 				41DF55401A20DC01007A3729 /* LearningPackControllerHelper.swift in Sources */,
 				41D415E219A9D84F0038EFE6 /* Word.swift in Sources */,
+				B21626831A23CD8A00B7D1CC /* TKDHighlightingTextStorage.m in Sources */,
 				414F93EB19E267CB002BFDE0 /* ResultViewController.swift in Sources */,
 				D9B246C019C583FA00E4737C /* LearningPackController.swift in Sources */,
 				D97E88E619F52D1900B7FE4E /* Sentence.swift in Sources */,
@@ -882,7 +896,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunflower/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Lafro;
 				PROVISIONING_PROFILE = "";
@@ -903,7 +917,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunflower/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Lafro;
 				PROVISIONING_PROFILE = "";

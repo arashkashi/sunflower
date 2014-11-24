@@ -54,7 +54,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         self.labelCounter.text = "\(self.secondsSpentToday)"
-        self.learnNextWord()
     }
     
     func navigationController() -> UINavigationController {
@@ -73,12 +72,14 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         }
         
         navigationController().navigationBarHidden = true
+        self.learnNextWord()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "corpus" {
             var vc = segue.destinationViewController as CorpusViewController
             vc.corpus = self.learnerController?.learningPackModel.corpus
+            vc.word = self.currentWord
         }
     }
     
