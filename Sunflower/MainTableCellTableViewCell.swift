@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainViewCellDelegate {
-    func onCellTapped(id: String)
+    func onCellTapped(sender: UITableViewCell)
 }
 
 class MainTableCellView: UITableViewCell {
@@ -33,7 +33,7 @@ class MainTableCellView: UITableViewCell {
     }
     
     func handleTap(recognizer: UITapGestureRecognizer) {
-        self.delegate?.onCellTapped(self.labelID.text!)
+        self.delegate?.onCellTapped(self)
     }
     
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {

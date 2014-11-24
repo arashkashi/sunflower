@@ -14,7 +14,25 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var labelTopCounter: UILabel!
     
     var cashedLearningPacks = Dictionary<String, LearningPackModel>()
+    var learnerController: LearnerController?
     
+    var waitingVC: WaitingViewController?
+    
+    // MARK: View manipulation
+    func showWaitingOverlay() {
+        if self.waitingVC == nil {
+            self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
+        }
+        self.waitingVC!.view.frame = self.view.bounds
+        
+        self.view.addSubview(self.waitingVC!.view)
+    }
+    
+    func hideWaitingOverlay() {
+        self.waitingVC!.view.removeFromSuperview()
+    }
+    
+    //MARK: Logic 
     func updateCashedLearningPack(learningPack: LearningPackModel) {
         cashedLearningPacks[learningPack.id] = learningPack
         updateCounter()
@@ -32,6 +50,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.labelTopCounter.text = "\(counter)"
     }
     
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +63,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         updateCounter()
+        self.learnerController = nil
     }
 
+    // MARK: Segue
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
 
     }
@@ -58,12 +79,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var cell = sender as MainTableCellView
             var selectedID = cell.labelID.text
             testViewController.leaningPackID = selectedID!
+            testViewController.learnerController = self.learnerController
             invalidateCashedLearningPack(selectedID!)
+        } else if segue.identifier == "frommainviewtocorpus" {
+            var corpusVC = segue.destinationViewController as CorpusViewController
+            corpusVC.corpus = self.learnerController!.learningPackModel.corpus
         }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
-        return false
+        return true
     }
     
     @IBAction func done(segue: UIStoryboardSegue) {
@@ -72,8 +97,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: Cell Delegate
-    func onCellTapped(id: String) {
-        println()
+    func onCellTapped(sender: UITableViewCell) {
+        var cell = sender as MainTableCellView
+    
+
+        self.showWaitingOverlay()
+        LearningPackController.sharedInstance.loadLearningPackWithID(cell.labelID.text!, completionHandler: { (lpm: LearningPackModel?) -> () in
+            if (lpm != nil) {
+                self.learnerController = LearnerController(learningPack: lpm!)
+                if self.learnerController!.nextWordToLearn().status == .NO_MORE_WORD_TODAY {
+                    self.performSegueWithIdentifier("frommainviewtocorpus", sender: cell)
+                } else {
+                    self.performSegueWithIdentifier("to_main_test", sender: cell)
+                }
+                
+                self.hideWaitingOverlay()
+            } else {
+                // TODO: Handle the error
+            }
+            
+        })
+        
     }
     
     // MARK: Table View datasource delegate

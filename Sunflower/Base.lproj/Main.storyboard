@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main Test View Controller-->
+        <!--Main Test-->
         <scene sceneID="adj-1q-aTq">
             <objects>
-                <viewController id="ToX-di-gUg" customClass="MainTestViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ToX-di-gUg" userLabel="Main Test" customClass="MainTestViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Bv-c2-04K"/>
                         <viewControllerLayoutGuide type="bottom" id="fpI-Py-2Yu"/>
@@ -120,7 +120,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ver-nh-49u" kind="unwind" unwindAction="done:" id="lJH-jw-wtN"/>
+                                    <segue destination="Ver-nh-49u" kind="unwind" identifier="backtomain" unwindAction="done:" id="lJH-jw-wtN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnA-9b-FTu" userLabel="Button show corpus">
@@ -208,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="1653" y="551"/>
         </scene>
-        <!--Corpus View Controller-->
+        <!--Corpus-->
         <scene sceneID="SXH-0G-rK0">
             <objects>
-                <viewController id="frw-hx-dvF" userLabel="Corpus View Controller" customClass="CorpusViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="frw-hx-dvF" userLabel="Corpus" customClass="CorpusViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E5o-yn-ChA"/>
                         <viewControllerLayoutGuide type="bottom" id="rIR-pa-VHO"/>
@@ -553,10 +553,10 @@
             </objects>
             <point key="canvasLocation" x="2349" y="-185"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Main View-->
         <scene sceneID="0Ak-Cj-VNv">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EwS-sk-4Sg" customClass="MainViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EwS-sk-4Sg" userLabel="Main View" customClass="MainViewController" customModule="Sunflower" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bAs-xc-f2Q"/>
                         <viewControllerLayoutGuide type="bottom" id="B1y-ef-haH"/>
@@ -625,7 +625,6 @@
                                             <outlet property="labelID" destination="4CO-hy-i61" id="4ij-Eg-ThI"/>
                                             <outlet property="labelProgress" destination="fFQ-Z6-YJH" id="6FA-AU-9LR"/>
                                             <outlet property="labelrightIndicator" destination="5wG-ko-cLZ" id="bfF-uT-Yex"/>
-                                            <segue destination="ToX-di-gUg" kind="show" identifier="to_main_test" id="X2b-hw-Skd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -666,6 +665,8 @@
                     <connections>
                         <outlet property="labelTopCounter" destination="lyq-RO-JKz" id="kxu-VZ-2dM"/>
                         <outlet property="tableView" destination="7xq-lA-hsT" id="qmg-q6-DwW"/>
+                        <segue destination="ToX-di-gUg" kind="show" identifier="to_main_test" id="wuK-aJ-0nl"/>
+                        <segue destination="frw-hx-dvF" kind="show" identifier="frommainviewtocorpus" id="Lac-Er-Xwm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTZ-1k-Gjn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -691,4 +692,7 @@
             <point key="canvasLocation" x="171" y="551"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lac-Er-Xwm"/>
+    </inferredMetricsTieBreakers>
 </document>

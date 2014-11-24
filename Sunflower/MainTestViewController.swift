@@ -17,7 +17,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
     
-    var learnerController : LearnerController?
+    var learnerController : LearnerController!
     var currentWord: Word?
     var leaningPackID: String!
     
@@ -54,6 +54,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
         self.labelCounter.text = "\(self.secondsSpentToday)"
+        self.learnNextWord()
     }
     
     func navigationController() -> UINavigationController {
@@ -67,11 +68,9 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
         
-        self.initLeanerController(self.leaningPackID, completionHandler: { () -> () in
-            if self.learnerController?.learningPackModel.corpus == nil {
-                self.buttonCorpus.hidden = true
-            }
-        })
+        if self.learnerController.learningPackModel.corpus == nil {
+            self.buttonCorpus.hidden = true
+        }
         
         navigationController().navigationBarHidden = true
     }
@@ -115,22 +114,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         self.labelCounter.text = "0"
-    }
-    
-    // #MARK: Initiation
-    func initLeanerController(id: String, completionHandler:(()->())?) {
-        self.showLoadingOverlay()
-        LearningPackController.sharedInstance.loadLearningPackWithID(id, completionHandler: { (lpm: LearningPackModel?) -> () in
-            if (lpm != nil) {
-                self.learnerController = LearnerController(learningPack: lpm!)
-                self.hideLoadingOverlay()
-                self.learnNextWord()
-                completionHandler?()
-            } else {
-                // TODO: Handle the error
-            }
-
-        })
     }
     
     // #MARK: Learning logic
@@ -221,7 +204,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     // #MARK: View manipulation
     func showNoMoreWordToLearn() {
-        
+        self.performSegueWithIdentifier("backtomain", sender: nil)
     }
     
     func showGotIt() {
