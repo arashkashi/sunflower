@@ -8,6 +8,8 @@
 
 import Foundation
 
+let MINIMUM_ALLOWED_TOKENS = 6
+
 class AddOneViewController: UIViewController, UITextViewDelegate {
     
     var tokens: [String]?
@@ -46,7 +48,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         
         // Check if the tokens and text are valid, if not valid, return
         if textLengthCorrect() && tokens != nil {
-            if self.tokens!.count < 5 {
+            if self.tokens!.count < MINIMUM_ALLOWED_TOKENS {
                 self.showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(self.tokens!.count) tokens")
                 return
             }

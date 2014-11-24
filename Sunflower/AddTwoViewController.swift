@@ -159,6 +159,12 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: Table view delegates
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as TokensViewCell
+        
+        if self.isTokenSelected(cell.token) && self.selectedTokens.count < MINIMUM_ALLOWED_TOKENS {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            showErrorAlertWithMesssage("Could not have less that \(MINIMUM_ALLOWED_TOKENS) tokens")
+            return
+        }
 
         if self.isTokenSelected(cell.token) {
             self.deselectToken(cell.token)

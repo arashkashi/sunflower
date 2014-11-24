@@ -99,13 +99,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: Cell Delegate
     func onCellTapped(sender: UITableViewCell) {
         var cell = sender as MainTableCellView
-    
 
         self.showWaitingOverlay()
         LearningPackController.sharedInstance.loadLearningPackWithID(cell.labelID.text!, completionHandler: { (lpm: LearningPackModel?) -> () in
             if (lpm != nil) {
                 self.learnerController = LearnerController(learningPack: lpm!)
-                if self.learnerController!.nextWordToLearn().status == .NO_MORE_WORD_TODAY {
+                var status = self.learnerController!.nextWordToLearn().status
+                if status == .NO_MORE_WORD_TODAY || status == .ALL_WORDS_MASTERED{
                     self.performSegueWithIdentifier("frommainviewtocorpus", sender: cell)
                 } else {
                     self.performSegueWithIdentifier("to_main_test", sender: cell)
@@ -117,7 +117,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         })
-        
     }
     
     // MARK: Table View datasource delegate
