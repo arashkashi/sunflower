@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "41A0633B19A90E7000E400D1"
-               BuildableName = "Sunflower.app"
-               BlueprintName = "Sunflower"
-               ReferencedContainer = "container:Sunflower.xcodeproj">
+               BuildableName = "Lafro.app"
+               BlueprintName = "Lafro"
+               ReferencedContainer = "container:Lafro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "41A0634F19A90E7100E400D1"
-               BuildableName = "SunflowerTests.xctest"
-               BlueprintName = "SunflowerTests"
-               ReferencedContainer = "container:Sunflower.xcodeproj">
+               BuildableName = "LafroTests.xctest"
+               BlueprintName = "LafroTests"
+               ReferencedContainer = "container:Lafro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "41A0634F19A90E7100E400D1"
-               BuildableName = "SunflowerTests.xctest"
-               BlueprintName = "SunflowerTests"
-               ReferencedContainer = "container:Sunflower.xcodeproj">
+               BuildableName = "LafroTests.xctest"
+               BlueprintName = "LafroTests"
+               ReferencedContainer = "container:Lafro.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41A0633B19A90E7000E400D1"
-            BuildableName = "Sunflower.app"
-            BlueprintName = "Sunflower"
-            ReferencedContainer = "container:Sunflower.xcodeproj">
+            BuildableName = "Lafro.app"
+            BlueprintName = "Lafro"
+            ReferencedContainer = "container:Lafro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41A0633B19A90E7000E400D1"
-            BuildableName = "Sunflower.app"
-            BlueprintName = "Sunflower"
-            ReferencedContainer = "container:Sunflower.xcodeproj">
+            BuildableName = "Lafro.app"
+            BlueprintName = "Lafro"
+            ReferencedContainer = "container:Lafro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41A0633B19A90E7000E400D1"
-            BuildableName = "Sunflower.app"
-            BlueprintName = "Sunflower"
-            ReferencedContainer = "container:Sunflower.xcodeproj">
+            BuildableName = "Lafro.app"
+            BlueprintName = "Lafro"
+            ReferencedContainer = "container:Lafro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>196ED746-BFA4-49DC-B9CB-034AC67E759C</string>
+	<string>6C09A85B-8F2B-44C6-A81F-1A1AE31F3B20</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Sunflower</string>
+	<string>Lafro</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>DE4144FE2C2F0684084E68C27420A94A89F441D5</key>
 		<string>github.com:arashkashi/sunflower.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Sunflower.xcworkspace</string>
+	<string>Lafro.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>DE4144FE2C2F0684084E68C27420A94A89F441D5</key>
-		<string>..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:arashkashi/sunflower.git</string>

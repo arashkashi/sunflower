@@ -166,12 +166,12 @@
 		419E50F319F998CD0067D31D /* pack_id_14.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_14.json; sourceTree = "<group>"; };
 		419E50F419F998CD0067D31D /* pack_id_15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_15.json; sourceTree = "<group>"; };
 		419E50F519F998CD0067D31D /* pack_id_16.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pack_id_16.json; sourceTree = "<group>"; };
-		41A0633C19A90E7000E400D1 /* Sunflower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunflower.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A0633C19A90E7000E400D1 /* Lafro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lafro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0634019A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0634119A90E7100E400D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41A0634819A90E7100E400D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41A0634A19A90E7100E400D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		41A0635019A90E7100E400D1 /* SunflowerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunflowerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A0635019A90E7100E400D1 /* LafroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LafroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A0635519A90E7100E400D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41A0635619A90E7100E400D1 /* SunflowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunflowerTests.swift; sourceTree = "<group>"; };
 		41A98A941A133B63000BE2D3 /* ComponentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
@@ -303,8 +303,8 @@
 		41A0633D19A90E7000E400D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				41A0633C19A90E7000E400D1 /* Sunflower.app */,
-				41A0635019A90E7100E400D1 /* SunflowerTests.xctest */,
+				41A0633C19A90E7000E400D1 /* Lafro.app */,
+				41A0635019A90E7100E400D1 /* LafroTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -494,9 +494,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		41A0633B19A90E7000E400D1 /* Sunflower */ = {
+		41A0633B19A90E7000E400D1 /* Lafro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41A0635A19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "Sunflower" */;
+			buildConfigurationList = 41A0635A19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "Lafro" */;
 			buildPhases = (
 				A5C72DA266EA29F08D25F6A9 /* Check Pods Manifest.lock */,
 				41A0633819A90E7000E400D1 /* Sources */,
@@ -508,14 +508,14 @@
 			);
 			dependencies = (
 			);
-			name = Sunflower;
+			name = Lafro;
 			productName = Sunflower;
-			productReference = 41A0633C19A90E7000E400D1 /* Sunflower.app */;
+			productReference = 41A0633C19A90E7000E400D1 /* Lafro.app */;
 			productType = "com.apple.product-type.application";
 		};
-		41A0634F19A90E7100E400D1 /* SunflowerTests */ = {
+		41A0634F19A90E7100E400D1 /* LafroTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41A0635D19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "SunflowerTests" */;
+			buildConfigurationList = 41A0635D19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "LafroTests" */;
 			buildPhases = (
 				CF15204A3A2F2FE0DF9FFF28 /* Check Pods Manifest.lock */,
 				41A0634C19A90E7100E400D1 /* Sources */,
@@ -528,9 +528,9 @@
 			dependencies = (
 				41A0635219A90E7100E400D1 /* PBXTargetDependency */,
 			);
-			name = SunflowerTests;
+			name = LafroTests;
 			productName = SunflowerTests;
-			productReference = 41A0635019A90E7100E400D1 /* SunflowerTests.xctest */;
+			productReference = 41A0635019A90E7100E400D1 /* LafroTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -557,7 +557,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 41A0633719A90E7000E400D1 /* Build configuration list for PBXProject "Sunflower" */;
+			buildConfigurationList = 41A0633719A90E7000E400D1 /* Build configuration list for PBXProject "Lafro" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -570,8 +570,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				41A0633B19A90E7000E400D1 /* Sunflower */,
-				41A0634F19A90E7100E400D1 /* SunflowerTests */,
+				41A0633B19A90E7000E400D1 /* Lafro */,
+				41A0634F19A90E7100E400D1 /* LafroTests */,
 			);
 		};
 /* End PBXProject section */
@@ -777,7 +777,7 @@
 /* Begin PBXTargetDependency section */
 		41A0635219A90E7100E400D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 41A0633B19A90E7000E400D1 /* Sunflower */;
+			target = 41A0633B19A90E7000E400D1 /* Lafro */;
 			targetProxy = 41A0635119A90E7100E400D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -883,7 +883,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunflower/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lafro;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sunflower/Sunflower-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -903,7 +903,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunflower/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lafro;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sunflower/Sunflower-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -926,10 +926,10 @@
 				);
 				INFOPLIST_FILE = SunflowerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LafroTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "SunflowerTests/SunflowerTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunflower.app/Sunflower";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lafro.app/Lafro";
 			};
 			name = Debug;
 		};
@@ -945,16 +945,16 @@
 				);
 				INFOPLIST_FILE = SunflowerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LafroTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "SunflowerTests/SunflowerTests-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunflower.app/Sunflower";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lafro.app/Lafro";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41A0633719A90E7000E400D1 /* Build configuration list for PBXProject "Sunflower" */ = {
+		41A0633719A90E7000E400D1 /* Build configuration list for PBXProject "Lafro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41A0635819A90E7100E400D1 /* Debug */,
@@ -963,7 +963,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41A0635A19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "Sunflower" */ = {
+		41A0635A19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "Lafro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41A0635B19A90E7100E400D1 /* Debug */,
@@ -972,7 +972,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41A0635D19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "SunflowerTests" */ = {
+		41A0635D19A90E7100E400D1 /* Build configuration list for PBXNativeTarget "LafroTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41A0635E19A90E7100E400D1 /* Debug */,
