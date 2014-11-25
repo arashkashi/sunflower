@@ -311,6 +311,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barButtonNext" destination="msq-Kn-TP9" id="3zI-p0-Ikn"/>
                         <outlet property="labelTotalCost" destination="GKU-De-c9e" id="0BB-tC-0CV"/>
                         <outlet property="labelTotalTokens" destination="MUp-m7-rhI" id="rWr-ml-lgf"/>
                         <outlet property="textViewCorpus" destination="IOP-lK-sLU" id="XqN-sM-b0V"/>

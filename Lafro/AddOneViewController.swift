@@ -19,6 +19,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var textViewCorpus: UITextView!
     @IBOutlet var labelTotalTokens: UILabel!
     @IBOutlet var labelTotalCost: UILabel!
+    @IBOutlet weak var barButtonNext: UIBarButtonItem!
 
     // MARK: UIViewController Override
     override func viewDidLoad() {
@@ -157,11 +158,13 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         self.waitingVC!.view.removeFromSuperview()
         self.waitingVC!.view.frame = self.view.bounds
         
+        self.navigationItem.rightBarButtonItem = nil
         self.view.addSubview(self.waitingVC!.view)
     }
     
     func hideWaitingOverlay() {
         self.waitingVC!.view.removeFromSuperview()
+        self.navigationItem.rightBarButtonItem = barButtonNext
     }
     
     // MARK: Helper
