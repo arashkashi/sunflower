@@ -16,11 +16,14 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     
     var selectedTokens: [String]!
     var deselectedtokens: [String]!
+    
+    var waitingVC: WaitingViewController?
 
     @IBOutlet weak var labelBalance: UILabel!
     @IBOutlet weak var labelCost: UILabel!
     @IBOutlet weak var labelTotalTokens: UILabel!
     @IBOutlet weak var labelSelectedTokens: UILabel!
+    @IBOutlet weak var barButtonNext: UIBarButtonItem!
     
     // MARK: Override uiviewcontroller
     override func viewDidLoad() {
@@ -87,8 +90,25 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func showWaitingOverlay() {
+        if self.waitingVC == nil {
+            self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
+        }
+        self.waitingVC!.view.removeFromSuperview()
+        self.waitingVC!.view.frame = self.view.bounds
+        
+        self.navigationItem.rightBarButtonItem = nil
+        self.view.addSubview(self.waitingVC!.view)
+    }
+    
+    func hideWaitingOverlay() {
+        self.waitingVC!.view.removeFromSuperview()
+        self.navigationItem.rightBarButtonItem = barButtonNext
+    }
+    
     // MARK: IBAction
     @IBAction func onNextTapped(sender: AnyObject) {
+        showWaitingOverlay()
         if userHasEnoughCredit() {
             if validateSelectedtokens() {
                 self.performSegueWithIdentifier("fromaddtwotoaddthree", sender: nil)

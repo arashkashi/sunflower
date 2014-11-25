@@ -417,6 +417,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barButtonNext" destination="xZC-e3-CmJ" id="31A-yY-OZC"/>
                         <outlet property="labelBalance" destination="vju-ST-AxM" id="3JS-sW-l2s"/>
                         <outlet property="labelCost" destination="LGp-EI-gGF" id="34b-bu-bkr"/>
                         <outlet property="labelSelectedTokens" destination="Ywz-uw-F0M" id="k4p-SF-bFI"/>

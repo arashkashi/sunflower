@@ -116,13 +116,16 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         if self.waitingVC == nil {
             self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
         }
+        self.waitingVC!.view.removeFromSuperview()
         self.waitingVC!.view.frame = self.view.bounds
         
+        self.navigationItem.rightBarButtonItem = nil
         self.view.addSubview(self.waitingVC!.view)
     }
     
     func hideWaitingOverlay() {
         self.waitingVC!.view.removeFromSuperview()
+        self.navigationItem.rightBarButtonItem = barButtonItemMake
     }
     
     func gobackToMainView() {
