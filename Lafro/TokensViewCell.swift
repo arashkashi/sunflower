@@ -27,12 +27,13 @@ class TokensViewCell: UITableViewCell {
     func onSelected() {
         isSelected = true
         self.textLabel.text = "(√) \(token)"
-        
+        self.detailTextLabel!.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(token))"
     }
     
     func onDeslected() {
         isSelected = false
         self.textLabel.text = "(x) \(token)"
+        self.detailTextLabel!.text = "Cost: 0"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
