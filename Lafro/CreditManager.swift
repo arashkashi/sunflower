@@ -8,6 +8,7 @@
 
 let kCreditManagerBalance = "kCreditManagerBalance"
 let kCreditManagerInitialCreditGranted = "kCreditManagerInitialCreditGranted"
+let kCreditManagerInitialServerSync = "kCreditManagerInitialServerSync"
 
 let KCreditManagerErrCodeCreditAlreadyGranted = 96
 
@@ -20,6 +21,18 @@ import Foundation
 import CloudKit
 
 class CreditManager {
+    
+    var isInitialServerSyncDone: Bool {
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey(kCreditManagerInitialServerSync) != nil
+        }
+        
+        set {
+            if newValue == true {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kCreditManagerInitialServerSync)
+            }
+        }
+    }
     
     var localBalance: Lafru {
         get {
@@ -50,6 +63,16 @@ class CreditManager {
     }
     
     // MARK: Server Calls
+    func resetInitialCreditGranted() {
+        CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
+            record!.setObject(nil, forKey: kCreditManagerInitialCreditGranted)
+            record!.setObject(nil, forKey: kCreditManagerBalance)
+            CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
+                
+                }
+            )}
+    }
+    
     func grantInitialCreditToServer(initialCredit: Lafru, handler: (Bool, NSError?)->() ) {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             
@@ -58,7 +81,13 @@ class CreditManager {
             }
             
             if record!.allKeys().includes(kCreditManagerInitialCreditGranted) {
-                handler(false, NSError(domain: "CreditManager", code: KCreditManagerErrCodeCreditAlreadyGranted, userInfo: nil))
+                if !self.isInitialServerSyncDone {
+                    if let currentServerBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
+                        self.localBalance = currentServerBalance.intValue
+                        self.isInitialServerSyncDone = true
+                    }
+                }
+                handler(true, nil)
                 return
             } else {
                 record!.setObject(true, forKey: kCreditManagerInitialCreditGranted)
@@ -70,8 +99,16 @@ class CreditManager {
                 }
                 
                 CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
-                    if lastError == nil { handler(true, nil); return }
-                    else { handler(false, lastError); return }
+                    if lastError == nil || newRecord == nil
+                    {
+                        self.localBalance = initialCredit
+                        self.isInitialServerSyncDone = true
+                        handler(true, nil); return
+                    }
+                    else
+                    {
+                        handler(false, lastError); return
+                    }
                 })
             }
         }
@@ -96,7 +133,7 @@ class CreditManager {
     
     init() {
         self.grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
-            if success && err == nil { self.localBalance = self.initialBalance }
+            
         })
     }
 }
