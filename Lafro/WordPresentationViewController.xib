@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WordPresentationViewController" customModule="Sunflower" customModuleProvider="target">
+            <connections>
+                <outlet property="labelMeaning" destination="CK7-cX-nNY" id="NFM-aB-iya"/>
+                <outlet property="labelWord" destination="icS-ip-POs" id="OrQ-yo-xLq"/>
+                <outlet property="view" destination="xAi-3E-kEh" id="CIx-vk-GJ9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xAi-3E-kEh">
+            <rect key="frame" x="0.0" y="0.0" width="274" height="461"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="icS-ip-POs" userLabel="Label - Name">
+                    <rect key="frame" x="0.0" y="15" width="274" height="84"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="icS-ip-POs" secondAttribute="height" multiplier="49:15" id="r4l-gp-ead"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="45" y="43" width="230" height="34"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meaning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CK7-cX-nNY" userLabel="Label - Meaning">
+                    <rect key="frame" x="0.0" y="159" width="274" height="31"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="45" y="168" width="230" height="34"/>
+                    </variation>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="icS-ip-POs" firstAttribute="leading" secondItem="xAi-3E-kEh" secondAttribute="leading" id="03b-Xx-AMq"/>
+                <constraint firstAttribute="trailing" secondItem="icS-ip-POs" secondAttribute="trailing" id="NPQ-ZY-bnj"/>
+                <constraint firstItem="CK7-cX-nNY" firstAttribute="top" secondItem="icS-ip-POs" secondAttribute="bottom" constant="60" id="Onu-p2-Cn7"/>
+                <constraint firstItem="icS-ip-POs" firstAttribute="top" secondItem="xAi-3E-kEh" secondAttribute="top" constant="15" id="aNX-BL-6vW"/>
+                <constraint firstAttribute="centerX" secondItem="CK7-cX-nNY" secondAttribute="centerX" id="pSB-49-dw8"/>
+                <constraint firstAttribute="centerX" secondItem="icS-ip-POs" secondAttribute="centerX" id="q4J-oi-iXQ"/>
+                <constraint firstAttribute="trailing" secondItem="CK7-cX-nNY" secondAttribute="trailing" id="xgc-Uf-PdM"/>
+                <constraint firstItem="CK7-cX-nNY" firstAttribute="leading" secondItem="xAi-3E-kEh" secondAttribute="leading" id="zym-wK-dS7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-315" y="-59.5"/>
+        </view>
+    </objects>
+</document>
