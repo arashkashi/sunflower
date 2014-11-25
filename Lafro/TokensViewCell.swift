@@ -20,7 +20,7 @@ class TokensViewCell: UITableViewCell {
     func updateCellWith(token: String) {
         self.token = token
         self.textLabel.text = token
-        self.detailTextLabel!.text = "L$: \(GoogleTranslate.sharedInstance.costToTranslate(token))"
+        self.detailTextLabel!.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(token))"
         isSelected = false
     }
     
