@@ -19,7 +19,8 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var textViewCorpus: UITextView!
     @IBOutlet var labelTotalTokens: UILabel!
     @IBOutlet var labelTotalCost: UILabel!
-    @IBOutlet weak var barButtonNext: UIBarButtonItem!
+    @IBOutlet var barButtonNext: UIBarButtonItem!
+    @IBOutlet var alignButton: NSLayoutConstraint!
 
     // MARK: UIViewController Override
     override func viewDidLoad() {
@@ -28,6 +29,15 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
             self.updateTokens()
             self.updateLabels()
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("OnKeyboardShow"), name: UIKeyboardWillShowNotification, object: nil)
+        
+        
+    }
+    
+    func OnKeyboardShow() {
+        println()
+        alignButton.constant = 250
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -36,6 +46,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
             vc.tokens = self.tokens!
             vc.corpus = self.textViewCorpus.text
             vc.sourceLanguage = self.sourceLanguage!
+            hideWaitingOverlay()
         }
     }
     
@@ -77,10 +88,8 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: Delegates
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func textViewDidChange(textView: UITextView) {
         updateLabels()
-        return true
     }
     
     // MARK: Logic
