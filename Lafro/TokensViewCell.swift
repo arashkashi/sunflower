@@ -26,13 +26,13 @@ class TokensViewCell: UITableViewCell {
     
     func onSelected() {
         isSelected = true
-        self.textLabel.text = "\(token) (√)"
+        self.textLabel.text = "(√) \(token)"
         
     }
     
     func onDeslected() {
         isSelected = false
-        self.textLabel.text = "\(token) (x)"
+        self.textLabel.text = "(x) \(token)"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
