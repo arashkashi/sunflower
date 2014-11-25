@@ -167,7 +167,7 @@ class LearnerController {
     }
     
     func updateLearningPackDocument() {
-        self.learningPackModel.updateChangeCount(UIDocumentChangeKind.Done)
+        self.learningPackModel.saveChanges()
     }
     
     //MARK: Events

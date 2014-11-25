@@ -76,6 +76,10 @@ class LearningPackModel : UIDocument, NSCoding  {
         document.closeWithCompletionHandler(completionHandler)
     }
     
+    func saveChanges() {
+        self.updateChangeCount(UIDocumentChangeKind.Done)
+    }
+    
     // #MARK: UIDocument Overwrites
     override func loadFromContents(contents: AnyObject, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
         var data: NSData = contents as NSData
