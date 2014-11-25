@@ -114,6 +114,7 @@
 		41C18B0F1A2400D200639C92 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18AE91A23FDF700639C92 /* StringExtension.swift */; };
 		41C18B101A2403C200639C92 /* pack_id_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 41C18AC61A23FCD700639C92 /* pack_id_test.json */; };
 		43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
+		B27639951A249939004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,7 @@
 		41C18B051A24001900639C92 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		54BCC503C42383CE6BB76567 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerSkipHelper.swift; sourceTree = "<group>"; };
 		BCAD7AF1E6AB8B06FFF52CED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -393,6 +395,7 @@
 				41C18A8F1A23FBF700639C92 /* LearnerController.swift */,
 				41C18A901A23FBF700639C92 /* LearningPackController.swift */,
 				41C18A911A23FBF700639C92 /* LearningPackControllerHelper.swift */,
+				B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				41C18A8D1A23FBDF00639C92 /* AddTwoViewController.swift in Sources */,
 				41C18A9C1A23FC0800639C92 /* LearningPackModel.swift in Sources */,
 				41C18A9A1A23FC0800639C92 /* Word.swift in Sources */,
+				B27639951A249939004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */,
 				41C18A301A23FAED00639C92 /* AppDelegate.swift in Sources */,
 				41C18AEF1A23FDF700639C92 /* ParserHelper.swift in Sources */,
 				41C18A921A23FBF700639C92 /* LearnerController.swift in Sources */,

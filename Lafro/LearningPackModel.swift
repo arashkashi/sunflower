@@ -80,6 +80,15 @@ class LearningPackModel : UIDocument, NSCoding  {
         self.updateChangeCount(UIDocumentChangeKind.Done)
     }
     
+    // #MARK: Manipulate Model data
+    func addWord(word: Word) {
+        if !words.includes(word) { words.append(word); saveChanges() }
+    }
+    
+    func removeWord(word: Word) {
+        if words.includes(word) { words = words.filter { $0 != word}; saveChanges() }
+    }
+    
     // #MARK: UIDocument Overwrites
     override func loadFromContents(contents: AnyObject, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
         var data: NSData = contents as NSData
