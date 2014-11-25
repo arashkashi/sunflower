@@ -67,6 +67,8 @@
 	NSRange paragaphRange = [self.string paragraphRangeForRange: self.editedRange];
 //	[self removeAttribute:NSForegroundColorAttributeName range:paragaphRange];
     [self addAttribute:NSForegroundColorAttributeName value:[UIColor yellowColor] range:paragaphRange];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:16];
+    [self addAttribute:NSFontAttributeName value:font range:paragaphRange];
 	
 	// Find all iWords in range
 	[self.regularExpression enumerateMatchesInString:self.string options:0 range:paragaphRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {

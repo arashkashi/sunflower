@@ -18,16 +18,16 @@ class CorpusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.textViewCorpus.text = corpus
         
-        textStorage = TKDHighlightingTextStorage()
         
         if let selectedWord = word {
+            textStorage = TKDHighlightingTextStorage()
             textStorage.regularExpression = NSRegularExpression(pattern: selectedWord.name, options: .allZeros, error: nil)
+            textStorage.addLayoutManager(self.textViewCorpus.layoutManager)
+            textStorage.replaceCharactersInRange(NSRange(location: 0,length: 0), withString: corpus!)
+        } else {
+            self.textViewCorpus.text = corpus
         }
-        
-        textStorage.addLayoutManager(self.textViewCorpus.layoutManager)
-        textStorage.replaceCharactersInRange(NSRange(location: 0,length: 0), withString: corpus!)
     }
 
     override func didReceiveMemoryWarning() {
