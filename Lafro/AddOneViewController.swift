@@ -43,6 +43,9 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 
     // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {
+        // Show waiting overlay
+        showWaitingOverlay()
+        
         // Generate the raw tokens
         updateTokens()
         
@@ -50,26 +53,26 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         if textLengthCorrect() && tokens != nil {
             if self.tokens!.count < MINIMUM_ALLOWED_TOKENS {
                 self.showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(self.tokens!.count) tokens")
+                hideWaitingOverlay()
                 return
             }
         } else {
             self.showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
+            hideWaitingOverlay()
             return
         }
         
-        // Show waiting overlay
-        showWaitingOverlay()
-        
         // Detect the source language, if error inform user and stay
         GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-            if err != nil || detectedLanguage == nil { self.showErrorAlertWithMesssage("Could not detect the source language"); return }
+            if err != nil || detectedLanguage == nil {
+                self.showErrorAlertWithMesssage("Could not detect the source language")
+                self.hideWaitingOverlay()
+                return }
             
             self.sourceLanguage = detectedLanguage!
             
             self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
         })
-        
-        hideWaitingOverlay()
     }
     
     // MARK: Delegates
@@ -151,6 +154,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         if self.waitingVC == nil {
             self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
         }
+        self.waitingVC!.view.removeFromSuperview()
         self.waitingVC!.view.frame = self.view.bounds
         
         self.view.addSubview(self.waitingVC!.view)
