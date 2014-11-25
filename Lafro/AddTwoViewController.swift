@@ -41,6 +41,7 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
             vc.tokens = finaltokens(self.selectedTokens, allTokens: self.tokens)
             vc.corpus = self.corpus
             vc.sourceLanguage = self.sourceLanguage
+            hideWaitingOverlay()
         }
     }
     
