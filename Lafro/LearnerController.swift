@@ -190,12 +190,23 @@ class LearnerController {
         self.updateLearningPackDocument()
     }
     
-    func onWordSkipped(word: Word) {
-        word.onWordSkipped()
+    func onWordSkipped(word: Word, handler: (()->())?) {
+        // remove the word from the model
+        self.learningPackModel.removeWord(word)
         
+        // add it to the skipping model
+        LearningPackControllerSkipHelper.loadSkipLearningPackModel { (skipModel: LearningPackModel?) -> () in
+            if skipModel != nil {
+                skipModel!.addWord(word)
+            }
+            handler?()
+        }
+        
+        // remove from all queues
         self.currentLearningQueue = self.currentLearningQueue.filter {$0 != word}
         self.wordsDueNow = self.wordsDueNow.filter {$0 != word}
-        self.wordsDueInFuture.append(word)
+        self.wordsDueInFuture = self.wordsDueInFuture.filter {$0 != word}
+
         self.updateLearningPackDocument()
     }
     

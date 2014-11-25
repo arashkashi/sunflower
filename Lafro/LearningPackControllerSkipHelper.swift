@@ -13,7 +13,7 @@ let kLearningPackControllerSkipHelperPackID = "kLearningPackControllerSkipHelper
 class LearningPackControllerSkipHelper {
     
     // Load the learning pack model
-    class func loadSkipLearningPackModel( completionHandler: ((LearningPackModel?)->())? ) {
+    class func loadSkipLearningPackModel( completionHandler: ((LearningPackModel!)->())? ) {
         
         var mainController = LearningPackController.sharedInstance
         

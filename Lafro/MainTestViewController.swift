@@ -183,7 +183,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         
         var skipAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             if  self.currentWord != nil{
-                self.learnerController?.onWordSkipped(self.currentWord!)
+                self.learnerController?.onWordSkipped(self.currentWord!, handler: nil)
                 self.learnNextWord()
             }
         }

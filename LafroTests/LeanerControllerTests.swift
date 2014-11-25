@@ -41,7 +41,7 @@ class LeanerControllerTests: XCTestCase {
         for _ in 1...10 {
             var word = self.giveMeNextWord()
             XCTAssert(!skippedWords.includes(word!), "skipped words should not reaccure")
-            self.learnerController.onWordSkipped(word!)
+            self.learnerController.onWordSkipped(word!, handler: nil)
             skippedWords.append(word!)
         }
     }
@@ -51,9 +51,19 @@ class LeanerControllerTests: XCTestCase {
         var skippedWords: [Word] = []
         for i in 1...3 {
             var word = self.giveMeNextWord()
-            self.learnerController.onWordSkipped(word!)
-            self.checkDataConsistency()
-            XCTAssert(self.learnerController.wordsDueInFuture.count == i, "the words should be added to the future list instantly after being skiped \(self.learnerController.wordsDueInFuture.count)")
+            self.learnerController.onWordSkipped(word!, handler: { () -> () in
+                XCTAssertFalse(self.learnerController.wordsDueInFuture.includes(word!), "remove from queue")
+                XCTAssertFalse(self.learnerController.wordsDueNow.includes(word!), "remove from queue")
+                XCTAssertFalse(self.learnerController.currentLearningQueue.includes(word!), "remove from queue")
+                
+                // Remove from the current model
+                XCTAssertFalse(self.learnerController.learningPackModel.words.includes(word!), "remove from model")
+                
+                // Add to the skipped model
+                LearningPackControllerSkipHelper.loadSkipLearningPackModel({ (model: LearningPackModel!) -> () in
+                    XCTAssertTrue(model.words.includes(word!), "add to skip model")
+                })
+            })
         }
     }
     
