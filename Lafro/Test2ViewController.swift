@@ -11,7 +11,7 @@ import UIKit
 class Test2ViewController : Test1ViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         self.updateButtonChoicesWith(self.wordChoices)
         
         // Back up the background color

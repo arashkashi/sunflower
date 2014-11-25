@@ -123,8 +123,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         self.hideAllButtons()
         self.currentWord = next.word
         
-        next.word?.printToSTD()
-        
         if next.word == nil {
             self.showNoMoreWordToLearn()
             return
@@ -302,6 +300,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         var wordChoices = self.learnerController!.someRandomWords(nomberOfWordChoicesNeeded - 1, excludeList: [word])
         wordChoices = wordChoices + [word]
         wordChoices.shuffle()
+        assert(wordChoices.includes(word), "word choices should include word")
         
         if wordChoices.count < nomberOfWordChoicesNeeded {
             assert(false, "it should not be it")
