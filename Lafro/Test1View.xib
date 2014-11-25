@@ -5,7 +5,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Test1ViewController" customModule="Sunflower" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Test1ViewController" customModule="Lafro" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="sCt-zh-t4Z" id="X8Z-eO-iB1"/>
                 <outlet property="wordLabel" destination="Ooo-AN-jI6" id="MuU-7A-yVU"/>
