@@ -32,6 +32,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.waitingVC!.view.removeFromSuperview()
     }
     
+    func updateBalanceButton() {
+        var balance = CreditManager.sharedInstance.localBalance
+        self.navigationItem.leftBarButtonItem?.title = "\(balance)"
+    }
+    
     //MARK: Logic 
     func updateCashedLearningPack(learningPack: LearningPackModel) {
         cashedLearningPacks[learningPack.id] = learningPack
@@ -64,6 +69,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(animated: Bool) {
         updateCounter()
         self.learnerController = nil
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        updateBalanceButton()
     }
 
     // MARK: Segue
