@@ -68,6 +68,9 @@ class CreditManager {
             record!.setObject(nil, forKey: kCreditManagerInitialCreditGranted)
             record!.setObject(nil, forKey: kCreditManagerBalance)
             CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
+                if newRecord != nil && lastError == nil {
+                    NSLog("\(__FILE__):\(__LINE__) \t\t --> Reset the initial credit grant on server");
+                }
                 
                 }
             )}
@@ -139,8 +142,9 @@ class CreditManager {
     }
     
     init() {
+//        self.resetInitialCreditGranted()
         self.grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
-            
+        
         })
     }
 }
