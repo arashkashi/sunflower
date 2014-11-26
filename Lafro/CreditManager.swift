@@ -99,7 +99,7 @@ class CreditManager {
                 }
                 
                 CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
-                    if lastError == nil || newRecord == nil
+                    if lastError == nil && newRecord != nil
                     {
                         self.localBalance = initialCredit
                         self.isInitialServerSyncDone = true

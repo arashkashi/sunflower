@@ -48,7 +48,7 @@ class Transaction: NSObject, NSCoding, Equatable {
                         handler?(.Failed); return
                     }
                     
-                    if self.type.shouldGrantServerLazy() {
+                    if self.type.shouldGrantServerLazy() {                          
                         self.type = .grant_locallyNo_serverLazy
                         handler?(.Queued); return
 
