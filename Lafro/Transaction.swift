@@ -35,7 +35,7 @@ class Transaction: NSObject, NSCoding, Equatable {
         }
         
         // Grant Backend
-        if type.shouldGrantServerLazy() || type.shouldGrantLocallyNow() {
+        if type.shouldGrantServerLazy() || type.shouldGrantServerNow() {
             self.commitServerTransation { (success: Bool) -> () in
                 if success {
                     self.status.onSuccessfulServerWrite()
@@ -49,15 +49,9 @@ class Transaction: NSObject, NSCoding, Equatable {
                     }
                     
                     if self.type.shouldGrantServerLazy() {
-                        // Should've written only to server, FAIL
-                        if self.type == .grant_locallyNo_serverLazy {
-                            handler?(.Queued); return
-                        }
-                        else //Save locally and can write Server later, Success
-                        {
-                            self.type = .grant_locallyNo_serverLazy
-                            handler?(.Queued); return
-                        }
+                        self.type = .grant_locallyNo_serverLazy
+                        handler?(.Queued); return
+
                     }
                     handler?(.Failed); return
                 }

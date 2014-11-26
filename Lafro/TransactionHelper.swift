@@ -33,6 +33,7 @@ enum TransactionStatus: Int32 {
     }
     
     mutating func onSuccessfulServerWrite() {
+        assert(self != .pending_local_write, "should not commit server for a local penfing write")
         switch self {
         case .pending_server_write:
             self = .commited
