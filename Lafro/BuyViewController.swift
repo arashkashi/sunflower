@@ -18,6 +18,9 @@ class BuyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var balance = CreditManager.sharedInstance.localBalance
+        labelBalance.text = "Balance: \(balance)"
 
         // Do any additional setup after loading the view.
     }
