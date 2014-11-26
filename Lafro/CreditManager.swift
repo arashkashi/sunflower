@@ -77,6 +77,7 @@ class CreditManager {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             
             if record == nil || err != nil {
+                NSLog("%s:%d \t\t --> Failed to fetch user record", __FILE__, __LINE__);
                 handler(false, err); return
             }
             
@@ -85,8 +86,12 @@ class CreditManager {
                     if let currentServerBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
                         self.localBalance = currentServerBalance.intValue
                         self.isInitialServerSyncDone = true
+                        NSLog("%s:%d \t\t --> Local balance synced with Server", __FILE__, __LINE__);
+                    } else {
+                        NSLog("%s:%d \t\t --> Local balance NOT synced with server", __FILE__, __LINE__);
                     }
                 }
+                
                 handler(true, nil)
                 return
             } else {
@@ -103,10 +108,12 @@ class CreditManager {
                     {
                         self.localBalance = initialCredit
                         self.isInitialServerSyncDone = true
+                        NSLog("%s:%d \t\t --> Successfully granted initial credit to server", __FILE__, __LINE__);
                         handler(true, nil); return
                     }
                     else
                     {
+                        NSLog("%s:%d \t\t --> Failed to grant initial credit to server", __FILE__, __LINE__);
                         handler(false, lastError); return
                     }
                 })
