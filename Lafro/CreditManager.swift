@@ -47,8 +47,8 @@ class CreditManager {
         }
     }
     
-    let initialBalance: Lafru = 5000
-    let costPerCharacter = 0.001  // Google translate cost of character is 0,00002 Dollars
+    let initialBalance: Lafru = 2000
+    let costPerCharacter = 0.0005  // Google translate cost of character is 0,00002 Dollars
     
     func commitLocalTransaction(transaction: Transaction) {
         localBalance = localBalance + transaction.amount
