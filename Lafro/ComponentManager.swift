@@ -13,6 +13,7 @@ class ComponentManager {
     var cloudKitManager: CloudKitManager
     var googleTranslator: GoogleTranslate
     var creditManager: CreditManager
+    var paymentManager: PaymentManager
     
     
     class var sharedInstance : ComponentManager {
@@ -26,6 +27,7 @@ class ComponentManager {
         cloudKitManager = CloudKitManager.sharedInstance
         googleTranslator = GoogleTranslate.sharedInstance
         creditManager = CreditManager.sharedInstance
+        paymentManager = PaymentManager.sharedInstance
     }
     
     func isRunningOnDevice() -> Bool {
