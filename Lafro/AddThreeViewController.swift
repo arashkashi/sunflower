@@ -33,6 +33,9 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSupportedLanguages()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         hideMakeButton()
     }
 
