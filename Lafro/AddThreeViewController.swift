@@ -73,9 +73,9 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func showErrorAlertWhenFailed() {
+    func showErrorAlertWhenFailed(error: NSError?) {
         if alertViewShown { return }
-        let alertController = UIAlertController(title: "Error", message: "Something went wrong making the package", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Error", message: error?.domain, preferredStyle: .Alert)
         let retryAction = UIAlertAction(title: "Re-try", style: .Default) { (action: UIAlertAction!) -> Void in
             self.alertViewShown = false
             self.makePackageWithUIpdate()
@@ -133,24 +133,24 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // MARK: Logic
-    func makePackage( completionHandler: (Bool)->() ) {
-        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID!, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?) -> () in
+    func makePackage( completionHandler: (Bool, NSError?)->() ) {
+        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID!, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?, error: NSError?) -> () in
             if model != nil {
-                completionHandler(true)
+                completionHandler(true, error)
             } else {
-                completionHandler(false)
+                completionHandler(false, error)
             }
         }
     }
     
     func makePackageWithUIpdate() {
         showWaitingOverlay()
-        makePackage { (success: Bool) -> () in
+        makePackage { (success: Bool, error: NSError?) -> () in
             self.hideWaitingOverlay()
             if success {
                 self.gobackToMainView()
             } else {
-                self.showErrorAlertWhenFailed()
+                self.showErrorAlertWhenFailed(error)
             }
         }
     }

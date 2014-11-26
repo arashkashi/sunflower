@@ -11,7 +11,7 @@ import Foundation
 
 
 class LearningPackControllerHelper  {
-    class func makeLearningPackModelWithTransaction(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, finishHandler: ((LearningPackModel?)->())? ) {
+    class func makeLearningPackModelWithTransaction(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, finishHandler: ((LearningPackModel?, NSError?)->())? ) {
         LearningPackControllerHelper.makeWordsFromTokensWithTransation(tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage, transactionManager: TransactionManager.sharedInstance, googleTranslator: GoogleTranslate.sharedInstance, creditManager: CreditManager.sharedInstance) { (success: Bool, words: [Word]?, error: NSError?) -> () in
             if success && words != nil {
                 var packController = LearningPackController.sharedInstance
@@ -19,13 +19,13 @@ class LearningPackControllerHelper  {
                 var validatedID = LearningPackController.sharedInstance.validateID(id, existingIDs: existingIDS)
                 LearningPackController.sharedInstance.addNewPackage(validatedID, words: words!, corpus: corpus, completionHandlerForPersistance: { (success: Bool, model: LearningPackModel?) -> () in
                     if success && model != nil {
-                        finishHandler?(model!)
+                        finishHandler?(model!, nil)
                     } else {
-                        finishHandler?(nil)
+                        finishHandler?(nil, error)
                     }
                 })
             } else {
-                finishHandler?(nil)
+                finishHandler?(nil, error)
             }
         }
     }
@@ -43,19 +43,19 @@ class LearningPackControllerHelper  {
         // Make the transaction for all the token,
         transactionManager.createAndCommitTransaction(-1 * totalCost, type: .grant_locallyNow_serverNow) { (commitResult) -> () in
             // Failed?, fail the entire operation
-            if commitResult == .Failed { completionHandler(false, nil, NSError(domain: "Cloudkit", code: 1001, userInfo: nil)) }
+            if commitResult == .Failed { completionHandler(false, nil, NSError(domain: "initial transaction for all the tokens could not be submitted to cloudkit now", code: 1001, userInfo: nil)) }
             else
             {
                 LearningPackControllerHelper.makeWordsFromTokens(tokens, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage, googleTransaltor: googleTranslator, handler: { (wordsResult: [Word]?, errors: NSError?) -> () in
                     if wordsResult == nil {
                         // if there is no word, refund the user
                         TransactionManager.sharedInstance.createAndCommitTransaction(totalCost, type: .grant_locallyNow_serverLazy, handler: nil)
-                        completionHandler(false, nil, NSError(domain: "make words from tokens", code: 1002, userInfo: nil))
+                        completionHandler(false, nil, NSError(domain: "could not translate the tokens to words", code: 1002, userInfo: nil))
                     } else {
                         var failedTokens = LearningPackControllerHelper.tokensFailedConvertedToWords(tokens, words: wordsResult!)
                         var costToBeRefunded = GoogleTranslate.sharedInstance.costToTranslate(failedTokens)
                         TransactionManager.sharedInstance.createAndCommitTransaction(costToBeRefunded, type: .grant_locallyNow_serverLazy, handler: nil)
-                        completionHandler(true, wordsResult, NSError(domain: "make words from tokens", code: 1002, userInfo: nil))
+                        completionHandler(true, wordsResult, nil)
                     }
                 })
             }
