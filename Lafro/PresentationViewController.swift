@@ -58,6 +58,7 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         var sentenceVC = SampleSentenceViewController(nibName: "SampleSentenceViewController", bundle: NSBundle.mainBundle())
         sentenceVC.word = word
         sentenceVC.index = sentenceIndex
+        sentenceVC.corpus = word.sentences[sentenceIndex].original
         
         return sentenceVC
     }

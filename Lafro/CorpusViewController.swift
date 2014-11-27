@@ -13,15 +13,19 @@ class CorpusViewController: UIViewController {
     var corpus: String?
     var word: Word?
     var textStorage: TKDHighlightingTextStorage!
+    var fontSize: Int?
 
     @IBOutlet var textViewCorpus: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if fontSize == nil {
+            fontSize = 16
+        }
 
-        
-        
         if let selectedWord = word {
             textStorage = TKDHighlightingTextStorage()
+            textStorage.fontSize = fontSize!
             textStorage.regularExpression = NSRegularExpression(pattern: selectedWord.name, options: .allZeros, error: nil)
             textStorage.addLayoutManager(self.textViewCorpus.layoutManager)
             textStorage.replaceCharactersInRange(NSRange(location: 0,length: 0), withString: corpus!)

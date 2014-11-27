@@ -8,39 +8,24 @@
 
 import UIKit
 
-class SampleSentenceViewController: UIViewController {
+class SampleSentenceViewController: CorpusViewController {
     
-    var word: Word?
     var index: Int?
 
-    @IBOutlet var labelOriginalLanguage: UILabel!
-    @IBOutlet var labelTranslated: UILabel!
+
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.labelOriginalLanguage.text = word?.sentences[index!].original
-        self.labelTranslated.text = word?.sentences[index!].translated
+        self.fontSize = 36
         
-        self.labelOriginalLanguage.alpha = 0
-        self.labelTranslated.alpha = 0
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.changeLabelAlphaWithAnimation(1)
         
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.changeLabelAlphaWithAnimation(0)
+
     }
-    
-    func changeLabelAlphaWithAnimation(newAlpha: CGFloat) {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.labelOriginalLanguage.alpha = newAlpha
-            }) { (success: Bool) -> Void in
-                UIView.animateWithDuration(1, animations: { () -> Void in
-                    self.labelTranslated.alpha = newAlpha
-                })
-        }
-    }
+
 }

@@ -61,13 +61,15 @@
 {
 	// Regular expression matching all iWords -- first character i, followed by an uppercase alphabetic character, followed by at least one other character. Matches words like iPod, iPhone, etc.
     self.regularExpression = (self.regularExpression != nil)? self.regularExpression : [NSRegularExpression regularExpressionWithPattern:@"a" options:0 error:NULL];
+    
+    if (self.fontSize == 0) { self.fontSize = 16; }
 	
 	
 	// Clear text color of edited range
 	NSRange paragaphRange = [self.string paragraphRangeForRange: self.editedRange];
 //	[self removeAttribute:NSForegroundColorAttributeName range:paragaphRange];
     [self addAttribute:NSForegroundColorAttributeName value:[UIColor yellowColor] range:paragaphRange];
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:16];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:self.fontSize];
     [self addAttribute:NSFontAttributeName value:font range:paragaphRange];
 	
 	// Find all iWords in range

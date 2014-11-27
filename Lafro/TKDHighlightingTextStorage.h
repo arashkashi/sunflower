@@ -11,5 +11,6 @@
 @interface TKDHighlightingTextStorage : NSTextStorage
 
 @property  NSRegularExpression *regularExpression;
+@property NSInteger fontSize;
 
 @end
