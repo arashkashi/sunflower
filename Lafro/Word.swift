@@ -104,11 +104,11 @@ class Word : NSObject, Equatable, NSCoding {
         case LearningStage.Cram:
             return NSDate().dateByAddingTimeInterval(5 * 60)            // 5 minute
         case LearningStage.Learn:
-            return NSDate().dateByAddingTimeInterval(60 * 60)           // 60 minute
+            return NSDate().dateByAddingTimeInterval(50 * 60)           // 50 minute
         case LearningStage.Relearn:
-            return NSDate().dateByAddingTimeInterval(60 * 60 * 9)       // 9 hours
+            return NSDate().dateByAddingTimeInterval(60 * 60 * 5)       // 5 hours
         case LearningStage.Young:
-            return NSDate().dateByAddingTimeInterval(60 * 60 * 42)      // 42 hours
+            return NSDate().dateByAddingTimeInterval(60 * 60 * 50)      // 50 hours
         case LearningStage.Mature:
             return (NSDate.distantFuture() as NSDate);
         }
