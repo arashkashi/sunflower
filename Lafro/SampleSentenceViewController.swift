@@ -15,7 +15,7 @@ class SampleSentenceViewController: CorpusViewController {
 
     
     override func viewDidLoad() {
-        self.fontSize = 36
+        self.fontSize = 32
         
         super.viewDidLoad()
     }
