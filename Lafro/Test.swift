@@ -73,9 +73,9 @@ class Test: NSObject, Equatable, NSCoding {
         case LearningStage.Cram:
             return [Test(testType: .Test1), Test(testType: .Test2)]
         case LearningStage.Learn:
-            return [Test(testType: .Test1)]
-        case LearningStage.Relearn:
             return [Test(testType: .Test2)]
+        case LearningStage.Relearn:
+            return [Test(testType: .Test1)]
         case LearningStage.Young:
             return [Test(testType: .Test2), Test(testType: .Test1)]
         case LearningStage.Mature:
