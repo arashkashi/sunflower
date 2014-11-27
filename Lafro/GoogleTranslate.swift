@@ -48,20 +48,27 @@ class GoogleTranslate {
     }
     
     func detectLanaguage(text: String, completionHandler:((detectedLanguage: String?, err: String?)->())?) {
+        var hasFailed = false
         
         AFHTTPRequestOperationManager().GET(self.baseDetectLanguageURI, parameters: ["q" : text], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             
             var result = self.handleGoogleDetectLanagugeReposne(responseObject as NSDictionary)
             var detectedLanguage = result.detectedLanguage
             
-            if detectedLanguage != nil {
-                completionHandler?(detectedLanguage: detectedLanguage!, err: nil)
-            } else {
-                completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_SUPPORTED_LNG_FAILED)
+            if !hasFailed {
+                if detectedLanguage != nil {
+                    completionHandler?(detectedLanguage: detectedLanguage!, err: nil)
+                } else {
+                    completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_SUPPORTED_LNG_FAILED)
+                }
             }
             
             }) { (operaion: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 //                completionHandler?(detectedLanguage: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION)
+                if !hasFailed {
+                    hasFailed = true
+                    completionHandler?(detectedLanguage: nil, err: nil)
+                }
         }
     }
     
