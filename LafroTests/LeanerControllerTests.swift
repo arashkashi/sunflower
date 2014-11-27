@@ -23,9 +23,6 @@ class LeanerControllerTests: XCTestCase {
         if !hasCleanedUpCash {
             var error: NSErrorPointer = NSErrorPointer()
              NSFileManager.defaultManager().removeItemAtURL(self.learnerController.learningPackModel.fileURL, error: error)
-            if error != nil{
-                println()
-            }
             hasCleanedUpCash = true
         }
     }

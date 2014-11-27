@@ -36,7 +36,6 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     }
     
     func OnKeyboardShow() {
-        println()
         alignButton.constant = 250
     }
     
@@ -97,7 +96,6 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         var text = self.textViewCorpus.text
         if let enteredText = text {
             var length =  enteredText.length()
-            println(length)
             if length < 1000 && length > 20 {
                 return true
             }

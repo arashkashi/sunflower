@@ -331,6 +331,5 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     deinit {
-        println()
     }
 }

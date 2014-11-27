@@ -44,7 +44,6 @@ class CorpusViewController: UIViewController {
     }
     
     deinit {
-        println()
     }
     
 
