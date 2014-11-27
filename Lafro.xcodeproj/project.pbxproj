@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		22EB77C2EFB9CD3C68D9F23C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
-		4182EA851A25521C00627CB6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4182EA841A25521C00627CB6 /* StoreKit.framework */; };
 		4182EA871A25536F00627CB6 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182EA861A25536F00627CB6 /* BuyViewController.swift */; };
 		41C18A301A23FAED00639C92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A2F1A23FAED00639C92 /* AppDelegate.swift */; };
 		41C18A321A23FAED00639C92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A311A23FAED00639C92 /* ViewController.swift */; };
@@ -132,7 +131,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4182EA841A25521C00627CB6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4182EA861A25536F00627CB6 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		41C18A2A1A23FAED00639C92 /* Lafro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lafro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C18A2E1A23FAED00639C92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4182EA851A25521C00627CB6 /* StoreKit.framework in Frameworks */,
 				43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */,
 				41C18B061A24001900639C92 /* CloudKit.framework in Frameworks */,
 			);
@@ -258,7 +255,6 @@
 		372C37A194A8C976D4412DFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4182EA841A25521C00627CB6 /* StoreKit.framework */,
 				41C18B051A24001900639C92 /* CloudKit.framework */,
 				54BCC503C42383CE6BB76567 /* libPods.a */,
 			);
@@ -528,7 +524,7 @@
 						DevelopmentTeam = Z46627LUPQ;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
