@@ -16,11 +16,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQc-3C-yAa">
-                    <rect key="frame" x="51" y="141" width="250" height="200"/>
+                    <rect key="frame" x="30" y="30" width="293" height="435"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="0vU-ew-Jf4"/>
-                    </constraints>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" red="1" green="0.94535746011889943" blue="0.23954617733435601" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -29,9 +26,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="AQc-3C-yAa" secondAttribute="centerY" constant="7" id="Gch-SE-POu"/>
-                <constraint firstAttribute="trailing" secondItem="AQc-3C-yAa" secondAttribute="trailing" constant="52" id="rV9-fY-uSz"/>
-                <constraint firstItem="AQc-3C-yAa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="51" id="zye-jF-UhS"/>
+                <constraint firstAttribute="bottom" secondItem="AQc-3C-yAa" secondAttribute="bottom" constant="30" id="jdh-Hq-cd3"/>
+                <constraint firstAttribute="trailing" secondItem="AQc-3C-yAa" secondAttribute="trailing" constant="30" id="rV9-fY-uSz"/>
+                <constraint firstItem="AQc-3C-yAa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="tQC-Or-nWH"/>
+                <constraint firstItem="AQc-3C-yAa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="zye-jF-UhS"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
