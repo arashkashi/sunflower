@@ -317,7 +317,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         wordChoices.shuffle()
         assert(wordChoices.includes(word) == true, "word choices should include word")
         
-        LearnerController.printListOfWords(wordChoices)
+//        LearnerController.printListOfWords(wordChoices)
         
         if wordChoices.count != nomberOfWordChoicesNeeded {
             assert(false, "it should not be it")

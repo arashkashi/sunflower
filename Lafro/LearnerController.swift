@@ -99,13 +99,13 @@ class LearnerController {
         var result: [Word] = []
         
         result = result + self.someWordsFromQueue(number_of_words, excludeList: excludeList, queue: self.currentLearningQueue)
-        println("\(result.count) -> \(self.currentLearningQueue.count)")
+//        println("\(result.count) -> \(self.currentLearningQueue.count)")
         
         result = result + self.someWordsFromQueue(number_of_words - result.count, excludeList: excludeList, queue: self.wordsDueNow)
-        println("\(result.count) -> \(self.wordsDueNow.count)")
+//        println("\(result.count) -> \(self.wordsDueNow.count)")
         
         result = result + self.someWordsFromQueue(number_of_words - result.count, excludeList: excludeList, queue: self.wordsDueInFuture)
-        println("\(result.count) -> \(self.wordsDueInFuture.count)")
+//        println("\(result.count) -> \(self.wordsDueInFuture.count)")
         
         assert(result.count == number_of_words, "PASS")
         

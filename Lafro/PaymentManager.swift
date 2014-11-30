@@ -21,7 +21,7 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate  {
     
     override init() {
         super.init()
-        self.requestProductsFor(NSSet(array: ["www.sunflower.com.lafro2000laf"]))
+//        self.requestProductsFor(NSSet(array: ["www.sunflower.com.lafro2000laf"]))
     }
     
     func requestProductsFor(productIdentifiers: NSSet) {
