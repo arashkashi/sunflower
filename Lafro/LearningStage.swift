@@ -17,18 +17,21 @@ func != (lhs: LearningStage, rhs: LearningStage) -> Bool {
 }
 
 enum LearningStage: Int32, Comparable {
-    case Cram = 1
+    case Intro = 1
+    case Cram
     case Learn
     case Relearn
     case Young
     case Mature
     
     static func allStages() -> [LearningStage] {
-        return [.Cram, .Learn, .Relearn, .Young, .Mature]
+        return [.Intro, .Cram, .Learn, .Relearn, .Young, .Mature]
     }
     
     mutating func increment() {
         switch self {
+        case .Intro:
+            self = .Cram
         case .Cram:
             self = Learn
         case .Learn:
@@ -46,8 +49,10 @@ enum LearningStage: Int32, Comparable {
     
     mutating func decrement() {
         switch self {
+        case .Intro:
+            self = Intro
         case .Cram:
-            self = Cram
+            self = Intro
         case .Learn:
             self = Cram
         case .Relearn:
@@ -63,30 +68,34 @@ enum LearningStage: Int32, Comparable {
     
     func toInt () -> Int32 {
         switch self {
-        case .Cram:
+        case .Intro:
             return 1
-        case .Learn:
+        case .Cram:
             return 2
-        case .Relearn:
+        case .Learn:
             return 3
-        case .Young:
+        case .Relearn:
             return 4
-        case .Mature:
+        case .Young:
             return 5
+        case .Mature:
+            return 6
         }
     }
     
     static func initWithInt(intInput: Int32) -> LearningStage {
         switch intInput {
         case 1:
-            return .Cram
+            return .Intro
         case 2:
-            return .Learn
+            return .Cram
         case 3:
-            return .Relearn
+            return .Learn
         case 4:
-            return .Young
+            return .Relearn
         case 5:
+            return .Young
+        case 6:
             return .Mature
         default:
             assert(false, "type is not supported")
@@ -96,6 +105,8 @@ enum LearningStage: Int32, Comparable {
     
     func toString () -> String {
         switch self {
+        case .Intro:
+            return "Intro"
         case .Cram:
             return "Cram"
         case .Learn:

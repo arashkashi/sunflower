@@ -69,7 +69,7 @@ class LeanerControllerTests: XCTestCase {
         var firstWordToLearn = self.giveMeNextWord()
 
         XCTAssert(firstWordToLearn!.relearningDueDate == nil, "the first word due date is nil")
-        XCTAssert(firstWordToLearn!.currentLearningStage == LearningStage.Cram, "learning Stage is cram")
+        XCTAssert(firstWordToLearn!.currentLearningStage == LearningStage.Intro, "learning Stage is cram")
         XCTAssert(firstWordToLearn!.name == "ich", "learning Stage is cram")
         XCTAssert(contains(self.learnerController.currentLearningQueue, firstWordToLearn!) , "the next word should bein the current queue")
         XCTAssert(firstWordToLearn!.shouldShowWordPresentation, "the first word should show the word presentation")
@@ -83,7 +83,7 @@ class LeanerControllerTests: XCTestCase {
         
         XCTAssert(result.word.testsSuccessfulyDoneForCurrentStage.count == 0, "successful matrix should be clear")
         XCTAssert(result.word.shouldShowWordPresentation, "should show the presentation layer")
-        XCTAssert(result.word.currentLearningStage == LearningStage.Cram, "learning stage should be equal to cram")
+        XCTAssert(result.word.currentLearningStage == LearningStage.Intro, "learning stage should be equal to cram")
     }
     
     // First word fails the first test 1 (o)-(ROOT)
@@ -111,7 +111,7 @@ class LeanerControllerTests: XCTestCase {
         nextWord = self.giveMeNextWord()
         
         XCTAssert(nextWord!.relearningDueDate == nil, "the first word due date is nil")
-        XCTAssert(nextWord!.currentLearningStage == LearningStage.Cram, "learning Stage is cram")
+        XCTAssert(nextWord!.currentLearningStage == LearningStage.Intro, "learning Stage is cram")
         XCTAssert(nextWord!.name == "sie", "the second word in the test words list")
         XCTAssert(contains(self.learnerController.currentLearningQueue, nextWord!) , "the next word should bein the current queue")
         XCTAssert(nextWord!.shouldShowWordPresentation, "the first word should show the word presentation")

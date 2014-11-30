@@ -51,7 +51,7 @@ class Word : NSObject, Equatable, NSCoding {
     var meaning: String
     var sentences: [Sentence]
     
-    var currentLearningStage: LearningStage = .Cram {
+    var currentLearningStage: LearningStage = .Intro {
         didSet {
             if currentLearningStage != oldValue {
                 self.prevLearningStage = oldValue
@@ -59,7 +59,7 @@ class Word : NSObject, Equatable, NSCoding {
         }
     }
     
-    var prevLearningStage: LearningStage = .Cram
+    var prevLearningStage: LearningStage = .Intro
     
     var relearningDueDate: NSDate?
     var shouldShowWordPresentation: Bool = true
@@ -101,6 +101,8 @@ class Word : NSObject, Equatable, NSCoding {
     // This is based on the assumption that if you remember a word after 42 hours you'll remember it for the rest of your life.
     class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
         switch learningStage {
+        case LearningStage.Intro:
+            return NSDate().dateByAddingTimeInterval(5 * 60)
         case LearningStage.Cram:
             return NSDate().dateByAddingTimeInterval(5 * 60)            // 5 minute
         case LearningStage.Learn:
@@ -110,7 +112,10 @@ class Word : NSObject, Equatable, NSCoding {
         case LearningStage.Young:
             return NSDate().dateByAddingTimeInterval(60 * 60 * 50)      // 50 hours
         case LearningStage.Mature:
-            return (NSDate.distantFuture() as NSDate);
+            return (NSDate.distantFuture() as NSDate)
+        default:
+            assert(false, "Fail: should not be here")
+            return (NSDate.distantFuture() as NSDate)
         }
     }
     

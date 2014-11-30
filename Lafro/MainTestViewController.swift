@@ -120,6 +120,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     // #MARK: Learning logic
     func learnNextWord() {
         var next = self.learnerController!.nextWordToLearn()
+        
+        LearnerController.printListOfWords(self.learnerController!.wordsDueInFuture)
+        LearnerController.printListOfWords(self.learnerController.currentLearningQueue)
+        
+        
         self.hideAllButtons()
         self.currentWord = next.word
         
@@ -274,7 +279,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         })
 
         // Allow user to skip the word when first shown
-        if word.currentLearningStage == .Cram {
+        if word.currentLearningStage == .Intro {
             self.showSkip()
         }
     }
