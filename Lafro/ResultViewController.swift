@@ -14,7 +14,7 @@ class ResultViewController: UIViewController {
     @IBOutlet var viewWrongContainer: UIView!
     @IBOutlet var viewTint: UIView!
     
-    let animationDuration: NSTimeInterval = 0.5
+    let animationDuration: NSTimeInterval = 1.0
     
     
     override func viewDidLoad() {
@@ -48,6 +48,7 @@ class ResultViewController: UIViewController {
     func tintMainView(completionHandler: (()->())?) {
         viewTint.alpha = 0.0
         viewTint.backgroundColor = UIColor.blackColor()
+
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             self.viewTint.alpha = 0.8
             }) { (success: Bool) -> Void in
@@ -60,9 +61,10 @@ class ResultViewController: UIViewController {
     // MARK: Helper (View Manipulation)
     func slideViewUp(view: UIView, isAnimated: Bool, animationEndedHandler: (()->())?) {
         if isAnimated {
-            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+            
+            UIView.animateWithDuration(animationDuration, delay: 0, usingSpringWithDamping: CGFloat(50.0), initialSpringVelocity: CGFloat(15.0), options: UIViewAnimationOptions.AllowAnimatedContent, animations: { () -> Void in
                 view.center = CGPointMake(view.center.x, 230)
-                }, completion: { (success: Bool) -> Void in
+                }, completion: { (Bool) -> Void in
                     if animationEndedHandler != nil {
                         animationEndedHandler!()
                     }
