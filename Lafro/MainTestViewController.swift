@@ -134,14 +134,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     func showNextWord(word: Word) {
         if word.shouldShowWordPresentation {
             self.showPresentationView(word, completionHandler: { () -> () in
-                self.learnerController!.onWordFinishedPresentation(word)
-                self.learnNextWord()
+                self.onWordFinishedPresentation(word)
             })
         } else {
             self.hideItem(self.buttonSkip)
             if var nextTest = word.nextTest()? {
                 self.doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
-                    self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
+                    self.onWordFinishedTesting(word, test: test, testResult: testResult)
                 })
             } else {
                 self.learnNextWord()
@@ -158,6 +157,16 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     // #MARK: Delegations
     func onAsnwerSelected() {
         self.showCheckButton()
+    }
+    
+    // MARK: Events
+    func onWordFinishedTesting(word: Word, test: Test, testResult: TestResult) {
+        self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
+    }
+    
+    func onWordFinishedPresentation(word: Word) {
+        self.learnerController!.onWordFinishedPresentation(word)
+        self.learnNextWord()
     }
     
     // #MARK: IBACtion
