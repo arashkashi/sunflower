@@ -6,16 +6,19 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "landing640×1136.png"
     },
     {
       "idiom" : "iphone",
+      "filename" : "landing640×960.png",
       "subtype" : "retina4",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "landing1242×2208.png"
     },
     {
       "idiom" : "ipad",
