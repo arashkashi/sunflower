@@ -33,8 +33,6 @@ class LearnerController {
         // If words in future are due now, move them to the due now list
         self.moveToDueNowFromFutureListIfApplicable()
         
-        LearnerController.printListOfWords(self.currentLearningQueue)
-        
         // If the current queue has a word which has a learning due date in future, 
         // instead of putting it in the button of the list, put it into the future list
         // and its place, put an item from the due now list and then take one word from

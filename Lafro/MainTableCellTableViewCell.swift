@@ -15,6 +15,7 @@ protocol MainViewCellDelegate {
 class MainTableCellView: UITableViewCell {
     
     var delegate: MainViewCellDelegate?
+    var id: String!
 
     @IBOutlet var labelID: UILabel!
     @IBOutlet var labelProgress: UILabel!
@@ -37,8 +38,13 @@ class MainTableCellView: UITableViewCell {
     }
     
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {
-        labelID.text = learningPackModel.id
-        labelProgress.text = "\(Int(learningPackModel.progress)) %"
+        id = learningPackModel.id
+        var wordsDueInFuture = learningPackModel.wordsDueInFuture()
+        var allWords = learningPackModel.words
+        var proportion = "\(wordsDueInFuture.count)/\(allWords.count)"
+        
+        labelID.text = "\(learningPackModel.id) \t  \(proportion) "
+        labelProgress.text = "(\(Int(learningPackModel.progress))%)"
         
         activityIndicator.hidden = true
         labelrightIndicator.hidden = false

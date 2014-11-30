@@ -90,7 +90,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
             
             var cell = sender as MainTableCellView
-            var selectedID = cell.labelID.text
+            var selectedID = cell.id
             testViewController.leaningPackID = selectedID!
             testViewController.learnerController = self.learnerController
             invalidateCashedLearningPack(selectedID!)
@@ -114,7 +114,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var cell = sender as MainTableCellView
 
         self.showWaitingOverlay()
-        LearningPackController.sharedInstance.loadLearningPackWithID(cell.labelID.text!, completionHandler: { (lpm: LearningPackModel?) -> () in
+        LearningPackController.sharedInstance.loadLearningPackWithID(cell.id, completionHandler: { (lpm: LearningPackModel?) -> () in
             if (lpm != nil) {
                 self.learnerController = LearnerController(learningPack: lpm!)
                 var status = self.learnerController!.nextWordToLearn().status

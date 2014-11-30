@@ -50,6 +50,20 @@ class LearningPackModel : UIDocument, NSCoding  {
         return result
     }
     
+    func wordsDueNow() -> [Word] {
+        var result: [Word] = []
+        for word in words {
+            if let relearnDate = word.relearningDueDate {
+                if relearnDate.isPast() {
+                    result.append(word)
+                }
+            } else {
+                result.append(word)
+            }
+        }
+        return result
+    }
+    
     // #MARK: Document Facade
     class func create(id: String, words: [Word], corpus: String?, completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
         var learningPackModel = LearningPackModel(id: id, words: words, corpus: corpus)
