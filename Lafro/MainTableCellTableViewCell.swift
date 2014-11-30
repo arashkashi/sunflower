@@ -44,7 +44,7 @@ class MainTableCellView: UITableViewCell {
         var proportion = "\(wordsDueInFuture.count)/\(allWords.count)"
         
         labelID.text = "\(learningPackModel.id) \t  \(proportion) "
-        labelProgress.text = "(\(Int(learningPackModel.progress))%)"
+        labelProgress.text = "\(Int(learningPackModel.progress))%"
         
         activityIndicator.hidden = true
         labelrightIndicator.hidden = false

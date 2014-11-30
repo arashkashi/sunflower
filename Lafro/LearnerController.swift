@@ -99,10 +99,15 @@ class LearnerController {
         var result: [Word] = []
         
         result = result + self.someWordsFromQueue(number_of_words, excludeList: excludeList, queue: self.currentLearningQueue)
+        println("\(result.count) -> \(self.currentLearningQueue.count)")
         
         result = result + self.someWordsFromQueue(number_of_words - result.count, excludeList: excludeList, queue: self.wordsDueNow)
+        println("\(result.count) -> \(self.wordsDueNow.count)")
         
         result = result + self.someWordsFromQueue(number_of_words - result.count, excludeList: excludeList, queue: self.wordsDueInFuture)
+        println("\(result.count) -> \(self.wordsDueInFuture.count)")
+        
+        assert(result.count == number_of_words, "PASS")
         
         return result
     }
@@ -216,7 +221,7 @@ class LearnerController {
             if !excludeList.includes(word) {
                 result.append(word)
             }
-            if result.count > number_of_words { break }
+            if result.count == number_of_words { break }
         }
         return result
     }
@@ -240,8 +245,12 @@ class LearnerController {
     }
     
     class func printListOfWords(words: [Word]) {
+        println("****************************************************** \(words.count)")
         for (index, word) in enumerate(words) {
             LearnerController.printWord(word, index: index)
         }
+        println()
+        println("******************************************************")
+        
     }
 }
