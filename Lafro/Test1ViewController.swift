@@ -58,10 +58,6 @@ class Test1ViewController : TestBaseViewController {
                 self.completionHandler?(test!, .Fail, word!)
             }
         }
-        
-        resultViewController.showCorrect(true
-            , completionHandler: completionHandler)
-        self.completionHandler?(test!, .Pass, word!)
     }
     
     // MARK: Helper

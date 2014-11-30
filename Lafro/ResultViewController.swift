@@ -14,7 +14,7 @@ class ResultViewController: UIViewController {
     @IBOutlet var viewWrongContainer: UIView!
     @IBOutlet var viewTint: UIView!
     
-    let animationDuration: NSTimeInterval = 1.0
+    let animationDuration: NSTimeInterval = 0.5
     
     
     override func viewDidLoad() {

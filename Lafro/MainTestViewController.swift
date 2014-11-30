@@ -156,7 +156,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     // #MARK: Delegations
     func onAsnwerSelected() {
-        self.showCheckButton()
+        self.hideAllButtons()
+        self.testViewController?.checkAnswer({ () -> () in
+            self.learnNextWord()
+//            self.showContinueButton()
+        })
+        
+//        self.showCheckButton()
     }
     
     // MARK: Events
