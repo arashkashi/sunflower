@@ -52,8 +52,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
-        self.labelCounter.text = "\(self.secondsSpentToday)"
+        self.updateTimerLabel()
     }
     
     func navigationController() -> UINavigationController {
@@ -92,6 +91,8 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     func onAppBecomeActive() {
         self.labelCounter.text = "\(self.secondsSpentToday)"
+        
+        self.updateTimerLabel()
     }
     
     func onAppResignActive() {
@@ -224,6 +225,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     // #MARK: View manipulation
     func showNoMoreWordToLearn() {
         self.performSegueWithIdentifier("backtomain", sender: nil)
+    }
+    
+    func updateTimerLabel() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
+        self.labelCounter.text = "\(self.secondsSpentToday)"
     }
     
     func showGotIt() {
