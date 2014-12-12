@@ -21,9 +21,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ooo-AN-jI6" userLabel="Label - Name">
-                    <rect key="frame" x="0.0" y="15" width="333" height="102"/>
+                    <rect key="frame" x="0.0" y="0.0" width="333" height="55"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Ooo-AN-jI6" secondAttribute="height" multiplier="49:15" id="HAn-v5-zaS"/>
+                        <constraint firstAttribute="width" secondItem="Ooo-AN-jI6" secondAttribute="height" multiplier="49:8" id="HAn-v5-zaS"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,23 +32,8 @@
                         <rect key="frame" x="45" y="43" width="230" height="34"/>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A89-uw-x9N" userLabel="ButtonChoice1">
-                    <rect key="frame" x="18" y="208" width="298" height="33"/>
-                    <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="87" y="139" width="135" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="onChoiceSelected:" destination="-1" eventType="touchUpInside" id="dKb-ws-ZHM"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSU-5R-ddH" userLabel="ButtonChoice2">
-                    <rect key="frame" x="18" y="271" width="298" height="33"/>
+                    <rect key="frame" x="18" y="291" width="298" height="33"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -78,7 +63,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ou-9V-YB9" userLabel="ButtonChoice3">
-                    <rect key="frame" x="18" y="334" width="298" height="33"/>
+                    <rect key="frame" x="18" y="344" width="298" height="33"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -93,11 +78,26 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPQ-ev-Neg">
-                    <rect key="frame" x="18" y="177" width="10" height="21"/>
+                    <rect key="frame" x="18" y="208" width="10" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A89-uw-x9N" userLabel="ButtonChoice1">
+                    <rect key="frame" x="18" y="238" width="298" height="33"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="87" y="139" width="135" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="onChoiceSelected:" destination="-1" eventType="touchUpInside" id="dKb-ws-ZHM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -115,13 +115,13 @@
                 <constraint firstItem="sSU-5R-ddH" firstAttribute="leading" secondItem="sCt-zh-t4Z" secondAttribute="leading" constant="18" id="P4Z-ah-ZZs"/>
                 <constraint firstAttribute="trailing" secondItem="4ou-9V-YB9" secondAttribute="trailing" constant="17" id="Q11-Ob-Dgc"/>
                 <constraint firstItem="TPQ-ev-Neg" firstAttribute="leading" secondItem="A89-uw-x9N" secondAttribute="leading" id="RDV-ii-3K0"/>
-                <constraint firstItem="4ou-9V-YB9" firstAttribute="top" secondItem="sSU-5R-ddH" secondAttribute="bottom" constant="30" id="Rug-qf-HjS"/>
-                <constraint firstItem="sSU-5R-ddH" firstAttribute="top" secondItem="A89-uw-x9N" secondAttribute="bottom" constant="30" id="YuA-8p-lSD"/>
-                <constraint firstItem="UZT-0C-5LP" firstAttribute="top" secondItem="4ou-9V-YB9" secondAttribute="bottom" constant="30" id="ZQe-rk-QBi"/>
+                <constraint firstItem="4ou-9V-YB9" firstAttribute="top" secondItem="sSU-5R-ddH" secondAttribute="bottom" constant="20" id="Rug-qf-HjS"/>
+                <constraint firstItem="sSU-5R-ddH" firstAttribute="top" secondItem="A89-uw-x9N" secondAttribute="bottom" constant="20" id="YuA-8p-lSD"/>
+                <constraint firstItem="UZT-0C-5LP" firstAttribute="top" secondItem="4ou-9V-YB9" secondAttribute="bottom" constant="20" id="ZQe-rk-QBi"/>
                 <constraint firstItem="sSU-5R-ddH" firstAttribute="width" secondItem="4ou-9V-YB9" secondAttribute="width" id="cJC-y6-EKu"/>
                 <constraint firstAttribute="trailing" secondItem="UZT-0C-5LP" secondAttribute="trailing" constant="17" id="irT-OA-ek0"/>
                 <constraint firstAttribute="trailing" secondItem="A89-uw-x9N" secondAttribute="trailing" constant="17" id="jHw-FY-RRL"/>
-                <constraint firstItem="Ooo-AN-jI6" firstAttribute="top" secondItem="sCt-zh-t4Z" secondAttribute="top" constant="15" id="ko1-Jh-kVW">
+                <constraint firstItem="Ooo-AN-jI6" firstAttribute="top" secondItem="sCt-zh-t4Z" secondAttribute="top" id="ko1-Jh-kVW">
                     <variation key="widthClass=compact" constant="5"/>
                 </constraint>
                 <constraint firstItem="UZT-0C-5LP" firstAttribute="width" secondItem="4ou-9V-YB9" secondAttribute="width" id="lGY-9O-OSc"/>
