@@ -50,6 +50,10 @@ class GoogleTranslate {
     func detectLanaguage(text: String, completionHandler:((detectedLanguage: String?, err: String?)->())?) {
         var hasFailed = false
         
+        AFHTTPRequestOperationManager().securityPolicy.allowInvalidCertificates = false
+        
+        print(AFHTTPRequestOperationManager().securityPolicy.allowInvalidCertificates)
+        
         AFHTTPRequestOperationManager().GET(self.baseDetectLanguageURI, parameters: ["q" : text], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             
             var result = self.handleGoogleDetectLanagugeReposne(responseObject as NSDictionary)
@@ -74,6 +78,9 @@ class GoogleTranslate {
     
     func translate(text: String, targetLanguage: String, sourceLanaguage: String, successHandler:((translation: String?, err: String?)->())?) {
         var recievedResponse = false
+        
+        AFHTTPRequestOperationManager().securityPolicy.allowInvalidCertificates = false
+        
         AFHTTPRequestOperationManager().GET(self.baseTranslationURI, parameters: ["q" : text, "target": targetLanguage, "source": sourceLanaguage], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             if recievedResponse { successHandler?(translation: nil, err: "Already failed"); return }
             recievedResponse = true
