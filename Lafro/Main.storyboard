@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jEl-6I-WA3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jEl-6I-WA3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -453,13 +453,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you sign into iCloud, you'll get credit for 200 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDX-gg-ebD" userLabel="description">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you sign into iCloud, you'll get credit for 2000 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDX-gg-ebD" userLabel="description">
                                 <rect key="frame" x="26" y="529" width="548" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spend 1 dollar to buy credit for translating 2000 characters" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-7w-5Zg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spend 1 dollar to buy credit for translating 2000 characters" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-7w-5Zg">
                                 <rect key="frame" x="26" y="54" width="548" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="jNO-Ze-YTC"/>
@@ -469,7 +469,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elg-uE-7os" userLabel="Button - Continue">
-                                <rect key="frame" x="205" y="263" width="154" height="43"/>
+                                <rect key="frame" x="223" y="263" width="154" height="43"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="elg-uE-7os" secondAttribute="height" multiplier="130:35" constant="30" id="Thp-Sd-MLi"/>
@@ -503,7 +503,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sg8-7w-5Zg" secondAttribute="trailing" constant="10" id="V4q-EI-bCG"/>
                             <constraint firstItem="sg8-7w-5Zg" firstAttribute="top" secondItem="3IF-Qh-Ssn" secondAttribute="bottom" constant="10" id="WWm-eb-dE5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lDX-gg-ebD" secondAttribute="trailing" constant="10" id="bAk-km-j5J"/>
-                            <constraint firstItem="sg8-7w-5Zg" firstAttribute="centerX" secondItem="elg-uE-7os" secondAttribute="centerX" constant="18" id="d6b-Le-5vW"/>
+                            <constraint firstItem="sg8-7w-5Zg" firstAttribute="centerX" secondItem="elg-uE-7os" secondAttribute="centerX" id="d6b-Le-5vW"/>
                             <constraint firstAttribute="centerX" secondItem="sg8-7w-5Zg" secondAttribute="centerX" id="eue-cb-AhL"/>
                             <constraint firstItem="lDX-gg-ebD" firstAttribute="leading" secondItem="wMg-GV-UcW" secondAttribute="leadingMargin" constant="10" id="hW8-MT-dGo"/>
                             <constraint firstItem="elg-uE-7os" firstAttribute="top" secondItem="sg8-7w-5Zg" secondAttribute="bottom" constant="59" id="nmI-24-I8p"/>
@@ -519,6 +519,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="labelTitle" destination="sg8-7w-5Zg" id="bhi-pC-Teh"/>
                         <outlet property="view" destination="wMg-GV-UcW" id="wCw-Ut-vku"/>
                     </connections>
                 </viewController>
@@ -773,7 +774,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H7g-wE-pch"/>
         <segue reference="Lac-Er-Xwm"/>
+        <segue reference="vsz-Sp-Twh"/>
     </inferredMetricsTieBreakers>
 </document>

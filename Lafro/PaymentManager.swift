@@ -11,6 +11,8 @@ import StoreKit
 
 class PaymentManager: NSObject,  SKProductsRequestDelegate  {
     
+    let productIDs = ["sunflower.dollar.1"]
+    
     
     class var sharedInstance : PaymentManager {
         struct Static {
@@ -21,12 +23,17 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate  {
     
     override init() {
         super.init()
-        requestProductsFor(NSSet(array: ["sunflower.dollar.1"]))
+//        requestProductsFor(NSSet(array: ["sunflower.dollar.1"]))
     }
     
-    func requestProductsFor(productIdentifiers: NSSet) {
+    func requestProductsFor(productIdentifiers: NSSet, delegate: SKProductsRequestDelegate?) {
         var request = SKProductsRequest(productIdentifiers: productIdentifiers)
-        request.delegate = self
+        
+        if delegate != nil {
+            request.delegate = delegate
+        } else {
+            request.delegate = self
+        }
         request.start()
     }
     

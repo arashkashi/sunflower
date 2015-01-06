@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import StoreKit
 
-class BuyViewController: UIViewController {
+class BuyViewController: UIViewController, SKProductsRequestDelegate {
 
-    @IBOutlet var labelBalance: UILabel!
+    @IBOutlet var labelTitle: UILabel!
     @IBOutlet var buttonBuy: UIButton!
     
     @IBAction func onBuyTapped(sender: AnyObject) {
@@ -19,15 +20,23 @@ class BuyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var balance = CreditManager.sharedInstance.localBalance
-//        labelBalance.text = "Balance: \(balance)"
-
-        // Do any additional setup after loading the view.
+        PaymentManager.sharedInstance.requestProductsFor(NSSet(array: ["sunflower.dollar.1"]), delegate: self)
+        labelTitle.text = "Loading Products..."
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: product Request Delegate
+    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
+        var skProducts = response.products
+        
+        for product in skProducts {
+            labelTitle.text = "Spend \(product.price) to buy credit for translating \(product.localizedTitle)"
+        }
     }
     
 
