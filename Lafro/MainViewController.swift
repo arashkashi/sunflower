@@ -66,8 +66,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.labelTopCounter.text = "0"
         
         // Remove the top bar buttons for now
-        self.navigationItem.leftBarButtonItem = nil
-        self.navigationItem.rightBarButtonItem = nil
+//        self.navigationItem.leftBarButtonItem = nil
+//        self.navigationItem.rightBarButtonItem = nil
     }
     
     override func viewDidAppear(animated: Bool) {
