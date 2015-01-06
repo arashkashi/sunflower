@@ -21,7 +21,7 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate  {
     
     override init() {
         super.init()
-//        self.requestProductsFor(NSSet(array: ["www.sunflower.com.lafro2000laf"]))
+        requestProductsFor(NSSet(array: ["sunflower.dollar.1"]))
     }
     
     func requestProductsFor(productIdentifiers: NSSet) {
@@ -32,17 +32,15 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate  {
     
     
     // MARK: product Request Delegate
-    func productsRequest(request: SKProductsRequest!,
-        didReceiveResponse response: SKProductsResponse!) {
+    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
         var skProducts = response.products
-            
-            for invalidProducts in response.invalidProductIdentifiers {
-                NSLog("\(invalidProducts)")
-            }
+        
+        for invalidProducts in response.invalidProductIdentifiers {
+            NSLog("\(invalidProducts)")
+        }
         
         for product in skProducts {
             NSLog("\(product.productIdentifier)+ \(product.localizedTitle) + \(product.price)")
         }
     }
-   
 }
