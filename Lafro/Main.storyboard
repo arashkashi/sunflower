@@ -453,7 +453,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy LAF credit here in near future" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-7w-5Zg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you sign into iCloud, you'll get credit for 200 characters" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDX-gg-ebD" userLabel="description">
+                                <rect key="frame" x="26" y="529" width="548" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spend 1 dollar to buy credit for translating 2000 characters" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sg8-7w-5Zg">
                                 <rect key="frame" x="26" y="54" width="548" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="jNO-Ze-YTC"/>
@@ -462,26 +468,54 @@
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you sign into iCloud, you'll get 2000 LAF for free." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDX-gg-ebD" userLabel="description">
-                                <rect key="frame" x="26" y="280" width="548" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elg-uE-7os" userLabel="Button - Continue">
+                                <rect key="frame" x="205" y="263" width="154" height="43"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="elg-uE-7os" secondAttribute="height" multiplier="130:35" constant="30" id="Thp-Sd-MLi"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="50" minY="5" maxX="50" maxY="5"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Buy">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="28" name="AmericanTypewriter"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Thp-Sd-MLi"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onContinueTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="0AU-uo-TXc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="sg8-7w-5Zg" firstAttribute="leading" secondItem="wMg-GV-UcW" secondAttribute="leadingMargin" constant="10" id="0iG-wU-N2x"/>
+                            <constraint firstItem="elg-uE-7os" firstAttribute="width" secondItem="elg-uE-7os" secondAttribute="height" multiplier="130:35" constant="30" id="8V8-Uo-AJ9"/>
+                            <constraint firstItem="561-lZ-OL3" firstAttribute="top" secondItem="lDX-gg-ebD" secondAttribute="bottom" constant="5" id="FJS-Wt-xKA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sg8-7w-5Zg" secondAttribute="trailing" constant="10" id="V4q-EI-bCG"/>
                             <constraint firstItem="sg8-7w-5Zg" firstAttribute="top" secondItem="3IF-Qh-Ssn" secondAttribute="bottom" constant="10" id="WWm-eb-dE5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lDX-gg-ebD" secondAttribute="trailing" constant="10" id="bAk-km-j5J"/>
+                            <constraint firstItem="sg8-7w-5Zg" firstAttribute="centerX" secondItem="elg-uE-7os" secondAttribute="centerX" constant="18" id="d6b-Le-5vW"/>
                             <constraint firstAttribute="centerX" secondItem="sg8-7w-5Zg" secondAttribute="centerX" id="eue-cb-AhL"/>
                             <constraint firstItem="lDX-gg-ebD" firstAttribute="leading" secondItem="wMg-GV-UcW" secondAttribute="leadingMargin" constant="10" id="hW8-MT-dGo"/>
-                            <constraint firstItem="lDX-gg-ebD" firstAttribute="top" secondItem="sg8-7w-5Zg" secondAttribute="bottom" constant="76" id="uBG-1w-LIU"/>
+                            <constraint firstItem="elg-uE-7os" firstAttribute="top" secondItem="sg8-7w-5Zg" secondAttribute="bottom" constant="59" id="nmI-24-I8p"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8V8-Uo-AJ9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Upcoming Feature" id="VwY-JN-zPa" userLabel="Navigation bar"/>
+                    <navigationItem key="navigationItem" title="Charge Credit" id="VwY-JN-zPa" userLabel="Navigation bar"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -739,7 +773,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Lac-Er-Xwm"/>
         <segue reference="H7g-wE-pch"/>
+        <segue reference="Lac-Er-Xwm"/>
     </inferredMetricsTieBreakers>
 </document>
