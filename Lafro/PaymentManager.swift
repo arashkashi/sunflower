@@ -38,7 +38,7 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
         request.start()
     }
     
-    func buyProduct(product: SKProduct) {
+    func payForProduct(product: SKProduct) {
         var payment = SKPayment(product: product)
         SKPaymentQueue.defaultQueue().addPayment(payment)
         
@@ -67,14 +67,23 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
     }
     
     func completeTransaction(payment: SKPaymentTransaction) {
-        var transaction = TransactionManager.sharedInstance.getNewTransaction(2000, type: .grant_locallyNow_serverNow)
+        var transaction = TransactionManager.sharedInstance.getNewTransaction(2000, type: .grant_locallyNow_serverLazy)
         TransactionManager.sharedInstance.commit(transaction, handler: { (result: CommitResult) -> () in
             switch result {
             case .Succeeded:
-                
+                SKPaymentQueue.defaultQueue().finishTransaction(payment)
+                break
+            case .Queued:
+                SKPaymentQueue.defaultQueue().finishTransaction(payment)
+                break
+            case .Failed:
+                SKPaymentQueue.defaultQueue().finishTransaction(payment)
+                assert(false, "A lazy server transaction should never fail")
+                break
+            default:
+                break
             }
         })
-        
     }
     
     func failTransaction(payment: SKPaymentTransaction) {
