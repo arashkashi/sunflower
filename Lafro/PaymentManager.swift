@@ -12,6 +12,7 @@ import StoreKit
 class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransactionObserver  {
     
     let productIDs = ["sunflower.dollar.1"]
+    var paymentCoompletionHandler:  ((Bool)->())?
     
     
     class var sharedInstance : PaymentManager {
@@ -38,10 +39,10 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
         request.start()
     }
     
-    func payForProduct(product: SKProduct) {
+    func payForProduct(product: SKProduct, completionHandler: ((Bool)->())?) {
         var payment = SKPayment(product: product)
         SKPaymentQueue.defaultQueue().addPayment(payment)
-        
+        paymentCoompletionHandler = completionHandler
     }
     
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
@@ -51,10 +52,10 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
             case .Purchasing:   // Transaction is being added to the server queue.
                 break
             case .Purchased:    // Transaction is in queue, user has been charged.  Client should complete the transaction.
-                //[self completeTransaction:transaction];
+                completeTransaction(transaction)
                 break
             case .Failed:       // Transaction was cancelled or failed before being added to the server queue.
-                //[self failedTransaction:transaction];
+                failTransaction(transaction)
                 break
             case .Restored:     // Transaction was restored from user's purchase history.  Client should complete the transaction.
                 break
@@ -72,12 +73,15 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
             switch result {
             case .Succeeded:
                 SKPaymentQueue.defaultQueue().finishTransaction(payment)
+                self.paymentCoompletionHandler?(true)
                 break
             case .Queued:
                 SKPaymentQueue.defaultQueue().finishTransaction(payment)
+                self.paymentCoompletionHandler?(true)
                 break
             case .Failed:
                 SKPaymentQueue.defaultQueue().finishTransaction(payment)
+                self.paymentCoompletionHandler?(false)
                 assert(false, "A lazy server transaction should never fail")
                 break
             default:
@@ -87,7 +91,8 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
     }
     
     func failTransaction(payment: SKPaymentTransaction) {
-        
+        paymentCoompletionHandler?(false)
+        SKPaymentQueue.defaultQueue().finishTransaction(payment)
     }
     
     // MARK: product Request Delegate
