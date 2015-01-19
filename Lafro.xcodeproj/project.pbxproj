@@ -119,6 +119,7 @@
 		B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F87A51A6D54A500047EA1 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F9BF01A26019100E15D22 /* PaymentManager.swift */; };
 		B25F87A61A6D5B1D00047EA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A2F1A23FAED00639C92 /* AppDelegate.swift */; };
+		B25F87A71A6D62F900047EA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A541A23FB4100639C92 /* ComponentManager.swift */; };
 		B25F9BF11A26019100E15D22 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F9BF01A26019100E15D22 /* PaymentManager.swift */; };
 		B27639951A249939004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
 		B27639961A24A3AF004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
@@ -748,6 +749,7 @@
 				41C18AF81A23FF3800639C92 /* Transaction.swift in Sources */,
 				41C18B021A23FFD000639C92 /* Sentence.swift in Sources */,
 				41C18AD91A23FCE400639C92 /* creditManagerTests.swift in Sources */,
+				B25F87A71A6D62F900047EA1 /* ComponentManager.swift in Sources */,
 				41C18AFA1A23FF5500639C92 /* LearningPackModel.swift in Sources */,
 				41C18AFB1A23FF6100639C92 /* TransactionHelper.swift in Sources */,
 				41C18A461A23FAED00639C92 /* LafroTests.swift in Sources */,
