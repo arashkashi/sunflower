@@ -45,5 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    // MARK: Helper
+    func showInformationWithMessage(title: String, message: String) {
+        var alertController =  UIAlertController(title: title, message: message, preferredStyle: .ActionSheet )
+        
+        var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.rootNavigationController?.visibleViewController.presentViewController(alertController, animated: true, completion: { () -> Void in
+            //
+        })
+    }
 }
 

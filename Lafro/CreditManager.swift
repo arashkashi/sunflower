@@ -127,17 +127,19 @@ class CreditManager {
     
     // MARK: Events
     func onTransactionsUpdated(notification: NSNotification) {
-        var updatedTransactions = notification.userInfo?[USER_INFO_UPDATED_TRANSACTIONS] as? [SKPaymentTransaction]
+        var updatedAppleTransactions = notification.userInfo?[USER_INFO_UPDATED_TRANSACTIONS] as? [SKPaymentTransaction]
         
-        if let transactions = updatedTransactions{
-            for transaction in transactions {
-                switch transaction.transactionState
+        if let appleTransactions = updatedAppleTransactions{
+            for appleTransaction in appleTransactions {
+                switch appleTransaction.transactionState
                 {
                 case .Purchasing:   // Transaction is being added to the server queue.
                     break
                 case .Purchased:    // Transaction is in queue, user has been charged.  Client should complete the transaction.
+                    onAppleTransactionPurchased(appleTransaction)
                     break
                 case .Failed:       // Transaction was cancelled or failed before being added to the server queue.
+                    onAppleTransactionFailed(appleTransaction)
                     break
                 case .Restored:     // Transaction was restored from user's purchase history.  Client should complete the transaction.
                     break
@@ -150,6 +152,32 @@ class CreditManager {
         }
     }
     
+    func onAppleTransactionFailed(appleTransaction: SKPaymentTransaction) {
+        
+        // Show a alert view that transaction has failed
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        appDelegate.showInformationWithMessage("Error", message: "Apple Payment Failed")
+
+        
+        // Finish the transaction
+        PaymentManager.sharedInstance.finishTransaction(appleTransaction)
+    }
+    
+    func onAppleTransactionPurchased(appleTransaction: SKPaymentTransaction) {
+        
+        var amount = lafroFromProductID(appleTransaction.payment.productIdentifier)
+        
+        var lafroTransaction = TransactionManager.sharedInstance.getNewTransaction(amount, type: .grant_locallyNow_serverLazy)
+        
+        TransactionManager.sharedInstance.commit(lafroTransaction, handler: { (result: CommitResult) -> () in
+            if result == .Queued || result == .Succeeded {
+                PaymentManager.sharedInstance.finishTransaction(appleTransaction)
+            } else {
+                assert(false, "code path should never come here")
+            }
+        })
+    }
+    
     //  MARK: Helper
     func lafruToDollar(amount: Lafru) -> Dollar {
         return  Double(amount) * self.costPerCharacter
@@ -157,6 +185,14 @@ class CreditManager {
     
     func dollarToLafru(dollar: Dollar) -> Lafru {
         return (Lafru)(Double(dollar) / self.costPerCharacter)
+    }
+    
+    func lafroFromProductID(productID: String) -> Lafru {
+        if productID == "sunflower.dollar.1" {
+            return 2000
+        } else {
+            return 0
+        }
     }
     
     func initNotifications() {
