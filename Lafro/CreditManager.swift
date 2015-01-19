@@ -59,10 +59,6 @@ class CreditManager {
         localBalance = localBalance - transaction.amount
     }
     
-    func hasCreditFor(amount: Lafru) -> Bool {
-        return amount < localBalance
-    }
-    
     // MARK: Server Calls
     func resetInitialCreditGranted() {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
@@ -193,6 +189,10 @@ class CreditManager {
         } else {
             return 0
         }
+    }
+    
+    func hasCreditFor(amount: Lafru) -> Bool {
+        return amount < localBalance
     }
     
     func initNotifications() {
