@@ -115,6 +115,8 @@
 		41C18B0F1A2400D200639C92 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18AE91A23FDF700639C92 /* StringExtension.swift */; };
 		41C18B101A2403C200639C92 /* pack_id_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 41C18AC61A23FCD700639C92 /* pack_id_test.json */; };
 		43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
+		B25F87A31A6D4ADC00047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
+		B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F9BF11A26019100E15D22 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F9BF01A26019100E15D22 /* PaymentManager.swift */; };
 		B27639951A249939004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
 		B27639961A24A3AF004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
@@ -226,6 +228,7 @@
 		41C18B051A24001900639C92 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		54BCC503C42383CE6BB76567 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
 		B25F9BF01A26019100E15D22 /* PaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerSkipHelper.swift; sourceTree = "<group>"; };
 		BCAD7AF1E6AB8B06FFF52CED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -455,6 +458,7 @@
 				41C18AE71A23FDF700639C92 /* DateExtention.swift */,
 				41C18AE81A23FDF700639C92 /* ParserHelper.swift */,
 				41C18AE91A23FDF700639C92 /* StringExtension.swift */,
+				B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -715,6 +719,7 @@
 				41C18A6D1A23FBCE00639C92 /* MainTestViewController.swift in Sources */,
 				41C18A8C1A23FBDF00639C92 /* AddThreeViewController.swift in Sources */,
 				41C18A601A23FB5F00639C92 /* Transaction.swift in Sources */,
+				B25F87A31A6D4ADC00047EA1 /* NotificationConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +730,7 @@
 				41C18AD51A23FCE400639C92 /* LeanerControllerTests.swift in Sources */,
 				41C18ADB1A23FCE400639C92 /* TransactionTests.swift in Sources */,
 				41C18B091A24006B00639C92 /* DateExtention.swift in Sources */,
+				B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */,
 				B27639961A24A3AF004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */,
 				41C18AD61A23FCE400639C92 /* WordTests.swift in Sources */,
 				41C18AFE1A23FF8E00639C92 /* LearningStage.swift in Sources */,

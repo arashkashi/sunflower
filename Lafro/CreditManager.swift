@@ -19,6 +19,7 @@ typealias Dollar = Double
 
 import Foundation
 import CloudKit
+import StoreKit
 
 class CreditManager {
     
@@ -124,6 +125,31 @@ class CreditManager {
         }
     }
     
+    // MARK: Events
+    func onTransactionsUpdated(notification: NSNotification) {
+        var updatedTransactions = notification.userInfo?[USER_INFO_UPDATED_TRANSACTIONS] as? [SKPaymentTransaction]
+        
+        if let transactions = updatedTransactions{
+            for transaction in transactions {
+                switch transaction.transactionState
+                {
+                case .Purchasing:   // Transaction is being added to the server queue.
+                    break
+                case .Purchased:    // Transaction is in queue, user has been charged.  Client should complete the transaction.
+                    break
+                case .Failed:       // Transaction was cancelled or failed before being added to the server queue.
+                    break
+                case .Restored:     // Transaction was restored from user's purchase history.  Client should complete the transaction.
+                    break
+                case .Deferred:     // The transaction is in the queue, but its final status is pending external action.
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
     //  MARK: Helper
     func lafruToDollar(amount: Lafru) -> Dollar {
         return  Double(amount) * self.costPerCharacter
@@ -131,6 +157,10 @@ class CreditManager {
     
     func dollarToLafru(dollar: Dollar) -> Lafru {
         return (Lafru)(Double(dollar) / self.costPerCharacter)
+    }
+    
+    func initNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onTransactionsUpdated:"), name: NOTIFICATION_TRANSACTIONS_UPDATED, object: nil)
     }
     
     // MARK: Initiation
@@ -142,7 +172,7 @@ class CreditManager {
     }
     
     init() {
-//        self.resetInitialCreditGranted()
+        initNotifications()
         self.grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
         
         })
