@@ -10,11 +10,17 @@ import UIKit
 import StoreKit
 
 class BuyViewController: UIViewController, SKProductsRequestDelegate {
+    
+    var requestedProducts: [SKProduct]?
 
     @IBOutlet var labelTitle: UILabel!
     @IBOutlet var buttonBuy: UIButton!
     
     @IBAction func onBuyTapped(sender: AnyObject) {
+        if requestedProducts?.count > 0 {
+            var product = requestedProducts![0]
+            CreditManager.sharedInstance.chargeCreditWithProduct(product)
+        }
     }
     
     override func viewDidLoad() {
@@ -22,7 +28,8 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
         
         PaymentManager.sharedInstance.requestProductsFor(NSSet(array: ["sunflower.dollar.1"]), delegate: self)
         labelTitle.text = "Loading Products..."
-        
+        buttonBuy.hidden = true
+        onRequestingProducts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,11 +39,26 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     
     // MARK: product Request Delegate
     func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
-        var skProducts = response.products
+        var skProducts = response.products as? [SKProduct]
         
-        for product in skProducts {
+        if let products = skProducts {
+            onReceivingProducts(products)
+        }
+    }
+    
+    // MARK: Events 
+    func onRequestingProducts() {
+        
+    }
+    
+    func onReceivingProducts(products: [SKProduct]) {
+        for product in products {
             labelTitle.text = "Spend \(product.price) to buy credit for translating \(product.localizedTitle)"
         }
+        
+        buttonBuy.hidden = false
+        
+        requestedProducts = products
     }
     
 

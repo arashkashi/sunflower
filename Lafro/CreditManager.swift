@@ -59,6 +59,10 @@ class CreditManager {
         localBalance = localBalance - transaction.amount
     }
     
+    func chargeCreditWithProduct(product: SKProduct) {
+        PaymentManager.sharedInstance.payForProduct(product)
+    }
+    
     // MARK: Server Calls
     func resetInitialCreditGranted() {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
@@ -122,7 +126,7 @@ class CreditManager {
     }
     
     // MARK: Events
-    func onTransactionsUpdated(notification: NSNotification) {
+    func onAppleTransactionsUpdated(notification: NSNotification) {
         var updatedAppleTransactions = notification.userInfo?[USER_INFO_UPDATED_TRANSACTIONS] as? [SKPaymentTransaction]
         
         if let appleTransactions = updatedAppleTransactions{
@@ -196,7 +200,7 @@ class CreditManager {
     }
     
     func initNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onTransactionsUpdated:"), name: NOTIFICATION_TRANSACTIONS_UPDATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onAppleTransactionsUpdated:"), name: NOTIFICATION_TRANSACTIONS_UPDATED, object: nil)
     }
     
     // MARK: Initiation

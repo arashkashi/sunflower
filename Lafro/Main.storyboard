@@ -468,7 +468,7 @@
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elg-uE-7os" userLabel="Button - Continue">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elg-uE-7os" userLabel="Button - Buy">
                                 <rect key="frame" x="223" y="263" width="154" height="43"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -491,6 +491,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="onBuyTapped:" destination="Zqt-CP-0Zh" eventType="touchUpInside" id="0UR-Fg-a2y"/>
                                     <action selector="onContinueTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="0AU-uo-TXc"/>
                                 </connections>
                             </button>
@@ -519,6 +520,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonBuy" destination="elg-uE-7os" id="zyO-L4-TOC"/>
                         <outlet property="labelTitle" destination="sg8-7w-5Zg" id="bhi-pC-Teh"/>
                         <outlet property="view" destination="wMg-GV-UcW" id="wCw-Ut-vku"/>
                     </connections>
