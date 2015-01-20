@@ -131,6 +131,7 @@ class CreditManager {
         
         if let appleTransactions = updatedAppleTransactions{
             for appleTransaction in appleTransactions {
+                println("\(appleTransaction.error)")
                 switch appleTransaction.transactionState
                 {
                 case .Purchasing:   // Transaction is being added to the server queue.
