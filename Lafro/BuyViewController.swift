@@ -53,7 +53,8 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     
     func onReceivingProducts(products: [SKProduct]) {
         for product in products {
-            labelTitle.text = "Spend \(product.price) to buy credit for translating \(product.localizedTitle)"
+//            labelTitle.text = "Spend \(product.price) to buy credit for translating \(product.localizedTitle)"
+            labelTitle.text = "Donate \(product.price) to support lafro"
         }
         
         buttonBuy.hidden = false
