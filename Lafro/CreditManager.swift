@@ -200,7 +200,9 @@ class CreditManager {
     }
     
     func initNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onAppleTransactionsUpdated"), name: NOTIFICATION_TRANSACTIONS_UPDATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_TRANSACTIONS_UPDATED, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onAppleTransactionsUpdated(note)
+        }
     }
     
     // MARK: Initiation
