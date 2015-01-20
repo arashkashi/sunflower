@@ -200,7 +200,7 @@ class CreditManager {
     }
     
     func initNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onAppleTransactionsUpdated:"), name: NOTIFICATION_TRANSACTIONS_UPDATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("onAppleTransactionsUpdated"), name: NOTIFICATION_TRANSACTIONS_UPDATED, object: nil)
     }
     
     // MARK: Initiation
@@ -216,5 +216,9 @@ class CreditManager {
         self.grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
         
         })
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
