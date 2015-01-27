@@ -12,6 +12,7 @@ import StoreKit
 class BuyViewController: UIViewController, SKProductsRequestDelegate {
     
     var requestedProducts: [SKProduct]?
+    var formatter: NSNumberFormatter!
 
     @IBOutlet var labelTitle: UILabel!
     @IBOutlet var buttonBuy: UIButton!
@@ -25,6 +26,7 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupController()
         
         PaymentManager.sharedInstance.requestProductsFor(NSSet(array: ["sunflower.dollar.1"]), delegate: self)
         labelTitle.text = "Loading Products..."
@@ -53,8 +55,9 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     
     func onReceivingProducts(products: [SKProduct]) {
         for product in products {
-//            labelTitle.text = "Spend \(product.price) to buy credit for translating \(product.localizedTitle)"
-            labelTitle.text = "Donate \(product.price) to support lafro"
+            formatter.locale = product.priceLocale
+//            labelTitle.text = "Spend \(formatter.stringFromNumber(product.price)!) to buy credit for translating \(product.localizedTitle)"
+            labelTitle.text = "Donate \(formatter.stringFromNumber(product.price)!) to support lafro"
         }
         
         buttonBuy.hidden = false
@@ -62,15 +65,16 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
         requestedProducts = products
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setupController() {
+        setupFormatter()
     }
-    */
-
+    
+    // MARK: - Helper
+    func setupFormatter() {
+        if formatter == nil {
+            formatter = NSNumberFormatter()
+            formatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
+            formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        }
+    }
 }
