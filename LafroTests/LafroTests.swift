@@ -23,7 +23,9 @@ class LafroTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        var allTests: [Test] = Test.allTests()
+        
+        XCTAssertEqual(allTests.count, 8, "number of all tests")
     }
     
 //    func testPerformanceExample() {
