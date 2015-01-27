@@ -49,6 +49,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     @IBOutlet var labelCounter: UILabel!
     @IBOutlet var buttonSkip: UIButton!
     @IBOutlet var buttonCorpus: UIButton!
+    @IBOutlet var progressView: UIProgressView!
     
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
