@@ -52,7 +52,23 @@ class Word : NSObject, Equatable, NSCoding {
     var sentences: [Sentence]
     var learningProgress: Double {
         get {
-            return (Double)(passedTests().count) / (Double)(Test.allTests().count)
+            return (Double)(passedTests.count) / (Double)(Test.allTests().count)
+        }
+    }
+    var passedTests: [Test] {
+        get {
+            var result: [Test] = []
+            var passedLearningStage = LearningStage.allStages().filter {$0 < self.currentLearningStage}
+            for learningStage in passedLearningStage {
+                for test in Test.testSetForLearningStage(learningStage) {
+                    result.append(test)
+                }
+            }
+            
+            for passedTestForCurrentLearningstage in self.testsSuccessfulyDoneForCurrentStage {
+                result.append(passedTestForCurrentLearningstage)
+            }
+            return result
         }
     }
     
@@ -170,21 +186,6 @@ class Word : NSObject, Equatable, NSCoding {
             println("\t \(test.type.toString())")
         }
         println("----------------END--------------------")
-    }
-    
-    func passedTests() -> [Test] {
-        var result: [Test] = []
-        var passedLearningStage = LearningStage.allStages().filter {$0 < self.currentLearningStage}
-        for learningStage in passedLearningStage {
-            for test in Test.testSetForLearningStage(learningStage) {
-                result.append(test)
-            }
-        }
-        
-        for passedTestForCurrentLearningstage in self.testsSuccessfulyDoneForCurrentStage {
-            result.append(passedTestForCurrentLearningstage)
-        }
-        return result
     }
     
     // MARK: NSCoding
