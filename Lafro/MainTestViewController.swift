@@ -139,17 +139,17 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     
     func showNextWord(word: Word) {
         if word.shouldShowWordPresentation {
-            self.showPresentationView(word, completionHandler: { () -> () in
+            showPresentationView(word, completionHandler: { () -> () in
                 self.onWordFinishedPresentation(word)
             })
         } else {
             self.hideItem(self.buttonSkip)
             if var nextTest = word.nextTest()? {
-                self.doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
+                doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.onWordFinishedTesting(word, test: test, testResult: testResult)
                 })
             } else {
-                self.learnNextWord()
+                learnNextWord()
             }
         }
     }
