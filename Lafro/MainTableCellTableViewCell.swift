@@ -26,6 +26,7 @@ class MainTableCellView: UITableViewCell {
         // Initialization code
         self.showLoadingContent()
         addGestureRecognizer()
+        self.backgroundColor = UIColor.blackColor()
     }
     
     func addGestureRecognizer() {
