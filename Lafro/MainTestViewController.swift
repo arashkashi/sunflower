@@ -62,24 +62,24 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     override func viewDidLoad() {
-        self.hideAllButtons()
-        self.labelCounter.text = ""
+        hideAllButtons()
+        labelCounter.text = ""
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onAppResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
         
-        if self.learnerController.learningPackModel.corpus == nil {
-            self.buttonCorpus.hidden = true
+        if learnerController.learningPackModel.corpus == nil {
+            buttonCorpus.hidden = true
         }
         
         navigationController().navigationBarHidden = true
-        self.learnNextWord()
+        learnNextWord()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "corpus" {
             var vc = segue.destinationViewController as CorpusViewController
-            vc.corpus = self.learnerController?.learningPackModel.corpus
-            vc.word = self.currentWord
+            vc.corpus = learnerController?.learningPackModel.corpus
+            vc.word = currentWord
         }
     }
     
@@ -91,9 +91,9 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func onAppBecomeActive() {
-        self.labelCounter.text = "\(self.secondsSpentToday)"
+        labelCounter.text = "\(self.secondsSpentToday)"
         
-        self.updateTimerLabel()
+        updateTimerLabel()
     }
     
     func onAppResignActive() {
@@ -101,63 +101,68 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func updateTimer() {
-        if self.labelCounter.text == "" {
-            self.labelCounter.text = "\(secondsSpentToday)"
+        if labelCounter.text == "" {
+            labelCounter.text = "\(secondsSpentToday)"
         }
         
         var prevTime = self.labelCounter.text!.toInt()!
-        self.labelCounter.text = "\(prevTime + 1)"
+        labelCounter.text = "\(prevTime + 1)"
     }
     
     func backuptimerValueOnExitingView() {
-        self.secondsSpentToday = self.labelCounter.text!.toInt()!
-        self.labelCounter.text = ""
+        secondsSpentToday = self.labelCounter.text!.toInt()!
+        labelCounter.text = ""
         timer?.invalidate()
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.labelCounter.text = "0"
+        labelCounter.text = "0"
     }
     
     // #MARK: Learning logic
     func learnNextWord() {
-        var next = self.learnerController!.nextWordToLearn()
-        
-        LearnerController.printListOfWords(self.learnerController!.wordsDueInFuture)
-        LearnerController.printListOfWords(self.learnerController.currentLearningQueue)
-        
-        
-        self.hideAllButtons()
-        self.currentWord = next.word
+        var next = learnerController!.nextWordToLearn()
+
+        hideAllButtons()
+        currentWord = next.word
         
         if next.word == nil {
-            self.showNoMoreWordToLearn()
+            showNoMoreWordToLearn()
             return
         } else {
-            self.showNextWord(next.word!)
+            showNextWord(next.word!)
         }
     }
     
     func showNextWord(word: Word) {
+        progressView.setProgress(word.learningProgress, animated: true)
+        
         if word.shouldShowWordPresentation {
-            self.showPresentationView(word, completionHandler: { () -> () in
+            showPresentationView(word, completionHandler: { () -> () in
                 self.onWordFinishedPresentation(word)
             })
+            
+            progressView.hidden = true
         } else {
-            self.hideItem(self.buttonSkip)
+            hideItem(self.buttonSkip)
             if var nextTest = word.nextTest()? {
-                self.doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
+                doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.onWordFinishedTesting(word, test: test, testResult: testResult)
                 })
             } else {
-                self.learnNextWord()
+                learnNextWord()
             }
+            
+            progressView.hidden = false
         }
     }
     
     func doTestTypeForWord(word: Word, test: Test, result: (Test, TestResult, Word) -> ()) {
-        self.testViewController = self.testSubViewController(test, word: word, completionHandler: result)
         
+        // Generate the test view controller
+        self.testViewController = testSubViewController(test, word: word, completionHandler: result)
+        
+        // Animate the test view controller into the view
         self.animateViewContainerWithNewView(self.testViewController!.view, viewContainer: self.testContentView, completionHandler: nil)
     }
     
@@ -175,27 +180,29 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     // MARK: Events
     func onWordFinishedTesting(word: Word, test: Test, testResult: TestResult) {
         self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
+        
+        progressView.setProgress(word.learningProgress, animated: true)
     }
     
     func onWordFinishedPresentation(word: Word) {
-        self.learnerController!.onWordFinishedPresentation(word)
-        self.learnNextWord()
+        learnerController!.onWordFinishedPresentation(word)
+        learnNextWord()
     }
     
     // #MARK: IBACtion
     @IBAction func onCheckTapped(sender: UIButton) {
-        self.hideAllButtons()
-        self.testViewController?.checkAnswer({ () -> () in
+        hideAllButtons()
+        testViewController?.checkAnswer({ () -> () in
             self.showContinueButton()
         })
     }
     
     @IBAction func onContinueTapped(sender: UIButton) {
-        self.learnNextWord()
+        learnNextWord()
     }
     
     @IBAction func onGotItTapped(sender: UIButton) {
-        self.presentationViewController?.onGotItTapped()
+        presentationViewController?.onGotItTapped()
     }
     
     @IBAction func onSkipTapped(sender: AnyObject) {
@@ -215,7 +222,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         alertController.addAction(skipAction)
         alertController.addAction(cancelAction)
         
-        self.presentViewController(alertController, animated: true) { () -> Void in
+        presentViewController(alertController, animated: true) { () -> Void in
             //
         }
     }
@@ -234,38 +241,38 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func showGotIt() {
-        self.hideAllButtons()
-        self.showItemWithAnimation(self.buttonGotIt)
-        self.buttonGotIt.highlighted = false
-        self.buttonGotIt.selected = false
+        hideAllButtons()
+        showItemWithAnimation(self.buttonGotIt)
+        buttonGotIt.highlighted = false
+        buttonGotIt.selected = false
     }
     
     func showSkip() {
-        self.showItemWithAnimation(self.buttonSkip)
+        showItemWithAnimation(self.buttonSkip)
     }
     
     func showCheckButton() {
-        self.hideAllButtons()
-        self.showItemWithAnimation(self.buttonCheck)
-        self.buttonCheck.highlighted = false
-        self.buttonCheck.selected = false
+        hideAllButtons()
+        showItemWithAnimation(self.buttonCheck)
+        buttonCheck.highlighted = false
+        buttonCheck.selected = false
     }
     
     func showContinueButton() {
-        self.hideAllButtons()
-        self.showItemWithAnimation(self.buttonContinue)
-        self.buttonContinue.selected = false
-        self.buttonContinue.highlighted = false
+        hideAllButtons()
+        showItemWithAnimation(self.buttonContinue)
+        buttonContinue.selected = false
+        buttonContinue.highlighted = false
     }
     
     func hideAllButtons() {
-        self.buttonGotIt.hidden = true
-        self.buttonContinue.hidden = true
-        self.buttonCheck.hidden = true
+        buttonGotIt.hidden = true
+        buttonContinue.hidden = true
+        buttonCheck.hidden = true
         
-        self.buttonGotIt.highlighted = false
-        self.buttonContinue.highlighted = false
-        self.buttonCheck.highlighted = false
+        buttonGotIt.highlighted = false
+        buttonContinue.highlighted = false
+        buttonCheck.highlighted = false
     }
     
     func showItemWithAnimation(view: UIView) {
@@ -277,11 +284,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func showPresentationView(word: Word, completionHandler: ()-> ()) {
-        self.presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
-        self.presentationViewController!.word = word
-        self.presentationViewController!.completionHandler = completionHandler
+        presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
+        presentationViewController!.word = word
+        presentationViewController!.completionHandler = completionHandler
         
-        self.animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: { ()->() in
+        animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: { ()->() in
             self.showGotIt()
         })
 
@@ -302,11 +309,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
     }
     
     func showLoadingOverlay() {
-        self.viewLoadingOverlay.hidden = false
+        viewLoadingOverlay.hidden = false
     }
     
     func hideLoadingOverlay() {
-        self.viewLoadingOverlay.hidden = true
+        viewLoadingOverlay.hidden = true
     }
     
     //MARK: Helper

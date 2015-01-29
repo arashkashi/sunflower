@@ -21,12 +21,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ooo-AN-jI6" userLabel="Label - Name">
-                    <rect key="frame" x="0.0" y="0.0" width="333" height="55"/>
+                    <rect key="frame" x="0.0" y="0.0" width="333" height="82"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Ooo-AN-jI6" secondAttribute="height" multiplier="49:8" id="HAn-v5-zaS"/>
+                        <constraint firstAttribute="width" secondItem="Ooo-AN-jI6" secondAttribute="height" multiplier="49:12" id="HAn-v5-zaS"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="0.89880230488282087" blue="0.15505292349667188" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="45" y="43" width="230" height="34"/>

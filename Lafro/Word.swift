@@ -50,9 +50,9 @@ class Word : NSObject, Equatable, NSCoding {
     var name: String
     var meaning: String
     var sentences: [Sentence]
-    var learningProgress: Double {
+    var learningProgress: Float {
         get {
-            return (Double)(passedTests.count) / (Double)(Test.allTests().count)
+            return (Float)(passedTests.count) / (Float)(Test.allTests().count)
         }
     }
     var passedTests: [Test] {
