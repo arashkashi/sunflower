@@ -50,6 +50,27 @@ class Word : NSObject, Equatable, NSCoding {
     var name: String
     var meaning: String
     var sentences: [Sentence]
+    var learningProgress: Float {
+        get {
+            return (Float)(passedTests.count) / (Float)(Test.allTests().count)
+        }
+    }
+    var passedTests: [Test] {
+        get {
+            var result: [Test] = []
+            var passedLearningStage = LearningStage.allStages().filter {$0 < self.currentLearningStage}
+            for learningStage in passedLearningStage {
+                for test in Test.testSetForLearningStage(learningStage) {
+                    result.append(test)
+                }
+            }
+            
+            for passedTestForCurrentLearningstage in self.testsSuccessfulyDoneForCurrentStage {
+                result.append(passedTestForCurrentLearningstage)
+            }
+            return result
+        }
+    }
     
     var currentLearningStage: LearningStage = .Intro {
         didSet {
@@ -71,6 +92,7 @@ class Word : NSObject, Equatable, NSCoding {
         self.sentences = sentences
     }
     
+    // MARK: Events
     func onWordFinishedTest(test: Test, testResult: TestResult) {
         if testResult == TestResult.Pass {
             self.testsSuccessfulyDoneForCurrentStage.append(test)
@@ -98,6 +120,7 @@ class Word : NSObject, Equatable, NSCoding {
         self.testsSuccessfulyDoneForCurrentStage.removeAll(keepCapacity: false)
     }
     
+    // MARK: Helper
     // This is based on the assumption that if you remember a word after 42 hours you'll remember it for the rest of your life.
     class func relearnDueDateForWordInALearningStage(learningStage: LearningStage) -> NSDate? {
         switch learningStage {
@@ -152,7 +175,6 @@ class Word : NSObject, Equatable, NSCoding {
         return nil
     }
     
-    // MARK: Helper
     func printToSTD() {
         println("-----------------START----------------")
         println("Name: \(self.name)")

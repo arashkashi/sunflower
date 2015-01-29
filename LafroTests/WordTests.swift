@@ -81,6 +81,20 @@ class WordTests: XCTestCase {
         XCTAssert(wordWithNil.isDueInPast() == true, "nil due date is  past")
         
     }
+    
+    func testPassedTests() {
+        var word = Word(name: "sdf", meaning: "asdf", sentences: [])
+        XCTAssertEqual(word.passedTests.count, 0, "new word has zero passed tests")
+        
+        word.currentLearningStage.increment()
+        XCTAssertEqual(word.passedTests.count, Test.testSetForLearningStage(LearningStage.Intro).count, "Passed tests in cram")
+        word.testsSuccessfulyDoneForCurrentStage.append(Test(testType: TestType.Test1))
+        XCTAssertEqual(word.passedTests.count, Test.testSetForLearningStage(LearningStage.Intro).count + 1, "passed tests in cram plus one")
+        
+        word.currentLearningStage.increment()
+        XCTAssertEqual(word.currentLearningStage, LearningStage.Learn, "Word should be at learn stage")
+        XCTAssertEqual(word.passedTests.count, Test.testSetForLearningStage(LearningStage.Cram).count + Test.testSetForLearningStage(LearningStage.Intro).count + 1, "Passed tests in Learn")
+    }
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.

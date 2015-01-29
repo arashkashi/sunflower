@@ -89,6 +89,16 @@ class Test: NSObject, Equatable, NSCoding {
         aCoder.encodeInt32(self.type.toInt(), forKey: kTestType)
     }
     
+    class func allTests() -> [Test] {
+        var result: [Test] = []
+        for learningStage in LearningStage.allStages() {
+            for test in Test.testSetForLearningStage(learningStage) {
+                result.append(test)
+            }
+        }
+        return result
+    }
+    
     required init(coder aDecoder: NSCoder) {
         self.type = TestType.initWithInt(aDecoder.decodeInt32ForKey(kTestType))
     }
