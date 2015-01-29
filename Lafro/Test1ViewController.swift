@@ -49,12 +49,10 @@ class Test1ViewController : TestBaseViewController {
         disableButtons()
         if selectedAnswer != nil {
             if selectedAnswer! == word?.meaning {
-                resultViewController.showCorrect(true
-                    , completionHandler: completionHandler)
+                resultViewController.showCorrect(true, completionHandler: completionHandler)
                 self.completionHandler?(test!, .Pass, word!)
             } else {
-                resultViewController.showWrong(true
-                    , completionHandler: completionHandler)
+                resultViewController.showWrong(true, completionHandler: completionHandler)
                 self.completionHandler?(test!, .Fail, word!)
             }
         }
