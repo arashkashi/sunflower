@@ -21,6 +21,8 @@ class MainTableCellView: UITableViewCell {
     @IBOutlet var labelProgress: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var labelrightIndicator: UILabel!
+    
+    // MARK: Init
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,6 +36,7 @@ class MainTableCellView: UITableViewCell {
         self.addGestureRecognizer(recognizer)
     }
     
+    // MARK: User Interaction Logic
     func handleTap(recognizer: UITapGestureRecognizer) {
         self.delegate?.onCellTapped(self)
     }
@@ -52,6 +55,7 @@ class MainTableCellView: UITableViewCell {
         self.showContent(true)
     }
     
+    // MARK: View manipulation
     func showContent(animated: Bool) {
         if animated {
             UIView.animateWithDuration(1, animations: { () -> Void in
@@ -71,6 +75,7 @@ class MainTableCellView: UITableViewCell {
         activityIndicator.hidden = false
     }
 
+    // MARK: Delegate
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
