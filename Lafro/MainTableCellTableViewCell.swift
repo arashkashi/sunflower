@@ -81,4 +81,21 @@ class MainTableCellView: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // MARK: Helper
+    func button(title: String, color: UIColor, selector: String, order: Int, numberOfButtons: Int) -> UIButton {
+        var buttonFrame = frameForButton(order, numberOfButtons: numberOfButtons)
+        var button = UIButton(frame: buttonFrame)
+        
+        button.backgroundColor = color
+        button.addTarget(self, action:Selector(selector), forControlEvents: .TouchUpInside)
+        
+        return button
+    }
+    
+    func frameForButton(order: Int, numberOfButtons: Int) -> CGRect {
+        var height = self.frame.size.height
+        var width = CGFloat(self.frame.size.width) / CGFloat(numberOfButtons)
+        return CGRect(x: CGFloat(order) * width, y: 0.0, width: width, height: height)
+    }
 }
