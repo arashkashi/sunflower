@@ -4,3 +4,5 @@
 
 #import <AFNetworking.h>
 #import "TKDHighlightingTextStorage.h"
+
+#import <SWTableViewCell.h>
