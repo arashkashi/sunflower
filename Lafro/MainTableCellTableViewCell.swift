@@ -8,13 +8,10 @@
 
 import UIKit
 
-protocol MainViewCellDelegate {
-    func onCellTapped(sender: UITableViewCell)
-}
 
-class MainTableCellView: UITableViewCell {
+
+class MainTableCellView: SWTableViewCell {
     
-    var delegate: MainViewCellDelegate?
     var id: String!
 
     @IBOutlet var labelID: UILabel!
@@ -25,22 +22,13 @@ class MainTableCellView: UITableViewCell {
     // MARK: Init
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
-        self.showLoadingContent()
-        addGestureRecognizer()
+        showLoadingContent()
         self.backgroundColor = UIColor.blackColor()
     }
     
-    func addGestureRecognizer() {
-        let recognizer = UITapGestureRecognizer(target: self, action:Selector("handleTap:"))
-        self.addGestureRecognizer(recognizer)
-    }
-    
-    // MARK: User Interaction Logic
-    func handleTap(recognizer: UITapGestureRecognizer) {
-        self.delegate?.onCellTapped(self)
-    }
-    
+    // MARK: View manipulation (API)
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {
         id = learningPackModel.id
         var wordsDueInFuture = learningPackModel.wordsDueInFuture()
@@ -55,7 +43,6 @@ class MainTableCellView: UITableViewCell {
         self.showContent(true)
     }
     
-    // MARK: View manipulation
     func showContent(animated: Bool) {
         if animated {
             UIView.animateWithDuration(1, animations: { () -> Void in
@@ -73,6 +60,11 @@ class MainTableCellView: UITableViewCell {
         labelProgress.alpha = 0
         labelrightIndicator.hidden = true
         activityIndicator.hidden = false
+    }
+    
+    // MARK: Helper
+    func cellhasLoaded() -> Bool {
+        return id != nil
     }
 
     // MARK: Delegate

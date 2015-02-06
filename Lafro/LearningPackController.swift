@@ -54,6 +54,11 @@ class LearningPackController {
         }
     }
     
+    func deletePackage(id: String, completionHandler: (()->())?) {
+        
+    }
+    
+    // Each id should be unique
     func validateID(id: String, existingIDs: [String]) -> String {
         if !existingIDs.includes(id) { return id } else {
             return self.validateID("\(id)I", existingIDs: existingIDs)

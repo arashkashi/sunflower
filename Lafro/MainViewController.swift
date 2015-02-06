@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MainViewCellDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var labelTopCounter: UILabel!
@@ -89,11 +89,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var testViewController = segue.destinationViewController as MainTestViewController
 //            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
             
-            var cell = sender as MainTableCellView
-            var selectedID = cell.id
-            testViewController.leaningPackID = selectedID!
+            var lpm = sender as LearningPackModel
+            var selectedID = lpm.id
+            testViewController.leaningPackID = selectedID
             testViewController.learnerController = self.learnerController
-            invalidateCashedLearningPack(selectedID!)
+            invalidateCashedLearningPack(selectedID)
         } else if segue.identifier == "frommainviewtocorpus" {
             var corpusVC = segue.destinationViewController as CorpusViewController
             corpusVC.corpus = self.learnerController!.learningPackModel.corpus
@@ -109,27 +109,54 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.reloadData()
     }
     
-    // MARK: Cell Delegate
-    func onCellTapped(sender: UITableViewCell) {
-        var cell = sender as MainTableCellView
+    // MARK: Events
+    func onCellTapped(lpm: LearningPackModel) {
 
-        self.showWaitingOverlay()
-        LearningPackController.sharedInstance.loadLearningPackWithID(cell.id, completionHandler: { (lpm: LearningPackModel?) -> () in
-            if (lpm != nil) {
-                self.learnerController = LearnerController(learningPack: lpm!)
-                var status = self.learnerController!.nextWordToLearn().status
-                if status == .NO_MORE_WORD_TODAY || status == .ALL_WORDS_MASTERED{
-                    self.performSegueWithIdentifier("frommainviewtocorpus", sender: cell)
-                } else {
-                    self.performSegueWithIdentifier("to_main_test", sender: cell)
-                }
-                
-                self.hideWaitingOverlay()
-            } else {
-                // TODO: Handle the error
-            }
+        self.learnerController = LearnerController(learningPack: lpm)
+        var status = self.learnerController!.nextWordToLearn().status
+        if status == .NO_MORE_WORD_TODAY || status == .ALL_WORDS_MASTERED{
+            self.performSegueWithIdentifier("frommainviewtocorpus", sender: lpm)
+        } else {
+            self.performSegueWithIdentifier("to_main_test", sender: lpm)
+        }
+        
+        self.hideWaitingOverlay()
+    }
+    
+    func onDeleteTapped(lpm: LearningPackModel) {
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete? You can never undo this action.", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
+        }
+        let yesAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
             
-        })
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(yesAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            
+        }
+        
+    }
+    
+    func onMergeTapped(lpm: LearningPackModel) {
+        
+    }
+    
+    // MARK: Helper
+    func learningPackForIndexPath(indexPath: NSIndexPath, completionHandler:(LearningPackModel)->()) {
+        var packID = LearningPackController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
+        
+        if let cashedLearningPack = cashedLearningPacks[packID] {
+            completionHandler(cashedLearningPack)
+        } else {
+            LearningPackController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
+                if let lpm = learningPackModel {
+                    completionHandler(lpm)
+                }
+            })
+        }
     }
     
     // MARK: Table View datasource delegate
@@ -141,26 +168,38 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
         cellOptional.showLoadingContent()
-        
+        cellOptional.leftUtilityButtons = leftButtons()
         cellOptional.delegate = self
         
-        var packID = LearningPackController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
-        
-        if let cashedLearningPack = cashedLearningPacks[packID] {
-            cellOptional.updateWithLearningPackModel(cashedLearningPack)
-        } else {
-            LearningPackController.sharedInstance.loadLearningPackWithID(packID, completionHandler: { (learningPackModel: LearningPackModel?) -> () in
-                if let lpm = learningPackModel {
-                    self.updateCashedLearningPack(lpm)
-                    cellOptional.updateWithLearningPackModel(lpm)
-                }
-            })
-        }
+        learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
+            self.updateCashedLearningPack(lpm)
+            cellOptional.updateWithLearningPackModel(lpm)
+        })
         
         return cellOptional
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }    
+        self.showWaitingOverlay()
+        
+        learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
+            self.onCellTapped(lpm)
+        })
+    }
+    
+    // MARK: SWTableCellView
+    func leftButtons() -> NSMutableArray {
+        var buttons = NSMutableArray()
+        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Merge")
+        buttons.sw_addUtilityButtonWithColor(UIColor.greenColor(), title: "Delete")
+        
+        return buttons
+    }
+    
+    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerLeftUtilityButtonWithIndex index: Int) {
+        var lpmCell = cell as MainTableCellView
+        onDeleteTapped(cashedLearningPacks[lpmCell.id]!)
+    }
+    
+    
 }
