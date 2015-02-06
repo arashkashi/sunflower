@@ -126,6 +126,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func onDeleteTapped(lpm: LearningPackModel) {
         let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete? You can never undo this action.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
+            LearningPackController.sharedInstance.deletePackage(lpm.id, completionHandler: { (successed: Bool) -> () in
+                //
+            })
         }
         let yesAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
             

@@ -54,8 +54,22 @@ class LearningPackController {
         }
     }
     
-    func deletePackage(id: String, completionHandler: (()->())?) {
+    func deletePackage(id: String, completionHandler: ((Bool)->())?) {
         
+        // remove it from the file system
+        var error: NSErrorPointer = NSErrorPointer()
+        loadLearningPackWithID(id, completionHandler: { (lpm: LearningPackModel?) -> () in
+            println(lpm!.fileURL.absoluteString)
+            var isSuccessed = NSFileManager.defaultManager().removeItemAtURL(lpm!.fileURL, error: error)
+            
+            if isSuccessed {
+                // remove it from the list of avaiable ids
+                self.listOfAvialablePackIDs = self.listOfAvialablePackIDs.filter { $0 != id }
+                completionHandler?(true)
+            } else {
+                completionHandler?(false)
+            }
+        })
     }
     
     // Each id should be unique
