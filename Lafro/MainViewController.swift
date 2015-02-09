@@ -123,24 +123,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.hideWaitingOverlay()
     }
     
-    func onDeleteTapped(lpm: LearningPackModel) {
+    func onDeleteTapped(lpm: LearningPackModel, cell: MainTableCellView) {
+        
+        cell.hideUtilityButtonsAnimated(true)
+        
         let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete? You can never undo this action.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             LearningPackController.sharedInstance.deletePackage(lpm.id, completionHandler: { (successed: Bool) -> () in
-                //
+                self.tableView.reloadData()
             })
         }
         let yesAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
-            
         }
         
         alertController.addAction(okAction)
         alertController.addAction(yesAction)
         
         self.presentViewController(alertController, animated: true) {
-            
         }
-        
     }
     
     func onMergeTapped(lpm: LearningPackModel) {
@@ -201,7 +201,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerLeftUtilityButtonWithIndex index: Int) {
         var lpmCell = cell as MainTableCellView
-        onDeleteTapped(cashedLearningPacks[lpmCell.id]!)
+        onDeleteTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)
+    }
+    
+    func swipeableTableViewCell(cell: SWTableViewCell!, scrollingToState state: SWCellState) {
+        println()
     }
     
     
