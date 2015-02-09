@@ -528,6 +528,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonBuy" destination="elg-uE-7os" id="zyO-L4-TOC"/>
+                        <outlet property="labelDescription" destination="lDX-gg-ebD" id="cbD-Hw-Tnc"/>
                         <outlet property="labelTitle" destination="sg8-7w-5Zg" id="bhi-pC-Teh"/>
                         <outlet property="view" destination="wMg-GV-UcW" id="wCw-Ut-vku"/>
                     </connections>
