@@ -30,6 +30,33 @@ class LearningPackControllerTests: XCTestCase {
         XCTAssertEqual(result, "1II", "should add two 'II's")
         
     }
+    
+    func testDeletingPackID() {
+        var expectation = expectationWithDescription("Wait until the test is over")
+        
+        
+        // Create a new package id
+        var newPackageID = "TESTID"
+        var words = [Word(name: "Asdf", meaning: "asdf", sentences: []),Word(name: "Asdf", meaning: "asdf", sentences: []),Word(name: "Asdf", meaning: "asdf", sentences: [])]
+        
+        LearningPackController.sharedInstance.addNewPackage(newPackageID, words: words, corpus: nil) { (succes: Bool, lpm: LearningPackModel?) -> () in
+            
+            // Delete the just created package id
+            LearningPackController.sharedInstance.deletePackage(newPackageID, completionHandler: { (success: Bool) -> () in
+                
+                // test if the it is removed from the list of packages ids
+                XCTAssertFalse(LearningPackController.sharedInstance.listOfAvialablePackIDs.includes(newPackageID), "delete from list of avaiable ids")
+                
+                // test if the file has been removed from the local file system
+                XCTAssertFalse(LearningPackController.sharedInstance.queryListOfDocsInLocal().includes("\(newPackageID).\(DocumentHelper.fileExtension())"), "delete from disk")
+                
+                expectation.fulfill()
+            })
+        }
+        
+        waitForExpectationsWithTimeout(1, handler: { (err: NSError!) -> Void in
+        })
+    }
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.

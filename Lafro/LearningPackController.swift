@@ -44,10 +44,10 @@ class LearningPackController {
     func addNewPackage(id: String, words: [Word], corpus: String?, completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
         LearningPackModel.create(id, words: words, corpus: corpus) { (success: Bool, model: LearningPackModel?) -> () in
             if success {
-                completionHandlerForPersistance?(true, model)
                 var currentIDs = self.listOfAvialablePackIDs
                 currentIDs.append(id)
                 self.listOfAvialablePackIDs = currentIDs
+                completionHandlerForPersistance?(true, model)
             } else {
                 completionHandlerForPersistance?(false, nil)
             }
@@ -59,7 +59,6 @@ class LearningPackController {
         // remove it from the file system
         var error: NSErrorPointer = NSErrorPointer()
         loadLearningPackWithID(id, completionHandler: { (lpm: LearningPackModel?) -> () in
-            println(lpm!.fileURL.absoluteString)
             var isSuccessed = NSFileManager.defaultManager().removeItemAtURL(lpm!.fileURL, error: error)
             
             if isSuccessed {
@@ -97,6 +96,7 @@ class LearningPackController {
     // MARK: Caching
     func hasCashedPackForID(id: String) -> Bool {
         var listOfLocalDocs = self.queryListOfDocsInLocal()
+
         for docName in listOfLocalDocs {
             var temp = (docName.componentsSeparatedByString(".") as [String])[0]
             if temp == id {
