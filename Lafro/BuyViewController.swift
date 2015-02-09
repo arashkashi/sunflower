@@ -56,7 +56,7 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     func onReceivingProducts(products: [SKProduct]) {
         for product in products {
             formatter.locale = product.priceLocale
-            labelTitle.text = "Spend \(formatter.stringFromNumber(product.price)!) to buy credit for translating \(product.localizedTitle)"
+            labelTitle.text = "Spend \(formatter.stringFromNumber(product.price)!) to buy credit to translate 2000 characters"
 //            labelTitle.text = "Donate \(formatter.stringFromNumber(product.price)!) to support lafro"
         }
         
