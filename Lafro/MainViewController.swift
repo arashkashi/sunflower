@@ -221,8 +221,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: SWTableCellView
     func leftButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Merge")
-        buttons.sw_addUtilityButtonWithColor(UIColor.greenColor(), title: "Delete")
+//        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Merge")
+        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Delete")
         
         return buttons
     }
