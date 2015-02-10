@@ -150,8 +150,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func onNetworkReachabilityChange(notification: NSNotification) {
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
         
-        
+        if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION {
+            onNointernetConnection()
+        } else if status == NOTIF_REACHABILITY_CHANGE_WIFI || status == NOTIF_REACHABILITY_CHANGE_WWLAN {
+            onInternetConnectionEstablished()
+        }
+    }
+    
+    func onNointernetConnection() {
+        self.navigationItem.leftBarButtonItem?.enabled = false
+        self.navigationItem.rightBarButtonItem?.enabled = false
+    }
+    
+    func onInternetConnectionEstablished() {
+        self.navigationItem.leftBarButtonItem?.enabled = true
+        self.navigationItem.rightBarButtonItem?.enabled = true
     }
     
     // MARK: Helper
@@ -170,7 +185,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func registerNotification() {
-
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
             self.onNetworkReachabilityChange(note)
         }
