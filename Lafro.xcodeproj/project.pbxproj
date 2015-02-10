@@ -123,6 +123,8 @@
 		B25F9BF11A26019100E15D22 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F9BF01A26019100E15D22 /* PaymentManager.swift */; };
 		B27639951A249939004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
 		B27639961A24A3AF004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
+		B28419131A8A098C00D99A14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28419121A8A098C00D99A14 /* NetworkManager.swift */; };
+		B28419141A8A0BC900D99A14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28419121A8A098C00D99A14 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +236,7 @@
 		B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
 		B25F9BF01A26019100E15D22 /* PaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerSkipHelper.swift; sourceTree = "<group>"; };
+		B28419121A8A098C00D99A14 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BCAD7AF1E6AB8B06FFF52CED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +360,7 @@
 				41C18A541A23FB4100639C92 /* ComponentManager.swift */,
 				41C18A551A23FB4100639C92 /* DiskCache.swift */,
 				B25F9BF01A26019100E15D22 /* PaymentManager.swift */,
+				B28419121A8A098C00D99A14 /* NetworkManager.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -712,6 +716,7 @@
 				41C18A621A23FB5F00639C92 /* TransactionHelper.swift in Sources */,
 				B25F9BF11A26019100E15D22 /* PaymentManager.swift in Sources */,
 				41C18A7B1A23FBD600639C92 /* Test1ViewController.swift in Sources */,
+				B28419131A8A098C00D99A14 /* NetworkManager.swift in Sources */,
 				41C18A6A1A23FBC600639C92 /* WaitingViewController.swift in Sources */,
 				41C18A931A23FBF700639C92 /* LearningPackController.swift in Sources */,
 				41C18AEC1A23FDF700639C92 /* ArrayExtension.swift in Sources */,
@@ -733,6 +738,7 @@
 				41C18AD51A23FCE400639C92 /* LeanerControllerTests.swift in Sources */,
 				41C18ADB1A23FCE400639C92 /* TransactionTests.swift in Sources */,
 				41C18B091A24006B00639C92 /* DateExtention.swift in Sources */,
+				B28419141A8A0BC900D99A14 /* NetworkManager.swift in Sources */,
 				B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */,
 				B27639961A24A3AF004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */,
 				41C18AD61A23FCE400639C92 /* WordTests.swift in Sources */,
