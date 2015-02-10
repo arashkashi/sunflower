@@ -21,15 +21,15 @@ class NetworkManager {
         AFNetworkReachabilityManager.sharedManager().setReachabilityStatusChangeBlock { (status: AFNetworkReachabilityStatus) -> Void in
             switch status {
             case AFNetworkReachabilityStatus.NotReachable:
-                NSNotificationCenter.defaultCenter().postNotificationName(NOTIF_REACHABILITY_CHANGE_NO_CONNECTION, object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(NOTIF_REACHABILITY_CHANGE, object: nil, userInfo: ["status": NOTIF_REACHABILITY_CHANGE_NO_CONNECTION])
 //                NSLog("No connection")
                 break
             case AFNetworkReachabilityStatus.ReachableViaWiFi:
-                NSNotificationCenter.defaultCenter().postNotificationName(NOTIF_REACHABILITY_CHANGE_WIFI, object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(NOTIF_REACHABILITY_CHANGE, object: nil, userInfo: ["status": NOTIF_REACHABILITY_CHANGE_WIFI])
 //                NSLog("WiFi")
                 break
             case AFNetworkReachabilityStatus.ReachableViaWWAN:
-                NSNotificationCenter.defaultCenter().postNotificationName(NOTIF_REACHABILITY_CHANGE_WWLAN, object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(NOTIF_REACHABILITY_CHANGE, object: nil, userInfo: ["status": NOTIF_REACHABILITY_CHANGE_WWLAN])
 //                NSLog("3G")
                 break;
             default:

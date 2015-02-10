@@ -68,6 +68,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Remove the top bar buttons for now
 //        self.navigationItem.leftBarButtonItem = nil
 //        self.navigationItem.rightBarButtonItem = nil
+        
+        registerNotification()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -147,6 +149,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func onNetworkReachabilityChange(notification: NSNotification) {
+        
+        
+    }
+    
     // MARK: Helper
     func learningPackForIndexPath(indexPath: NSIndexPath, completionHandler:(LearningPackModel)->()) {
         var packID = LearningPackController.sharedInstance.listOfAvialablePackIDs[indexPath.row]
@@ -159,6 +166,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     completionHandler(lpm)
                 }
             })
+        }
+    }
+    
+    func registerNotification() {
+
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onNetworkReachabilityChange(note)
         }
     }
     
@@ -208,5 +222,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         println()
     }
     
+    // MARK: deinit
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
 }
