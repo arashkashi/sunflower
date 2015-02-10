@@ -37,7 +37,7 @@ class NetworkManager {
         AFNetworkReachabilityManager.sharedManager().startMonitoring()
     }
     
-    deinit() {
+    deinit {
         AFNetworkReachabilityManager.sharedManager().stopMonitoring()
     }
 }
