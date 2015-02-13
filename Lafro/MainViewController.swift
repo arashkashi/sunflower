@@ -68,6 +68,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Remove the top bar buttons for now
 //        self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.rightBarButtonItem = nil
+        
+        // Adds the facebook login button onto the view controller.
+        var loginView = FBLoginView()
+        loginView.center = self.view.center
+        self.view.addSubview(loginView)
     }
     
     override func viewDidAppear(animated: Bool) {
