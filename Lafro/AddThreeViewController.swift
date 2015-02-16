@@ -220,8 +220,6 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
             self.onNetworkReachabilityChange(note)
         }
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("OnKeyboardShow"), name: UIKeyboardWillShowNotification, object: nil)
     }
     
     // MARK: deinit
