@@ -427,7 +427,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Select tokens" id="z5x-xZ-bic">
+                    <navigationItem key="navigationItem" title="Selection" id="z5x-xZ-bic">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="xZC-e3-CmJ">
                             <connections>
                                 <action selector="onNextTapped:" destination="URC-fD-kjv" id="msM-Ir-Xsc"/>
