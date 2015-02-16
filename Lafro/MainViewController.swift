@@ -112,7 +112,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: Events
-    func onCellTapped(lpm: LearningPackModel) {
+    func onCellTapped(lpm: LearningPackModel, indexPath: NSIndexPath) {
 
         self.learnerController = LearnerController(learningPack: lpm)
         var status = self.learnerController!.nextWordToLearn().status
@@ -122,6 +122,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.performSegueWithIdentifier("to_main_test", sender: lpm)
         }
         
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.hideWaitingOverlay()
     }
     
@@ -214,7 +215,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.showWaitingOverlay()
         
         learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
-            self.onCellTapped(lpm)
+            self.onCellTapped(lpm, indexPath: indexPath)
         })
     }
     
