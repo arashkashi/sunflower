@@ -59,11 +59,11 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func updateTotalTokensLabel() {
-        self.labelTotalTokens.text = "Total tokens: \(self.tokens.count)"
+        self.labelTotalTokens.text = "Total words: \(self.tokens.count)"
     }
     
     func updateSelectedTokensLabel() {
-        self.labelSelectedTokens.text = "Selected tokens: \(self.selectedTokens.count)"
+        self.labelSelectedTokens.text = "Selected words: \(self.selectedTokens.count)"
     }
     
     func updateTopTexts() {

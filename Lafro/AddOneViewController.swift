@@ -122,9 +122,9 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     
     func updateTotalToken() {
         if let extractedTokens = self.tokens {
-            self.labelTotalTokens.text = "Tokens: \(extractedTokens.count)"
+            self.labelTotalTokens.text = "Words: \(extractedTokens.count)"
         } else {
-           self.labelTotalTokens.text = "Tokens: 0"
+           self.labelTotalTokens.text = "Words: 0"
         }
     }
     
