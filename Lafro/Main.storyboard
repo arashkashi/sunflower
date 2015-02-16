@@ -324,9 +324,11 @@
                         <outlet property="labelTotalTokens" destination="MUp-m7-rhI" id="rWr-ml-lgf"/>
                         <outlet property="textViewCorpus" destination="IOP-lK-sLU" id="XqN-sM-b0V"/>
                         <segue destination="URC-fD-kjv" kind="show" identifier="fromaddonetoaddtwo" id="DKT-6I-9og"/>
+                        <segue destination="HgB-mN-YWd" kind="unwind" identifier="fromaddonetomain" unwindAction="unwindToMain:" id="zkn-mK-JBX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTY-P3-GNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HgB-mN-YWd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="482" y="-201"/>
         </scene>
@@ -442,9 +444,11 @@
                         <outlet property="labelTotalTokens" destination="Lqh-up-9Tv" id="QvN-e8-IDp"/>
                         <segue destination="u6S-ZK-iQ6" kind="show" identifier="fromaddtwotoaddthree" id="4uu-Uo-L31"/>
                         <segue destination="Zqt-CP-0Zh" kind="show" identifier="fromaddtotobuycredit" id="vsz-Sp-Twh"/>
+                        <segue destination="dN2-4D-c0y" kind="unwind" identifier="fromaddtwotomain" unwindAction="unwindToMain:" id="SU2-kv-WeG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dR8-7c-bgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dN2-4D-c0y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1607" y="-185"/>
         </scene>

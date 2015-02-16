@@ -33,6 +33,7 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
         self.deselectedtokens = []
         
         updateTopTexts()
+        registerNotification()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -197,6 +198,31 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         updateTopTexts()
+    }
+    
+    // MARK: Helper
+    func onNetworkReachabilityChange(notification: NSNotification) {
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        
+        if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
+        {
+            self.performSegueWithIdentifier("fromaddtwotomain", sender: nil)
+        }
+        else if status == NOTIF_REACHABILITY_CHANGE_WIFI || status == NOTIF_REACHABILITY_CHANGE_WWLAN
+        {}
+    }
+    
+    func registerNotification() {
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onNetworkReachabilityChange(note)
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("OnKeyboardShow"), name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    // MARK: deinit
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }

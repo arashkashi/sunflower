@@ -33,6 +33,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSupportedLanguages()
+        registerNotification()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -201,5 +202,30 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    // MARK: Helper
+    func onNetworkReachabilityChange(notification: NSNotification) {
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        
+        if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
+        {
+            self.performSegueWithIdentifier("fromthreetomain", sender: nil)
+        }
+        else if status == NOTIF_REACHABILITY_CHANGE_WIFI || status == NOTIF_REACHABILITY_CHANGE_WWLAN
+        {}
+    }
+    
+    func registerNotification() {
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onNetworkReachabilityChange(note)
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("OnKeyboardShow"), name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    // MARK: deinit
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
