@@ -625,7 +625,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Name &amp; Language" id="w7Q-XS-afY">
+                    <navigationItem key="navigationItem" title="Language" id="w7Q-XS-afY">
                         <barButtonItem key="rightBarButtonItem" title="Make" id="OGw-XR-xO1">
                             <connections>
                                 <action selector="onMakeTapped:" destination="u6S-ZK-iQ6" id="CyL-dg-Cmn"/>
