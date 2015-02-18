@@ -18,6 +18,8 @@ class MainTableCellView: SWTableViewCell {
     @IBOutlet var labelProgress: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var labelrightIndicator: UILabel!
+    @IBOutlet weak var labelProgressProportion: UILabel!
+
     
     // MARK: Init
     override func awakeFromNib() {
@@ -35,7 +37,8 @@ class MainTableCellView: SWTableViewCell {
         var allWords = learningPackModel.words
         var proportion = "\(wordsDueInFuture.count)/\(allWords.count)"
         
-        labelID.text = "\(learningPackModel.id) \t  \(proportion) "
+        labelProgressProportion.text = "\(proportion)"
+        labelID.text = "\(learningPackModel.id)"
         labelProgress.text = "\(Int(learningPackModel.progress))%"
         
         activityIndicator.hidden = true

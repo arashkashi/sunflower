@@ -8,21 +8,21 @@
 
 import UIKit
 
-class AddThreeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class AddThreeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
     var supportedLanagages: [Dictionary<String, String>]!
     var selectedLanguage: String?
-    var selectedID: String?
+    var selectedID: String = NSDate().toString("YYYY-MM-DD")
     
     var alertViewShown: Bool = false
     var waitingVC: WaitingViewController?
     
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var textFieldID: UITextField!
     @IBOutlet var barButtonItemMake: UIBarButtonItem!
+    @IBOutlet weak var labelToptitle: UILabel!
     
     // MARK: Actions
     @IBAction func onMakeTapped(sender: UIBarButtonItem) {
@@ -138,7 +138,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: Logic
     func makePackage( completionHandler: (Bool, NSError?)->() ) {
-        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID!, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?, error: NSError?) -> () in
+        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?, error: NSError?) -> () in
             if model != nil {
                 completionHandler(true, error)
             } else {
@@ -160,10 +160,10 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // MARK: Events
-    func onInputsUpdated() {
-        if selectedID != nil && selectedLanguage != nil{
+    func onRowSelected(indexPath: NSIndexPath) {
+        var targetLanguage = supportedLanagages[indexPath.row]["name"]!
+            labelToptitle.text = "You selected \(targetLanguage). Tap 'Make' or choose a new language."
             showMakeButton()
-        }
     }
     
     // MARK: Table view data source / delegate
@@ -186,22 +186,9 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         var cell = tableView.cellForRowAtIndexPath(indexPath)!
         
         selectedLanguage = cell.detailTextLabel!.text
-        onInputsUpdated()
-    }
-    
-    // MARK: textField delegate
-    func textFieldDidEndEditing(textField: UITextField) {
-        if textField.text != nil {
-            if textField.text!.length() > 0 {
-                selectedID = textField.text!
-                onInputsUpdated()
-            }
-        }
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        onRowSelected(indexPath)
     }
     
     // MARK: Helper
