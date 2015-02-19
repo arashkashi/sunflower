@@ -26,7 +26,15 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: Actions
     @IBAction func onMakeTapped(sender: UIBarButtonItem) {
-        self.makePackageWithUIpdate()
+        showWaitingOverlay()
+        makePackage { (success: Bool, error: NSError?)  -> () in
+            if success {
+                self.gobackToMainView()
+            } else {
+                self.hideWaitingOverlay()
+                self.showErrorAlertWhenFailed(error)
+            }
+        }
     }
 
     // MARK: UIViewController override
@@ -80,18 +88,11 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     func showErrorAlertWhenFailed(error: NSError?) {
         if alertViewShown { return }
         let alertController = UIAlertController(title: "Error", message: error?.domain, preferredStyle: .Alert)
-        let retryAction = UIAlertAction(title: "Re-try", style: .Default) { (action: UIAlertAction!) -> Void in
+        let retryAction = UIAlertAction(title: "Ok", style: .Default) { (action: UIAlertAction!) -> Void in
             self.alertViewShown = false
-            self.makePackageWithUIpdate()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction!) -> Void in
-            self.alertViewShown = false
-            self.gobackToMainView()
         }
         
         alertController.addAction(retryAction)
-        alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true) { () -> Void in
             self.alertViewShown = true
@@ -143,18 +144,6 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
                 completionHandler(true, error)
             } else {
                 completionHandler(false, error)
-            }
-        }
-    }
-    
-    func makePackageWithUIpdate() {
-        showWaitingOverlay()
-        makePackage { (success: Bool, error: NSError?) -> () in
-            self.hideWaitingOverlay()
-            if success {
-                self.gobackToMainView()
-            } else {
-                self.showErrorAlertWhenFailed(error)
             }
         }
     }
