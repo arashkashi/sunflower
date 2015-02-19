@@ -21,7 +21,8 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var labelTotalCost: UILabel!
     @IBOutlet var barButtonNext: UIBarButtonItem!
     @IBOutlet var alignButton: NSLayoutConstraint!
-
+    @IBOutlet weak var buttonClear: UIButton!
+    
     // MARK: UIViewController Override
     override func viewDidLoad() {
         textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama" /* bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"*/
@@ -82,6 +83,10 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
             
             self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
         })
+    }
+    
+    @IBAction func onClearTapped(sender: UIButton) {
+        textViewCorpus.text = ""
     }
     
     // MARK: Delegates

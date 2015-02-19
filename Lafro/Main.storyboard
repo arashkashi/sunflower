@@ -264,8 +264,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOP-lK-sLU">
-                                <rect key="frame" x="26" y="144" width="548" height="402"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOP-lK-sLU">
+                                <rect key="frame" x="26" y="146" width="548" height="402"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -295,12 +295,26 @@
                                 <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98a-b2-Afy" userLabel="Button - Continue">
+                                <rect key="frame" x="265" y="79" width="71" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClearTapped:" destination="0BR-Zb-Xl4" eventType="touchUpInside" id="Hlw-sl-77o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="98a-b2-Afy" secondAttribute="centerX" id="9em-gs-mNJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GKU-De-c9e" secondAttribute="trailing" constant="10" id="C0U-oP-aPy"/>
                             <constraint firstItem="MUp-m7-rhI" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="10" id="CvQ-4Y-Pnl"/>
                             <constraint firstItem="MUp-m7-rhI" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="10" id="DOX-zc-Vl6"/>
+                            <constraint firstItem="98a-b2-Afy" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="35" id="Gjy-bI-jhv"/>
                             <constraint firstItem="IOP-lK-sLU" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="10" id="Kvd-w7-FLS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IOP-lK-sLU" secondAttribute="trailing" constant="10" id="On4-lV-rZ1"/>
                             <constraint firstItem="KP4-Nm-OYO" firstAttribute="bottom" secondItem="IOP-lK-sLU" secondAttribute="bottom" constant="10" id="Owv-Sh-8aR"/>
@@ -320,6 +334,7 @@
                     <connections>
                         <outlet property="alignButton" destination="Owv-Sh-8aR" id="l02-CC-KOn"/>
                         <outlet property="barButtonNext" destination="msq-Kn-TP9" id="3zI-p0-Ikn"/>
+                        <outlet property="buttonClear" destination="98a-b2-Afy" id="tuU-oj-Rmh"/>
                         <outlet property="labelTotalCost" destination="GKU-De-c9e" id="0BB-tC-0CV"/>
                         <outlet property="labelTotalTokens" destination="MUp-m7-rhI" id="rWr-ml-lgf"/>
                         <outlet property="textViewCorpus" destination="IOP-lK-sLU" id="XqN-sM-b0V"/>
@@ -795,7 +810,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Lac-Er-Xwm"/>
         <segue reference="H7g-wE-pch"/>
+        <segue reference="vL9-F4-kxO"/>
     </inferredMetricsTieBreakers>
 </document>
