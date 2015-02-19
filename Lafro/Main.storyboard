@@ -252,6 +252,33 @@
             </objects>
             <point key="canvasLocation" x="2364" y="561"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="wNs-Pr-qRf">
+            <objects>
+                <viewController id="feI-Ne-Dnc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UqI-bB-0qs"/>
+                        <viewControllerLayoutGuide type="bottom" id="pPa-h7-7Kw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="86e-hh-DcM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fjd-DD-XCI">
+                                <rect key="frame" x="42" y="90" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vgQ-wY-QWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-243" y="-264"/>
+        </scene>
         <!--Add I-->
         <scene sceneID="ve1-aB-8hC">
             <objects>
@@ -264,17 +291,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOP-lK-sLU">
-                                <rect key="frame" x="26" y="146" width="548" height="402"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="0BR-Zb-Xl4" id="J9o-Fy-Stq"/>
-                                </connections>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokens: 24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-m7-rhI" userLabel="Label Total tokens">
                                 <rect key="frame" x="26" y="54" width="140" height="40"/>
                                 <constraints>
@@ -296,7 +312,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98a-b2-Afy" userLabel="Button - Continue">
-                                <rect key="frame" x="265" y="79" width="71" height="45"/>
+                                <rect key="frame" x="265" y="59" width="71" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="28"/>
                                 <state key="normal" title="Clear">
@@ -307,19 +323,30 @@
                                     <action selector="onClearTapped:" destination="0BR-Zb-Xl4" eventType="touchUpInside" id="Hlw-sl-77o"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZT-BA-kBu" userLabel="Text View - text">
+                                <rect key="frame" x="16" y="134" width="568" height="422"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0BR-Zb-Xl4" id="3QB-OW-3hy"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="KP4-Nm-OYO" firstAttribute="top" secondItem="1ZT-BA-kBu" secondAttribute="bottom" id="8oe-XI-CZ6"/>
                             <constraint firstAttribute="centerX" secondItem="98a-b2-Afy" secondAttribute="centerX" id="9em-gs-mNJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1ZT-BA-kBu" secondAttribute="trailing" id="BoZ-gf-7q3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GKU-De-c9e" secondAttribute="trailing" constant="10" id="C0U-oP-aPy"/>
                             <constraint firstItem="MUp-m7-rhI" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="10" id="CvQ-4Y-Pnl"/>
                             <constraint firstItem="MUp-m7-rhI" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="10" id="DOX-zc-Vl6"/>
-                            <constraint firstItem="98a-b2-Afy" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="35" id="Gjy-bI-jhv"/>
-                            <constraint firstItem="IOP-lK-sLU" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" constant="10" id="Kvd-w7-FLS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IOP-lK-sLU" secondAttribute="trailing" constant="10" id="On4-lV-rZ1"/>
-                            <constraint firstItem="KP4-Nm-OYO" firstAttribute="bottom" secondItem="IOP-lK-sLU" secondAttribute="bottom" constant="10" id="Owv-Sh-8aR"/>
+                            <constraint firstItem="1ZT-BA-kBu" firstAttribute="leading" secondItem="eBK-7n-Ery" secondAttribute="leadingMargin" id="EtR-JU-SUY"/>
+                            <constraint firstItem="98a-b2-Afy" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="15" id="Gjy-bI-jhv"/>
                             <constraint firstItem="GKU-De-c9e" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="10" id="cSY-rZ-phK"/>
-                            <constraint firstItem="IOP-lK-sLU" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="100" id="h8n-QJ-OjR"/>
+                            <constraint firstItem="1ZT-BA-kBu" firstAttribute="top" secondItem="jf3-gm-vnd" secondAttribute="bottom" constant="90" id="sud-GT-GaZ"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -332,12 +359,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="alignButton" destination="Owv-Sh-8aR" id="l02-CC-KOn"/>
                         <outlet property="barButtonNext" destination="msq-Kn-TP9" id="3zI-p0-Ikn"/>
                         <outlet property="buttonClear" destination="98a-b2-Afy" id="tuU-oj-Rmh"/>
+                        <outlet property="constraintTextviewButton" destination="8oe-XI-CZ6" id="fIk-5n-EUY"/>
+                        <outlet property="constraintTextviewTop" destination="sud-GT-GaZ" id="Tqn-qe-cFA"/>
                         <outlet property="labelTotalCost" destination="GKU-De-c9e" id="0BB-tC-0CV"/>
                         <outlet property="labelTotalTokens" destination="MUp-m7-rhI" id="rWr-ml-lgf"/>
-                        <outlet property="textViewCorpus" destination="IOP-lK-sLU" id="XqN-sM-b0V"/>
+                        <outlet property="textViewCorpus" destination="1ZT-BA-kBu" id="3iM-qZ-cnr"/>
                         <segue destination="URC-fD-kjv" kind="show" identifier="fromaddonetoaddtwo" id="DKT-6I-9og"/>
                         <segue destination="HgB-mN-YWd" kind="unwind" identifier="fromaddonetomain" unwindAction="unwindToMain:" id="zkn-mK-JBX"/>
                     </connections>

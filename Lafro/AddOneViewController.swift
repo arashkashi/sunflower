@@ -20,8 +20,11 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var labelTotalTokens: UILabel!
     @IBOutlet var labelTotalCost: UILabel!
     @IBOutlet var barButtonNext: UIBarButtonItem!
-    @IBOutlet var alignButton: NSLayoutConstraint!
     @IBOutlet weak var buttonClear: UIButton!
+    
+    // MARK: Layout Contraints Properties
+    @IBOutlet weak var constraintTextviewTop: NSLayoutConstraint!
+    @IBOutlet weak var constraintTextviewButton: NSLayoutConstraint!
     
     // MARK: Inits
     func initTextViewCorpus() {
@@ -39,8 +42,17 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         registerNotification()
     }
     
-    func OnKeyboardShow() {
-        alignButton.constant = 250
+    func OnKeyboardShow(note: NSNotification) {
+        var keyboardInfo = note.userInfo
+        var keyboardFrameBegin: AnyObject? = keyboardInfo![UIKeyboardFrameBeginUserInfoKey]
+        var keyboardRects = keyboardFrameBegin?.CGRectValue()
+        
+        // NOTE: You always change the constant in constraints and then call the layoutIfNeeded in the animation block
+        self.constraintTextviewButton.constant = keyboardRects!.height + 10
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -97,6 +109,10 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     // MARK: Delegates
     func textViewDidChange(textView: UITextView) {
         updateLabels()
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        return true
     }
     
     // MARK: Logic
@@ -204,7 +220,9 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
             self.onNetworkReachabilityChange(note)
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("OnKeyboardShow"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidShowNotification, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.OnKeyboardShow(note)
+        }
     }
     
     // MARK: deinit
