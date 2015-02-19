@@ -68,10 +68,10 @@ class LearningPackControllerHelper  {
         
         // To the translation for all the tokens and create the resulting words
         for token in tokens {
-            googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, successHandler: { (translation, err) -> () in
+            googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, successHandler: { (translations, err) -> () in
             
-                if translation != nil {
-                    words.append(Word(name: token, meaning: translation!, sentences: []))
+                if translations != nil {
+                    words.append(Word(name: token, meaning: ", ".join(translations!), sentences: []))
                 } else {
                     countBadTranslations++
                 }
