@@ -38,6 +38,11 @@ class ParserTests: XCTestCase {
         var sortedKeys = Parser.sortedKeysByValueFor(dict)
         XCTAssert(sortedKeys == ["d", "b", "c", "a"], "pass")
     }
+    
+    func testTokeniseTextWithNewLine() {
+        var tokens = Parser.tokenize("arash is \n good")
+        XCTAssertEqual(3, tokens.count, "3 tokens there")
+    }
 
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
