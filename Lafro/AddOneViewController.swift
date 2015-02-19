@@ -70,6 +70,12 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 
     // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {
+        // Check for credit
+        if !CreditManager.sharedInstance.hasCreditFor(GoogleTranslate.sharedInstance.costToTranslate(self.tokens!)) {
+            self.showErrorLowCredit()
+            return
+        }
+        
         // Show waiting overlay
         showWaitingOverlay()
         
@@ -136,6 +142,21 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         if alertViewShown { return }
         
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
+            self.alertViewShown = false
+        }
+        
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) {
+            self.alertViewShown = true
+        }
+    }
+    
+    func showErrorLowCredit() {
+        var currentCredit = CreditManager.sharedInstance.localBalance
+        var currentCost = GoogleTranslate.sharedInstance.costToTranslate(self.tokens!)
+        
+        let alertController = UIAlertController(title: "Low Credit", message: "Your balance is: \(currentCredit). You need \(currentCost) to proceed. Go to store for more credit or shorten your text.", preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
             self.alertViewShown = false
         }
