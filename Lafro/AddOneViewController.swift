@@ -23,13 +23,18 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var alignButton: NSLayoutConstraint!
     @IBOutlet weak var buttonClear: UIButton!
     
+    // MARK: Inits
+    func initTextViewCorpus() {
+        textViewCorpus.contentInset = UIEdgeInsetsMake(0.0, 1.0, 0.0, 0.0)
+        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama"
+    }
+    
     // MARK: UIViewController Override
     override func viewDidLoad() {
-        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama" /* bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"*/
-        if textViewCorpus.text != "" {
-            self.updateTokens()
-            self.updateLabels()
-        }
+        initTextViewCorpus()
+        
+        updateTokens()
+        updateLabels()
         
         registerNotification()
     }
