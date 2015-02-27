@@ -48,9 +48,67 @@ class WordPresentationViewController: UIViewController {
     
     // MARK: IB Actions
     @IBAction func onEditButtonTapped(sender: UIButton) {
+        askUserWhatToDo { (whatToDo: String) -> Void in
+            if whatToDo == "editWord" {
+                self.onEditButtonTapped()
+            } else {
+                self.onAddNewSentenceTapped()
+            }
+        }
+        
         onEditButtonTapped()
     }
-    // MARK: Edit View
+    
+    func askUserWhatToDo( handler: (String)-> Void ) {
+        var alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        var editWordMeaningAction = UIAlertAction(title: "Edit word's meaning/dictation?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            handler("editWord")
+            return
+        }
+        
+        var addSentenceAction = UIAlertAction(title: "Add a new sample sentence?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            handler("addsentence")
+            return
+        }
+        
+        alertController.addAction(editWordMeaningAction)
+        alertController.addAction(addSentenceAction)
+        
+        presentViewController(alertController, animated: true) { () -> Void in
+            //
+        }
+    }
+    
+    func onAddNewSentenceTapped() {
+        self.labelWord.alpha = 0
+        self.labelMeaning.alpha = 0
+        
+        var alertController =  UIAlertController(title: "Editting", message: "Enter the new sentence.", preferredStyle: .Alert )
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            
+        }
+        
+        var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            var nameTextfield = alertController.textFields?.first as UITextField
+            
+            self.word?.sentences.append(Sentence(original: nameTextfield.text, translated: ""))
+            
+            self.delegate?.onWordEdited(self.word!)
+        }
+        
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true) { () -> Void in
+            //
+        }
+    }
+    
     func onEditButtonTapped() {
         
         self.labelWord.alpha = 0
