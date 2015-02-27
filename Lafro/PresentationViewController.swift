@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol PresentationViewControllerDelegate: WordPresentationViewControllerDelegate
+protocol PresentationViewControllerDelegate: WordPresentationViewControllerDelegate, SampleSentenceViewControllerDelegate
 {
     
 }
 
-class PresentationViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate, WordPresentationViewControllerDelegate  {
+class PresentationViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate, WordPresentationViewControllerDelegate, SampleSentenceViewControllerDelegate  {
     
     var word : Word?
     
@@ -66,6 +66,7 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         sentenceVC.word = word
         sentenceVC.index = sentenceIndex
         sentenceVC.corpus = word.sentences[sentenceIndex].original
+        sentenceVC.delegate = self
         
         return sentenceVC
     }
@@ -73,6 +74,10 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
     // MARK: Delegate
     func onWordEdited(word: Word) {
         self.delegate?.onWordEdited(word)
+    }
+    
+    func onSentenceEditted(index: Int, word: Word) {
+        self.delegate?.onSentenceEditted(index, word: word)
     }
     
     // MARK: DataSource

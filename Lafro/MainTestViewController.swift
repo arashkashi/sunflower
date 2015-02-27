@@ -171,13 +171,14 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
         self.hideAllButtons()
         self.testViewController?.checkAnswer({ () -> () in
             self.learnNextWord()
-//            self.showContinueButton()
         })
-        
-//        self.showCheckButton()
     }
     
     func onWordEdited(word: Word) {
+        learnerController.updateLearningPackDocument()
+    }
+    
+    func onSentenceEditted(index: Int, word: Word) {
         learnerController.updateLearningPackDocument()
     }
     

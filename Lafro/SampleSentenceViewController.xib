@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CorpusViewController" customModule="Lafro" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SampleSentenceViewController" customModule="Lafro" customModuleProvider="target">
             <connections>
                 <outlet property="textViewCorpus" destination="AQc-3C-yAa" id="4kU-El-txx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="fXC-9L-dR4"/>
@@ -16,19 +17,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQc-3C-yAa">
-                    <rect key="frame" x="30" y="30" width="293" height="435"/>
+                    <rect key="frame" x="30" y="60" width="293" height="405"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" red="1" green="0.94535746011889943" blue="0.23954617733435601" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYG-n2-nH2">
+                    <rect key="frame" x="157" y="10" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="JwN-pD-5dt"/>
+                        <constraint firstAttribute="width" secondItem="kYG-n2-nH2" secondAttribute="height" multiplier="1:1" id="VaG-Yf-ZlK"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="editlogo.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onEditTapped:" destination="-1" eventType="touchUpInside" id="mpn-di-eSc"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="kYG-n2-nH2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="CRB-JX-GVV"/>
+                <constraint firstAttribute="centerX" secondItem="kYG-n2-nH2" secondAttribute="centerX" id="YTl-gH-d2p"/>
                 <constraint firstAttribute="bottom" secondItem="AQc-3C-yAa" secondAttribute="bottom" constant="30" id="jdh-Hq-cd3"/>
                 <constraint firstAttribute="trailing" secondItem="AQc-3C-yAa" secondAttribute="trailing" constant="30" id="rV9-fY-uSz"/>
-                <constraint firstItem="AQc-3C-yAa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="tQC-Or-nWH"/>
+                <constraint firstItem="AQc-3C-yAa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="tQC-Or-nWH"/>
                 <constraint firstItem="AQc-3C-yAa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="zye-jF-UhS"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -36,4 +52,7 @@
             <point key="canvasLocation" x="-146.5" y="170.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="editlogo.png" width="120" height="112"/>
+    </resources>
 </document>

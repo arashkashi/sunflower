@@ -24,14 +24,18 @@ class CorpusViewController: UIViewController {
         }
 
         if let selectedWord = word {
-            textStorage = TKDHighlightingTextStorage()
-            textStorage.fontSize = fontSize!
-            textStorage.regularExpression = NSRegularExpression(pattern: selectedWord.name, options: .allZeros, error: nil)
-            textStorage.addLayoutManager(self.textViewCorpus.layoutManager)
-            textStorage.replaceCharactersInRange(NSRange(location: 0,length: 0), withString: corpus!)
+            self.updateViewWith(selectedWord)
         } else {
             self.textViewCorpus.text = corpus
         }
+    }
+    
+    func updateViewWith(selectedWord: Word) {
+        textStorage = TKDHighlightingTextStorage()
+        textStorage.fontSize = fontSize!
+        textStorage.regularExpression = NSRegularExpression(pattern: selectedWord.name, options: .allZeros, error: nil)
+        textStorage.addLayoutManager(self.textViewCorpus.layoutManager)
+        textStorage.replaceCharactersInRange(NSRange(location: 0,length: 0), withString: corpus!)
     }
 
     override func didReceiveMemoryWarning() {
