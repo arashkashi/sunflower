@@ -12,7 +12,7 @@ import Foundation
 let kTimeSpent: String = "kTimeSpent"
 let kDateBackup: String = "kDateBackup"
 
-class MainTestViewController : UIViewController, TestViewControllerDelegate {
+class MainTestViewController : UIViewController, TestViewControllerDelegate, PresentationViewControllerDelegate {
     
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
@@ -177,6 +177,10 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
 //        self.showCheckButton()
     }
     
+    func onWordEdited(word: Word) {
+        learnerController.updateLearningPackDocument()
+    }
+    
     // MARK: Events
     func onWordFinishedTesting(word: Word, test: Test, testResult: TestResult) {
         self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
@@ -287,6 +291,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate {
         presentationViewController = PresentationViewController(nibName: "PresentationView", bundle: NSBundle.mainBundle())
         presentationViewController!.word = word
         presentationViewController!.completionHandler = completionHandler
+        presentationViewController!.delegate = self
         
         animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: { ()->() in
             self.showGotIt()

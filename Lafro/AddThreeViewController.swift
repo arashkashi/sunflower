@@ -166,7 +166,8 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as UITableViewCell?
         
         cell?.detailTextLabel!.text = supportedLanagages[indexPath.row]["language"]
-        cell?.textLabel.text = supportedLanagages[indexPath.row]["name"]
+        cell?.textLabel?.text = supportedLanagages[indexPath.row]["name"]
+        cell?.backgroundColor = UIColor.blackColor()
         
         return cell!
     }
