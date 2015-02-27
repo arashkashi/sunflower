@@ -37,8 +37,8 @@ class WordPresentationViewController: UIViewController {
         
         if animated {
             UIView.animateWithDuration(1, animations: { () -> Void in
-                    self.labelWord.alpha = 1.0
-                    self.labelMeaning.alpha = 1.0
+                self.labelWord.alpha = 1.0
+                self.labelMeaning.alpha = 1.0
             })
         } else {
             self.labelWord.alpha = 1.0
@@ -52,12 +52,11 @@ class WordPresentationViewController: UIViewController {
     }
     // MARK: Edit View
     func onEditButtonTapped() {
-        UIView.animateWithDuration(1, animations: { () -> Void in
-            self.labelWord.alpha = 0
-            self.labelMeaning.alpha = 0
-        })
         
-        var alertController =  UIAlertController(title: "Editting", message: "Enter word and its meaning.", preferredStyle: .Alert )
+        self.labelWord.alpha = 0
+        self.labelMeaning.alpha = 0
+        
+        var alertController =  UIAlertController(title: "Editting", message: "Enter editted word and its editted meaning.", preferredStyle: .Alert )
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = self.word?.name
@@ -80,9 +79,9 @@ class WordPresentationViewController: UIViewController {
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
-            self.updateView(true)
+            self.updateView(false)
         }
-
+        
         alertController.addAction(skipAction)
         alertController.addAction(cancelAction)
         
