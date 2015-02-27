@@ -79,8 +79,10 @@ class WordPresentationViewController: UIViewController {
             self.delegate?.onWordEdited(self.word!)
         }
         
-        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil )
-        
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
+            self.updateView(true)
+        }
+
         alertController.addAction(skipAction)
         alertController.addAction(cancelAction)
         
