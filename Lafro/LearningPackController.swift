@@ -71,6 +71,10 @@ class LearningPackController {
         })
     }
     
+    func mergePackages(lmp1: LearningPackModel, lpm2: LearningPackModel) {
+        assert(false, "not implemented")
+    }
+
     // Each id should be unique
     func validateID(id: String, existingIDs: [String]) -> String {
         if !existingIDs.includes(id) { return id } else {
