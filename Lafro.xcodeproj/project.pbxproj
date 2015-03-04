@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22EB77C2EFB9CD3C68D9F23C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
+		41271C4C1AA6EF2A00B8E7A6 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */; };
 		412E7B8B1AA09B4400A4347F /* editlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 412E7B8A1AA09B4400A4347F /* editlogo.png */; };
 		4182EA871A25536F00627CB6 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182EA861A25536F00627CB6 /* BuyViewController.swift */; };
 		41C18A301A23FAED00639C92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A2F1A23FAED00639C92 /* AppDelegate.swift */; };
@@ -139,6 +140,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertHelper.swift; sourceTree = "<group>"; };
 		412E7B8A1AA09B4400A4347F /* editlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editlogo.png; sourceTree = "<group>"; };
 		4182EA861A25536F00627CB6 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		41C18A2A1A23FAED00639C92 /* Lafro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lafro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,6 +479,7 @@
 				41C18AE81A23FDF700639C92 /* ParserHelper.swift */,
 				41C18AE91A23FDF700639C92 /* StringExtension.swift */,
 				B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */,
+				41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				B28419131A8A098C00D99A14 /* NetworkManager.swift in Sources */,
 				41C18A6A1A23FBC600639C92 /* WaitingViewController.swift in Sources */,
 				41C18A931A23FBF700639C92 /* LearningPackController.swift in Sources */,
+				41271C4C1AA6EF2A00B8E7A6 /* UIAlertHelper.swift in Sources */,
 				41C18AEC1A23FDF700639C92 /* ArrayExtension.swift in Sources */,
 				41C18A561A23FB4100639C92 /* Parser.swift in Sources */,
 				41C18A9D1A23FC0800639C92 /* Sentence.swift in Sources */,

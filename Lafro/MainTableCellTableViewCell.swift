@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class MainTableCellView: SWTableViewCell {
     
     var id: String!
@@ -20,7 +18,6 @@ class MainTableCellView: SWTableViewCell {
     @IBOutlet var labelrightIndicator: UILabel!
     @IBOutlet weak var labelProgressProportion: UILabel!
 
-    
     // MARK: Init
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +44,9 @@ class MainTableCellView: SWTableViewCell {
     }
     
     func showContent(animated: Bool) {
+        backgroundColor = UIColor.blackColor()
+        labelProgressProportion.hidden = false
+        
         if animated {
             UIView.animateWithDuration(1, animations: { () -> Void in
                 self.labelID.alpha = 1
@@ -63,6 +63,15 @@ class MainTableCellView: SWTableViewCell {
         labelProgress.alpha = 0
         labelrightIndicator.hidden = true
         activityIndicator.hidden = false
+        backgroundColor = UIColor.blackColor()
+    }
+    
+    func showMergingContent() {
+        showLoadingContent()
+        activityIndicator.hidden = true
+        backgroundColor = UIColor.redColor()
+        labelProgressProportion.hidden = true
+        hideUtilityButtonsAnimated(false)
     }
     
     // MARK: Helper

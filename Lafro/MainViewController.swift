@@ -21,7 +21,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var viewState: ViewControllerState = .NORMAL
     var lpm_merge_1: LearningPackModel?
-    var lpm_merge_2: LearningPackModel?
     
     var cashedLearningPacks = Dictionary<String, LearningPackModel>()
     var learnerController: LearnerController?
@@ -47,10 +46,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationItem.leftBarButtonItem?.title = "\(balance)"
     }
     
-    //MARK: Logic 
+    //MARK: Logic
     func updateCashedLearningPack(learningPack: LearningPackModel) {
         cashedLearningPacks[learningPack.id] = learningPack
-        updateCounter()
     }
     
     func invalidateCashedLearningPack(id:String) {
@@ -76,8 +74,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.labelTopCounter.text = "0"
         
         // Remove the top bar buttons for now
-//        self.navigationItem.leftBarButtonItem = nil
-//        self.navigationItem.rightBarButtonItem = nil
+        //        self.navigationItem.leftBarButtonItem = nil
+        //        self.navigationItem.rightBarButtonItem = nil
         
         registerNotification()
     }
@@ -90,16 +88,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(animated: Bool) {
         updateBalanceButton()
     }
-
+    
+    override func viewWillDisappear(animated: Bool) {
+        resetMergeOperation()
+    }
+    
     // MARK: Segue
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
-
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "to_main_test" {
             var testViewController = segue.destinationViewController as MainTestViewController
-//            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
+            //            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
             
             var lpm = sender as LearningPackModel
             var selectedID = lpm.id
@@ -135,7 +137,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.hideWaitingOverlay()
         } else if viewState == .MERGE_PHASE_1 {
-            onMergeTapped(lpm)
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as MainTableCellView
+            onMergeTapped(lpm, cell: cell)
         }
     }
     
@@ -159,30 +162,28 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func onMergeTapped(lpm: LearningPackModel) {
+    func onMergeTapped(lpm: LearningPackModel, cell: MainTableCellView) {
         if viewState == .NORMAL
         {
             viewState = ViewControllerState.MERGE_PHASE_1
-            labelTopCounter.text = "Choose the second row to merge"
+            cell.showMergingContent()
+            labelTopCounter.text = "Choose the second row to merge with"
             lpm_merge_1 = lpm
         }
         else if viewState == .MERGE_PHASE_1
         {
-            lpm_merge_2 = lpm
-
-            let alertController = UIAlertController(title: "Merge", message: "Are you sure you want to merge \(lpm_merge_1!.id) with \(lpm_merge_2!.id)", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
-                LearningPackController.sharedInstance.mergePackages(self.lpm_merge_1!, lpm2: self.lpm_merge_2!)
-                self.lpm_merge_1 = nil
-                self.lpm_merge_2 = nil
+            if lpm_merge_1 == lpm {
+                UIAlertHelper.showErrorWhenSamePackgeSelectedForMerging(self, id: lpm.id, cancelMerge: { (action: UIAlertAction!) -> Void in
+                    self.resetMergeOperation()
+                })
+            } else {
+                UIAlertHelper.showConfirmationForMerging(self, id_1: lpm_merge_1!.id, id_2: lpm.id, yesAction: { (yesAction: UIAlertAction!) -> Void in
+                    LearningPackController.sharedInstance.mergePackages(self.lpm_merge_1!, lpm2: lpm)
+                    self.resetMergeOperation()
+                    }, noAction: { (noAction: UIAlertAction!) -> Void in
+                    self.resetMergeOperation()
+                })
             }
-            let yesAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
-            }
-            
-            alertController.addAction(okAction)
-            alertController.addAction(yesAction)
-            
-            presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
@@ -227,6 +228,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func resetMergeOperation() {
+        self.viewState = .NORMAL
+        self.lpm_merge_1 = nil
+        
+        self.tableView.reloadData()
+    }
+    
     // MARK: Table View datasource delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LearningPackController.sharedInstance.listOfAvialablePackIDs.count;
@@ -241,7 +249,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
             self.updateCashedLearningPack(lpm)
-            cellOptional.updateWithLearningPackModel(lpm)
+            
+            if self.viewState == .NORMAL {
+                self.updateCounter()
+            }
+            
+            if self.lpm_merge_1 == lpm {
+                cellOptional.showMergingContent()
+            } else {
+                cellOptional.updateWithLearningPackModel(lpm)
+            }
         })
         
         return cellOptional
@@ -249,8 +266,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.showWaitingOverlay()
-        
+
         learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
+            self.hideWaitingOverlay()
             self.onCellTapped(lpm, indexPath: indexPath)
         })
     }
@@ -271,12 +289,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             onDeleteTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)
             return
         } else if index == 0 {
-            onMergeTapped(cashedLearningPacks[lpmCell.id]!)
+            onMergeTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)
         }
     }
     
     func swipeableTableViewCell(cell: SWTableViewCell!, scrollingToState state: SWCellState) {
         println()
+    }
+    
+    func swipeableTableViewCell(cell: SWTableViewCell!, canSwipeToState state: SWCellState) -> Bool {
+        return viewState == .NORMAL
     }
     
     // MARK: deinit
@@ -285,4 +307,5 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 }
+
 

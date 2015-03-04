@@ -12,8 +12,11 @@ let kLearingPackModelWords: String = "kkLearingPackModelWords"
 let kLearingPackModelID: String = "kLearingPackModelID"
 let kLearingPackModelCorpus: String = "kLearingPackModelCorpus"
 
+func == (lhs: LearningPackModel, rhs: LearningPackModel) -> Bool {
+    return lhs.id == rhs.id
+}
 
-class LearningPackModel : UIDocument, NSCoding  {
+class LearningPackModel : UIDocument, NSCoding, Equatable  {
     var id: String
     var words: [Word]
     var corpus: String?
