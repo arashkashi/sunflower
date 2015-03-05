@@ -35,8 +35,8 @@ class LearningPackController {
     var query: NSMetadataQuery?
     
     class var sharedInstance : LearningPackController {
-    struct Static {
-        static let instance : LearningPackController = LearningPackController()
+        struct Static {
+            static let instance : LearningPackController = LearningPackController()
         }
         return Static.instance
     }
@@ -71,10 +71,20 @@ class LearningPackController {
         })
     }
     
-    func mergePackages(lmp1: LearningPackModel, lpm2: LearningPackModel) {
-        assert(false, "not implemented")
+    func mergePackages(lmp1: LearningPackModel, lpm2: LearningPackModel, handler: (Bool)->() ) {
+        var newID = lmp1.id
+        var newWordSet = lmp1.words + lpm2.words
+        var newCorpus = LearningPackControllerHelper.merge(lmp1.corpus, corpus2: lpm2.corpus)
+        
+        self.deletePackage(lmp1.id, completionHandler: { (success: Bool) -> () in
+            self.deletePackage(lpm2.id, completionHandler: { (success: Bool) -> () in
+                self.addNewPackage(newID, words: newWordSet, corpus: newCorpus, completionHandlerForPersistance: { (success: Bool, lpm: LearningPackModel?) -> () in
+                    handler(true)
+                })
+            })
+        })
     }
-
+    
     // Each id should be unique
     func validateID(id: String, existingIDs: [String]) -> String {
         if !existingIDs.includes(id) { return id } else {
@@ -100,7 +110,7 @@ class LearningPackController {
     // MARK: Caching
     func hasCashedPackForID(id: String) -> Bool {
         var listOfLocalDocs = self.queryListOfDocsInLocal()
-
+        
         for docName in listOfLocalDocs {
             var temp = (docName.componentsSeparatedByString(".") as [String])[0]
             if temp == id {

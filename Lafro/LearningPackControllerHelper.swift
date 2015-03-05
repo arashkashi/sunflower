@@ -103,4 +103,20 @@ class LearningPackControllerHelper  {
         return result
     }
     
+    class func merge(corpus1: String?, corpus2: String?) -> String? {
+        var newCorpus: String?
+        
+        if corpus1 == nil && corpus2 == nil {
+            // nothing
+        } else if corpus1 != nil && corpus2 == nil {
+            newCorpus = corpus1!
+        } else if corpus1 == nil && corpus2 != nil {
+            newCorpus = corpus2!
+        } else if corpus1 != nil && corpus2 != nil {
+            newCorpus = "\(corpus1!) \n \(corpus2!)"
+        }
+        
+        return newCorpus
+    }
+    
 }

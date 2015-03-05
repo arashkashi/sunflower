@@ -178,8 +178,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 })
             } else {
                 UIAlertHelper.showConfirmationForMerging(self, id_1: lpm_merge_1!.id, id_2: lpm.id, yesAction: { (yesAction: UIAlertAction!) -> Void in
-                    LearningPackController.sharedInstance.mergePackages(self.lpm_merge_1!, lpm2: lpm)
-                    self.resetMergeOperation()
+                    
+                    LearningPackController.sharedInstance.mergePackages(self.lpm_merge_1!, lpm2: lpm, handler: { (success: Bool) -> () in
+                        self.resetMergeOperation()
+                    })
+
                     }, noAction: { (noAction: UIAlertAction!) -> Void in
                     self.resetMergeOperation()
                 })
