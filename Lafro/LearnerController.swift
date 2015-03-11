@@ -16,7 +16,6 @@ enum NextWordNilStatus: Int {
 }
 
 class LearnerController {
-    var words: [Word];
     var wordsDueInFuture: [Word] = []
     var wordsDueNow: [Word] = []
     var currentLearningQueue: [Word] = []
@@ -154,14 +153,13 @@ class LearnerController {
     
     init (learningPack: LearningPackModel) {
         
-        self.words = learningPack.words
         self.learningPackModel = learningPack
         
         queueTheWords()
     }
     
     func queueTheWords() {
-        for word in self.words as [Word] {
+        for word in learningPackModel.words as [Word] {
             if word.relearningDueDate == nil || word.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 self.wordsDueNow.append(word)
             } else {
