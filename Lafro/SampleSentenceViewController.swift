@@ -48,6 +48,7 @@ class SampleSentenceViewController: CorpusViewController {
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = self.word!.sentences[self.index].original
+            textField.autocorrectionType = .Yes
         }
         
         var skipAction = UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in

@@ -241,14 +241,17 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = "new word"
+            textField.autocorrectionType = .Yes
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = "meaning"
+            textField.autocorrectionType = .Yes
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = "Sample sentence"
+            textField.autocorrectionType = .Yes
         }
         
         var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in

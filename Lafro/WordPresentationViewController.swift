@@ -87,7 +87,7 @@ class WordPresentationViewController: UIViewController {
         var alertController =  UIAlertController(title: "Editting", message: "Enter the new sentence.", preferredStyle: .Alert )
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
-            
+            textField.autocorrectionType = .Yes
         }
         
         var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
@@ -118,10 +118,12 @@ class WordPresentationViewController: UIViewController {
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = self.word?.name
+            textField.autocorrectionType = .Yes
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = self.word?.meaning
+            textField.autocorrectionType = .Yes
         }
         
         var skipAction = UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
