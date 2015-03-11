@@ -116,6 +116,8 @@
 		41C18B0E1A2400BB00639C92 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18AE61A23FDF700639C92 /* JSONHelper.swift */; };
 		41C18B0F1A2400D200639C92 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18AE91A23FDF700639C92 /* StringExtension.swift */; };
 		41C18B101A2403C200639C92 /* pack_id_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 41C18AC61A23FCD700639C92 /* pack_id_test.json */; };
+		41C2E22F1AB03CF000D6EFF0 /* garbage.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C2E22E1AB03CF000D6EFF0 /* garbage.png */; };
+		41C2E2311AB03F6200D6EFF0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C2E2301AB03F6200D6EFF0 /* plus.png */; };
 		43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
 		B25F87A31A6D4ADC00047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
@@ -235,6 +237,8 @@
 		41C18AF51A23FF0900639C92 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		41C18B041A24001400639C92 /* Lafro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Lafro.entitlements; sourceTree = "<group>"; };
 		41C18B051A24001900639C92 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		41C2E22E1AB03CF000D6EFF0 /* garbage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = garbage.png; sourceTree = "<group>"; };
+		41C2E2301AB03F6200D6EFF0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		54BCC503C42383CE6BB76567 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 		412E7B891AA09B3000A4347F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				41C2E2301AB03F6200D6EFF0 /* plus.png */,
+				41C2E22E1AB03CF000D6EFF0 /* garbage.png */,
 				412E7B8A1AA09B4400A4347F /* editlogo.png */,
 			);
 			name = Assets;
@@ -595,7 +601,9 @@
 				41C18ABE1A23FC2600639C92 /* pack_id_16.json in Resources */,
 				41C18ABC1A23FC2600639C92 /* pack_id_14.json in Resources */,
 				41C18B101A2403C200639C92 /* pack_id_test.json in Resources */,
+				41C2E22F1AB03CF000D6EFF0 /* garbage.png in Resources */,
 				41C18AB61A23FC2600639C92 /* pack_id_8.json in Resources */,
+				41C2E2311AB03F6200D6EFF0 /* plus.png in Resources */,
 				41C18A3A1A23FAED00639C92 /* LaunchScreen.xib in Resources */,
 				41C18AB71A23FC2600639C92 /* pack_id_9.json in Resources */,
 				41C18A7C1A23FBD600639C92 /* Test2View.xib in Resources */,

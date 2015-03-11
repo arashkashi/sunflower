@@ -144,7 +144,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
             
             progressView.hidden = true
         } else {
-            hideItem(self.buttonSkip)
             if var nextTest = word.nextTest()? {
                 doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.onWordFinishedTesting(word, test: test, testResult: testResult)
@@ -176,6 +175,11 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
     
     func onWordEdited(word: Word) {
         learnerController.updateLearningPackDocument()
+    }
+    
+    func onWordAdded(word: Word) {
+        learnerController.learningPackModel.addWord(word)
+        learnerController.queueTheWords()
     }
     
     func onSentenceEditted(index: Int, word: Word) {
@@ -230,6 +234,57 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
         presentViewController(alertController, animated: true) { () -> Void in
             //
         }
+    }
+    
+    @IBAction func onAddNewWordTapped(sender: AnyObject) {
+        var alertController =  UIAlertController(title: "Add new word", message: "Enter new word and its meaning.", preferredStyle: .Alert )
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.text = "new word"
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.text = "meaning"
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.text = "Sample sentence"
+        }
+        
+        var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            var nameTextfield = alertController.textFields?[0] as UITextField
+            var meaningTextField = alertController.textFields?[1] as UITextField
+            var sentenceTextField = alertController.textFields?[2] as UITextField
+            
+            var wordString  = nameTextfield.text
+            var wordMeaning = meaningTextField.text
+            var sampleSentence = sentenceTextField.text
+            
+            var word = Word(name: wordString, meaning: wordMeaning, sentences: [Sentence(original: sampleSentence, translated: "")])
+
+            self.onWordAdded(word)
+            
+            var alertControllerII = UIAlertController(title: "Congratulations", message: "New word successcully added", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+
+            }
+            
+            alertControllerII.addAction(okAction)
+            
+            self.presentViewController(alertControllerII, animated: true, completion: nil)
+        }
+        
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true) { () -> Void in
+            //
+        }
+        
     }
     
     @IBAction func onCorpusTapped(sender: AnyObject) {
@@ -297,11 +352,6 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
         animateViewContainerWithNewView(self.presentationViewController!.view, viewContainer: self.testContentView, completionHandler: { ()->() in
             self.showGotIt()
         })
-
-        // Allow user to skip the word when first shown
-        if word.currentLearningStage == .Intro {
-            self.showSkip()
-        }
     }
     
     func animateViewContainerWithNewView(newView: UIView, viewContainer: UIView, completionHandler: (()-> ())?) {

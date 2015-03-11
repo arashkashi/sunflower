@@ -153,8 +153,14 @@ class LearnerController {
     }
     
     init (learningPack: LearningPackModel) {
-        self.words = learningPack.words
         
+        self.words = learningPack.words
+        self.learningPackModel = learningPack
+        
+        queueTheWords()
+    }
+    
+    func queueTheWords() {
         for word in self.words as [Word] {
             if word.relearningDueDate == nil || word.relearningDueDate!.compare(NSDate()) == NSComparisonResult.OrderedAscending {
                 self.wordsDueNow.append(word)
@@ -163,8 +169,6 @@ class LearnerController {
             }
         }
         
-        self.learningPackModel = learningPack
-
         sort(&self.wordsDueInFuture, {$0 < $1})
         sort(&self.wordsDueNow, {$0 < $1})
     }

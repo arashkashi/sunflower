@@ -99,16 +99,6 @@
                                     <rect key="frame" x="16" y="126" width="368" height="674"/>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-gJ-gKU" userLabel="Button - skip">
-                                <rect key="frame" x="16" y="54" width="568" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSkipTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="O2J-d5-aNz"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-B2-xMI">
                                 <rect key="frame" x="21" y="541" width="30" height="49"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="31"/>
@@ -121,9 +111,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnA-9b-FTu" userLabel="Button show corpus">
-                                <rect key="frame" x="276" y="94" width="49" height="29"/>
+                                <rect key="frame" x="286" y="96" width="30" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="Corpus">
+                                <state key="normal" title="Text">
                                     <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -145,6 +135,34 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dPi-HO-WtG">
                                 <rect key="frame" x="16" y="44" width="568" height="2"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-gJ-gKU" userLabel="Button - skip">
+                                <rect key="frame" x="230" y="51" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="2WT-MX-wnl"/>
+                                    <constraint firstAttribute="width" secondItem="Rdd-gJ-gKU" secondAttribute="height" multiplier="1:1" id="s22-eF-MSJ"/>
+                                </constraints>
+                                <state key="normal" image="garbage.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSkipTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="O2J-d5-aNz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJo-zf-IRs" userLabel="Button - add new word">
+                                <rect key="frame" x="330" y="51" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CJo-zf-IRs" secondAttribute="height" multiplier="1:1" id="6Zs-iU-aiA"/>
+                                    <constraint firstAttribute="width" constant="40" id="wAs-Ke-tti"/>
+                                </constraints>
+                                <state key="normal" image="plus.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddNewWordTapped:" destination="ToX-di-gUg" eventType="touchUpInside" id="5Wm-Bt-7yc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -160,22 +178,27 @@
                             <constraint firstItem="QnA-9b-FTu" firstAttribute="trailing" secondItem="vFO-0N-GnU" secondAttribute="trailing" constant="10" id="Brq-Rx-6RV"/>
                             <constraint firstItem="Rdd-gJ-gKU" firstAttribute="leading" secondItem="BYi-3n-KZ0" secondAttribute="leadingMargin" id="DOO-xH-TgD"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="30" id="EE1-ja-Fgo"/>
-                            <constraint firstItem="Rdd-gJ-gKU" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" constant="10" id="Ia7-zP-6S7"/>
+                            <constraint firstItem="Rdd-gJ-gKU" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" constant="40" id="Ia7-zP-6S7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rdd-gJ-gKU" secondAttribute="trailing" id="Iej-d6-qmP"/>
+                            <constraint firstItem="CJo-zf-IRs" firstAttribute="top" secondItem="dPi-HO-WtG" secondAttribute="bottom" constant="5" id="JWb-ev-jwv"/>
                             <constraint firstAttribute="centerX" secondItem="JFW-NR-EoJ" secondAttribute="centerX" id="LTb-Fh-RXO"/>
+                            <constraint firstAttribute="centerX" secondItem="Rdd-gJ-gKU" secondAttribute="centerX" constant="50" id="NNo-pu-wWL"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="z4k-3X-hI1" secondAttribute="bottom" constant="12" id="RaP-9g-Smv"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="7wE-W2-5wb" secondAttribute="bottom" constant="12" id="U3k-ps-owU"/>
                             <constraint firstItem="QnA-9b-FTu" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" id="WA4-At-e7k"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="left" secondItem="BYi-3n-KZ0" secondAttribute="left" id="XuX-6c-c5H"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="YCI-y7-ZT7"/>
+                            <constraint firstItem="Rdd-gJ-gKU" firstAttribute="top" secondItem="dPi-HO-WtG" secondAttribute="bottom" constant="5" id="ZdY-6O-XJL"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="Rdd-gJ-gKU" secondAttribute="bottom" constant="44" id="b0t-4f-uSQ"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="70" id="b1G-tR-GTN"/>
+                            <constraint firstAttribute="centerX" secondItem="CJo-zf-IRs" secondAttribute="centerX" constant="-50" id="bFS-iU-pJz"/>
+                            <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="QnA-9b-FTu" secondAttribute="bottom" constant="19" id="bMP-1u-Va8"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="tWk-uT-fkt" secondAttribute="bottom" constant="22" id="cAK-dS-uYk"/>
                             <constraint firstItem="7wE-W2-5wb" firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="130:35" id="ehg-oh-8wl"/>
                             <constraint firstItem="tWk-uT-fkt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z4k-3X-hI1" secondAttribute="trailing" constant="150" id="mee-CF-d3n"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="n02-JC-dTT"/>
                             <constraint firstItem="tWk-uT-fkt" firstAttribute="trailing" secondItem="BYi-3n-KZ0" secondAttribute="trailingMargin" id="nOs-Wf-xgm"/>
-                            <constraint firstItem="QnA-9b-FTu" firstAttribute="centerX" secondItem="vFO-0N-GnU" secondAttribute="centerX" id="r6k-NQ-fEV"/>
+                            <constraint firstItem="QnA-9b-FTu" firstAttribute="centerX" secondItem="vFO-0N-GnU" secondAttribute="centerX" constant="1" id="r6k-NQ-fEV"/>
                             <constraint firstItem="dPi-HO-WtG" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" id="sS3-0H-MN2"/>
                             <constraint firstItem="hW4-B2-xMI" firstAttribute="leading" secondItem="BYi-3n-KZ0" secondAttribute="leadingMargin" constant="5" id="uEG-5M-DWg"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="centerY" secondItem="hW4-B2-xMI" secondAttribute="centerY" constant="0.5" id="wWG-md-dPv"/>
@@ -184,6 +207,10 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="b0t-4f-uSQ"/>
+                                <exclude reference="DOO-xH-TgD"/>
+                                <exclude reference="Ia7-zP-6S7"/>
+                                <exclude reference="Iej-d6-qmP"/>
+                                <exclude reference="16L-sa-YYx"/>
                                 <exclude reference="Brq-Rx-6RV"/>
                                 <exclude reference="WA4-At-e7k"/>
                                 <exclude reference="1BY-M4-zw5"/>
@@ -210,7 +237,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YA-24-k59" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ver-nh-49u" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1653" y="551"/>
+            <point key="canvasLocation" x="1653" y="549"/>
         </scene>
         <!--Corpus-->
         <scene sceneID="SXH-0G-rK0">
@@ -807,8 +834,12 @@
             <point key="canvasLocation" x="171" y="551"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="garbage.png" width="256" height="256"/>
+        <image name="plus.png" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lac-Er-Xwm"/>
         <segue reference="H7g-wE-pch"/>
+        <segue reference="vL9-F4-kxO"/>
     </inferredMetricsTieBreakers>
 </document>
