@@ -8,8 +8,6 @@
 
 import Foundation
 
-let fileExtension: String = "lwp";
-
 class DocumentHelper {
     
     class func localDocumentDirectoryURL() -> NSURL? {
@@ -19,6 +17,10 @@ class DocumentHelper {
     
     class func cashURLForID(id: String) -> NSURL {
         var baseURL = DocumentHelper.localDocumentDirectoryURL()
-        return NSURL(string: "\(id)." + fileExtension, relativeToURL: baseURL)!
+        return NSURL(string: "\(id)." + DocumentHelper.fileExtension(), relativeToURL: baseURL)!
+    }
+    
+    class func fileExtension() -> String {
+        return "lwp"
     }
 }

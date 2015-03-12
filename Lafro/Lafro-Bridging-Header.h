@@ -6,4 +6,6 @@
 
 #import "TKDHighlightingTextStorage.h"
 
-#import <FacebookSDK/FacebookSDK.h>
+#import <FacebookSDK/FacebookSDK.h>#import "TKDHighlightingTextStorage.h"
+
+#import <SWTableViewCell.h>

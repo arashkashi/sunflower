@@ -147,7 +147,7 @@ class LeanerControllerTests: XCTestCase {
             self.checkDataConsistency()
             
             if nextWord == nil {
-                XCTAssert(self.learnerController.wordsDueInFuture.count == self.learnerController.words.count, "all words should be in the future list")
+                XCTAssert(self.learnerController.wordsDueInFuture.count == self.learnerController.learningPackModel.words.count, "all words should be in the future list")
                 return
             } else if var nextTest = nextWord?.nextTest() {
                 self.learnerController.onWordFinishedTestType(nextWord!, test: nextTest, testResult: .Pass)
@@ -163,7 +163,7 @@ class LeanerControllerTests: XCTestCase {
     }
     
     func checkDataConsistency() {
-        XCTAssert(self.learnerController.words.count == self.learnerController.currentLearningQueue.count + self.learnerController.wordsDueInFuture.count + self.learnerController.wordsDueNow.count, "one of the data consistency criteria")
+        XCTAssert(self.learnerController.learningPackModel.words.count == self.learnerController.currentLearningQueue.count + self.learnerController.wordsDueInFuture.count + self.learnerController.wordsDueNow.count, "one of the data consistency criteria")
     }
     
     func giveMeNextWord() -> Word? {

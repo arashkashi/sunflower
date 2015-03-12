@@ -28,8 +28,8 @@ class Parser {
     
     // MARK: Helper
     class func tokenize(inputText: String) -> [String]{
-        var tokens = inputText.componentsSeparatedByString(" ")
-        return tokens
+        var tokens = inputText.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return tokens.filter{ $0 != ""}
     }
     
     class func distDictFor(tokens: [String]) -> [String: Int] {

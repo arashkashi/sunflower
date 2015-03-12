@@ -35,8 +35,8 @@ class LearningPackController {
     var query: NSMetadataQuery?
     
     class var sharedInstance : LearningPackController {
-    struct Static {
-        static let instance : LearningPackController = LearningPackController()
+        struct Static {
+            static let instance : LearningPackController = LearningPackController()
         }
         return Static.instance
     }
@@ -44,16 +44,48 @@ class LearningPackController {
     func addNewPackage(id: String, words: [Word], corpus: String?, completionHandlerForPersistance: ((Bool, LearningPackModel?) -> ())?) {
         LearningPackModel.create(id, words: words, corpus: corpus) { (success: Bool, model: LearningPackModel?) -> () in
             if success {
-                completionHandlerForPersistance?(true, model)
                 var currentIDs = self.listOfAvialablePackIDs
                 currentIDs.append(id)
                 self.listOfAvialablePackIDs = currentIDs
+                completionHandlerForPersistance?(true, model)
             } else {
                 completionHandlerForPersistance?(false, nil)
             }
         }
     }
     
+    func deletePackage(id: String, completionHandler: ((Bool)->())?) {
+        
+        // remove it from the file system
+        var error: NSErrorPointer = NSErrorPointer()
+        loadLearningPackWithID(id, completionHandler: { (lpm: LearningPackModel?) -> () in
+            var isSuccessed = NSFileManager.defaultManager().removeItemAtURL(lpm!.fileURL, error: error)
+            
+            if isSuccessed {
+                // remove it from the list of avaiable ids
+                self.listOfAvialablePackIDs = self.listOfAvialablePackIDs.filter { $0 != id }
+                completionHandler?(true)
+            } else {
+                completionHandler?(false)
+            }
+        })
+    }
+    
+    func mergePackages(lmp1: LearningPackModel, lpm2: LearningPackModel, handler: (Bool)->() ) {
+        var newID = lmp1.id
+        var newWordSet = lmp1.words + lpm2.words
+        var newCorpus = LearningPackControllerHelper.merge(lmp1.corpus, corpus2: lpm2.corpus)
+        
+        self.deletePackage(lmp1.id, completionHandler: { (success: Bool) -> () in
+            self.deletePackage(lpm2.id, completionHandler: { (success: Bool) -> () in
+                self.addNewPackage(newID, words: newWordSet, corpus: newCorpus, completionHandlerForPersistance: { (success: Bool, lpm: LearningPackModel?) -> () in
+                    handler(true)
+                })
+            })
+        })
+    }
+    
+    // Each id should be unique
     func validateID(id: String, existingIDs: [String]) -> String {
         if !existingIDs.includes(id) { return id } else {
             return self.validateID("\(id)I", existingIDs: existingIDs)
@@ -78,6 +110,7 @@ class LearningPackController {
     // MARK: Caching
     func hasCashedPackForID(id: String) -> Bool {
         var listOfLocalDocs = self.queryListOfDocsInLocal()
+        
         for docName in listOfLocalDocs {
             var temp = (docName.componentsSeparatedByString(".") as [String])[0]
             if temp == id {

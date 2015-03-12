@@ -20,23 +20,39 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var labelTotalTokens: UILabel!
     @IBOutlet var labelTotalCost: UILabel!
     @IBOutlet var barButtonNext: UIBarButtonItem!
-    @IBOutlet var alignButton: NSLayoutConstraint!
-
-    // MARK: UIViewController Override
-    override func viewDidLoad() {
-        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama" /* bei den US-Kongresswahlen können die Republikaner nun die politische Agenda maßgeblich beeinflussen. Doch zwei Jahre Blockade können sie sich nicht leisten"*/
-        if textViewCorpus.text != "" {
-            self.updateTokens()
-            self.updateLabels()
-        }
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("OnKeyboardShow"), name: UIKeyboardWillShowNotification, object: nil)
-        
-        
+    @IBOutlet weak var buttonClear: UIButton!
+    
+    // MARK: Layout Contraints Properties
+    @IBOutlet weak var constraintTextviewTop: NSLayoutConstraint!
+    @IBOutlet weak var constraintTextviewButton: NSLayoutConstraint!
+    
+    // MARK: Inits
+    func initTextViewCorpus() {
+        textViewCorpus.contentInset = UIEdgeInsetsMake(0.0, 1.0, 0.0, 0.0)
+        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama"
     }
     
-    func OnKeyboardShow() {
-        alignButton.constant = 250
+    // MARK: UIViewController Override
+    override func viewDidLoad() {
+        initTextViewCorpus()
+        
+        updateTokens()
+        updateLabels()
+        
+        registerNotification()
+    }
+    
+    func OnKeyboardShow(note: NSNotification) {
+        var keyboardInfo = note.userInfo
+        var keyboardFrameBegin: AnyObject? = keyboardInfo![UIKeyboardFrameBeginUserInfoKey]
+        var keyboardRects = keyboardFrameBegin?.CGRectValue()
+        
+        // NOTE: You always change the constant in constraints and then call the layoutIfNeeded in the animation block
+        self.constraintTextviewButton.constant = keyboardRects!.height + 10
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -54,6 +70,12 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
 
     // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {
+        // Check for credit
+        if !CreditManager.sharedInstance.hasCreditFor(GoogleTranslate.sharedInstance.costToTranslate(self.tokens!)) {
+            self.showErrorLowCredit()
+            return
+        }
+        
         // Show waiting overlay
         showWaitingOverlay()
         
@@ -86,9 +108,17 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         })
     }
     
+    @IBAction func onClearTapped(sender: UIButton) {
+        textViewCorpus.text = ""
+    }
+    
     // MARK: Delegates
     func textViewDidChange(textView: UITextView) {
         updateLabels()
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        return true
     }
     
     // MARK: Logic
@@ -122,11 +152,26 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    func showErrorLowCredit() {
+        var currentCredit = CreditManager.sharedInstance.localBalance
+        var currentCost = GoogleTranslate.sharedInstance.costToTranslate(self.tokens!)
+        
+        let alertController = UIAlertController(title: "Low Credit", message: "Your balance is: \(currentCredit). You need \(currentCost) to proceed. Go to store for more credit or shorten your text.", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "OK!", style: .Cancel) { (action) in
+            self.alertViewShown = false
+        }
+        
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) {
+            self.alertViewShown = true
+        }
+    }
+    
     func updateTotalToken() {
         if let extractedTokens = self.tokens {
-            self.labelTotalTokens.text = "Tokens: \(extractedTokens.count)"
+            self.labelTotalTokens.text = "Words: \(extractedTokens.count)"
         } else {
-           self.labelTotalTokens.text = "Tokens: 0"
+           self.labelTotalTokens.text = "Words: 0"
         }
     }
     
@@ -178,5 +223,31 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     func navigationController() -> UINavigationController {
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         return appDelegate.rootNavigationController!
+    }
+    
+    func onNetworkReachabilityChange(notification: NSNotification) {
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        
+        if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
+        {
+            self.performSegueWithIdentifier("fromaddonetomain", sender: nil)
+        }
+        else if status == NOTIF_REACHABILITY_CHANGE_WIFI || status == NOTIF_REACHABILITY_CHANGE_WWLAN
+        {}
+    }
+    
+    func registerNotification() {
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onNetworkReachabilityChange(note)
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidShowNotification, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.OnKeyboardShow(note)
+        }
+    }
+    
+    // MARK: deinit
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

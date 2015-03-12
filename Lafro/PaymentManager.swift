@@ -43,7 +43,7 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
     }
     
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NOTIFICATION_TRANSACTIONS_UPDATED, object: self, userInfo: [USER_INFO_UPDATED_TRANSACTIONS:transactions]))
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NOTIF_TRANSACTIONS_UPDATED, object: self, userInfo: [ NOTIF_TRANSACTIONS_UPDATED:transactions]))
     }
     
     func finishTransaction(paymentTransaction: SKPaymentTransaction) {

@@ -19,20 +19,20 @@ class TokensViewCell: UITableViewCell {
     
     func updateCellWith(token: String) {
         self.token = token
-        self.textLabel.text = token
+        self.textLabel?.text = token
         self.detailTextLabel!.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(token))"
         isSelected = false
     }
     
     func onSelected() {
         isSelected = true
-        self.textLabel.text = "(√) \(token)"
+        self.textLabel?.text = "(√) \(token)"
         self.detailTextLabel!.text = "Cost: \(GoogleTranslate.sharedInstance.costToTranslate(token))"
     }
     
     func onDeslected() {
         isSelected = false
-        self.textLabel.text = "(x) \(token)"
+        self.textLabel?.text = "(x) \(token)"
         self.detailTextLabel!.text = "Cost: 0"
     }
 

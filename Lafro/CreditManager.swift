@@ -127,7 +127,7 @@ class CreditManager {
     
     // MARK: Events
     func onAppleTransactionsUpdated(notification: NSNotification) {
-        var updatedAppleTransactions = notification.userInfo?[USER_INFO_UPDATED_TRANSACTIONS] as? [SKPaymentTransaction]
+        var updatedAppleTransactions = notification.userInfo?[NOTIF_USER_INFO_UPDATED_TRANSACTIONS] as? [SKPaymentTransaction]
         
         if let appleTransactions = updatedAppleTransactions{
             for appleTransaction in appleTransactions {
@@ -201,7 +201,7 @@ class CreditManager {
     }
     
     func initNotifications() {
-        NSNotificationCenter.defaultCenter().addObserverForName(NOTIFICATION_TRANSACTIONS_UPDATED, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_TRANSACTIONS_UPDATED, object: nil, queue: nil) { (note: NSNotification!) -> Void in
             self.onAppleTransactionsUpdated(note)
         }
     }

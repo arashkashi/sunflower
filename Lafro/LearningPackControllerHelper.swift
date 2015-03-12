@@ -68,10 +68,10 @@ class LearningPackControllerHelper  {
         
         // To the translation for all the tokens and create the resulting words
         for token in tokens {
-            googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, successHandler: { (translation, err) -> () in
+            googleTransaltor.translate(token, targetLanguage: selectedLanguage, sourceLanaguage: sourceLanguage, successHandler: { (translations, err) -> () in
             
-                if translation != nil {
-                    words.append(Word(name: token, meaning: translation!, sentences: []))
+                if translations != nil {
+                    words.append(Word(name: token, meaning: ", ".join(translations!), sentences: []))
                 } else {
                     countBadTranslations++
                 }
@@ -101,6 +101,22 @@ class LearningPackControllerHelper  {
         }
         
         return result
+    }
+    
+    class func merge(corpus1: String?, corpus2: String?) -> String? {
+        var newCorpus: String?
+        
+        if corpus1 == nil && corpus2 == nil {
+            // nothing
+        } else if corpus1 != nil && corpus2 == nil {
+            newCorpus = corpus1!
+        } else if corpus1 == nil && corpus2 != nil {
+            newCorpus = corpus2!
+        } else if corpus1 != nil && corpus2 != nil {
+            newCorpus = "\(corpus1!) \n \(corpus2!)"
+        }
+        
+        return newCorpus
     }
     
 }

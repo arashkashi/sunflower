@@ -175,6 +175,13 @@ class Word : NSObject, Equatable, NSCoding {
         return nil
     }
     
+    func resetLearing() {
+        self.currentLearningStage.reset()
+        self.relearningDueDate = nil
+        self.shouldShowWordPresentation = true
+        self.testsSuccessfulyDoneForCurrentStage = []
+    }
+    
     func printToSTD() {
         println("-----------------START----------------")
         println("Name: \(self.name)")

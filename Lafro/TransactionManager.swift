@@ -52,6 +52,10 @@ class TransactionManager {
     
     // MARK: Helper
     func createAndCommitTransaction(amount: Int32, type: TransactionType, handler: ((CommitResult)->())?) {
+        if amount == 0 {
+            handler?(CommitResult.Succeeded)
+            return
+        }
         var newTransaction = getNewTransaction(amount, type: type)
         newTransaction.commit(handler)
     }

@@ -8,31 +8,40 @@
 
 import UIKit
 
-class AddThreeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class AddThreeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
     var supportedLanagages: [Dictionary<String, String>]!
     var selectedLanguage: String?
-    var selectedID: String?
+    var selectedID: String = NSDate().toString("YYYY-MM-DD")
     
     var alertViewShown: Bool = false
     var waitingVC: WaitingViewController?
     
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var textFieldID: UITextField!
     @IBOutlet var barButtonItemMake: UIBarButtonItem!
+    @IBOutlet weak var labelToptitle: UILabel!
     
     // MARK: Actions
     @IBAction func onMakeTapped(sender: UIBarButtonItem) {
-        self.makePackageWithUIpdate()
+        showWaitingOverlay()
+        makePackage { (success: Bool, error: NSError?)  -> () in
+            if success {
+                self.gobackToMainView()
+            } else {
+                self.hideWaitingOverlay()
+                self.showErrorAlertWhenFailed(error)
+            }
+        }
     }
 
     // MARK: UIViewController override
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSupportedLanguages()
+        registerNotification()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -79,18 +88,11 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     func showErrorAlertWhenFailed(error: NSError?) {
         if alertViewShown { return }
         let alertController = UIAlertController(title: "Error", message: error?.domain, preferredStyle: .Alert)
-        let retryAction = UIAlertAction(title: "Re-try", style: .Default) { (action: UIAlertAction!) -> Void in
+        let retryAction = UIAlertAction(title: "Ok", style: .Default) { (action: UIAlertAction!) -> Void in
             self.alertViewShown = false
-            self.makePackageWithUIpdate()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction!) -> Void in
-            self.alertViewShown = false
-            self.gobackToMainView()
         }
         
         alertController.addAction(retryAction)
-        alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true) { () -> Void in
             self.alertViewShown = true
@@ -137,7 +139,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: Logic
     func makePackage( completionHandler: (Bool, NSError?)->() ) {
-        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID!, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?, error: NSError?) -> () in
+        LearningPackControllerHelper.makeLearningPackModelWithTransaction(self.selectedID, tokens: tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage!) { (model: LearningPackModel?, error: NSError?) -> () in
             if model != nil {
                 completionHandler(true, error)
             } else {
@@ -146,23 +148,11 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func makePackageWithUIpdate() {
-        showWaitingOverlay()
-        makePackage { (success: Bool, error: NSError?) -> () in
-            self.hideWaitingOverlay()
-            if success {
-                self.gobackToMainView()
-            } else {
-                self.showErrorAlertWhenFailed(error)
-            }
-        }
-    }
-    
     // MARK: Events
-    func onInputsUpdated() {
-        if selectedID != nil && selectedLanguage != nil{
+    func onRowSelected(indexPath: NSIndexPath) {
+        var targetLanguage = supportedLanagages[indexPath.row]["name"]!
+            labelToptitle.text = "You selected \(targetLanguage). Tap 'Make' or choose a new language."
             showMakeButton()
-        }
     }
     
     // MARK: Table view data source / delegate
@@ -176,7 +166,8 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as UITableViewCell?
         
         cell?.detailTextLabel!.text = supportedLanagages[indexPath.row]["language"]
-        cell?.textLabel.text = supportedLanagages[indexPath.row]["name"]
+        cell?.textLabel?.text = supportedLanagages[indexPath.row]["name"]
+        cell?.backgroundColor = UIColor.blackColor()
         
         return cell!
     }
@@ -185,21 +176,31 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
         var cell = tableView.cellForRowAtIndexPath(indexPath)!
         
         selectedLanguage = cell.detailTextLabel!.text
-        onInputsUpdated()
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        onRowSelected(indexPath)
     }
     
-    // MARK: textField delegate
-    func textFieldDidEndEditing(textField: UITextField) {
-        if textField.text != nil {
-            if textField.text!.length() > 0 {
-                selectedID = textField.text!
-                onInputsUpdated()
-            }
+    // MARK: Helper
+    func onNetworkReachabilityChange(notification: NSNotification) {
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        
+        if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
+        {
+            self.performSegueWithIdentifier("fromthreetomain", sender: nil)
+        }
+        else if status == NOTIF_REACHABILITY_CHANGE_WIFI || status == NOTIF_REACHABILITY_CHANGE_WWLAN
+        {}
+    }
+    
+    func registerNotification() {
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_REACHABILITY_CHANGE, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onNetworkReachabilityChange(note)
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    // MARK: deinit
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

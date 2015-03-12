@@ -8,13 +8,19 @@
 
 import UIKit
 
-class PresentationViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate  {
+protocol PresentationViewControllerDelegate: WordPresentationViewControllerDelegate, SampleSentenceViewControllerDelegate
+{
+    
+}
+
+class PresentationViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate, WordPresentationViewControllerDelegate, SampleSentenceViewControllerDelegate  {
     
     var word : Word?
     
     @IBOutlet var pageControl: UIPageControl!
     var pageViewController: UIPageViewController!
     var currentlyShownViewcontroller: UIViewController!
+    var delegate: PresentationViewControllerDelegate?
     
     var completionHandler: (() -> ())?
 
@@ -48,6 +54,7 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
     func wordViewcontroller(word: Word) -> WordPresentationViewController {
         var wordVC =  WordPresentationViewController(nibName: "WordPresentationViewController", bundle: NSBundle.mainBundle())
         wordVC.word = word
+        wordVC.delegate = self
         
         return wordVC
     }
@@ -59,10 +66,19 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         sentenceVC.word = word
         sentenceVC.index = sentenceIndex
         sentenceVC.corpus = word.sentences[sentenceIndex].original
+        sentenceVC.delegate = self
         
         return sentenceVC
     }
     
+    // MARK: Delegate
+    func onWordEdited(word: Word) {
+        self.delegate?.onWordEdited(word)
+    }
+    
+    func onSentenceEditted(index: Int, word: Word) {
+        self.delegate?.onSentenceEditted(index, word: word)
+    }
     
     // MARK: DataSource
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {

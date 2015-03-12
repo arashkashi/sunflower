@@ -76,26 +76,26 @@ class GoogleTranslate {
         }
     }
     
-    func translate(text: String, targetLanguage: String, sourceLanaguage: String, successHandler:((translation: String?, err: String?)->())?) {
+    func translate(text: String, targetLanguage: String, sourceLanaguage: String, successHandler:((translations: [String]?, err: String?)->())?) {
         var recievedResponse = false
         
         AFHTTPRequestOperationManager().securityPolicy.allowInvalidCertificates = false
         
         AFHTTPRequestOperationManager().GET(self.baseTranslationURI, parameters: ["q" : text, "target": targetLanguage, "source": sourceLanaguage], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-            if recievedResponse { successHandler?(translation: nil, err: "Already failed"); return }
+            if recievedResponse { successHandler?(translations: nil, err: "Already failed"); return }
             recievedResponse = true
             
             var result = self.handleGoogleTranslateResponse(responseObject as NSDictionary)
             
-            if result.translation != nil {
-                successHandler?(translation:result.translation!, err: nil)
+            if result.translations != nil {
+                successHandler?(translations:result.translations!, err: nil)
             } else {
-                successHandler?(translation: nil, err: ERR_GOOGLE_API_NOT_TRASLATABLE)
+                successHandler?(translations: nil, err: ERR_GOOGLE_API_NOT_TRASLATABLE)
             }
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 if !recievedResponse {
-                    successHandler?(translation: nil, err: "Already failed");
+                    successHandler?(translations: nil, err: "Already failed");
                     recievedResponse = true
                 }
         }
@@ -149,17 +149,23 @@ class GoogleTranslate {
     //    #     ]
     //    #   }
     //    # }
-    func handleGoogleTranslateResponse(response: NSDictionary) -> (translation: String?, err: String?) {
+    func handleGoogleTranslateResponse(response: NSDictionary) -> (translations: [String]?, err: String?) {
+        var resultedTranslations: [String] = []
         var data = response.objectForKey("data") as? NSDictionary
         var translations = data?.objectForKey("translations") as? NSArray
         
         
         if translations != nil {
-            var translation = translations?.objectAtIndex(0) as NSDictionary
-            var result = translation.objectForKey("translatedText") as NSString
+            for translation in translations! {
+                if let validTranslation = translation.objectForKey("translatedText") as? String {
+                    if validTranslation != "" {
+                        resultedTranslations.append(validTranslation)
+                    }
+                }
+            }
             
-            if result != "" {
-                return (result, nil)
+            if resultedTranslations.count > 0 {
+                return (resultedTranslations, nil)
             } else {
                 return (nil, ERR_GOOGLE_API_NOT_TRASLATABLE)
             }

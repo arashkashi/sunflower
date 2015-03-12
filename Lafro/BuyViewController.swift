@@ -14,6 +14,7 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     var requestedProducts: [SKProduct]?
     var formatter: NSNumberFormatter!
 
+    @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet var labelTitle: UILabel!
     @IBOutlet var buttonBuy: UIButton!
     
@@ -32,6 +33,10 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
         labelTitle.text = "Loading Products..."
         buttonBuy.hidden = true
         onRequestingProducts()
+        
+        if CreditManager.sharedInstance.isInitialServerSyncDone {
+            labelDescription.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,8 +61,8 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     func onReceivingProducts(products: [SKProduct]) {
         for product in products {
             formatter.locale = product.priceLocale
-//            labelTitle.text = "Spend \(formatter.stringFromNumber(product.price)!) to buy credit for translating \(product.localizedTitle)"
-            labelTitle.text = "Donate \(formatter.stringFromNumber(product.price)!) to support lafro"
+            labelTitle.text = "Spend \(formatter.stringFromNumber(product.price)!) to buy credit to translate 2000 characters"
+//            labelTitle.text = "Donate \(formatter.stringFromNumber(product.price)!) to support lafro"
         }
         
         buttonBuy.hidden = false

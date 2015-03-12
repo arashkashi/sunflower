@@ -23,4 +23,10 @@ extension NSDate {
     func isPast() -> Bool {
         return self.compare(NSDate()) == NSComparisonResult.OrderedAscending
     }
+    
+    func toString(format: String) -> String {
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(self)
+    }
 }
