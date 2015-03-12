@@ -55,6 +55,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cashedLearningPacks.removeValueForKey(id)
     }
     
+    func resetCach() {
+        cashedLearningPacks.removeAll(keepCapacity: true)
+    }
+    
     func updateCounter() {
         var counter: Int = 0
         for (id, packModel) in self.cashedLearningPacks {
@@ -87,6 +91,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         updateBalanceButton()
+        resetCach()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -111,6 +117,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else if segue.identifier == "frommainviewtocorpus" {
             var corpusVC = segue.destinationViewController as CorpusViewController
             corpusVC.corpus = self.learnerController!.learningPackModel.corpus
+        } else if segue.identifier == "from_main_to_browse" {
+            var broseVC = segue.destinationViewController as BrowseViewController
+            var learningPack = sender as LearningPackModel
+            broseVC.learningPackModel = learningPack
         }
     }
     
@@ -188,6 +198,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 })
             }
         }
+    }
+    
+    func onBrowsePackageTapped(cell: MainTableCellView) {
+        self.performSegueWithIdentifier("from_main_to_browse", sender: cashedLearningPacks[cell.id]!)
     }
     
     func onNetworkReachabilityChange(notification: NSNotification) {
@@ -279,8 +293,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: SWTableCellView
     func leftButtons() -> NSMutableArray {
         var buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor.greenColor(), title: "Merge")      // Index = 0
-        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Delete")       // Index = 1
+        buttons.sw_addUtilityButtonWithColor(UIColor.greenColor(), title: "Merge")              // Index = 0
+        buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Delete")               // Index = 1
+        buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "Browse")             // Index = 2
         
         return buttons
     }
@@ -293,6 +308,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         } else if index == 0 {
             onMergeTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)
+        } else if index == 2 {
+            onBrowsePackageTapped(lpmCell)
         }
     }
     

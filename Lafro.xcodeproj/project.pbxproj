@@ -118,6 +118,8 @@
 		41C18B101A2403C200639C92 /* pack_id_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 41C18AC61A23FCD700639C92 /* pack_id_test.json */; };
 		41C2E22F1AB03CF000D6EFF0 /* garbage.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C2E22E1AB03CF000D6EFF0 /* garbage.png */; };
 		41C2E2311AB03F6200D6EFF0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C2E2301AB03F6200D6EFF0 /* plus.png */; };
+		41C2E2331AB0DE9400D6EFF0 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2E2321AB0DE9400D6EFF0 /* BrowseViewController.swift */; };
+		41C2E2351AB0E34600D6EFF0 /* BrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2E2341AB0E34600D6EFF0 /* BrowseTableViewCell.swift */; };
 		43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
 		B25F87A31A6D4ADC00047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
@@ -239,6 +241,8 @@
 		41C18B051A24001900639C92 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		41C2E22E1AB03CF000D6EFF0 /* garbage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = garbage.png; sourceTree = "<group>"; };
 		41C2E2301AB03F6200D6EFF0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		41C2E2321AB0DE9400D6EFF0 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		41C2E2341AB0E34600D6EFF0 /* BrowseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseTableViewCell.swift; sourceTree = "<group>"; };
 		54BCC503C42383CE6BB76567 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 				41C18A641A23FBBC00639C92 /* MainTableCellTableViewCell.swift */,
 				41C18A651A23FBBC00639C92 /* TokensViewCell.swift */,
 				4182EA861A25536F00627CB6 /* BuyViewController.swift */,
+				41C2E2321AB0DE9400D6EFF0 /* BrowseViewController.swift */,
+				41C2E2341AB0E34600D6EFF0 /* BrowseTableViewCell.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 				4182EA871A25536F00627CB6 /* BuyViewController.swift in Sources */,
 				41C18A941A23FBF700639C92 /* LearningPackControllerHelper.swift in Sources */,
 				41C18AEE1A23FDF700639C92 /* DateExtention.swift in Sources */,
+				41C2E2331AB0DE9400D6EFF0 /* BrowseViewController.swift in Sources */,
 				41C18AF31A23FDFF00639C92 /* TKDHighlightingTextStorage.m in Sources */,
 				41C18A5A1A23FB4100639C92 /* ComponentManager.swift in Sources */,
 				41C18A801A23FBD600639C92 /* SampleSentenceViewController.swift in Sources */,
@@ -737,6 +744,7 @@
 				41C18A921A23FBF700639C92 /* LearnerController.swift in Sources */,
 				41C18A8B1A23FBDF00639C92 /* CorpusViewController.swift in Sources */,
 				41C18A621A23FB5F00639C92 /* TransactionHelper.swift in Sources */,
+				41C2E2351AB0E34600D6EFF0 /* BrowseTableViewCell.swift in Sources */,
 				B25F9BF11A26019100E15D22 /* PaymentManager.swift in Sources */,
 				41C18A7B1A23FBD600639C92 /* Test1ViewController.swift in Sources */,
 				B28419131A8A098C00D99A14 /* NetworkManager.swift in Sources */,

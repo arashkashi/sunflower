@@ -175,6 +175,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
     
     func onWordEdited(word: Word) {
         learnerController.updateLearningPackDocument()
+        learnerController.queueTheWords()
     }
     
     func onWordAdded(word: Word) {
