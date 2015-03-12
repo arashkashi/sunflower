@@ -36,9 +36,13 @@ class BrowseViewController: UIViewController, UITableViewDataSource, BrowseCellD
     }
     
     func onCellRemoveTapped(indexPath: NSIndexPath) {
-        var word = learningPackModel.words[indexPath.row]
-        learningPackModel.removeWord(word)
-        tableView.reloadData()
+        if learningPackModel.words.count == 5 {
+            return
+        } else {
+            var word = learningPackModel.words[indexPath.row]
+            learningPackModel.removeWord(word)
+            tableView.reloadData()
+        }
     }
 
     // MARK: Table View data source
