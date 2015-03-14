@@ -249,7 +249,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             //
         }
         
-        allertController.addAction(automaticPackageAction)
+        if NetworkManager.sharedInstance.networkStatus() ==  AFNetworkReachabilityStatus.ReachableViaWiFi {
+            allertController.addAction(automaticPackageAction)
+        }
+        
         allertController.addAction(freeFiveWordSetAction)
         allertController.addAction(cancel)
         
@@ -268,12 +271,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func onNointernetConnection() {
         self.navigationItem.leftBarButtonItem?.enabled = false
-        self.navigationItem.rightBarButtonItem?.enabled = false
+//        self.navigationItem.rightBarButtonItem?.enabled = false
     }
     
     func onInternetConnectionEstablished() {
         self.navigationItem.leftBarButtonItem?.enabled = true
-        self.navigationItem.rightBarButtonItem?.enabled = true
+//        self.navigationItem.rightBarButtonItem?.enabled = true
     }
     
     // MARK: Helper
