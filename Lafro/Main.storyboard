@@ -300,15 +300,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eYl-Ns-trV" id="RWw-wB-b9I">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eXQ-8O-zMn">
-                                                    <rect key="frame" x="13" y="8" width="150" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="K5u-4b-uaa"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXp-fj-nJM">
                                                     <rect key="frame" x="433" y="3" width="40" height="30"/>
                                                     <state key="normal" title="Reset">
@@ -319,7 +310,13 @@
                                                         <action selector="onResetTapped:" destination="eYl-Ns-trV" eventType="touchUpInside" id="cOT-gc-U5q"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94F-Mf-51s">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="3%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0f9-6E-FxL">
+                                                    <rect key="frame" x="442" y="27" width="23" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94F-Mf-51s">
                                                     <rect key="frame" x="493" y="3" width="57" height="30"/>
                                                     <state key="normal" title="Remove">
                                                         <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -329,11 +326,19 @@
                                                         <action selector="onRemoveTapped:" destination="eYl-Ns-trV" eventType="touchUpInside" id="Ugt-0a-joz"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0f9-6E-FxL">
-                                                    <rect key="frame" x="442" y="27" width="23" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000007" translatesAutoresizingMaskIntoConstraints="NO" id="eXQ-8O-zMn">
+                                                    <rect key="frame" x="13" y="8" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="K5u-4b-uaa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="K5u-4b-uaa"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -343,6 +348,7 @@
                                                 <constraint firstItem="eXQ-8O-zMn" firstAttribute="leading" secondItem="RWw-wB-b9I" secondAttribute="leadingMargin" constant="5" id="Qhz-2J-P4G"/>
                                                 <constraint firstItem="eXQ-8O-zMn" firstAttribute="top" secondItem="RWw-wB-b9I" secondAttribute="topMargin" id="SA3-mn-P9F"/>
                                                 <constraint firstItem="0f9-6E-FxL" firstAttribute="top" secondItem="wXp-fj-nJM" secondAttribute="bottom" constant="-6" id="bpS-di-vaE"/>
+                                                <constraint firstItem="wXp-fj-nJM" firstAttribute="leading" secondItem="eXQ-8O-zMn" secondAttribute="trailing" priority="1" constant="10" id="d8E-rN-JHN"/>
                                                 <constraint firstItem="94F-Mf-51s" firstAttribute="leading" secondItem="wXp-fj-nJM" secondAttribute="trailing" constant="20" id="qeZ-Uz-z76"/>
                                                 <constraint firstItem="wXp-fj-nJM" firstAttribute="centerY" secondItem="94F-Mf-51s" secondAttribute="centerY" id="zjw-oC-9UG"/>
                                             </constraints>

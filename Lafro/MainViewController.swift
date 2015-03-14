@@ -200,6 +200,30 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func onRenamePackageTapped(cell: MainTableCellView) {
+        var selectedLPM = cashedLearningPacks[cell.id]!
+        
+        let alertController = UIAlertController(title: "Rename", message: "Enter the new name!", preferredStyle: .Alert)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.text = selectedLPM.id
+            textField.autocorrectionType = .No
+        }
+        let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
+            var newID = (alertController.textFields?.first as UITextField).text
+            LearningPackController.sharedInstance.renamePackage(selectedLPM.id  , newName: newID) { () -> () in
+                self.tableView.reloadData()
+            }
+        }
+        let noAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(noAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func onBrowsePackageTapped(cell: MainTableCellView) {
         self.performSegueWithIdentifier("from_main_to_browse", sender: cashedLearningPacks[cell.id]!)
     }
@@ -296,6 +320,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         buttons.sw_addUtilityButtonWithColor(UIColor.greenColor(), title: "Merge")              // Index = 0
         buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Delete")               // Index = 1
         buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "Browse")             // Index = 2
+        buttons.sw_addUtilityButtonWithColor(UIColor.blueColor(), title: "Rename")              // Index = 3
         
         return buttons
     }
@@ -310,6 +335,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             onMergeTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)
         } else if index == 2 {
             onBrowsePackageTapped(lpmCell)
+        } else if index == 3 {
+            onRenamePackageTapped(lpmCell)
         }
     }
     
