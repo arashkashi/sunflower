@@ -36,11 +36,7 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         self.pageViewController.delegate = self
         self.pageViewController.view.frame = self.view.bounds
         
-        self.currentlyShownViewcontroller = self.wordViewcontroller(word!)
-        
-        self.pageViewController.setViewControllers([self.currentlyShownViewcontroller], direction: UIPageViewControllerNavigationDirection.Forward, animated: false) { (success: Bool) -> Void in
-            self.pageControl.numberOfPages = 1 + self.word!.sentences.count
-        }
+        turnToViewContrller(self.wordViewcontroller(word!))
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
@@ -59,6 +55,19 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         return wordVC
     }
     
+    func turnToViewContrller(viewController: UIViewController) {
+        self.currentlyShownViewcontroller = viewController
+        self.pageViewController.setViewControllers([viewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true) { (success: Bool) -> Void in
+            self.pageControl.numberOfPages = 1 + self.word!.sentences.count
+            if viewController.isMemberOfClass(WordPresentationViewController.self) {
+                self.pageControl.currentPage = 0
+            } else {
+                var shownController = viewController as SampleSentenceViewController
+                self.pageControl.currentPage = shownController.index + 1
+            }
+        }
+    }
+    
     func sentenceViewController(word: Word, sentenceIndex: Int) -> SampleSentenceViewController? {
         if sentenceIndex >=  word.sentences.count { return nil }
         
@@ -72,12 +81,38 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
     }
     
     // MARK: Delegate
-    func onWordEdited(word: Word) {
-        self.delegate?.onWordEdited(word)
+    func onWordDictationMeaningEdited(word: Word) {
+        self.delegate?.onWordDictationMeaningEdited(word)
+        
+        self.pageViewController.reloadInputViews()
+        self.pageControl.numberOfPages = 1 + self.word!.sentences.count
+        self.pageControl.reloadInputViews()
     }
     
-    func onSentenceEditted(index: Int, word: Word) {
-        self.delegate?.onSentenceEditted(index, word: word)
+    func onWordNewSentenceAdded(word: Word) {
+        self.delegate?.onWordNewSentenceAdded(word)
+        
+        self.pageViewController.reloadInputViews()
+        self.pageControl.numberOfPages = 1 + self.word!.sentences.count
+        self.pageControl.reloadInputViews()
+        
+        turnToViewContrller(self.sentenceViewController(word, sentenceIndex: word.sentences.count - 1)!)
+    }
+    
+    func onWordEdited(word: Word) {
+
+    }
+    
+    func onSentenceEditted(index: Int, word: Word, isSentenceRemoved: Bool) {
+        self.delegate?.onSentenceEditted(index, word: word, isSentenceRemoved: isSentenceRemoved)
+        
+        self.pageViewController.reloadInputViews()
+        self.pageControl.numberOfPages = 1 + self.word!.sentences.count
+        self.pageControl.reloadInputViews()
+        
+        if isSentenceRemoved {
+            turnToViewContrller(self.wordViewcontroller(self.word!))
+        }
     }
     
     // MARK: DataSource

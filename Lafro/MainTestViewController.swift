@@ -172,8 +172,13 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
             self.learnNextWord()
         })
     }
+
+    func onWordDictationMeaningEdited(word: Word) {
+        learnerController.updateLearningPackDocument()
+        learnerController.queueTheWords()
+    }
     
-    func onWordEdited(word: Word) {
+    func onWordNewSentenceAdded(word: Word) {
         learnerController.updateLearningPackDocument()
         learnerController.queueTheWords()
     }
@@ -183,7 +188,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
         learnerController.queueTheWords()
     }
     
-    func onSentenceEditted(index: Int, word: Word) {
+    func onSentenceEditted(index: Int, word: Word, isSentenceRemoved: Bool) {
         learnerController.updateLearningPackDocument()
     }
     
@@ -243,16 +248,19 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = "new word"
             textField.autocorrectionType = .Yes
+            textField.clearButtonMode = .Always
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = "meaning"
             textField.autocorrectionType = .Yes
+            textField.clearButtonMode = .Always
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = "Sample sentence"
             textField.autocorrectionType = .Yes
+            textField.clearButtonMode = .Always
         }
         
         var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in

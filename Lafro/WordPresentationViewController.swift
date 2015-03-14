@@ -10,7 +10,8 @@ import UIKit
 
 protocol WordPresentationViewControllerDelegate
 {
-    func onWordEdited(word: Word)
+    func onWordDictationMeaningEdited(word: Word)
+    func onWordNewSentenceAdded(word: Word)
 }
 
 class WordPresentationViewController: UIViewController {
@@ -95,10 +96,14 @@ class WordPresentationViewController: UIViewController {
             
             self.word?.sentences.append(Sentence(original: nameTextfield.text, translated: ""))
             
-            self.delegate?.onWordEdited(self.word!)
+            self.updateView(true)
+            
+            self.delegate?.onWordNewSentenceAdded(self.word!)
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
+            
+            self.updateView(false)
         }
         
         alertController.addAction(addAction)
@@ -135,7 +140,7 @@ class WordPresentationViewController: UIViewController {
             
             self.updateView(true)
             
-            self.delegate?.onWordEdited(self.word!)
+            self.delegate?.onWordDictationMeaningEdited(self.word!)
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
