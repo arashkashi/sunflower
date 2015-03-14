@@ -29,7 +29,7 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     // MARK: Inits
     func initTextViewCorpus() {
         textViewCorpus.contentInset = UIEdgeInsetsMake(0.0, 1.0, 0.0, 0.0)
-        textViewCorpus.text = " Nach der Schlappe der Demokraten von Präsident Obama"
+        textViewCorpus.text = "You can enter a text to have the words extracted and translated for you"
     }
     
     // MARK: UIViewController Override

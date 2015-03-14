@@ -905,7 +905,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="LzJ-fg-SWM">
                             <connections>
-                                <segue destination="0BR-Zb-Xl4" kind="show" id="ipq-hc-LYZ"/>
+                                <action selector="onAddPackageTapped:" destination="EwS-sk-4Sg" id="8aE-At-CHv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -916,6 +916,7 @@
                         <segue destination="ToX-di-gUg" kind="show" identifier="to_main_test" id="wuK-aJ-0nl"/>
                         <segue destination="frw-hx-dvF" kind="show" identifier="frommainviewtocorpus" id="Lac-Er-Xwm"/>
                         <segue destination="mjA-aP-mm9" kind="show" identifier="from_main_to_browse" id="rer-GJ-Cev"/>
+                        <segue destination="0BR-Zb-Xl4" kind="show" identifier="from_main_to_add_one" id="3y9-XY-s8q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTZ-1k-Gjn" userLabel="First Responder" sceneMemberID="firstResponder"/>

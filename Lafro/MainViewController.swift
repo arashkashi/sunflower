@@ -228,6 +228,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.performSegueWithIdentifier("from_main_to_browse", sender: cashedLearningPacks[cell.id]!)
     }
     
+    @IBAction func onAddPackageTapped(sender: UIBarButtonItem) {
+        var allertController = UIAlertController(title: "New Word List", message: "You are about to create a new word list.", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        var automaticPackageAction = UIAlertAction(title: "Create word list from a text?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            self.performSegueWithIdentifier("from_main_to_add_one", sender: nil)
+        }
+        
+        var freeFiveWordSetAction = UIAlertAction(title: "Create an empty word list?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            
+            var words = Word.fiveWordPlaceholder()
+            var validatedID = LearningPackController.sharedInstance.validateID(NSDate().toString("YYYY-MM-DD"))
+            LearningPackController.sharedInstance.addNewPackage(validatedID, words: words, corpus: nil, completionHandlerForPersistance: { (success: Bool, lpm: LearningPackModel?) -> () in
+                self.tableView.reloadData()
+                self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: LearningPackController.sharedInstance.listOfAvialablePackIDs.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+            })
+        }
+        
+        var cancel = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
+            //
+        }
+        
+        allertController.addAction(automaticPackageAction)
+        allertController.addAction(freeFiveWordSetAction)
+        allertController.addAction(cancel)
+        
+        self.presentViewController(allertController, animated: true, completion: nil)
+    }
+    
     func onNetworkReachabilityChange(notification: NSNotification) {
         var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
         

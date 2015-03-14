@@ -103,6 +103,11 @@ class LearningPackController {
             return self.validateID("\(id)I", existingIDs: existingIDs)
         }
     }
+    func validateID(id: String) -> String {
+        if !listOfAvialablePackIDs.includes(id) { return id } else {
+            return self.validateID("\(id)I", existingIDs: listOfAvialablePackIDs)
+        }
+    }
     
     func loadLearningPackWithID(id: String, completionHandler: ((LearningPackModel?)->())?) {
         if self.hasCashedPackForID(id) {
