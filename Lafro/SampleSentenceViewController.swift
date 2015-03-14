@@ -44,11 +44,12 @@ class SampleSentenceViewController: CorpusViewController {
         
         self.textViewCorpus.alpha = 0
         
-        var alertController =  UIAlertController(title: "Editting", message: "Enter editted sentence.", preferredStyle: .Alert )
+        var alertController =  UIAlertController(title: "Editting", message: "Enter editted sentence!", preferredStyle: .Alert )
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = self.word!.sentences[self.index].original
             textField.autocorrectionType = .Yes
+            textField.clearButtonMode = .Always
         }
         
         var skipAction = UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
