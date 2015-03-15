@@ -27,6 +27,8 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
             CreditManager.sharedInstance.chargeCreditWithProduct(product)
             buttonBuy.hidden = true
         }
+        
+        self.navigationItem.hidesBackButton = true
     }
     
     override func viewDidLoad() {

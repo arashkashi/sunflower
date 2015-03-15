@@ -196,9 +196,15 @@ class CreditManager {
         
         var lafroTransaction = TransactionManager.sharedInstance.getNewTransaction(amount, type: .grant_locallyNow_serverLazy)
         
+        // Exceptionaly put this here inspite of Apple recommandation to close transaction when
+        // truely finished with all tasks. Yes we are not finished with the commit but since
+        // the next step (commit transaction local now and lazy server) is risk free, then there 
+        // should be no problem.
+        PaymentManager.sharedInstance.finishTransaction(appleTransaction)
+        
         TransactionManager.sharedInstance.commit(lafroTransaction, handler: { (result: CommitResult) -> () in
             if result == .Queued || result == .Succeeded {
-                PaymentManager.sharedInstance.finishTransaction(appleTransaction)
+                
             } else {
                 assert(false, "code path should never come here")
             }
