@@ -190,6 +190,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 UIAlertHelper.showConfirmationForMerging(self, id_1: lpm_merge_1!.id, id_2: lpm.id, yesAction: { (yesAction: UIAlertAction!) -> Void in
                     
                     LearningPackController.sharedInstance.mergePackages(self.lpm_merge_1!, lpm2: lpm, handler: { (success: Bool) -> () in
+                        self.invalidateCashedLearningPack(self.lpm_merge_1!.id)
+                        self.invalidateCashedLearningPack(lpm.id)
+                        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: LearningPackController.sharedInstance.listOfAvialablePackIDs.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
                         self.resetMergeOperation()
                     })
 
