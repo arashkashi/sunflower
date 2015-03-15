@@ -11,6 +11,8 @@
 		41271C4C1AA6EF2A00B8E7A6 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */; };
 		412E7B8B1AA09B4400A4347F /* editlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 412E7B8A1AA09B4400A4347F /* editlogo.png */; };
 		4182EA871A25536F00627CB6 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182EA861A25536F00627CB6 /* BuyViewController.swift */; };
+		41A3BD5D1AB5BA1600F3988D /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3BD5C1AB5BA1500F3988D /* CKRecordExtension.swift */; };
+		41A3BD5E1AB5BC3700F3988D /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3BD5C1AB5BA1500F3988D /* CKRecordExtension.swift */; };
 		41C18A301A23FAED00639C92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A2F1A23FAED00639C92 /* AppDelegate.swift */; };
 		41C18A321A23FAED00639C92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C18A311A23FAED00639C92 /* ViewController.swift */; };
 		41C18A371A23FAED00639C92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41C18A361A23FAED00639C92 /* Images.xcassets */; };
@@ -147,6 +149,7 @@
 		41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertHelper.swift; sourceTree = "<group>"; };
 		412E7B8A1AA09B4400A4347F /* editlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editlogo.png; sourceTree = "<group>"; };
 		4182EA861A25536F00627CB6 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		41A3BD5C1AB5BA1500F3988D /* CKRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 		41C18A2A1A23FAED00639C92 /* Lafro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lafro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C18A2E1A23FAED00639C92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41C18A2F1A23FAED00639C92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -492,6 +495,7 @@
 				41C18AE91A23FDF700639C92 /* StringExtension.swift */,
 				B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */,
 				41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */,
+				41A3BD5C1AB5BA1500F3988D /* CKRecordExtension.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -717,6 +721,7 @@
 				41C18A5B1A23FB4100639C92 /* DiskCache.swift in Sources */,
 				41C18A7F1A23FBD600639C92 /* PresentationViewController.swift in Sources */,
 				41C18A661A23FBBC00639C92 /* MainTableCellTableViewCell.swift in Sources */,
+				41A3BD5D1AB5BA1600F3988D /* CKRecordExtension.swift in Sources */,
 				41C18A821A23FBD600639C92 /* WordPresentationViewController.swift in Sources */,
 				41C18A571A23FB4100639C92 /* CreditManager.swift in Sources */,
 				41C18A9B1A23FC0800639C92 /* Test.swift in Sources */,
@@ -787,6 +792,7 @@
 				41C18AF81A23FF3800639C92 /* Transaction.swift in Sources */,
 				41C18B021A23FFD000639C92 /* Sentence.swift in Sources */,
 				41C18AD91A23FCE400639C92 /* creditManagerTests.swift in Sources */,
+				41A3BD5E1AB5BC3700F3988D /* CKRecordExtension.swift in Sources */,
 				B25F87A71A6D62F900047EA1 /* ComponentManager.swift in Sources */,
 				41C18AFA1A23FF5500639C92 /* LearningPackModel.swift in Sources */,
 				41C18AFB1A23FF6100639C92 /* TransactionHelper.swift in Sources */,
