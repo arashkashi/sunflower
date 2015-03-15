@@ -69,7 +69,7 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     }
     
     func hideWaitingOverlay() {
-        self.waitingVC!.view.removeFromSuperview()
+        self.waitingVC?.view.removeFromSuperview()
     }
     
     // MARK: product Request Delegate
