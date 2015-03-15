@@ -59,6 +59,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cashedLearningPacks.removeAll(keepCapacity: true)
     }
     
+    func updateAllCash() {
+        showWaitingOverlay()
+        var ids = LearningPackController.sharedInstance.listOfAvialablePackIDs
+        for learningID in LearningPackController.sharedInstance.listOfAvialablePackIDs {
+            LearningPackController.sharedInstance.loadLearningPackWithID(learningID, completionHandler: { (lpm: LearningPackModel?) -> () in
+                self.cashedLearningPacks[learningID] = lpm!
+                ids = ids.filter{ $0 != lpm!.id }
+                
+                if ids.count == 0 {
+                    self.updateCounter()
+                    self.hideWaitingOverlay()
+                }
+            })
+        }
+    }
+    
     func updateCounter() {
         var counter: Int = 0
         for (id, packModel) in self.cashedLearningPacks {
@@ -93,6 +109,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         updateBalanceButton()
         resetCach()
         tableView.reloadData()
+        
+        updateAllCash()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -324,10 +342,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
             self.updateCashedLearningPack(lpm)
-            
-            if self.viewState == .NORMAL {
-                self.updateCounter()
-            }
             
             if self.lpm_merge_1 == lpm {
                 cellOptional.showMergingContent()
