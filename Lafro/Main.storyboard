@@ -681,9 +681,11 @@
                         <outlet property="labelDescription" destination="lDX-gg-ebD" id="cbD-Hw-Tnc"/>
                         <outlet property="labelTitle" destination="sg8-7w-5Zg" id="bhi-pC-Teh"/>
                         <outlet property="view" destination="wMg-GV-UcW" id="wCw-Ut-vku"/>
+                        <segue destination="yT5-rG-lNl" kind="unwind" identifier="from_buy_to_main" unwindAction="unwindToMain:" id="BdJ-hN-gC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jrU-LP-cCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yT5-rG-lNl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1705" y="-1112"/>
         </scene>

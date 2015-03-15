@@ -13,15 +13,19 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
     
     var requestedProducts: [SKProduct]?
     var formatter: NSNumberFormatter!
+    
+    var waitingVC: WaitingViewController?
 
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet var labelTitle: UILabel!
     @IBOutlet var buttonBuy: UIButton!
     
     @IBAction func onBuyTapped(sender: AnyObject) {
+        showWaitingOverlay()
         if requestedProducts?.count > 0 {
             var product = requestedProducts![0]
             CreditManager.sharedInstance.chargeCreditWithProduct(product)
+            buttonBuy.hidden = true
         }
     }
     
@@ -34,14 +38,36 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
         buttonBuy.hidden = true
         onRequestingProducts()
         
-        if CreditManager.sharedInstance.isInitialServerSyncDone {
+        if CreditManager.sharedInstance.isInitialFreeCreditGranted {
             labelDescription.hidden = true
         }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_IN_APP_PURCHASE_TRANSACTION_UPDATED, object: nil, queue: nil) { (note: NSNotification!) -> Void in
+            self.onTransactionUpdated(note)
+        }
+    }
+    
+    func onTransactionUpdated(notifcation: NSNotification) {
+        self.hideWaitingOverlay()
+        self.performSegueWithIdentifier("from_buy_to_main", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showWaitingOverlay() {
+        if self.waitingVC == nil {
+            self.waitingVC = WaitingViewController(nibName: "WaitingViewController", bundle: NSBundle.mainBundle())
+        }
+        self.waitingVC!.view.frame = self.view.bounds
+        
+        self.view.addSubview(self.waitingVC!.view)
+    }
+    
+    func hideWaitingOverlay() {
+        self.waitingVC!.view.removeFromSuperview()
     }
     
     // MARK: product Request Delegate
@@ -81,5 +107,10 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
             formatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
             formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+
     }
 }

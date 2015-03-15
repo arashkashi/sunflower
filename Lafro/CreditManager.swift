@@ -23,7 +23,19 @@ import StoreKit
 
 class CreditManager {
     
-    var isInitialServerSyncDone: Bool {
+    var isInitialFreeCreditGranted: Bool {
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey(kCreditManagerInitialCreditGranted) != nil
+        }
+        
+        set {
+            if newValue == true {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kCreditManagerInitialCreditGranted)
+            }
+        }
+    }
+    
+    var isInitialServerSyncDoned: Bool {
         get {
             return NSUserDefaults.standardUserDefaults().objectForKey(kCreditManagerInitialServerSync) != nil
         }
@@ -34,6 +46,8 @@ class CreditManager {
             }
         }
     }
+    
+    
     
     var localBalance: Lafru {
         get {
@@ -64,7 +78,7 @@ class CreditManager {
     }
     
     // MARK: Server Calls
-    func resetInitialCreditGranted() {
+    func resetInitialCreditGranted(handler: ()->()) {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             record!.setObject(nil, forKey: kCreditManagerInitialCreditGranted)
             record!.setObject(nil, forKey: kCreditManagerBalance)
@@ -72,8 +86,9 @@ class CreditManager {
                 if newRecord != nil && lastError == nil {
                     NSLog("\(__FILE__):\(__LINE__) \t\t --> Reset the initial credit grant on server");
                 }
-                
+                handler()
                 }
+                
             )}
     }
     
@@ -81,37 +96,33 @@ class CreditManager {
         CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
             
             if record == nil || err != nil {
-                NSLog("\(__FILE__):\(__LINE__) \t\t --> Failed to fetch user record");
                 handler(false, err); return
             }
             
+            // Case: Initial credit is granted
             if record!.allKeys().includes(kCreditManagerInitialCreditGranted) {
-                if !self.isInitialServerSyncDone {
-                    if let currentServerBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
-                        self.localBalance = currentServerBalance.intValue
-                        self.isInitialServerSyncDone = true
-                        NSLog("\(__FILE__):\(__LINE__) \t\t --> Local balance synced with Server");
-                    } else {
-                        NSLog("\(__FILE__):\(__LINE__) \t\t --> Local balance NOT synced with server");
-                    }
-                }
-                
                 handler(true, nil)
                 return
-            } else {
+            }
+            else
+            {
+                // Case: Initial credit is not granted
                 record!.setObject(true, forKey: kCreditManagerInitialCreditGranted)
                 
+                var totalBalance: Int = 0
+                
                 if let currentServerBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
-                    record!.setObject(Int(initialCredit + currentServerBalance.intValue), forKey: kCreditManagerBalance)
+                    totalBalance = Int(initialCredit + currentServerBalance.intValue)
                 } else {
-                    record!.setObject(Int(initialCredit), forKey: kCreditManagerBalance)
+                    totalBalance = Int(initialCredit)
                 }
+                
+                record!.setObject(totalBalance, forKey: kCreditManagerBalance)
                 
                 CloudKitManager.sharedInstance.saveRecord(record!, handler: { (newRecord: CKRecord!, lastError: NSError!) -> Void in
                     if lastError == nil && newRecord != nil
                     {
-                        self.localBalance = initialCredit
-                        self.isInitialServerSyncDone = true
+                        self.localBalance = Int32(totalBalance)
                         NSLog("\(__FILE__):\(__LINE__) \t\t --> Successfully granted initial credit to server");
                         handler(true, nil); return
                     }
@@ -121,6 +132,21 @@ class CreditManager {
                         handler(false, lastError); return
                     }
                 })
+            }
+        }
+    }
+    
+    func processInitialSyncServer() {
+        if self.isInitialServerSyncDoned {
+            return
+        }
+        
+        CloudKitManager.sharedInstance.fetchUserRecord { (record, err) -> () in
+            if record != nil {
+                if let currentServerBalance = record!.objectForKey(kCreditManagerBalance) as? NSNumber {
+                    self.localBalance = currentServerBalance.intValue
+                }
+                self.isInitialServerSyncDoned = true
             }
         }
     }
@@ -158,7 +184,7 @@ class CreditManager {
         // Show a alert view that transaction has failed
         var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.showInformationWithMessage("Payment Failed", message: "\(appleTransaction.error.userInfo?.description)")
-
+        
         
         // Finish the transaction
         PaymentManager.sharedInstance.finishTransaction(appleTransaction)
@@ -190,7 +216,7 @@ class CreditManager {
     
     func lafroFromProductID(productID: String) -> Lafru {
         if productID == "sunflower.dollar.1" {
-            return 2000
+            return CreditManager.sharedInstance.initialBalance
         } else {
             return 0
         }
@@ -216,9 +242,18 @@ class CreditManager {
     
     init() {
         initNotifications()
-        self.grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
         
-        })
+        if !isInitialFreeCreditGranted {
+            grantInitialCreditToServer(self.initialBalance , handler: { (success: Bool, err: NSError?) -> () in
+                if success {
+                    self.isInitialFreeCreditGranted = true
+                }
+            })
+        }
+        
+        if !isInitialServerSyncDoned {
+            processInitialSyncServer()
+        }
     }
     
     deinit {

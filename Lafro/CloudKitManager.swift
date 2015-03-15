@@ -14,9 +14,9 @@ let kCloudManagerRecordID = "kCloudManagerRecordID"
 class CloudKitManager {
 
     func fetchUserRecord(handler: (record: CKRecord?, err: NSError!)->() ) {
-        self.fetchUserRecordID { (recordID, err) -> Void in
+        fetchUserRecordID { (recordID, err) -> Void in
             
-            if recordID == nil { handler(record: nil, err: nil); return }
+            if recordID == nil { handler(record: nil, err: NSError(domain: "didnt work", code: 69, userInfo: nil)); return }
             
             CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(recordID, completionHandler: { (record: CKRecord!, error: NSError!) -> Void in
                     handler(record: record, err: nil); return
