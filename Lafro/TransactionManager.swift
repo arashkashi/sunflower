@@ -82,9 +82,13 @@ class TransactionManager {
     init () {
         queue = []
         
-        if let cachedQueue = loadQueueFromDisk() { queue = cachedQueue } else { queue = [] }
+        if let cachedQueue = loadQueueFromDisk() {
+            queue = cachedQueue
+        }
         
-        if queue.count > 0 { sendItemsInQueue(queue, completionHandler: nil) }
+        if queue.count > 0{
+            sendItemsInQueue(queue, completionHandler: nil)
+        }
     }
     
     // MARK: Caching

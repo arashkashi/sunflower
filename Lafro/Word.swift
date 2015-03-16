@@ -195,6 +195,14 @@ class Word : NSObject, Equatable, NSCoding {
         println("----------------END--------------------")
     }
     
+    class func fiveWordPlaceholder() -> [Word] {
+        var result: [Word] = []
+        for i in [1,2,3,4,5] {
+            result.append(Word(name: "word-\(i)", meaning: "meaning-\(i)", sentences: []))
+        }
+        return result
+    }
+    
     // MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: kName)

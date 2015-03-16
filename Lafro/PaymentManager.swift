@@ -43,11 +43,12 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
     }
     
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NOTIF_TRANSACTIONS_UPDATED, object: self, userInfo: [ NOTIF_TRANSACTIONS_UPDATED:transactions]))
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NOTIF_TRANSACTIONS_UPDATED, object: self, userInfo: [ NOTIF_USER_INFO_UPDATED_TRANSACTIONS:transactions]))
     }
     
     func finishTransaction(paymentTransaction: SKPaymentTransaction) {
         SKPaymentQueue.defaultQueue().finishTransaction(paymentTransaction)
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: NOTIF_IN_APP_PURCHASE_TRANSACTION_UPDATED, object: paymentTransaction))
     }
     
     // MARK: product Request Delegate

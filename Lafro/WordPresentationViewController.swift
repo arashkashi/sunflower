@@ -10,7 +10,8 @@ import UIKit
 
 protocol WordPresentationViewControllerDelegate
 {
-    func onWordEdited(word: Word)
+    func onWordDictationMeaningEdited(word: Word)
+    func onWordNewSentenceAdded(word: Word)
 }
 
 class WordPresentationViewController: UIViewController {
@@ -60,20 +61,25 @@ class WordPresentationViewController: UIViewController {
     }
     
     func askUserWhatToDo( handler: (String)-> Void ) {
-        var alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        var alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
-        var editWordMeaningAction = UIAlertAction(title: "Edit word's meaning/dictation?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+        var editWordMeaningAction = UIAlertAction(title: "Edit word's meaning/dictation?", style: .Destructive) { (action: UIAlertAction!) -> Void in
             handler("editWord")
             return
         }
         
-        var addSentenceAction = UIAlertAction(title: "Add a new sample sentence?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+        var addSentenceAction = UIAlertAction(title: "Add a new sample sentence?", style: .Destructive) { (action: UIAlertAction!) -> Void in
             handler("addsentence")
             return
         }
         
+        var cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
+            self.updateView(false)
+        }
+        
         alertController.addAction(editWordMeaningAction)
         alertController.addAction(addSentenceAction)
+        alertController.addAction(cancelAction)
         
         presentViewController(alertController, animated: true) { () -> Void in
             //
@@ -95,10 +101,14 @@ class WordPresentationViewController: UIViewController {
             
             self.word?.sentences.append(Sentence(original: nameTextfield.text, translated: ""))
             
-            self.delegate?.onWordEdited(self.word!)
+            self.updateView(true)
+            
+            self.delegate?.onWordNewSentenceAdded(self.word!)
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in
+            
+            self.updateView(false)
         }
         
         alertController.addAction(addAction)
@@ -135,7 +145,7 @@ class WordPresentationViewController: UIViewController {
             
             self.updateView(true)
             
-            self.delegate?.onWordEdited(self.word!)
+            self.delegate?.onWordDictationMeaningEdited(self.word!)
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in

@@ -118,5 +118,7 @@ class Transaction: NSObject, NSCoding, Equatable {
         aCoder.encodeInt64(self.id, forKey: KTransactionID)
     }
     
-
+    func toString() -> String {
+        return "\(self.amount)"
+    }
 }

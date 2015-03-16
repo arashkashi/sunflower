@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SampleSentenceViewControllerDelegate {
-    func onSentenceEditted(index: Int, word: Word)
+    func onSentenceEditted(index: Int, word: Word, isSentenceRemoved: Bool)
 }
 
 class SampleSentenceViewController: CorpusViewController {
@@ -44,24 +44,28 @@ class SampleSentenceViewController: CorpusViewController {
         
         self.textViewCorpus.alpha = 0
         
-        var alertController =  UIAlertController(title: "Editting", message: "Enter editted sentence.", preferredStyle: .Alert )
+        var alertController =  UIAlertController(title: "Editting", message: "Enter editted sentence!", preferredStyle: .Alert )
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = self.word!.sentences[self.index].original
             textField.autocorrectionType = .Yes
+            textField.clearButtonMode = .Always
         }
         
         var skipAction = UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             var sentence = (alertController.textFields?.first as UITextField).text as String
-            println("----------")
-            println(sentence)
-            println("----------")
-
-            self.word!.sentences[self.index] = Sentence(original: sentence, translated: "")
-            self.word!.printToSTD()
-            self.updateViewWithContent()
             
-            self.delegate?.onSentenceEditted(self.index, word: self.word!)
+            
+            if sentence == "" {
+                self.word!.sentences.removeAtIndex(self.index)
+                self.delegate?.onSentenceEditted(self.index, word: self.word!, isSentenceRemoved: true)
+                
+            } else {
+                self.word!.sentences[self.index] = Sentence(original: sentence, translated: "")
+                self.delegate?.onSentenceEditted(self.index, word: self.word!, isSentenceRemoved: false)
+            }
+            
+            self.updateViewWithContent()
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction!) -> Void in

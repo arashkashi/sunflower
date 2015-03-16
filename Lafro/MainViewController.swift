@@ -59,6 +59,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cashedLearningPacks.removeAll(keepCapacity: true)
     }
     
+    func updateAllCash() {
+        showWaitingOverlay()
+        var ids = LearningPackController.sharedInstance.listOfAvialablePackIDs
+        for learningID in LearningPackController.sharedInstance.listOfAvialablePackIDs {
+            LearningPackController.sharedInstance.loadLearningPackWithID(learningID, completionHandler: { (lpm: LearningPackModel?) -> () in
+                self.cashedLearningPacks[learningID] = lpm!
+                ids = ids.filter{ $0 != lpm!.id }
+                
+                if ids.count == 0 {
+                    self.updateCounter()
+                    self.hideWaitingOverlay()
+                }
+            })
+        }
+    }
+    
     func updateCounter() {
         var counter: Int = 0
         for (id, packModel) in self.cashedLearningPacks {
@@ -100,6 +116,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         updateBalanceButton()
         resetCach()
         tableView.reloadData()
+        
+        updateAllCash()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -197,6 +215,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 UIAlertHelper.showConfirmationForMerging(self, id_1: lpm_merge_1!.id, id_2: lpm.id, yesAction: { (yesAction: UIAlertAction!) -> Void in
                     
                     LearningPackController.sharedInstance.mergePackages(self.lpm_merge_1!, lpm2: lpm, handler: { (success: Bool) -> () in
+                        self.invalidateCashedLearningPack(self.lpm_merge_1!.id)
+                        self.invalidateCashedLearningPack(lpm.id)
+                        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: LearningPackController.sharedInstance.listOfAvialablePackIDs.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
                         self.resetMergeOperation()
                     })
 
@@ -207,8 +228,63 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func onRenamePackageTapped(cell: MainTableCellView) {
+        var selectedLPM = cashedLearningPacks[cell.id]!
+        
+        let alertController = UIAlertController(title: "Rename", message: "Enter the new name!", preferredStyle: .Alert)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.text = selectedLPM.id
+            textField.autocorrectionType = .No
+        }
+        let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
+            var newID = (alertController.textFields?.first as UITextField).text
+            LearningPackController.sharedInstance.renamePackage(selectedLPM.id  , newName: newID) { () -> () in
+                self.tableView.reloadData()
+            }
+        }
+        let noAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(noAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func onBrowsePackageTapped(cell: MainTableCellView) {
         self.performSegueWithIdentifier("from_main_to_browse", sender: cashedLearningPacks[cell.id]!)
+    }
+    
+    @IBAction func onAddPackageTapped(sender: UIBarButtonItem) {
+        var allertController = UIAlertController(title: "New Word List", message: "You are about to create a new word list.", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        var automaticPackageAction = UIAlertAction(title: "Create word list from a text?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            self.performSegueWithIdentifier("from_main_to_add_one", sender: nil)
+        }
+        
+        var freeFiveWordSetAction = UIAlertAction(title: "Create an empty word list?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            
+            var words = Word.fiveWordPlaceholder()
+            var validatedID = LearningPackController.sharedInstance.validateID(NSDate().toString("YYYY-MM-DD"))
+            LearningPackController.sharedInstance.addNewPackage(validatedID, words: words, corpus: nil, completionHandlerForPersistance: { (success: Bool, lpm: LearningPackModel?) -> () in
+                self.tableView.reloadData()
+                self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: LearningPackController.sharedInstance.listOfAvialablePackIDs.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
+            })
+        }
+        
+        var cancel = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
+            //
+        }
+        
+        if NetworkManager.sharedInstance.networkStatus() ==  AFNetworkReachabilityStatus.ReachableViaWiFi {
+            allertController.addAction(automaticPackageAction)
+        }
+        
+        allertController.addAction(freeFiveWordSetAction)
+        allertController.addAction(cancel)
+        
+        self.presentViewController(allertController, animated: true, completion: nil)
     }
     
     func onNetworkReachabilityChange(notification: NSNotification) {
@@ -223,12 +299,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func onNointernetConnection() {
         self.navigationItem.leftBarButtonItem?.enabled = false
-        self.navigationItem.rightBarButtonItem?.enabled = false
+//        self.navigationItem.rightBarButtonItem?.enabled = false
     }
     
     func onInternetConnectionEstablished() {
         self.navigationItem.leftBarButtonItem?.enabled = true
-        self.navigationItem.rightBarButtonItem?.enabled = true
+//        self.navigationItem.rightBarButtonItem?.enabled = true
     }
     
     // MARK: Helper
@@ -274,10 +350,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
             self.updateCashedLearningPack(lpm)
             
-            if self.viewState == .NORMAL {
-                self.updateCounter()
-            }
-            
             if self.lpm_merge_1 == lpm {
                 cellOptional.showMergingContent()
             } else {
@@ -303,6 +375,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         buttons.sw_addUtilityButtonWithColor(UIColor.greenColor(), title: "Merge")              // Index = 0
         buttons.sw_addUtilityButtonWithColor(UIColor.redColor(), title: "Delete")               // Index = 1
         buttons.sw_addUtilityButtonWithColor(UIColor.brownColor(), title: "Browse")             // Index = 2
+        buttons.sw_addUtilityButtonWithColor(UIColor.blueColor(), title: "Rename")              // Index = 3
         
         return buttons
     }
@@ -317,6 +390,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             onMergeTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)
         } else if index == 2 {
             onBrowsePackageTapped(lpmCell)
+        } else if index == 3 {
+            onRenamePackageTapped(lpmCell)
         }
     }
     

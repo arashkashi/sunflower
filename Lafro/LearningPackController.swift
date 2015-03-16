@@ -85,10 +85,27 @@ class LearningPackController {
         })
     }
     
+    func renamePackage(oldName: String, newName: String, completionHandler: (()->())? ) {
+        self.loadLearningPackWithID(oldName, completionHandler: { (oldLearningPackModel: LearningPackModel?) -> () in
+            self.addNewPackage(newName, words: oldLearningPackModel!.words, corpus: oldLearningPackModel!.corpus, completionHandlerForPersistance: { (success: Bool, newLearningPackModel: LearningPackModel?) -> () in
+                self.deletePackage(oldName, completionHandler: { (success: Bool) -> () in
+                    if success || !success {
+                        completionHandler?()
+                    }
+                })
+            })
+        })
+    }
+    
     // Each id should be unique
     func validateID(id: String, existingIDs: [String]) -> String {
         if !existingIDs.includes(id) { return id } else {
             return self.validateID("\(id)I", existingIDs: existingIDs)
+        }
+    }
+    func validateID(id: String) -> String {
+        if !listOfAvialablePackIDs.includes(id) { return id } else {
+            return self.validateID("\(id)I", existingIDs: listOfAvialablePackIDs)
         }
     }
     

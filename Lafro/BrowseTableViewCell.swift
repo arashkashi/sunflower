@@ -34,7 +34,7 @@ class BrowseTableViewCell: UITableViewCell {
         self.indexPath = indexPath
         
         labelWordName.text = word.name
-        labelProgress.text = "\(word.learningProgress)%"
+        labelProgress.text = "\(Int(word.learningProgress * 100))%"
     }
     
     @IBAction func onRemoveTapped(sender: AnyObject)

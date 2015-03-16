@@ -38,6 +38,12 @@ class MainTableCellView: SWTableViewCell {
         labelID.text = "\(learningPackModel.id)"
         labelProgress.text = "\(Int(learningPackModel.progress))%"
         
+        if Int(learningPackModel.progress) > 80 {
+            labelProgress.textColor = UIColor.greenColor()
+        } else {
+            labelProgress.textColor = UIColor.yellowColor   ()
+        }
+        
         activityIndicator.hidden = true
         labelrightIndicator.hidden = false
         self.showContent(true)
