@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CorpusViewController: UIViewController {
+class CorpusViewController: GAITrackedViewController {
     
     var corpus: String?
     var word: Word?
@@ -45,6 +45,10 @@ class CorpusViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         textStorage = nil
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "CorpusViewController"
     }
     
     deinit {

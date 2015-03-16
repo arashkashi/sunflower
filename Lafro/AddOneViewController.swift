@@ -10,7 +10,7 @@ import Foundation
 
 let MINIMUM_ALLOWED_TOKENS = 6
 
-class AddOneViewController: UIViewController, UITextViewDelegate {
+class AddOneViewController: GAITrackedViewController, UITextViewDelegate {
     
     var tokens: [String]?
     var sourceLanguage: String?
@@ -42,6 +42,10 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
         registerNotification()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "addOneViewController"
+    }
+    
     func OnKeyboardShow(note: NSNotification) {
         var keyboardInfo = note.userInfo
         var keyboardFrameBegin: AnyObject? = keyboardInfo![UIKeyboardFrameBeginUserInfoKey]
@@ -67,6 +71,8 @@ class AddOneViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func unwindToAddOne(segue: UIStoryboardSegue) {
     }
+    
+    
 
     // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {

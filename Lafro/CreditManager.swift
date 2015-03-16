@@ -202,6 +202,10 @@ class CreditManager {
         // should be no problem.
         PaymentManager.sharedInstance.finishTransaction(appleTransaction)
         
+        var tracker = GAI.sharedInstance().defaultTracker
+        var id = NSDate().toString("yyyy-MM-dd HH:mm:ss.SSS")
+        tracker.send(["IAP":1, id: id])
+        
         TransactionManager.sharedInstance.commit(lafroTransaction, handler: { (result: CommitResult) -> () in
             if result == .Queued || result == .Succeeded {
                 

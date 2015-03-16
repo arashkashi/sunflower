@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTwoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class AddTwoViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate  {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
@@ -34,6 +34,10 @@ class AddTwoViewController: UIViewController, UITableViewDataSource, UITableView
         
         updateTopTexts()
         registerNotification()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "addTwoViewController"
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

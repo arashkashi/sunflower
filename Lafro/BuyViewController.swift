@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class BuyViewController: UIViewController, SKProductsRequestDelegate {
+class BuyViewController: GAITrackedViewController, SKProductsRequestDelegate {
     
     var requestedProducts: [SKProduct]?
     var formatter: NSNumberFormatter!
@@ -47,6 +47,10 @@ class BuyViewController: UIViewController, SKProductsRequestDelegate {
         NSNotificationCenter.defaultCenter().addObserverForName(NOTIF_IN_APP_PURCHASE_TRANSACTION_UPDATED, object: nil, queue: nil) { (note: NSNotification!) -> Void in
             self.onTransactionUpdated(note)
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "BuyViewController"
     }
     
     func onTransactionUpdated(notifcation: NSNotification) {

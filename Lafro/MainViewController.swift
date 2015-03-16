@@ -14,7 +14,7 @@ enum ViewControllerState: Int32 {
     case MERGE_PHASE_2 = 3
 }
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate {
+class MainViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var labelTopCounter: UILabel!
@@ -95,14 +95,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Remove the top bar buttons for now
 //        self.navigationItem.leftBarButtonItem = nil
-        self.navigationItem.rightBarButtonItem = nil
+//        self.navigationItem.rightBarButtonItem = nil
         
         // Adds the facebook login button onto the view controller.
-        var loginView = FBLoginView()
-        loginView.center = self.view.center
-        self.view.addSubview(loginView)
-        //        self.navigationItem.leftBarButtonItem = nil
-        //        self.navigationItem.rightBarButtonItem = nil
+//        var loginView = FBLoginView()
+//        loginView.center = self.view.center
+//        self.view.addSubview(loginView)
         
         registerNotification()
     }
@@ -118,6 +116,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.reloadData()
         
         updateAllCash()
+        
+        self.screenName = "MainViewController"
     }
     
     override func viewWillDisappear(animated: Bool) {

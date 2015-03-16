@@ -13,7 +13,7 @@ protocol PresentationViewControllerDelegate: WordPresentationViewControllerDeleg
     
 }
 
-class PresentationViewController : UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate, WordPresentationViewControllerDelegate, SampleSentenceViewControllerDelegate  {
+class PresentationViewController : GAITrackedViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate, WordPresentationViewControllerDelegate, SampleSentenceViewControllerDelegate  {
     
     var word : Word?
     
@@ -42,6 +42,10 @@ class PresentationViewController : UIViewController, UIPageViewControllerDataSou
         self.view.addSubview(self.pageViewController.view)
         self.view.bringSubviewToFront(self.pageControl)
    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "PresentationViewController"
+    }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return true;

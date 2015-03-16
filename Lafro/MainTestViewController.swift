@@ -12,7 +12,7 @@ import Foundation
 let kTimeSpent: String = "kTimeSpent"
 let kDateBackup: String = "kDateBackup"
 
-class MainTestViewController : UIViewController, TestViewControllerDelegate, PresentationViewControllerDelegate {
+class MainTestViewController : GAITrackedViewController, TestViewControllerDelegate, PresentationViewControllerDelegate {
     
     var testViewController: TestBaseViewController?
     var presentationViewController: PresentationViewController?
@@ -117,6 +117,7 @@ class MainTestViewController : UIViewController, TestViewControllerDelegate, Pre
     
     override func viewWillAppear(animated: Bool) {
         labelCounter.text = "0"
+        self.screenName = "MainTestViewController"
     }
     
     // #MARK: Learning logic

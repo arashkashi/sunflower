@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddThreeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AddThreeViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate {
     var tokens: [String]!
     var corpus: String!
     var sourceLanguage: String!
@@ -46,6 +46,7 @@ class AddThreeViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         hideMakeButton()
+        self.screenName = "AddThreeViewController"
     }
 
     func updateSupportedLanguages() {

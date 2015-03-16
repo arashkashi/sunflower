@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+class ResultViewController: GAITrackedViewController {
     
     @IBOutlet var viewCorrectContainer: UIView!
     @IBOutlet var viewWrongContainer: UIView!
@@ -19,6 +19,10 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         self.hideAll(false, nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "ResultViewController"
     }
     
     // MARK: View manipulation

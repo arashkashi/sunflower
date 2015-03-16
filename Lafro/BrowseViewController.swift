@@ -9,8 +9,7 @@
 import UIKit
 
 
-
-class BrowseViewController: UIViewController, UITableViewDataSource, BrowseCellDelegate {
+class BrowseViewController: GAITrackedViewController, UITableViewDataSource, BrowseCellDelegate {
     
     var learningPackModel: LearningPackModel!
     @IBOutlet var tableView: UITableView!
@@ -26,6 +25,10 @@ class BrowseViewController: UIViewController, UITableViewDataSource, BrowseCellD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.screenName = "BrowseViewController"
     }
     
     // MARK: Delegate

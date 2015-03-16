@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
         
         // Initialize tracker. Replace with your tracking ID.
-        GAI.sharedInstance().trackerWithTrackingId("UA-60815320-1")
+        GAI.sharedInstance().trackerWithTrackingId("UA-60808157-1")
         
         return true
     }
