@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		22EB77C2EFB9CD3C68D9F23C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
+		411753921AB75BB1002B1944 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411753911AB75BB1002B1944 /* CoreData.framework */; };
+		411753941AB75BBB002B1944 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411753931AB75BBB002B1944 /* SystemConfiguration.framework */; };
+		411753961AB75BD2002B1944 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 411753951AB75BD2002B1944 /* libz.dylib */; };
+		411753981AB75BDF002B1944 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 411753971AB75BDF002B1944 /* libsqlite3.dylib */; };
+		4117539A1AB75C5A002B1944 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 411753991AB75C5A002B1944 /* libGoogleAnalyticsServices.a */; };
 		41271C4C1AA6EF2A00B8E7A6 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */; };
 		412E7B8B1AA09B4400A4347F /* editlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 412E7B8A1AA09B4400A4347F /* editlogo.png */; };
 		4182EA871A25536F00627CB6 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182EA861A25536F00627CB6 /* BuyViewController.swift */; };
@@ -146,6 +151,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		411753911AB75BB1002B1944 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		411753931AB75BBB002B1944 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		411753951AB75BD2002B1944 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		411753971AB75BDF002B1944 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		411753991AB75C5A002B1944 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = "Pods/GoogleAnalytics-iOS-SDK/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; };
 		41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertHelper.swift; sourceTree = "<group>"; };
 		412E7B8A1AA09B4400A4347F /* editlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editlogo.png; sourceTree = "<group>"; };
 		4182EA861A25536F00627CB6 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +270,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4117539A1AB75C5A002B1944 /* libGoogleAnalyticsServices.a in Frameworks */,
+				411753981AB75BDF002B1944 /* libsqlite3.dylib in Frameworks */,
+				411753961AB75BD2002B1944 /* libz.dylib in Frameworks */,
+				411753941AB75BBB002B1944 /* SystemConfiguration.framework in Frameworks */,
+				411753921AB75BB1002B1944 /* CoreData.framework in Frameworks */,
 				43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */,
 				41C18B061A24001900639C92 /* CloudKit.framework in Frameworks */,
 			);
@@ -279,6 +294,11 @@
 		372C37A194A8C976D4412DFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				411753991AB75C5A002B1944 /* libGoogleAnalyticsServices.a */,
+				411753971AB75BDF002B1944 /* libsqlite3.dylib */,
+				411753951AB75BD2002B1944 /* libz.dylib */,
+				411753931AB75BBB002B1944 /* SystemConfiguration.framework */,
+				411753911AB75BB1002B1944 /* CoreData.framework */,
 				41C18B051A24001900639C92 /* CloudKit.framework */,
 				54BCC503C42383CE6BB76567 /* libPods.a */,
 			);
@@ -927,6 +947,10 @@
 				INFOPLIST_FILE = Lafro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics-iOS-SDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lafro/Lafro-Bridging-Header.h";
@@ -948,6 +972,10 @@
 				INFOPLIST_FILE = Lafro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics-iOS-SDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lafro/Lafro-Bridging-Header.h";
