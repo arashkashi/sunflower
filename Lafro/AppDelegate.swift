@@ -68,7 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Helper
     func showInformationWithMessage(title: String, message: String) {
-        var alertController =  UIAlertController(title: title, message: message, preferredStyle: .ActionSheet )
+        var alertStyle: UIAlertControllerStyle = .ActionSheet
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            alertStyle = .Alert
+        }
+        
+        var alertController =  UIAlertController(title: title, message: message, preferredStyle: alertStyle )
         
         var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
         }

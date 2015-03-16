@@ -101,7 +101,13 @@ class AddThreeViewController: GAITrackedViewController, UITableViewDataSource, U
     }
     
     func showAllertForMissingInfo(message: String) {
-        var alertController =  UIAlertController(title: "Missing Info", message: message, preferredStyle: .ActionSheet )
+        var alertStyle: UIAlertControllerStyle = .ActionSheet
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            alertStyle = .Alert
+        }
+        
+        var alertController =  UIAlertController(title: "Missing Info", message: message, preferredStyle: alertStyle )
         
         var retryAction = UIAlertAction(title: "re-try", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             

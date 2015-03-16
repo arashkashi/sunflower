@@ -61,7 +61,13 @@ class WordPresentationViewController: UIViewController {
     }
     
     func askUserWhatToDo( handler: (String)-> Void ) {
-        var alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        var alertStyle: UIAlertControllerStyle = .ActionSheet
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            alertStyle = .Alert
+        }
+        
+        var alertController = UIAlertController(title: nil, message: nil, preferredStyle:alertStyle)
         
         var editWordMeaningAction = UIAlertAction(title: "Edit word's meaning/dictation?", style: .Destructive) { (action: UIAlertAction!) -> Void in
             handler("editWord")

@@ -95,7 +95,7 @@
                                         </variation>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="16" y="126" width="368" height="674"/>
                                 </variation>
@@ -165,7 +165,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QnA-9b-FTu" firstAttribute="top" secondItem="Rdd-gJ-gKU" secondAttribute="bottom" constant="10" id="16L-sa-YYx"/>
                             <constraint firstAttribute="centerX" secondItem="JFW-NR-EoJ" secondAttribute="centerX" constant="201.5" id="1BY-M4-zw5"/>
@@ -254,7 +254,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IX3-4G-u2u">
                                 <rect key="frame" x="26" y="54" width="548" height="536"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -365,7 +365,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="lVO-VG-dJQ" firstAttribute="top" secondItem="LCh-9o-AGr" secondAttribute="bottom" id="654-sx-PY8"/>
                             <constraint firstItem="G2o-3n-N2d" firstAttribute="top" secondItem="lVO-VG-dJQ" secondAttribute="bottom" id="DAR-Fz-3Gu"/>
@@ -438,7 +438,7 @@
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KP4-Nm-OYO" firstAttribute="top" secondItem="1ZT-BA-kBu" secondAttribute="bottom" id="8oe-XI-CZ6"/>
                             <constraint firstAttribute="centerX" secondItem="98a-b2-Afy" secondAttribute="centerX" id="9em-gs-mNJ"/>
@@ -556,7 +556,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="LGp-EI-gGF" firstAttribute="top" secondItem="vju-ST-AxM" secondAttribute="bottom" constant="10" id="0IV-dr-G0H"/>
                             <constraint firstItem="vju-ST-AxM" firstAttribute="leading" secondItem="Dev-zR-NdE" secondAttribute="leadingMargin" constant="10" id="45F-wQ-XQj"/>
@@ -653,7 +653,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="sg8-7w-5Zg" firstAttribute="leading" secondItem="wMg-GV-UcW" secondAttribute="leadingMargin" constant="10" id="0iG-wU-N2x"/>
                             <constraint firstItem="elg-uE-7os" firstAttribute="width" secondItem="elg-uE-7os" secondAttribute="height" multiplier="130:35" constant="30" id="8V8-Uo-AJ9"/>
@@ -751,7 +751,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="46F-9A-tWa" secondAttribute="trailing" constant="1" id="Cd6-JF-w9x"/>
                             <constraint firstItem="f9s-Q3-HvQ" firstAttribute="top" secondItem="46F-9A-tWa" secondAttribute="bottom" constant="10" id="CyT-ap-BRc"/>
@@ -886,7 +886,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7xq-lA-hsT" firstAttribute="top" secondItem="lyq-RO-JKz" secondAttribute="bottom" constant="5" id="2d3-oj-ViL"/>
                             <constraint firstItem="lyq-RO-JKz" firstAttribute="top" secondItem="bAs-xc-f2Q" secondAttribute="bottom" constant="5" id="5Ct-OF-S2f"/>

@@ -222,7 +222,13 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     }
     
     @IBAction func onSkipTapped(sender: AnyObject) {
-        var alertController =  UIAlertController(title: "You Already know \"\(self.currentWord!.name)\"?", message: "Want to skip?", preferredStyle: .ActionSheet )
+        var alertStyle: UIAlertControllerStyle = .ActionSheet
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            alertStyle = .Alert
+        }
+        
+        var alertController =  UIAlertController(title: "You Already know \"\(self.currentWord!.name)\"?", message: "Want to skip?", preferredStyle: alertStyle )
         
         var skipAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             if  self.currentWord != nil{
@@ -277,7 +283,13 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
 
             self.onWordAdded(word)
             
-            var alertControllerII = UIAlertController(title: "Congratulations", message: "New word successcully added", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            var alertStyle: UIAlertControllerStyle = .ActionSheet
+            
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+                alertStyle = .Alert
+            }
+            
+            var alertControllerII = UIAlertController(title: "Congratulations", message: "New word successcully added", preferredStyle: alertStyle)
             
             var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
 

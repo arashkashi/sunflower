@@ -76,42 +76,53 @@ class AddOneViewController: GAITrackedViewController, UITextViewDelegate {
 
     // MARK: IB Action
     @IBAction func onNextTapped(sender: AnyObject) {
-        // Check for credit
-        if !CreditManager.sharedInstance.hasCreditFor(GoogleTranslate.sharedInstance.costToTranslate(self.tokens!)) {
-            self.showErrorLowCredit()
-            return
+        if ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"].includes(self.textViewCorpus.text) {
+            showWaitingOverlay()
+            LearningPackController.sharedInstance.loadLearningPackWithID(self.textViewCorpus.text, completionHandler: { (lpm: LearningPackModel?) -> () in
+                LearningPackController.sharedInstance.listOfAvialablePackIDs.append(self.textViewCorpus.text)
+                self.hideWaitingOverlay()
+                self.performSegueWithIdentifier("fromaddonetomain", sender: nil)
+            })
         }
-        
-        // Show waiting overlay
-        showWaitingOverlay()
-        
-        // Generate the raw tokens
-        updateTokens()
-        
-        // Check if the tokens and text are valid, if not valid, return
-        if textLengthCorrect() && tokens != nil {
-            if self.tokens!.count < MINIMUM_ALLOWED_TOKENS {
-                self.showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(self.tokens!.count) tokens")
+        else
+        {
+            // Check for credit
+            if !CreditManager.sharedInstance.hasCreditFor(GoogleTranslate.sharedInstance.costToTranslate(self.tokens!)) {
+                self.showErrorLowCredit()
+                return
+            }
+            
+            // Show waiting overlay
+            showWaitingOverlay()
+            
+            // Generate the raw tokens
+            updateTokens()
+            
+            // Check if the tokens and text are valid, if not valid, return
+            if textLengthCorrect() && tokens != nil {
+                if self.tokens!.count < MINIMUM_ALLOWED_TOKENS {
+                    self.showErrorAlertWithMesssage("Text could not split into enought number of tokens, currently have \(self.tokens!.count) tokens")
+                    hideWaitingOverlay()
+                    return
+                }
+            } else {
+                self.showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
                 hideWaitingOverlay()
                 return
             }
-        } else {
-            self.showErrorAlertWithMesssage("Enter text between 20 to 1000 characters. Current text has \(self.textViewCorpus.text.length()) characters")
-            hideWaitingOverlay()
-            return
+            
+            // Detect the source language, if error inform user and stay
+            GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
+                if err != nil || detectedLanguage == nil {
+                    self.showErrorAlertWithMesssage("Could not detect the source language")
+                    self.hideWaitingOverlay()
+                    return }
+                
+                self.sourceLanguage = detectedLanguage!
+                
+                self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
+            })
         }
-        
-        // Detect the source language, if error inform user and stay
-        GoogleTranslate.sharedInstance.detectLanaguage(self.textViewCorpus.text, completionHandler: { (detectedLanguage: String?, err: String?) -> () in
-            if err != nil || detectedLanguage == nil {
-                self.showErrorAlertWithMesssage("Could not detect the source language")
-                self.hideWaitingOverlay()
-                return }
-            
-            self.sourceLanguage = detectedLanguage!
-            
-            self.performSegueWithIdentifier("fromaddonetoaddtwo", sender: nil)
-        })
     }
     
     @IBAction func onClearTapped(sender: UIButton) {
@@ -196,7 +207,13 @@ class AddOneViewController: GAITrackedViewController, UITextViewDelegate {
     }
     
     func showAllertForMissingInfo(message: String) {
-        var alertController =  UIAlertController(title: "Missing Info", message: message, preferredStyle: .ActionSheet )
+        var alertStyle: UIAlertControllerStyle = .ActionSheet
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            alertStyle = .Alert
+        }
+        
+        var alertController =  UIAlertController(title: "Missing Info", message: message, preferredStyle: alertStyle )
         
         var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             
