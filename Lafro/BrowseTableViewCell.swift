@@ -26,6 +26,7 @@ class BrowseTableViewCell: UITableViewCell {
     {
         super.awakeFromNib()
         // Initialization code
+        self.backgroundColor = UIColor.blackColor()
     }
     
     func updateWithWord(word: Word, indexPath: NSIndexPath)

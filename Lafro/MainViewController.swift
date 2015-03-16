@@ -60,8 +60,10 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     }
     
     func updateAllCash() {
-        showWaitingOverlay()
         var ids = LearningPackController.sharedInstance.listOfAvialablePackIDs
+        if ids.count == 0 { return }
+        
+        showWaitingOverlay()
         for learningID in LearningPackController.sharedInstance.listOfAvialablePackIDs {
             LearningPackController.sharedInstance.loadLearningPackWithID(learningID, completionHandler: { (lpm: LearningPackModel?) -> () in
                 self.cashedLearningPacks[learningID] = lpm!
@@ -257,7 +259,13 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func onAddPackageTapped(sender: UIBarButtonItem) {
-        var allertController = UIAlertController(title: "New Word List", message: "You are about to create a new word list.", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        var alertStyle: UIAlertControllerStyle = .ActionSheet
+        
+        if .Pad == UIDevice.currentDevice().userInterfaceIdiom {
+            alertStyle = .Alert
+        }
+        
+        var allertController = UIAlertController(title: "New Word List", message: "You are about to create a new word list.", preferredStyle: alertStyle)
         
         var automaticPackageAction = UIAlertAction(title: "Create word list from a text?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
             self.performSegueWithIdentifier("from_main_to_add_one", sender: nil)
