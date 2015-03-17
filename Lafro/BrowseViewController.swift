@@ -35,6 +35,7 @@ class BrowseViewController: GAITrackedViewController, UITableViewDataSource, Bro
     func onCellResetTapped(indexPath: NSIndexPath) {
         var word = learningPackModel.words[indexPath.row]
         word.resetLearing()
+        self.learningPackModel.saveChanges()
         tableView.reloadData()
     }
     
