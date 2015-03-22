@@ -100,7 +100,7 @@ class CreditManager {
             }
             
             // Case: Initial credit is granted
-            if record!.allKeys().includes(kCreditManagerInitialCreditGranted) {
+            if record!.allKeys().includes(kCreditManagerInitialCreditGranted) && (record!.objectForKey(kCreditManagerInitialCreditGranted) as? Bool) == true{
                 handler(true, nil)
                 return
             }
