@@ -127,6 +127,9 @@
 		41C2E2311AB03F6200D6EFF0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C2E2301AB03F6200D6EFF0 /* plus.png */; };
 		41C2E2331AB0DE9400D6EFF0 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2E2321AB0DE9400D6EFF0 /* BrowseViewController.swift */; };
 		41C2E2351AB0E34600D6EFF0 /* BrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2E2341AB0E34600D6EFF0 /* BrowseTableViewCell.swift */; };
+		41E4418F1ABF2CC8002C4B4D /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E4418E1ABF2CC8002C4B4D /* eraser.png */; };
+		41E441911ABF2CCE002C4B4D /* bin.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E441901ABF2CCE002C4B4D /* bin.png */; };
+		41E441931ABF2D71002C4B4D /* text-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E441921ABF2D71002C4B4D /* text-icon.png */; };
 		43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
 		B25F87A31A6D4ADC00047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
@@ -256,6 +259,9 @@
 		41C2E2301AB03F6200D6EFF0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		41C2E2321AB0DE9400D6EFF0 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		41C2E2341AB0E34600D6EFF0 /* BrowseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseTableViewCell.swift; sourceTree = "<group>"; };
+		41E4418E1ABF2CC8002C4B4D /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
+		41E441901ABF2CCE002C4B4D /* bin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bin.png; sourceTree = "<group>"; };
+		41E441921ABF2D71002C4B4D /* text-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-icon.png"; sourceTree = "<group>"; };
 		54BCC503C42383CE6BB76567 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
@@ -308,6 +314,9 @@
 		412E7B891AA09B3000A4347F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				41E441921ABF2D71002C4B4D /* text-icon.png */,
+				41E441901ABF2CCE002C4B4D /* bin.png */,
+				41E4418E1ABF2CC8002C4B4D /* eraser.png */,
 				41C2E2301AB03F6200D6EFF0 /* plus.png */,
 				41C2E22E1AB03CF000D6EFF0 /* garbage.png */,
 				412E7B8A1AA09B4400A4347F /* editlogo.png */,
@@ -641,6 +650,7 @@
 				41C18AB51A23FC2600639C92 /* pack_id_7.json in Resources */,
 				41C18A7A1A23FBD600639C92 /* Test1View.xib in Resources */,
 				41C18AB81A23FC2600639C92 /* pack_id_10.json in Resources */,
+				41E441911ABF2CCE002C4B4D /* bin.png in Resources */,
 				41C18AB11A23FC2600639C92 /* pack_id_3.json in Resources */,
 				41C18ABD1A23FC2600639C92 /* pack_id_15.json in Resources */,
 				41C18A811A23FBD600639C92 /* SampleSentenceViewController.xib in Resources */,
@@ -651,6 +661,8 @@
 				41C18AAF1A23FC2600639C92 /* pack_id_1.json in Resources */,
 				41C18ABB1A23FC2600639C92 /* pack_id_13.json in Resources */,
 				41C18AB01A23FC2600639C92 /* pack_id_2.json in Resources */,
+				41E4418F1ABF2CC8002C4B4D /* eraser.png in Resources */,
+				41E441931ABF2D71002C4B4D /* text-icon.png in Resources */,
 				41C18AB31A23FC2600639C92 /* pack_id_5.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
