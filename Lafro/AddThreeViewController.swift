@@ -26,13 +26,17 @@ class AddThreeViewController: GAITrackedViewController, UITableViewDataSource, U
     
     // MARK: Actions
     @IBAction func onMakeTapped(sender: UIBarButtonItem) {
+        navigationItem.hidesBackButton = true
         showWaitingOverlay()
         makePackage { (success: Bool, error: NSError?)  -> () in
+            self.navigationItem.hidesBackButton = false
+            
             if success {
                 self.gobackToMainView()
             } else {
                 self.hideWaitingOverlay()
                 self.showErrorAlertWhenFailed(error)
+                
             }
         }
     }
