@@ -6,6 +6,7 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 
+#import "Mixpanel.h"
 
 // Google analytics
 #import <GAI.h>

@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize tracker. Replace with your tracking ID.
         GAI.sharedInstance().trackerWithTrackingId("UA-60808157-1")
         
+        Mixpanel.sharedInstanceWithToken("a8b19796535c4ae170a53c1a41bae0ae")
+        
         return true
     }
     

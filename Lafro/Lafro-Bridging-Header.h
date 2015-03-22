@@ -11,7 +11,7 @@
 #import <SWTableViewCell.h>
 
 
-
+#import "Mixpanel.h"
 
 
 // Google analytics
