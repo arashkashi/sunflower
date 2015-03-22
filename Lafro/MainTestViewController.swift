@@ -278,9 +278,16 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
             var wordString  = nameTextfield.text
             var wordMeaning = meaningTextField.text
             var sampleSentence = sentenceTextField.text
+            if sampleSentence == "" { sampleSentence = nil }
             
-            var word = Word(name: wordString, meaning: wordMeaning, sentences: [Sentence(original: sampleSentence, translated: "")])
-
+            var word: Word!
+            
+            if sampleSentence != nil {
+                word = Word(name: wordString, meaning: wordMeaning, sentences: [Sentence(original: sampleSentence, translated: "")])
+            } else {
+                word = Word(name: wordString, meaning: wordMeaning, sentences:[])
+            }
+            
             self.onWordAdded(word)
             
             var alertStyle: UIAlertControllerStyle = .ActionSheet
