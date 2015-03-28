@@ -186,9 +186,9 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete? You can never undo this action.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             LearningPackController.sharedInstance.deletePackage(lpm.id, completionHandler: { (successed: Bool) -> () in
-                self.tableView.reloadData()
                 self.updateAllCash()
                 self.updateCounter()
+                self.tableView.reloadData()
             })
         }
         let yesAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
