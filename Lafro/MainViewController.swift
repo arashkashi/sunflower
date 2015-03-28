@@ -61,7 +61,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     
     func updateAllCash() {
         var ids = LearningPackController.sharedInstance.listOfAvialablePackIDs
-        if ids.count == 0 { return }
+        if ids.count == 0 { self.resetCach(); return }
         
         showWaitingOverlay()
         for learningID in LearningPackController.sharedInstance.listOfAvialablePackIDs {
