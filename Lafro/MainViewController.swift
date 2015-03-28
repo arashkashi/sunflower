@@ -187,6 +187,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             LearningPackController.sharedInstance.deletePackage(lpm.id, completionHandler: { (successed: Bool) -> () in
                 self.tableView.reloadData()
+                self.updateAllCash()
+                self.updateCounter()
             })
         }
         let yesAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
@@ -221,6 +223,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
                         self.invalidateCashedLearningPack(lpm.id)
                         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: LearningPackController.sharedInstance.listOfAvialablePackIDs.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
                         self.resetMergeOperation()
+                        self.updateAllCash()
+                        self.updateCounter()
                     })
 
                     }, noAction: { (noAction: UIAlertAction!) -> Void in
