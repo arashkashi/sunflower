@@ -36,7 +36,7 @@ class Test1ViewController : TestBaseViewController {
 
     // MARK: IBAction
     @IBAction func onChoiceSelected(sender: AnyObject) {
-        var tappedButton = sender as UIButton
+        var tappedButton = sender as! UIButton
         
         self.selectedAnswer = tappedButton.titleLabel?.text
         

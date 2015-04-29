@@ -105,7 +105,7 @@ class Transaction: NSObject, NSCoding, Equatable {
     required init(coder aDecoder: NSCoder) {
         self.amount = aDecoder.decodeInt32ForKey(kTransactionAmount)
         self.type = TransactionType.initWithInt(aDecoder.decodeInt32ForKey(kTransactionType))
-        self.createDate = aDecoder.decodeObjectForKey(kTransactionCreationDate) as NSDate
+        self.createDate = aDecoder.decodeObjectForKey(kTransactionCreationDate) as! NSDate
         self.status = TransactionStatus.initWithInt(aDecoder.decodeInt32ForKey(kTransactionStatus))
         self.id = aDecoder.decodeInt64ForKey(KTransactionID)
     }

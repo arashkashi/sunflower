@@ -130,7 +130,7 @@ class LearningPackController {
         var listOfLocalDocs = self.queryListOfDocsInLocal()
         
         for docName in listOfLocalDocs {
-            var temp = (docName.componentsSeparatedByString(".") as [String])[0]
+            var temp = (docName.componentsSeparatedByString(".") as! [String])[0]
             if temp == id {
                 return true
             }
@@ -150,7 +150,7 @@ class LearningPackController {
             
             if localDocs != nil {
                 for document in localDocs! {
-                    result.append(document as NSString)
+                    result.append(document as! NSString)
                 }
             }
         }

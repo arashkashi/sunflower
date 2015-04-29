@@ -27,7 +27,7 @@ class PaymentManager: NSObject,  SKProductsRequestDelegate, SKPaymentTransaction
     }
     
     func requestProductsFor(productIdentifiers: NSSet, delegate: SKProductsRequestDelegate?) {
-        var request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        var request = SKProductsRequest(productIdentifiers: productIdentifiers as Set<NSObject>)
         
         if delegate != nil {
             request.delegate = delegate

@@ -36,11 +36,11 @@ class LearnerController {
         // instead of putting it in the button of the list, put it into the future list
         // and its place, put an item from the due now list and then take one word from
         // the button and put it onto the top.
-        if var learntWordI = self.currentLearningQueue.first? {
+        if var learntWordI = self.currentLearningQueue.first {
             if learntWordI.isDueInFuture() {
                 self.addWordToFutureList(learntWordI)
                 
-                if var newDueWord = self.wordsDueNow.first? {
+                if var newDueWord = self.wordsDueNow.first {
                     self.wordsDueNow.removeAtIndex(0)
                     self.currentLearningQueue.insert(newDueWord, atIndex: 0)
                     return (self.insertLastItemInFirstAndReturnTheItem(&self.currentLearningQueue), NextWordNilStatus.MORE_WORDS_TO_GO)
@@ -58,7 +58,7 @@ class LearnerController {
         }
         
         // If current queue has a word for presentation on top, present it.
-        if var learntWord = self.currentLearningQueue.first? {
+        if var learntWord = self.currentLearningQueue.first {
             if learntWord.shouldShowWordPresentation {
                 return (learntWord, NextWordNilStatus.MORE_WORDS_TO_GO)
             }

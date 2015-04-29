@@ -174,7 +174,7 @@ class AddThreeViewController: GAITrackedViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell_supported_languages") as! UITableViewCell?
         
         cell?.detailTextLabel!.text = supportedLanagages[indexPath.row]["language"]
         cell?.textLabel?.text = supportedLanagages[indexPath.row]["name"]
@@ -194,7 +194,7 @@ class AddThreeViewController: GAITrackedViewController, UITableViewDataSource, U
     
     // MARK: Helper
     func onNetworkReachabilityChange(notification: NSNotification) {
-        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as! String
         
         if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
         {

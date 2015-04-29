@@ -56,8 +56,8 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
         self.updateTimerLabel()
     }
     
-    func navigationController() -> UINavigationController {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    func navigationControllerr() -> UINavigationController {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         return appDelegate.rootNavigationController!
     }
     
@@ -71,13 +71,13 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
             buttonCorpus.hidden = true
         }
         
-        navigationController().navigationBarHidden = true
+        navigationControllerr().navigationBarHidden = true
         learnNextWord()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "corpus" {
-            var vc = segue.destinationViewController as CorpusViewController
+            var vc = segue.destinationViewController as! CorpusViewController
             vc.corpus = learnerController?.learningPackModel.corpus
             vc.word = currentWord
         }
@@ -87,7 +87,7 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
         backuptimerValueOnExitingView()
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        navigationController().navigationBarHidden = false
+        navigationControllerr().navigationBarHidden = false
     }
     
     func onAppBecomeActive() {
@@ -145,7 +145,7 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
             
             progressView.hidden = true
         } else {
-            if var nextTest = word.nextTest()? {
+            if var nextTest = word.nextTest() {
                 doTestTypeForWord(word, test: nextTest, result: { (test: Test, testResult: TestResult, word: Word) -> () in
                     self.onWordFinishedTesting(word, test: test, testResult: testResult)
                 })
@@ -271,9 +271,9 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
         }
         
         var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
-            var nameTextfield = alertController.textFields?[0] as UITextField
-            var meaningTextField = alertController.textFields?[1] as UITextField
-            var sentenceTextField = alertController.textFields?[2] as UITextField
+            var nameTextfield = alertController.textFields?[0] as! UITextField
+            var meaningTextField = alertController.textFields?[1] as! UITextField
+            var sentenceTextField = alertController.textFields?[2] as! UITextField
             
             var wordString  = nameTextfield.text
             var wordMeaning = meaningTextField.text
@@ -407,7 +407,7 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     //MARK: Helper
     func removeAllSubviewsFor(view: UIView) {
         for item in view.subviews {
-            var subview: UIView = item as UIView
+            var subview: UIView = item as! UIView
             subview.removeFromSuperview()
         }
     }
@@ -431,13 +431,13 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
         }
         
         if test.type == TestType.Test1 {
-            (testViewController as Test1ViewController).wordChoices = wordChoices
-            (testViewController as Test1ViewController).delegate = self
+            (testViewController as! Test1ViewController).wordChoices = wordChoices
+            (testViewController as! Test1ViewController).delegate = self
         }
         
         if test.type == TestType.Test2 {
-            (testViewController as Test2ViewController).wordChoices = wordChoices
-            (testViewController as Test2ViewController).delegate = self
+            (testViewController as! Test2ViewController).wordChoices = wordChoices
+            (testViewController as! Test2ViewController).delegate = self
         }
         
         return testViewController
