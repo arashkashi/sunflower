@@ -103,7 +103,7 @@ class WordPresentationViewController: UIViewController {
         }
         
         var addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
-            var nameTextfield = alertController.textFields?.first as UITextField
+            var nameTextfield = alertController.textFields?.first as! UITextField
             
             self.word?.sentences.append(Sentence(original: nameTextfield.text, translated: ""))
             
@@ -143,8 +143,8 @@ class WordPresentationViewController: UIViewController {
         }
         
         var skipAction = UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
-            var nameTextfield = alertController.textFields?.first as UITextField
-            var meaningTextField = alertController.textFields?.last as UITextField
+            var nameTextfield = alertController.textFields?.first as! UITextField
+            var meaningTextField = alertController.textFields?.last as! UITextField
             
             self.word?.name = nameTextfield.text
             self.word?.meaning = meaningTextField.text

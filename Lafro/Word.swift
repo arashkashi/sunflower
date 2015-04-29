@@ -135,10 +135,10 @@ class Word : NSObject, Equatable, NSCoding {
         case LearningStage.Young:
             return NSDate().dateByAddingTimeInterval(60 * 60 * 50)      // 50 hours
         case LearningStage.Mature:
-            return (NSDate.distantFuture() as NSDate)
+            return (NSDate.distantFuture() as! NSDate)
         default:
             assert(false, "Fail: should not be here")
-            return (NSDate.distantFuture() as NSDate)
+            return (NSDate.distantFuture() as! NSDate)
         }
     }
     
@@ -233,8 +233,8 @@ class Word : NSObject, Equatable, NSCoding {
         self.relearningDueDate = aDecoder.decodeObjectForKey(kLearningDueDate) as? NSDate
         self.currentLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kLearningStage) as Int32)
         self.prevLearningStage = LearningStage.initWithInt(aDecoder.decodeInt32ForKey(kPrevLEarningStage) as Int32)
-        self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as [Test]
+        self.testsSuccessfulyDoneForCurrentStage = aDecoder.decodeObjectForKey(kTestsSuccessfullyDone) as! [Test]
         self.shouldShowWordPresentation = aDecoder.decodeBoolForKey(kShouldShowPresentation)
-        self.sentences = aDecoder.decodeObjectForKey(kSentences) as [Sentence]
+        self.sentences = aDecoder.decodeObjectForKey(kSentences) as! [Sentence]
     }
 }

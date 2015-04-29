@@ -61,7 +61,7 @@ class AddOneViewController: GAITrackedViewController, UITextViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fromaddonetoaddtwo" {
-            var vc = segue.destinationViewController as AddTwoViewController
+            var vc = segue.destinationViewController as! AddTwoViewController
             vc.tokens = self.tokens!
             vc.corpus = self.textViewCorpus.text
             vc.sourceLanguage = self.sourceLanguage!
@@ -243,13 +243,13 @@ class AddOneViewController: GAITrackedViewController, UITextViewDelegate {
     }
     
     // MARK: Helper
-    func navigationController() -> UINavigationController {
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    func navigationControllerr() -> UINavigationController {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         return appDelegate.rootNavigationController!
     }
     
     func onNetworkReachabilityChange(notification: NSNotification) {
-        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as! String
         
         if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
         {

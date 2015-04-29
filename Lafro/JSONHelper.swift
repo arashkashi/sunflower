@@ -27,7 +27,7 @@ class JSONHelper {
     }
     
     class func dataFromJSONFile(filename: String) -> NSData? {
-        if let filePath = NSBundle.mainBundle().pathForResource(filename, ofType: "json")? {
+        if let filePath = NSBundle.mainBundle().pathForResource(filename, ofType: "json") {
             var temp =  NSData(contentsOfFile: filePath, options: NSDataReadingOptions.allZeros, error: nil)// (contentsOfFile: filePath)
             return temp
         } else {

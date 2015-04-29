@@ -13,7 +13,7 @@ extension CKRecord {
     
     func keysInString() {
         for key in self.allKeys() {
-            var valueInNumber = self.objectForKey(key as String) as? NSNumber
+            var valueInNumber = self.objectForKey(key as! String) as? NSNumber
             
             if let value = valueInNumber {
                 println("\(key) -> \(value)")

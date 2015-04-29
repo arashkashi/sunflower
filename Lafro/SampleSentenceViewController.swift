@@ -53,7 +53,7 @@ class SampleSentenceViewController: CorpusViewController {
         }
         
         var skipAction = UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
-            var sentence = (alertController.textFields?.first as UITextField).text as String
+            var sentence = (alertController.textFields?.first as! UITextField).text as String
             
             
             if sentence == "" {

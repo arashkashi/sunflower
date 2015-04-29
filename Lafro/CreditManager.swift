@@ -182,7 +182,7 @@ class CreditManager {
     func onAppleTransactionFailed(appleTransaction: SKPaymentTransaction) {
         
         // Show a alert view that transaction has failed
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.showInformationWithMessage("Payment Failed", message: "\(appleTransaction.error.userInfo?.description)")
         
         

@@ -42,7 +42,7 @@ class AddTwoViewController: GAITrackedViewController, UITableViewDataSource, UIT
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fromaddtwotoaddthree" {
-            var vc = segue.destinationViewController as AddThreeViewController
+            var vc = segue.destinationViewController as! AddThreeViewController
             vc.tokens = finaltokens(self.selectedTokens, allTokens: self.tokens)
             vc.corpus = self.corpus
             vc.sourceLanguage = self.sourceLanguage
@@ -184,7 +184,7 @@ class AddTwoViewController: GAITrackedViewController, UITableViewDataSource, UIT
     
     // MARK: Table view delegates
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as TokensViewCell
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! TokensViewCell
         
         if self.isTokenSelected(cell.token) && self.selectedTokens.count < MINIMUM_ALLOWED_TOKENS {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -206,7 +206,7 @@ class AddTwoViewController: GAITrackedViewController, UITableViewDataSource, UIT
     
     // MARK: Helper
     func onNetworkReachabilityChange(notification: NSNotification) {
-        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as! String
         
         if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION
         {

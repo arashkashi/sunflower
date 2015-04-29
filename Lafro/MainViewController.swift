@@ -133,20 +133,20 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "to_main_test" {
-            var testViewController = segue.destinationViewController as MainTestViewController
+            var testViewController = segue.destinationViewController as! MainTestViewController
             //            var learningPackID = "\(self.tableView.indexPathForSelectedRow()!.row + 1)"
             
-            var lpm = sender as LearningPackModel
+            var lpm = sender as! LearningPackModel
             var selectedID = lpm.id
             testViewController.leaningPackID = selectedID
             testViewController.learnerController = self.learnerController
             invalidateCashedLearningPack(selectedID)
         } else if segue.identifier == "frommainviewtocorpus" {
-            var corpusVC = segue.destinationViewController as CorpusViewController
+            var corpusVC = segue.destinationViewController as! CorpusViewController
             corpusVC.corpus = self.learnerController!.learningPackModel.corpus
         } else if segue.identifier == "from_main_to_browse" {
-            var broseVC = segue.destinationViewController as BrowseViewController
-            var learningPack = sender as LearningPackModel
+            var broseVC = segue.destinationViewController as! BrowseViewController
+            var learningPack = sender as! LearningPackModel
             broseVC.learningPackModel = learningPack
         }
     }
@@ -174,7 +174,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.hideWaitingOverlay()
         } else if viewState == .MERGE_PHASE_1 {
-            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as MainTableCellView
+            var cell = self.tableView.cellForRowAtIndexPath(indexPath) as! MainTableCellView
             onMergeTapped(lpm, cell: cell)
         }
     }
@@ -244,7 +244,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
             textField.autocorrectionType = .No
         }
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
-            var newID = (alertController.textFields?.first as UITextField).text
+            var newID = (alertController.textFields?.first as! UITextField).text
             LearningPackController.sharedInstance.renamePackage(selectedLPM.id  , newName: newID) { () -> () in
                 self.tableView.reloadData()
             }
@@ -300,7 +300,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     }
     
     func onNetworkReachabilityChange(notification: NSNotification) {
-        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as String
+        var status = notification.userInfo![NOTIF_USER_INFO_REACHBILITYCHANGE]! as! String
         
         if status == NOTIF_REACHABILITY_CHANGE_NO_CONNECTION {
             onNointernetConnection()
@@ -356,7 +356,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         
         var cellOptional: MainTableCellView! = tableView.dequeueReusableCellWithIdentifier("cell_type_one") as? MainTableCellView
         cellOptional.showLoadingContent()
-        cellOptional.leftUtilityButtons = leftButtons()
+        cellOptional.leftUtilityButtons = leftButtons() as [AnyObject]
         cellOptional.delegate = self
         
         learningPackForIndexPath(indexPath, completionHandler: { (lpm: LearningPackModel) -> () in
@@ -393,7 +393,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     }
     
     func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerLeftUtilityButtonWithIndex index: Int) {
-        var lpmCell = cell as MainTableCellView
+        var lpmCell = cell as! MainTableCellView
         
         if index == 1 {
             onDeleteTapped(cashedLearningPacks[lpmCell.id]!, cell: lpmCell)

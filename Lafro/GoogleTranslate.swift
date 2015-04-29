@@ -56,7 +56,7 @@ class GoogleTranslate {
         
         AFHTTPRequestOperationManager().GET(self.baseDetectLanguageURI, parameters: ["q" : text], success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             
-            var result = self.handleGoogleDetectLanagugeReposne(responseObject as NSDictionary)
+            var result = self.handleGoogleDetectLanagugeReposne(responseObject as! NSDictionary)
             var detectedLanguage = result.detectedLanguage
             
             if !hasFailed {
@@ -85,7 +85,7 @@ class GoogleTranslate {
             if recievedResponse { successHandler?(translations: nil, err: "Already failed"); return }
             recievedResponse = true
             
-            var result = self.handleGoogleTranslateResponse(responseObject as NSDictionary)
+            var result = self.handleGoogleTranslateResponse(responseObject as! NSDictionary)
             
             if result.translations != nil {
                 successHandler?(translations:result.translations!, err: nil)
@@ -199,7 +199,7 @@ class GoogleTranslate {
         var languages = data?.objectForKey("languages") as? NSArray
         
         if languages != nil {
-            self.updateCashedListSupportedLanguages(languages as [Dictionary<String, String>])
+            self.updateCashedListSupportedLanguages(languages as! [Dictionary<String, String>])
             completionHandler?(languages: languages! as? [Dictionary<String, String>], err: nil)
         } else {
             completionHandler?(languages: nil, err: ERR_GOOGLE_API_SUPPORTED_LNG_FAILED)
@@ -210,7 +210,7 @@ class GoogleTranslate {
     func serverListSupportedLanaguages(completionHandler:((supported: [Dictionary<String, String>]?, err: String?)->())?) {
         var manager = AFHTTPRequestOperationManager()
         manager.GET(self.baseSupoprtedLanguagesURL, parameters: nil, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-            self.handleGoogleSupportedLanguagesResponse(responseObject as NSDictionary, completionHandler: completionHandler)
+            self.handleGoogleSupportedLanguagesResponse(responseObject as! NSDictionary, completionHandler: completionHandler)
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 NSLog("Error: %@", error)
                 completionHandler?(supported: nil, err: ERR_GOOGLE_API_NETWORD_CONNECTION)

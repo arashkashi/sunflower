@@ -18,7 +18,7 @@ class ResultViewController: GAITrackedViewController {
     
     
     override func viewDidLoad() {
-        self.hideAll(false, nil)
+        self.hideAll(false, completionHandler: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -28,25 +28,25 @@ class ResultViewController: GAITrackedViewController {
     // MARK: View manipulation
     func showCorrect(isAnimated: Bool, completionHandler: (()->())?) {
         self.tintMainView(nil)
-        self.slideViewUp(viewCorrectContainer, isAnimated: isAnimated, completionHandler)
+        self.slideViewUp(viewCorrectContainer, isAnimated: isAnimated, animationEndedHandler: completionHandler)
     }
     
     func hideCorrect(isAnimated: Bool, completionHandler: (()->())?) {
-        self.slideViewDown(viewCorrectContainer, isAnimated:isAnimated, completionHandler)
+        self.slideViewDown(viewCorrectContainer, isAnimated:isAnimated, animationEndedHandler: completionHandler)
     }
     
     func showWrong(isAnimated: Bool, completionHandler: (()->())?) {
         self.tintMainView(nil)
-        self.slideViewUp(viewWrongContainer, isAnimated: isAnimated, completionHandler)
+        self.slideViewUp(viewWrongContainer, isAnimated: isAnimated, animationEndedHandler: completionHandler)
     }
     
     func hideWrong(isAnimated: Bool, completionHandler: (()->())?) {
-        self.slideViewDown(viewWrongContainer, isAnimated: isAnimated, completionHandler)
+        self.slideViewDown(viewWrongContainer, isAnimated: isAnimated, animationEndedHandler: completionHandler)
     }
     
     func hideAll(isAnimated: Bool, completionHandler: (()->())?) {
-        self.slideViewDown(viewCorrectContainer, isAnimated: isAnimated, completionHandler)
-        self.slideViewDown(viewWrongContainer, isAnimated: isAnimated, nil)
+        self.slideViewDown(viewCorrectContainer, isAnimated: isAnimated, animationEndedHandler: completionHandler)
+        self.slideViewDown(viewWrongContainer, isAnimated: isAnimated, animationEndedHandler: nil)
     }
     
     func tintMainView(completionHandler: (()->())?) {

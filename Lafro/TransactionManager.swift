@@ -75,7 +75,7 @@ class TransactionManager {
     
     func getNewTransactionID() -> Int64 {
         var idsInQueue: [Int64] = queue.map{$0.id}
-        var maxExistingId = idsInQueue.reduce(Int64(0), { max($0, $1) })
+        var maxExistingId = idsInQueue.reduce(Int64(0), combine: { max($0, $1) })
         return maxExistingId + 1
     }
     

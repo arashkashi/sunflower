@@ -66,7 +66,7 @@ class PresentationViewController : GAITrackedViewController, UIPageViewControlle
             if viewController.isMemberOfClass(WordPresentationViewController.self) {
                 self.pageControl.currentPage = 0
             } else {
-                var shownController = viewController as SampleSentenceViewController
+                var shownController = viewController as! SampleSentenceViewController
                 self.pageControl.currentPage = shownController.index + 1
             }
         }
@@ -126,7 +126,7 @@ class PresentationViewController : GAITrackedViewController, UIPageViewControlle
         if viewController.isMemberOfClass(WordPresentationViewController) {
             result = self.sentenceViewController(self.word!, sentenceIndex: 0)
         } else {
-            var vc = viewController as SampleSentenceViewController
+            var vc = viewController as! SampleSentenceViewController
             result = self.sentenceViewController(vc.word!, sentenceIndex: vc.index! + 1)
         }
         return result
@@ -138,7 +138,7 @@ class PresentationViewController : GAITrackedViewController, UIPageViewControlle
         if viewController.isMemberOfClass(WordPresentationViewController) {
             result = nil
         } else {
-            var vc = viewController as SampleSentenceViewController
+            var vc = viewController as! SampleSentenceViewController
             if vc.index! - 1 < 0 {
                 result =  self.wordViewcontroller(self.word!) }
             else {
@@ -149,7 +149,7 @@ class PresentationViewController : GAITrackedViewController, UIPageViewControlle
     }
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-        self.currentlyShownViewcontroller = pendingViewControllers[0] as UIViewController
+        self.currentlyShownViewcontroller = pendingViewControllers[0] as! UIViewController
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
@@ -157,7 +157,7 @@ class PresentationViewController : GAITrackedViewController, UIPageViewControlle
         if self.currentlyShownViewcontroller.isMemberOfClass(WordPresentationViewController) {
             self.pageControl.currentPage = 0
         } else {
-            self.pageControl.currentPage = (self.currentlyShownViewcontroller as SampleSentenceViewController).index! + 1
+            self.pageControl.currentPage = (self.currentlyShownViewcontroller as! SampleSentenceViewController).index! + 1
         }
     }
 }

@@ -108,8 +108,8 @@ class LearningPackModel : UIDocument, NSCoding, Equatable  {
     
     // #MARK: UIDocument Overwrites
     override func loadFromContents(contents: AnyObject, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
-        var data: NSData = contents as NSData
-        var loadedModel: LearningPackModel = NSKeyedUnarchiver.unarchiveObjectWithData(data) as LearningPackModel
+        var data: NSData = contents as! NSData
+        var loadedModel: LearningPackModel = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! LearningPackModel
         
         self.id = loadedModel.id
         self.words = loadedModel.words
@@ -130,8 +130,8 @@ class LearningPackModel : UIDocument, NSCoding, Equatable  {
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.words = aDecoder.decodeObjectForKey(kLearingPackModelWords) as Array
-        self.id = aDecoder.decodeObjectForKey(kLearingPackModelID) as String
+        self.words = aDecoder.decodeObjectForKey(kLearingPackModelWords) as! Array
+        self.id = aDecoder.decodeObjectForKey(kLearingPackModelID) as! String
         self.corpus = aDecoder.decodeObjectForKey(kLearingPackModelCorpus) as? String
         super.init(fileURL: DocumentHelper.cashURLForID(self.id))
     }
