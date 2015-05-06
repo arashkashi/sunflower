@@ -5,7 +5,7 @@ platform :ios, '7.0'
 
 link_with 'Lafro', 'LafroTests'
 
-pod "AFNetworking", "~> 2.0"
+pod "AFNetworking", "~> 2.5.3"
 pod "GoogleAnalytics-iOS-SDK", "~> 3.10"
 pod "Facebook-iOS-SDK", "~>3.17.0"
 pod "SWTableViewCell", "~> 0.3.7"
