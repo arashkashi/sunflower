@@ -12,6 +12,12 @@ import Foundation
 
 class LearningPackControllerHelper  {
     class func makeLearningPackModelWithTransaction(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, finishHandler: ((LearningPackModel?, NSError?)->())? ) {
+        
+        if sourceLanguage == selectedLanguage {
+            finishHandler?(nil, NSError())
+            return
+        }
+        
         LearningPackControllerHelper.makeWordsFromTokensWithTransation(tokens, corpus: corpus, sourceLanguage: sourceLanguage, selectedLanguage: selectedLanguage, transactionManager: TransactionManager.sharedInstance, googleTranslator: GoogleTranslate.sharedInstance, creditManager: CreditManager.sharedInstance) { (success: Bool, words: [Word]?, error: NSError?) -> () in
             if success && words != nil {
                 var packController = LearningPackController.sharedInstance

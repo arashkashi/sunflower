@@ -161,9 +161,16 @@ class AddThreeViewController: GAITrackedViewController, UITableViewDataSource, U
     
     // MARK: Events
     func onRowSelected(indexPath: NSIndexPath) {
-        var targetLanguage = supportedLanagages[indexPath.row]["name"]!
-            labelToptitle.text = "You selected \(targetLanguage). Tap 'Make' or choose a new language."
+        var targetLanguageInString = supportedLanagages[indexPath.row]["name"]!
+        var targetLanguageAbbrv = supportedLanagages[indexPath.row]["language"]!
+        
+        if targetLanguageAbbrv == sourceLanguage {
+            labelToptitle.text = "Can not translate from \(targetLanguageInString) to \(targetLanguageInString). Select another language!"
+            hideMakeButton()
+        } else {
+            labelToptitle.text = "You selected \(targetLanguageInString). Tap 'Make' or choose a new language."
             showMakeButton()
+        }
     }
     
     // MARK: Table view data source / delegate
