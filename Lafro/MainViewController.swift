@@ -12,6 +12,7 @@ enum ViewControllerState: Int32 {
     case NORMAL = 1
     case MERGE_PHASE_1 = 2
     case MERGE_PHASE_2 = 3
+    case BUG_FIX_CLEANING_BAD_LPM = 4
 }
 
 class MainViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate {
@@ -59,7 +60,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         cashedLearningPacks.removeAll(keepCapacity: true)
     }
     
-    func updateAllCash() {
+    func updateAllCash( completionHandler:( ()->Void )? ) {
         var ids = LearningPackController.sharedInstance.listOfAvialablePackIDs
         if ids.count == 0 { self.resetCach(); return }
         
@@ -72,6 +73,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
                 if ids.count == 0 {
                     self.updateCounter()
                     self.hideWaitingOverlay()
+                    completionHandler?()
                 }
             })
         }
@@ -88,6 +90,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        resetCach()
         
         // For removing the white space from the top of the table
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -115,9 +119,15 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     override func viewWillAppear(animated: Bool) {
         updateBalanceButton()
         resetCach()
-        tableView.reloadData()
         
-        updateAllCash()
+        viewState = .BUG_FIX_CLEANING_BAD_LPM
+        
+        updateAllCash { () -> () in
+            self.fixbug({ () -> () in
+                self.viewState = .NORMAL
+                self.tableView.reloadData()
+            })
+        }
         
         self.screenName = "MainViewController"
     }
@@ -129,6 +139,27 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     // MARK: Segue
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         
+    }
+    
+    // this method was created casuse there was an error in package maker which created packages with zero words
+    // it caused crash on the view level as the progress updated (division over zero)
+    // fix bug assumes all the items are already loaded into the cach
+    func fixbug(completionHandler: ()->() ) {
+        var listOfLearningPacks = cashedLearningPacks.keys.array
+        var numberOfPacksToBeDeleted: Int = 0
+        for learningPackID in listOfLearningPacks {
+            if let lpm = cashedLearningPacks[learningPackID] {
+                if lpm.words.count == 0 {
+                    numberOfPacksToBeDeleted++
+                    LearningPackController.sharedInstance.deletePackage(lpm.id, completionHandler: { (success: Bool) -> () in
+                        numberOfPacksToBeDeleted--
+                        if numberOfPacksToBeDeleted == 0 {
+                            completionHandler()
+                        }
+                    })
+                }
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -186,7 +217,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete? You can never undo this action.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             LearningPackController.sharedInstance.deletePackage(lpm.id, completionHandler: { (successed: Bool) -> () in
-                self.updateAllCash()
+                self.updateAllCash(nil)
                 self.updateCounter()
                 self.tableView.reloadData()
             })
@@ -223,7 +254,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
                         self.invalidateCashedLearningPack(lpm.id)
                         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: LearningPackController.sharedInstance.listOfAvialablePackIDs.count - 1, inSection: 0), atScrollPosition: .Bottom, animated: true)
                         self.resetMergeOperation()
-                        self.updateAllCash()
+                        self.updateAllCash(nil)
                         self.updateCounter()
                     })
 
@@ -349,7 +380,7 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     
     // MARK: Table View datasource delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return LearningPackController.sharedInstance.listOfAvialablePackIDs.count;
+        return cashedLearningPacks.keys.array.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
