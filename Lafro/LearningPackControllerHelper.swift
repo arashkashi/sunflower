@@ -14,7 +14,7 @@ class LearningPackControllerHelper  {
     class func makeLearningPackModelWithTransaction(id: String, tokens: [String], corpus: String, sourceLanguage: String, selectedLanguage: String, finishHandler: ((LearningPackModel?, NSError?)->())? ) {
         
         if sourceLanguage == selectedLanguage {
-            finishHandler?(nil, NSError())
+            finishHandler?(nil, NSError(domain: "Source language can not be the same as the destination language.", code: 1001, userInfo: nil))
             return
         }
         
