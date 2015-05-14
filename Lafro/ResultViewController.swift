@@ -67,14 +67,14 @@ class ResultViewController: GAITrackedViewController {
         if isAnimated {
             
             UIView.animateWithDuration(animationDuration, delay: 0, usingSpringWithDamping: CGFloat(50.0), initialSpringVelocity: CGFloat(15.0), options: UIViewAnimationOptions.AllowAnimatedContent, animations: { () -> Void in
-                view.center = CGPointMake(view.center.x, 230)
+                view.center = CGPointMake(view.center.x, 280)
                 }, completion: { (Bool) -> Void in
                     if animationEndedHandler != nil {
                         animationEndedHandler!()
                     }
             })
         } else {
-            view.center = CGPointMake(view.center.x, 230)
+            view.center = CGPointMake(view.center.x, 280)
         }
     }
     
