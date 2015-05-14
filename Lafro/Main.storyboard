@@ -156,7 +156,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJo-zf-IRs" userLabel="Button - add new word">
-                                <rect key="frame" x="360" y="51" width="40" height="40"/>
+                                <rect key="frame" x="539" y="230" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CJo-zf-IRs" secondAttribute="height" multiplier="1:1" id="6Zs-iU-aiA"/>
@@ -188,7 +188,6 @@
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="30" id="EE1-ja-Fgo"/>
                             <constraint firstItem="Rdd-gJ-gKU" firstAttribute="top" secondItem="2Bv-c2-04K" secondAttribute="bottom" constant="40" id="Ia7-zP-6S7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rdd-gJ-gKU" secondAttribute="trailing" id="Iej-d6-qmP"/>
-                            <constraint firstItem="CJo-zf-IRs" firstAttribute="top" secondItem="dPi-HO-WtG" secondAttribute="bottom" constant="5" id="JWb-ev-jwv"/>
                             <constraint firstAttribute="centerX" secondItem="JFW-NR-EoJ" secondAttribute="centerX" id="LTb-Fh-RXO"/>
                             <constraint firstAttribute="centerX" secondItem="Rdd-gJ-gKU" secondAttribute="centerX" constant="80" id="NNo-pu-wWL"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="z4k-3X-hI1" secondAttribute="bottom" constant="12" id="RaP-9g-Smv"/>
@@ -199,10 +198,10 @@
                             <constraint firstItem="Rdd-gJ-gKU" firstAttribute="top" secondItem="dPi-HO-WtG" secondAttribute="bottom" constant="5" id="ZdY-6O-XJL"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="Rdd-gJ-gKU" secondAttribute="bottom" constant="44" id="b0t-4f-uSQ"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="vFO-0N-GnU" secondAttribute="bottom" constant="70" id="b1G-tR-GTN"/>
-                            <constraint firstAttribute="centerX" secondItem="CJo-zf-IRs" secondAttribute="centerX" constant="-80" id="bFS-iU-pJz"/>
                             <constraint firstItem="vFO-0N-GnU" firstAttribute="top" secondItem="QnA-9b-FTu" secondAttribute="bottom" constant="19" id="bMP-1u-Va8"/>
                             <constraint firstItem="fpI-Py-2Yu" firstAttribute="top" secondItem="tWk-uT-fkt" secondAttribute="bottom" constant="22" id="cAK-dS-uYk"/>
                             <constraint firstItem="7wE-W2-5wb" firstAttribute="width" secondItem="7wE-W2-5wb" secondAttribute="height" multiplier="130:35" id="ehg-oh-8wl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CJo-zf-IRs" secondAttribute="trailing" constant="5" id="iw6-Yf-y8o"/>
                             <constraint firstItem="tWk-uT-fkt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z4k-3X-hI1" secondAttribute="trailing" constant="150" id="mee-CF-d3n"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="width" secondItem="JFW-NR-EoJ" secondAttribute="height" multiplier="130:35" id="n02-JC-dTT"/>
                             <constraint firstItem="tWk-uT-fkt" firstAttribute="trailing" secondItem="BYi-3n-KZ0" secondAttribute="trailingMargin" id="nOs-Wf-xgm"/>
@@ -211,6 +210,7 @@
                             <constraint firstItem="hW4-B2-xMI" firstAttribute="leading" secondItem="BYi-3n-KZ0" secondAttribute="leadingMargin" constant="5" id="uEG-5M-DWg"/>
                             <constraint firstItem="JFW-NR-EoJ" firstAttribute="centerY" secondItem="hW4-B2-xMI" secondAttribute="centerY" constant="0.5" id="wWG-md-dPv"/>
                             <constraint firstAttribute="right" secondItem="tWk-uT-fkt" secondAttribute="right" constant="20" id="yvz-Fq-YbH"/>
+                            <constraint firstAttribute="centerY" secondItem="CJo-zf-IRs" secondAttribute="centerY" constant="50" id="zcT-rs-xof"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
