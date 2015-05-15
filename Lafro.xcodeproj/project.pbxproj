@@ -131,6 +131,7 @@
 		41E441911ABF2CCE002C4B4D /* bin.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E441901ABF2CCE002C4B4D /* bin.png */; };
 		41E441931ABF2D71002C4B4D /* text-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E441921ABF2D71002C4B4D /* text-icon.png */; };
 		43A851B4356E945B1A9EDB2F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BCC503C42383CE6BB76567 /* libPods.a */; };
+		B21000991B05F8B70078D029 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21000981B05F8B70078D029 /* LocalNotificationManager.swift */; };
 		B25F87A31A6D4ADC00047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F87A41A6D4D7100047EA1 /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */; };
 		B25F87A51A6D54A500047EA1 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F9BF01A26019100E15D22 /* PaymentManager.swift */; };
@@ -264,6 +265,7 @@
 		41E441921ABF2D71002C4B4D /* text-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-icon.png"; sourceTree = "<group>"; };
 		54BCC503C42383CE6BB76567 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B21000981B05F8B70078D029 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		B25F87A21A6D4ADC00047EA1 /* NotificationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
 		B25F9BF01A26019100E15D22 /* PaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerSkipHelper.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				41C18A551A23FB4100639C92 /* DiskCache.swift */,
 				B25F9BF01A26019100E15D22 /* PaymentManager.swift */,
 				B28419121A8A098C00D99A14 /* NetworkManager.swift */,
+				B21000981B05F8B70078D029 /* LocalNotificationManager.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				B25F9BF11A26019100E15D22 /* PaymentManager.swift in Sources */,
 				41C18A7B1A23FBD600639C92 /* Test1ViewController.swift in Sources */,
 				B28419131A8A098C00D99A14 /* NetworkManager.swift in Sources */,
+				B21000991B05F8B70078D029 /* LocalNotificationManager.swift in Sources */,
 				41C18A6A1A23FBC600639C92 /* WaitingViewController.swift in Sources */,
 				41C18A931A23FBF700639C92 /* LearningPackController.swift in Sources */,
 				41271C4C1AA6EF2A00B8E7A6 /* UIAlertHelper.swift in Sources */,

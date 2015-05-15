@@ -70,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     }
     
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        // Handle Local Notification
+    }
+    
     
     // MARK: Helper
     func showInformationWithMessage(title: String, message: String) {
