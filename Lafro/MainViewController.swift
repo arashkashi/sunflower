@@ -160,6 +160,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
                 }
             }
         }
+        
+        if numberOfPacksToBeDeleted == 0 { completionHandler() }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -380,7 +382,12 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     
     // MARK: Table View datasource delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cashedLearningPacks.keys.array.count
+        if viewState == .NORMAL {
+           return LearningPackController.sharedInstance.listOfAvialablePackIDs.count
+        } else {
+            return 0
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
