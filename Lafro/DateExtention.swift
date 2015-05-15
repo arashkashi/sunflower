@@ -10,8 +10,8 @@ import Foundation
 
 extension NSDate {
     func isToday() -> Bool {
-        var dateComponents = NSCalendar.currentCalendar().components(.DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit, fromDate: self)
-        var todayComponents = NSCalendar.currentCalendar().components(.DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit, fromDate: NSDate())
+        var dateComponents = NSCalendar.currentCalendar().components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: self)
+        var todayComponents = NSCalendar.currentCalendar().components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: NSDate())
         
         return todayComponents.day == dateComponents.day && todayComponents.month == dateComponents.month && todayComponents.year == todayComponents.year
     }
