@@ -26,7 +26,7 @@ class LocalNotificationManager {
         return 7 * 3600 * 24  // One week
     }
     
-    func isRightTimeForAskingPermission() -> Bool {
+    private func isRightTimeForAskingPermission() -> Bool {
         if hasPermission() {
             return false
         }
