@@ -13,20 +13,24 @@ class LocalNotificationManager {
     let kPermissionAskDate = "kPermissionAskDate"
     
     // MARK: Permission Timing Logic
-    func dateLastTimeAskedForUserPermission() -> NSDate? {
+    private func dateLastTimeAskedForUserPermission() -> NSDate? {
         return NSUserDefaults.standardUserDefaults().objectForKey(kPermissionAskDate) as? NSDate
     }
     
-    func onAskedUserPermission() {
+    private func onAskedUserPermission() {
         NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: kPermissionAskDate)
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    func intervalForAskingPermission() -> NSTimeInterval {
+    private func intervalForAskingPermission() -> NSTimeInterval {
         return 7 * 3600 * 24  // One week
     }
     
-    func shouldAskForUserPermission() -> Bool {
+    func isRightTimeForAskingPermission() -> Bool {
+        if hasPermission() {
+            return false
+        }
+        
         if let lastDateAsked = dateLastTimeAskedForUserPermission() {
             if NSDate(timeInterval: intervalForAskingPermission(), sinceDate: lastDateAsked).isPast() {
                 return true
@@ -39,7 +43,17 @@ class LocalNotificationManager {
     }
     
     // MARK: Asking permission
-    func hasPermission() -> Bool {
+    func askUserPermission(viewController: UIViewController) {
+        if hasPermission() {
+            return
+        }
+    
+        if isRightTimeForAskingPermission() {
+            presentCustomUserPermissionrequest(viewController)
+        }
+    }
+    
+    private func hasPermission() -> Bool {
         var notificationsSettings = UIApplication.sharedApplication().currentUserNotificationSettings()
         if notificationsSettings.types == .None  {
             return false
@@ -48,7 +62,7 @@ class LocalNotificationManager {
         }
     }
     
-    func customUserPermissionrequest(viewController: UIViewController) {
+    private func presentCustomUserPermissionrequest(viewController: UIViewController) {
         let alertController = UIAlertController(title: "Permission Request", message: "You learn more words faster, if you try review quickly every day. Would you want Lafro to show a new word once a day?", preferredStyle: .Alert)
         let yesAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             self.systemUserPermissionRequest()
@@ -65,7 +79,7 @@ class LocalNotificationManager {
         }
     }
     
-    func systemUserPermissionRequest() {
+    private func systemUserPermissionRequest() {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Badge | .Alert | .Sound, categories: nil))
     }
 }
