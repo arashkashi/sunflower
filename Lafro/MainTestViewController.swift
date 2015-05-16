@@ -54,6 +54,8 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     //MARK: UIViewController Override
     override func viewDidAppear(animated: Bool) {
         self.updateTimerLabel()
+        
+        LocalNotificationManager().askUserPermission(self)
     }
     
     func navigationControllerr() -> UINavigationController {
@@ -136,6 +138,8 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     }
     
     func showNextWord(word: Word) {
+        onNextWordShown(word)
+        
         progressView.setProgress(word.learningProgress, animated: true)
         
         if word.shouldShowWordPresentation {
@@ -194,6 +198,12 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     }
     
     // MARK: Events
+    func onNextWordShown(word: Word) {
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.wordToBeNotified = word
+    }
+    
     func onWordFinishedTesting(word: Word, test: Test, testResult: TestResult) {
         self.learnerController!.onWordFinishedTestType(word, test: test, testResult: testResult)
         

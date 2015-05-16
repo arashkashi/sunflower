@@ -15,6 +15,7 @@
 		4117539A1AB75C5A002B1944 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 411753991AB75C5A002B1944 /* libGoogleAnalyticsServices.a */; };
 		41271C4C1AA6EF2A00B8E7A6 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41271C4B1AA6EF2A00B8E7A6 /* UIAlertHelper.swift */; };
 		412E7B8B1AA09B4400A4347F /* editlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 412E7B8A1AA09B4400A4347F /* editlogo.png */; };
+		417645041B07488A00D9B7CA /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21000981B05F8B70078D029 /* LocalNotificationManager.swift */; };
 		4182EA871A25536F00627CB6 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4182EA861A25536F00627CB6 /* BuyViewController.swift */; };
 		41A3BD5D1AB5BA1600F3988D /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3BD5C1AB5BA1500F3988D /* CKRecordExtension.swift */; };
 		41A3BD5E1AB5BC3700F3988D /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3BD5C1AB5BA1500F3988D /* CKRecordExtension.swift */; };
@@ -827,6 +828,7 @@
 				41C18B001A23FFAD00639C92 /* CreditManager.swift in Sources */,
 				41C18AF81A23FF3800639C92 /* Transaction.swift in Sources */,
 				41C18B021A23FFD000639C92 /* Sentence.swift in Sources */,
+				417645041B07488A00D9B7CA /* LocalNotificationManager.swift in Sources */,
 				41C18AD91A23FCE400639C92 /* creditManagerTests.swift in Sources */,
 				41A3BD5E1AB5BC3700F3988D /* CKRecordExtension.swift in Sources */,
 				B25F87A71A6D62F900047EA1 /* ComponentManager.swift in Sources */,
