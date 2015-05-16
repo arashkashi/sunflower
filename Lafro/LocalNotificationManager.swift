@@ -67,7 +67,7 @@ class LocalNotificationManager {
     }
     
     private func presentCustomUserPermissionrequest(viewController: UIViewController) {
-        let alertController = UIAlertController(title: "Permission Request", message: "You learn more words faster, if you try review quickly every day. Would you want Lafro to show a new word once a day?", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Permission Request", message: "You learn much faster, if you review few words every day. Would you like Lafro to show a new word once a day?", preferredStyle: .Alert)
         let yesAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             self.systemUserPermissionRequest()
             self.onAskedUserPermission()
@@ -111,7 +111,6 @@ class LocalNotificationManager {
         notificationObj.alertAction = "Review"
         notificationObj.soundName = UILocalNotificationDefaultSoundName
         notificationObj.applicationIconBadgeNumber = 1
-        notificationObj.userInfo = ["word":word]
         
         UIApplication.sharedApplication().scheduleLocalNotification(notificationObj)
     }
