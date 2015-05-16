@@ -27,7 +27,7 @@ class LocalNotificationManager {
     }
     
     private func intervalForAskingPermission() -> NSTimeInterval {
-        return 60//7 * 3600 * 24  // One week
+        return 3 * 3600 * 24  // three week
     }
     
     private func isRightTimeForAskingPermission() -> Bool {
