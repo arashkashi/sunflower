@@ -12,10 +12,6 @@ class LocalNotificationManager {
     
     let kPermissionAskDate = "kPermissionAskDate"
     
-    let dayIntervalForNotification = 1
-    let earlietshourInMorningForNotification = 7
-    let latestHourInMorningForNotification = 20
-    
     // MARK: Permission Timing Logic
     private func dateLastTimeAskedForUserPermission() -> NSDate? {
         return NSUserDefaults.standardUserDefaults().objectForKey(kPermissionAskDate) as? NSDate
@@ -71,9 +67,15 @@ class LocalNotificationManager {
         let yesAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             self.systemUserPermissionRequest()
             self.onAskedUserPermission()
+            
+            var mixPanel = Mixpanel.sharedInstance()
+            mixPanel.track("RequestLocalNotif_YES")
         }
         let noAction = UIAlertAction(title: "No", style: .Default) { (action) -> Void in
             self.onAskedUserPermission()
+            
+            var mixPanel = Mixpanel.sharedInstance()
+            mixPanel.track("RequestLocalNotif_NO")
         }
         
         alertController.addAction(yesAction)
@@ -88,25 +90,14 @@ class LocalNotificationManager {
     }
     
     // MARK: schdule notification
-    private func fireDateForWord(word: Word) -> NSDate {
-        assert(dayIntervalForNotification > 0, "We always have notification the day after")
-        var startNotificationEnabledTime: NSDate = NSDate().dateByAddingDays(dayIntervalForNotification).dateAtStartOfDay().dateByAddingHours(earlietshourInMorningForNotification)
-        var endNotificationEnabledtime: NSDate = NSDate().dateByAddingHours(dayIntervalForNotification).dateAtStartOfDay().dateByAddingHours(latestHourInMorningForNotification)
-        if word.relearningDueDate == nil { return startNotificationEnabledTime }
-        if word.relearningDueDate!.isBefore(startNotificationEnabledTime) { return startNotificationEnabledTime }
-        if word.relearningDueDate!.isAfter(endNotificationEnabledtime) { return endNotificationEnabledtime } else {
-            return word.relearningDueDate!
-        }
-    }
-    
     func scheduleNotification(word: Word) {
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
         var notificationObj = UILocalNotification()
         notificationObj.timeZone = NSTimeZone.localTimeZone()
-        notificationObj.fireDate = fireDateForWord(word)
-        notificationObj.alertBody = "Remeber the meaning of \(word.name)"
+        notificationObj.fireDate = NSDate().dateByAddingDays(1)
+        notificationObj.alertBody = "Do you know what '\(word.name)' means?"
         notificationObj.alertTitle = "Challenge"
         notificationObj.alertAction = "Review"
         notificationObj.soundName = UILocalNotificationDefaultSoundName
