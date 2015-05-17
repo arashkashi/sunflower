@@ -18,7 +18,7 @@ class LearningPackController {
             var ids = NSUserDefaults.standardUserDefaults().objectForKey(kAvaialblePackageIDs) as? [String]
             if ids == nil {
 //                var initialIDs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map{String($0)}
-                var initialIDs: [String] = []
+                var initialIDs: [String] = [1].map{String($0)}
                 NSUserDefaults.standardUserDefaults().setObject(initialIDs, forKey: kAvaialblePackageIDs)
                 NSUserDefaults.standardUserDefaults().synchronize()
                 return initialIDs
