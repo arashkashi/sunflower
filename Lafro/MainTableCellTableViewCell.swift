@@ -26,6 +26,17 @@ class MainTableCellView: SWTableViewCell {
         // Initialization code
         showLoadingContent()
         self.backgroundColor = UIColor.blackColor()
+        
+        labelProgressCircular.fillColor = UIColor.clearColor()
+        labelProgressCircular.trackColor = UIColor.redColor()
+        labelProgressCircular.progressColor = UIColor.greenColor()
+        
+        labelProgressCircular.text = "50%"
+        labelProgressCircular.textColor = UIColor.whiteColor()
+        
+        labelProgressCircular.trackWidth = 2.0
+        labelProgressCircular.progressWidth = 2.0
+        labelProgressCircular.roundedCornersWidth = 2.0
     }
     
     // MARK: View manipulation (API)
@@ -48,6 +59,8 @@ class MainTableCellView: SWTableViewCell {
         activityIndicator.hidden = true
         labelrightIndicator.hidden = false
         self.showContent(true)
+        
+        labelProgressCircular.setProgress(0.5, timing: TPPropertyAnimationTimingEaseOut, duration: 2, delay: 0)
     }
     
     func showContent(animated: Bool) {
