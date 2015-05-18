@@ -17,6 +17,7 @@ class MainTableCellView: SWTableViewCell {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var labelrightIndicator: UILabel!
     @IBOutlet weak var labelProgressProportion: UILabel!
+    @IBOutlet var labelProgressCircular: KAProgressLabel!
 
     // MARK: Init
     override func awakeFromNib() {

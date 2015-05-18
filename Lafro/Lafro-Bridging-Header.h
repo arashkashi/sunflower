@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 #import <SWTableViewCell.h>
+#import <KAProgressLabel/KAProgressLabel.h>
 
 
 #import "Mixpanel.h"
