@@ -143,6 +143,8 @@
 		B27639961A24A3AF004C79F8 /* LearningPackControllerSkipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */; };
 		B28419131A8A098C00D99A14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28419121A8A098C00D99A14 /* NetworkManager.swift */; };
 		B28419141A8A0BC900D99A14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28419121A8A098C00D99A14 /* NetworkManager.swift */; };
+		B28803781B0B2FD90024DB40 /* KAProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B28803741B0B2FD90024DB40 /* KAProgressLabel.m */; };
+		B28803791B0B2FD90024DB40 /* TPPropertyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B28803761B0B2FD90024DB40 /* TPPropertyAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +273,10 @@
 		B25F9BF01A26019100E15D22 /* PaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		B27639941A249939004C79F8 /* LearningPackControllerSkipHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearningPackControllerSkipHelper.swift; sourceTree = "<group>"; };
 		B28419121A8A098C00D99A14 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B28803741B0B2FD90024DB40 /* KAProgressLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAProgressLabel.m; sourceTree = "<group>"; };
+		B28803751B0B2FD90024DB40 /* TPPropertyAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPropertyAnimation.h; sourceTree = "<group>"; };
+		B28803761B0B2FD90024DB40 /* TPPropertyAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPropertyAnimation.m; sourceTree = "<group>"; };
+		B28803771B0B2FD90024DB40 /* KAProgressLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAProgressLabel.h; sourceTree = "<group>"; };
 		BCAD7AF1E6AB8B06FFF52CED /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -517,6 +523,7 @@
 		41C18AE21A23FDE800639C92 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B28803731B0B2FC50024DB40 /* KAProgressLabel */,
 				41C18AF11A23FDFF00639C92 /* TKDHighlightingTextStorage.h */,
 				41C18AF21A23FDFF00639C92 /* TKDHighlightingTextStorage.m */,
 				41C18AE31A23FDF700639C92 /* LearningStage.swift */,
@@ -540,6 +547,17 @@
 				934E7023EB73ADF88A1F7563 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B28803731B0B2FC50024DB40 /* KAProgressLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B28803741B0B2FD90024DB40 /* KAProgressLabel.m */,
+				B28803751B0B2FD90024DB40 /* TPPropertyAnimation.h */,
+				B28803761B0B2FD90024DB40 /* TPPropertyAnimation.m */,
+				B28803771B0B2FD90024DB40 /* KAProgressLabel.h */,
+			);
+			name = KAProgressLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -774,6 +792,7 @@
 				41C18A8A1A23FBDF00639C92 /* AddOneViewController.swift in Sources */,
 				41C18AED1A23FDF700639C92 /* JSONHelper.swift in Sources */,
 				41C18AC01A23FC2D00639C92 /* RawPackage.swift in Sources */,
+				B28803791B0B2FD90024DB40 /* TPPropertyAnimation.m in Sources */,
 				41C18A591A23FB4100639C92 /* CloudKitManager.swift in Sources */,
 				41C18A321A23FAED00639C92 /* ViewController.swift in Sources */,
 				41C18A8D1A23FBDF00639C92 /* AddTwoViewController.swift in Sources */,
@@ -796,6 +815,7 @@
 				41C18AEC1A23FDF700639C92 /* ArrayExtension.swift in Sources */,
 				41C18A561A23FB4100639C92 /* Parser.swift in Sources */,
 				41C18A9D1A23FC0800639C92 /* Sentence.swift in Sources */,
+				B28803781B0B2FD90024DB40 /* KAProgressLabel.m in Sources */,
 				41C18A671A23FBBC00639C92 /* TokensViewCell.swift in Sources */,
 				41C18AF01A23FDF700639C92 /* StringExtension.swift in Sources */,
 				41C18A6D1A23FBCE00639C92 /* MainTestViewController.swift in Sources */,

@@ -792,12 +792,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TAB-2d-Kbl" id="ZA9-ak-vai">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFQ-Z6-YJH" userLabel="label progress 10%">
-                                                    <rect key="frame" x="474" y="21" width="36" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CO-hy-i61" userLabel="Label ID">
                                                     <rect key="frame" x="18" y="21" width="10" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -824,14 +818,8 @@
                                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELn-Yc-P2q" userLabel="Label progress a/b">
-                                                    <rect key="frame" x="439" y="25" width="6" height="12"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3u-5A-EFK" userLabel="Label progress circular" customClass="KAProgressLabel">
-                                                    <rect key="frame" x="314" y="11" width="40" height="40"/>
+                                                    <rect key="frame" x="504" y="11" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="L3u-5A-EFK" secondAttribute="height" multiplier="1:1" id="gLY-bK-a4f"/>
                                                         <constraint firstAttribute="height" constant="40" id="hH9-HT-qpg"/>
@@ -842,33 +830,21 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="fFQ-Z6-YJH" secondAttribute="trailing" constant="50" id="4VV-DS-EoN"/>
                                                 <constraint firstItem="5wG-ko-cLZ" firstAttribute="trailing" secondItem="ZA9-ak-vai" secondAttribute="trailingMargin" id="7Y2-I0-at1"/>
                                                 <constraint firstAttribute="centerY" secondItem="5wG-ko-cLZ" secondAttribute="centerY" id="9Vr-BN-x6S"/>
-                                                <constraint firstItem="fFQ-Z6-YJH" firstAttribute="leading" secondItem="ELn-Yc-P2q" secondAttribute="trailing" constant="40" id="FZe-Af-u4b"/>
                                                 <constraint firstAttribute="centerY" secondItem="4CO-hy-i61" secondAttribute="centerY" id="O5i-xu-M4Z"/>
-                                                <constraint firstAttribute="centerX" secondItem="L3u-5A-EFK" secondAttribute="centerX" constant="-50" id="Q6B-wZ-Qea"/>
-                                                <constraint firstItem="fFQ-Z6-YJH" firstAttribute="centerY" secondItem="ELn-Yc-P2q" secondAttribute="centerY" id="SJY-zF-IKc"/>
                                                 <constraint firstAttribute="centerY" secondItem="L3u-5A-EFK" secondAttribute="centerY" id="VCU-Cw-h7o"/>
-                                                <constraint firstAttribute="centerY" secondItem="fFQ-Z6-YJH" secondAttribute="centerY" constant="-0.5" id="WX8-Aj-tbf"/>
                                                 <constraint firstAttribute="centerX" secondItem="CkV-2i-V70" secondAttribute="centerX" id="dTX-ow-rfh"/>
                                                 <constraint firstItem="4CO-hy-i61" firstAttribute="leading" secondItem="ZA9-ak-vai" secondAttribute="leadingMargin" constant="10" id="gTR-5Z-JqY"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ELn-Yc-P2q" secondAttribute="trailing" constant="115" id="j9T-km-kt3"/>
+                                                <constraint firstItem="5wG-ko-cLZ" firstAttribute="leading" secondItem="L3u-5A-EFK" secondAttribute="trailing" constant="5" id="hun-hU-87Z"/>
                                                 <constraint firstAttribute="centerY" secondItem="CkV-2i-V70" secondAttribute="centerY" id="vj8-ah-n0U"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="FZe-Af-u4b"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="activityIndicator" destination="CkV-2i-V70" id="tct-4X-axY"/>
                                             <outlet property="labelID" destination="4CO-hy-i61" id="4ij-Eg-ThI"/>
-                                            <outlet property="labelProgress" destination="fFQ-Z6-YJH" id="6FA-AU-9LR"/>
                                             <outlet property="labelProgressCircular" destination="L3u-5A-EFK" id="a8U-1O-Zhe"/>
-                                            <outlet property="labelProgressProportion" destination="ELn-Yc-P2q" id="b8H-ag-tV0"/>
                                             <outlet property="labelrightIndicator" destination="5wG-ko-cLZ" id="bfF-uT-Yex"/>
                                         </connections>
                                     </tableViewCell>

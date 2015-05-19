@@ -13,10 +13,8 @@ class MainTableCellView: SWTableViewCell {
     var id: String!
 
     @IBOutlet var labelID: UILabel!
-    @IBOutlet var labelProgress: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var labelrightIndicator: UILabel!
-    @IBOutlet weak var labelProgressProportion: UILabel!
     @IBOutlet var labelProgressCircular: KAProgressLabel!
 
     // MARK: Init
@@ -28,10 +26,9 @@ class MainTableCellView: SWTableViewCell {
         self.backgroundColor = UIColor.blackColor()
         
         labelProgressCircular.fillColor = UIColor.clearColor()
-        labelProgressCircular.trackColor = UIColor.grayColor()
-        labelProgressCircular.progressColor = UIColor.greenColor()
-        
-        labelProgressCircular.text = "100 \n 100"
+        labelProgressCircular.trackColor = UIColor(red: 51.0/255.0, green: 0.0, blue: 0.0, alpha: 1)
+        labelProgressCircular.progressColor = UIColor(red: 252.0/255.0, green: 6.0/255.0, blue: 0.0, alpha: 1)
+
         labelProgressCircular.textColor = UIColor.whiteColor()
         labelProgressCircular.font = UIFont(name: "Helvetica-Bold", size: 10)
         
@@ -40,48 +37,54 @@ class MainTableCellView: SWTableViewCell {
         labelProgressCircular.roundedCornersWidth = 6.0
     }
     
+    override func prepareForReuse() {
+        labelProgressCircular.progress = 0.0
+    }
+    
     // MARK: View manipulation (API)
     func updateWithLearningPackModel(learningPackModel: LearningPackModel) {
+        labelProgressCircular.progress = 0.0
+        
         id = learningPackModel.id
         var wordsDueInFuture = learningPackModel.wordsDueInFuture()
         var allWords = learningPackModel.words
-        var proportion = "\(wordsDueInFuture.count)/\(allWords.count)"
+        var proportion = CGFloat((wordsDueInFuture.count)/(allWords.count))
         
-        labelProgressProportion.text = "\(proportion)"
         labelID.text = "\(learningPackModel.id)"
-        labelProgress.text = "\(Int(learningPackModel.progress))%"
+        
+        labelProgressCircular.text = "\(allWords.count)"
         
         if Int(learningPackModel.progress) > 80 {
-            labelProgress.textColor = UIColor.greenColor()
+            labelProgressCircular.textColor = UIColor.greenColor()
         } else {
-            labelProgress.textColor = UIColor.yellowColor   ()
+            labelProgressCircular.textColor = UIColor.yellowColor()
         }
         
         activityIndicator.hidden = true
         labelrightIndicator.hidden = false
-        self.showContent(true)
+        self.showContent(false)
         
-        labelProgressCircular.setProgress(0.5, timing: TPPropertyAnimationTimingEaseOut, duration: 2, delay: 0)
+        labelProgressCircular.setProgress(proportion, timing: TPPropertyAnimationTimingLinear, duration: 1, delay: 1)
     }
     
     func showContent(animated: Bool) {
         backgroundColor = UIColor.blackColor()
-        labelProgressProportion.hidden = false
+        labelProgressCircular.hidden = false
         
         if animated {
             UIView.animateWithDuration(1, animations: { () -> Void in
                 self.labelID.alpha = 1
-                self.labelProgress.alpha = 1
+                self.labelProgressCircular.alpha = 1
             })
         } else {
             labelID.alpha = 1
-            labelProgress.alpha = 1
+            labelProgressCircular.alpha = 1
         }
     }
     
     func showLoadingContent() {
         labelID.alpha = 0
-        labelProgress.alpha = 0
+        labelProgressCircular.alpha = 0
         labelrightIndicator.hidden = true
         activityIndicator.hidden = false
         backgroundColor = UIColor.blackColor()
@@ -91,7 +94,7 @@ class MainTableCellView: SWTableViewCell {
         showLoadingContent()
         activityIndicator.hidden = true
         backgroundColor = UIColor.redColor()
-        labelProgressProportion.hidden = true
+        labelProgressCircular.hidden = true
         hideUtilityButtonsAnimated(false)
     }
     
