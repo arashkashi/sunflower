@@ -28,15 +28,16 @@ class MainTableCellView: SWTableViewCell {
         self.backgroundColor = UIColor.blackColor()
         
         labelProgressCircular.fillColor = UIColor.clearColor()
-        labelProgressCircular.trackColor = UIColor.redColor()
+        labelProgressCircular.trackColor = UIColor.grayColor()
         labelProgressCircular.progressColor = UIColor.greenColor()
         
-        labelProgressCircular.text = "50%"
+        labelProgressCircular.text = "100 \n 100"
         labelProgressCircular.textColor = UIColor.whiteColor()
+        labelProgressCircular.font = UIFont(name: "Helvetica-Bold", size: 10)
         
-        labelProgressCircular.trackWidth = 2.0
-        labelProgressCircular.progressWidth = 2.0
-        labelProgressCircular.roundedCornersWidth = 2.0
+        labelProgressCircular.trackWidth = 6.0
+        labelProgressCircular.progressWidth = 6.0
+        labelProgressCircular.roundedCornersWidth = 6.0
     }
     
     // MARK: View manipulation (API)
