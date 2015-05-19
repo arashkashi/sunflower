@@ -15,7 +15,7 @@ enum ViewControllerState: Int32 {
     case BUG_FIX_CLEANING_BAD_LPM = 4
 }
 
-class MainViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate {
+class MainViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, UITextFieldDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var labelTopCounter: UILabel!
@@ -27,6 +27,9 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     var learnerController: LearnerController?
     
     var waitingVC: WaitingViewController?
+    
+    
+    
     
     // MARK: View manipulation
     func showWaitingOverlay() {
@@ -275,6 +278,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.text = selectedLPM.id
             textField.autocorrectionType = .No
+            textField.delegate = self
+            textField.tag = 11
         }
         let okAction = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
             var newID = (alertController.textFields?.first as! UITextField).text
@@ -378,6 +383,16 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         self.lpm_merge_1 = nil
         
         self.tableView.reloadData()
+    }
+    
+    // MARK: TextField Delegate
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 11 {
+            if let searchRange = string.rangeOfCharacterFromSet(NSCharacterSet.whitespaceCharacterSet(), options: .allZeros, range: nil) {
+                return false
+            } else { return true }
+        }
+        return true
     }
     
     // MARK: Table View datasource delegate
