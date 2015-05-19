@@ -48,7 +48,7 @@ class MainTableCellView: SWTableViewCell {
         id = learningPackModel.id
         var wordsDueInFuture = learningPackModel.wordsDueInFuture()
         var allWords = learningPackModel.words
-        var proportion = CGFloat((wordsDueInFuture.count)/(allWords.count))
+        var proportion = CGFloat(wordsDueInFuture.count)/CGFloat(allWords.count)
         
         labelID.text = "\(learningPackModel.id)"
         
