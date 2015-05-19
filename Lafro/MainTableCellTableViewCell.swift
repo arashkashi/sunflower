@@ -85,6 +85,7 @@ class MainTableCellView: SWTableViewCell {
     func showLoadingContent() {
         labelID.alpha = 0
         labelProgressCircular.alpha = 0
+        labelProgressCircular.progress = 0.0
         labelrightIndicator.hidden = true
         activityIndicator.hidden = false
         backgroundColor = UIColor.blackColor()
