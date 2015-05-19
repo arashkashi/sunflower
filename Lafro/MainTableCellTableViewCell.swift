@@ -57,7 +57,7 @@ class MainTableCellView: SWTableViewCell {
         if Int(learningPackModel.progress) > 80 {
             labelProgressCircular.textColor = UIColor.greenColor()
         } else {
-            labelProgressCircular.textColor = UIColor.yellowColor()
+            labelProgressCircular.textColor = UIColor.orangeColor()
         }
         
         activityIndicator.hidden = true
