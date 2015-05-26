@@ -56,6 +56,8 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
         self.updateTimerLabel()
         
         LocalNotificationManager().askUserPermission(self)
+        
+        Mixpanel.sharedInstance().track("MainTestViewAppeared")
     }
     
     func navigationControllerr() -> UINavigationController {
@@ -124,6 +126,9 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     
     // #MARK: Learning logic
     func learnNextWord() {
+        
+        Mixpanel.sharedInstance().track("onLearnNextWord")
+        
         var next = learnerController!.nextWordToLearn()
 
         hideAllButtons()
@@ -228,6 +233,7 @@ class MainTestViewController : GAITrackedViewController, TestViewControllerDeleg
     }
     
     @IBAction func onGotItTapped(sender: UIButton) {
+        Mixpanel.sharedInstance().track("onGotItTapped")
         presentationViewController?.onGotItTapped()
     }
     

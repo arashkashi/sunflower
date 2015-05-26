@@ -34,9 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GAI.sharedInstance().trackerWithTrackingId("UA-60808157-1")
         
         Mixpanel.sharedInstanceWithToken("a8b19796535c4ae170a53c1a41bae0ae")
-        var mixPanel = Mixpanel.sharedInstance()
-        mixPanel.track("didFinishLaunching")
-        
+        Mixpanel.sharedInstance().track("didFinishLaunching")
+
         return true
     }
     
