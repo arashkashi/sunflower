@@ -199,6 +199,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     // MARK: Events
     func onCellTapped(lpm: LearningPackModel, indexPath: NSIndexPath) {
         if viewState == .NORMAL {
+            Mixpanel.sharedInstance().track("onMainViewCellTappedNormal")
+            
             self.learnerController = LearnerController(learningPack: lpm)
             var status = self.learnerController!.nextWordToLearn().status
             if status == .NO_MORE_WORD_TODAY || status == .ALL_WORDS_MASTERED{
@@ -303,6 +305,8 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
     @IBAction func onAddPackageTapped(sender: UIBarButtonItem) {
         var alertStyle: UIAlertControllerStyle = .ActionSheet
         
+        Mixpanel.sharedInstance().track("onAddPackageTapped")
+        
         if .Pad == UIDevice.currentDevice().userInterfaceIdiom {
             alertStyle = .Alert
         }
@@ -310,10 +314,15 @@ class MainViewController: GAITrackedViewController, UITableViewDataSource, UITab
         var allertController = UIAlertController(title: "New Word List", message: "You are about to create a new word list.", preferredStyle: alertStyle)
         
         var automaticPackageAction = UIAlertAction(title: "Create word list from a text?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            
+            Mixpanel.sharedInstance().track("onAddPackageTappedText")
+            
             self.performSegueWithIdentifier("from_main_to_add_one", sender: nil)
         }
         
         var freeFiveWordSetAction = UIAlertAction(title: "Create an empty word list?", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            
+            Mixpanel.sharedInstance().track("onAddPackageTappedFiveWords")
             
             var words = Word.fiveWordPlaceholder()
             var validatedID = LearningPackController.sharedInstance.validateID(NSDate().toString("YYYY-MM-DD"))
